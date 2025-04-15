@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
+import 'package:student_hackerha/core/manager/theme_cubit/theme_state.dart';
+import 'package:student_hackerha/core/themes/app_theme.dart';
+
+import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/auth_page1.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/auth_page1_body.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    BlocProvider(
+      create: (_) => ThemeCubit(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -9,14 +22,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final themeConfig = Provider.of<ThemeConfig>(context);
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      // themeMode: themeConfig.themeMode,
-      // theme: themeConfig.lightTheme,
-      // darkTheme: themeConfig.darkTheme,
-      home: const MyHomePage(),
+    return BlocBuilder<ThemeCubit, ThemeState>(
+      builder: (context, state) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          themeMode: state.themeMode,
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
+          home: const MyHomePage(),
+        );
+      },
     );
   }
 }
@@ -26,6 +41,19 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Container());
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Theme with Cubit"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.brightness_6),
+            onPressed: () {
+              context.read<ThemeCubit>().toggleTheme();
+            },
+          ),
+        ],
+      ),
+      body: AuthPage1(),
+    );
   }
 }
