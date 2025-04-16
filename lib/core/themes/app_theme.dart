@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/colors/app_colors.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';

@@ -6,7 +6,6 @@ class ThemeConfig extends ChangeNotifier {
 
   ThemeMode get themeMode => _themeMode;
 
-  /// Use this if you want to get the actual ThemeData
   ThemeData get lightTheme => AppTheme.light;
   ThemeData get darkTheme => AppTheme.dark;
 

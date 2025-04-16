@@ -31,7 +31,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
-  
+  flutter_svg: ^2.0.17
+  phosphor_flutter: ^2.1.0
+
 dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:
@@ -47,8 +49,8 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/svg/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -73,3 +75,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+flutter_assets:
+  assets_path: assets/images/svg
+  output_path: lib/core/constants/
+  filename: assets_image.dart
+  field_prefix: null
