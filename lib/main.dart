@@ -4,9 +4,7 @@ import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_state.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 
-import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/auth_page1.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/auth_page1_body.dart';
 
 void main() {
   runApp(
