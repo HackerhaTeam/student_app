@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
-import 'package:student_hackerha/features/presentation/pages/home_page.dart';
+import 'package:student_hackerha/features/home/presentation/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());

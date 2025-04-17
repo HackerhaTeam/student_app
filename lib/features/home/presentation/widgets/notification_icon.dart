@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-import 'package:student_hackerha/core/widgets/custom_button.dart';
+import 'package:student_hackerha/core/widgets/custom_icon_button.dart';
 
 class NotificationIcon extends StatelessWidget {
   const NotificationIcon({
@@ -20,7 +20,7 @@ class NotificationIcon extends StatelessWidget {
         CircleAvatar(
           backgroundColor: backgrounds?.onSurfaceSecondary,
         ),
-        CustomButton(
+        CustomIconButton(
           iconDataPhosphor: PhosphorIcons.bellSimple(),
           onTap: () {},
           hight: 44.h(context),
