@@ -4,6 +4,9 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/widgets/custom_button.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/course_content.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/course_image.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/course_tags.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_tag.dart';
 
 class CourseItem extends StatelessWidget {
@@ -12,6 +15,7 @@ class CourseItem extends StatelessWidget {
   final String courseName;
   final String description;
   final List<String> tagsTitle;
+  final bool isNew;
 
   const CourseItem({
     super.key,
@@ -20,105 +24,35 @@ class CourseItem extends StatelessWidget {
     required this.courseName,
     required this.description,
     required this.tagsTitle,
+    required this.isNew,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 330.h(context),
+    return SingleChildScrollView(
       child: Container(
         margin: EdgeInsets.only(bottom: 8.h(context)),
+        width: MediaQuery.of(context).size.width * 0.75,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(21.r(context)),
           border: Border.all(width: 1, color: border.secondary),
         ),
-        child: SizedBox(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(21.r(context)),
-                  topRight: Radius.circular(21.r(context)),
-                ),
-                child: Image.asset(
-                  AppImages.courseImage,
-                  width: double.infinity,
-                  height: 140.h(context),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(12.w(context)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      courseName,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 18.fs(context),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 8.h(context)),
-                    Text(
-                      description,
-                      textDirection: TextDirection.rtl,
-                      style: TextStyle(
-                        fontSize: 14.fs(context),
-                        color: Colors.grey[600],
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    SizedBox(height: 12.h(context)),
-                    SizedBox(
-                      height: 36.h(context),
-                      child: Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: tagsTitle.length,
-                          itemBuilder: (context, index) => Padding(
-                            padding: EdgeInsets.only(left: 8.w(context)),
-                            child: CoursesTag(
-                              background: background,
-                              appBorder: border,
-                              text: tagsTitle[index],
-                              isSelected: false,
-                              borderColor: Colors.transparent,
-                              backgroundColor: border.transparentStatic,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 12.h(context)),
-                    Center(
-                      child: CustomButton(
-                        onPressed: () {},
-                        borderRadius: 12.r(context),
-                        color: border.primaryBrand,
-                        height: 38.h(context),
-                        width: double.infinity,
-                        child: Text(
-                          "عرض التفاصيل",
-                          style: TextStyle(
-                            color: background.surfacePrimary,
-                            fontSize: 12.fs(context),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CourseImage(
+              border: border,
+              background: background,
+              isNew: isNew,
+            ),
+            CourseContent(
+              border: border,
+              background: background,
+              courseName: courseName,
+              description: description,
+              tagsTitle: tagsTitle,
+            ),
+          ],
         ),
       ),
     );
