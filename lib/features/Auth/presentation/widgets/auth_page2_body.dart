@@ -14,7 +14,7 @@ class AuthPage2Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backgrounds.primaryBrand,
+      color: backgrounds.surfacePrimary,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

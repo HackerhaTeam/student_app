@@ -76,7 +76,6 @@ class _AuthWrapperState extends State<AuthWrapper> {
                   ),
                   AuthPage3(onNext: _goToNextPage),
                   AuthPage4(onNext: _goToNextPage),
-                  // AuthPage5(onNext: _goToNextPage),
                 ],
               ),
             ),

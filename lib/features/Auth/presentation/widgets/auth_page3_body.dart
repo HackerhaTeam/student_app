@@ -14,11 +14,11 @@ class AuthPage3Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backgrounds.primaryBrand,
+      color: backgrounds.surfacePrimary,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("Page 2", style: TextStyle(fontSize: 24)),
+          const Text("Page 3", style: TextStyle(fontSize: 24)),
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: onNext,
