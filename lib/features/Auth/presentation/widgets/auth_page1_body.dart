@@ -87,21 +87,21 @@ class _AuthPage1BodyState extends State<AuthPage1Body> {
             SizedBox(
               height: 154.h(context),
             ),
-            if (value == true)
-              CustomButton(
-                  borderRadius: 24.r(context),
-                  height: 56.h(context),
-                  width: 372.w(context),
-                  color: widget.backgrounds.primaryBrand,
-                  onPressed: widget.onNext,
-                  child: Text(
-                    "التالي >",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.fs(context),
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ))
+            CustomButton(
+                disabled: value ? false : true,
+                borderRadius: 24.r(context),
+                height: 56.h(context),
+                width: 372.w(context),
+                color: widget.backgrounds.primaryBrand,
+                onPressed: widget.onNext,
+                child: Text(
+                  "التالي >",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.fs(context),
+                    fontWeight: FontWeight.w400,
+                  ),
+                ))
           ],
         ),
       ),
