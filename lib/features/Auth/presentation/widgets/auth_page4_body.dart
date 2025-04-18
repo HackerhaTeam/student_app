@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 
-class AuthPage1Body extends StatelessWidget {
-  const AuthPage1Body({
+class AuthPage4Body extends StatelessWidget {
+  const AuthPage4Body({
     super.key,
     required this.backgrounds,
     required this.onNext,
@@ -14,11 +14,11 @@ class AuthPage1Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: backgrounds.surfacePrimary,
+      color: backgrounds.primaryBrand,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("Page 1", style: TextStyle(fontSize: 24)),
+          const Text("Page 2", style: TextStyle(fontSize: 24)),
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: onNext,
