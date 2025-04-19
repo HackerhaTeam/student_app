@@ -5,6 +5,8 @@ import 'package:student_hackerha/core/manager/theme_cubit/theme_state.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 
 import 'package:student_hackerha/features/Auth/presentation/pages/auth_page1.dart';
+import 'package:student_hackerha/features/quiz/presentation/pages/quiz_page.dart';
+import 'package:student_hackerha/features/quiz/presentation/pages/widgets/quiz_page_body.dart';
 
 void main() {
   runApp(
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
           themeMode: state.themeMode,
           theme: AppTheme.light,
           darkTheme: AppTheme.dark,
-          home: const MyHomePage(),
+          home: const QuizPage(),
         );
       },
     );
