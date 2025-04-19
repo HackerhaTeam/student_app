@@ -2,12 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/colors/app_colors.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_typography.dart';
 
 class AppTheme {
   static ThemeData light = ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.white,
     primaryColor: AppColors.grey800,
+    fontFamily: AppTypography.arabicFontFamily,
+    textTheme: const TextTheme(
+      displayLarge: AppTextStyles.displayLarge,
+      displayMedium: AppTextStyles.displayMedium,
+      displaySmall: AppTextStyles.displaySmall,
+      headlineLarge: AppTextStyles.headingLarge,
+      headlineMedium: AppTextStyles.headingMedium,
+      headlineSmall: AppTextStyles.headingSmall,
+      titleLarge: AppTextStyles.labelLarge,
+      titleMedium: AppTextStyles.labelMedium,
+      titleSmall: AppTextStyles.labelSmall,
+      bodyLarge: AppTextStyles.paragraphXLarge,
+    ),
     extensions: <ThemeExtension<dynamic>>[
       AppBorders.light,
       AppBackgrounds.light,
@@ -32,6 +47,19 @@ class AppTheme {
     brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.grey900,
     primaryColor: AppColors.grey50,
+    fontFamily: AppTypography.arabicFontFamily,
+    textTheme: const TextTheme(
+      displayLarge: AppTextStyles.displayLarge,
+      displayMedium: AppTextStyles.displayMedium,
+      displaySmall: AppTextStyles.displaySmall,
+      headlineLarge: AppTextStyles.headingLarge,
+      headlineMedium: AppTextStyles.headingMedium,
+      headlineSmall: AppTextStyles.headingSmall,
+      titleLarge: AppTextStyles.labelLarge,
+      titleMedium: AppTextStyles.labelMedium,
+      titleSmall: AppTextStyles.labelSmall,
+      bodyLarge: AppTextStyles.paragraphXLarge,
+    ),
     extensions: <ThemeExtension<dynamic>>[
       AppBorders.dark,
       AppBackgrounds.dark,
