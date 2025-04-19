@@ -10,6 +10,7 @@ class CourseImage extends StatelessWidget {
   final bool isNew;
 
   const CourseImage({
+    super.key,
     required this.border,
     required this.background,
     required this.isNew,
@@ -40,7 +41,10 @@ class CourseImage extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   "جديد",
-                  style: const TextStyle(color: Colors.white),
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelSmall!
+                      .copyWith(color: Colors.white),
                 ),
               ),
             ),

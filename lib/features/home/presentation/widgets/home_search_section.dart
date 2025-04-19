@@ -26,6 +26,7 @@ class HomeSearchSection extends StatelessWidget {
           SvgPicture.asset(AppImages.homeText, width: 372.w(context)),
           SizedBox(height: 24.h(context)),
           CustomTextField(
+            textStyle: Theme.of(context).textTheme.labelLarge!,
             fieldType: FieldType.search,
             hint: "ابحث عن اسم مادة",
             radius: 8.r(context),

@@ -20,11 +20,7 @@ class HomeHeader extends StatelessWidget {
           const Spacer(),
           Text(
             'الرئيسية',
-            style: TextStyle(
-              fontSize: 20.fs(context),
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Montserrat-Arabic',
-            ),
+            style: Theme.of(context).textTheme.headlineLarge,
           ),
           const Spacer(),
           CustomIconButton(

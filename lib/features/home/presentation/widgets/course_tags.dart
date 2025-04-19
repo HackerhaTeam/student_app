@@ -10,6 +10,7 @@ class CourseTags extends StatelessWidget {
   final AppBackgrounds background;
 
   const CourseTags({
+    super.key,
     required this.tags,
     required this.border,
     required this.background,

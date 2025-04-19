@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/course_content.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/course_image.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/my_course_card.dart';
 
-class NewCoursesItem extends StatelessWidget {
+class MyCoursesItem extends StatelessWidget {
   final AppBorders border;
   final AppBackgrounds background;
   final String courseName;
   final String description;
-  final List<String> tagsTitle;
-  final bool isNew;
 
-  const NewCoursesItem({
+  const MyCoursesItem({
     super.key,
     required this.border,
     required this.background,
     required this.courseName,
     required this.description,
-    required this.tagsTitle,
-    required this.isNew,
   });
 
   @override
@@ -39,14 +37,13 @@ class NewCoursesItem extends StatelessWidget {
             CourseImage(
               border: border,
               background: background,
-              isNew: isNew,
+              isNew: false,
             ),
-            CourseContent(
-              border: border,
-              background: background,
-              courseName: courseName,
-              description: description,
-              tagsTitle: tagsTitle,
+            MyCourseCard(
+              title: "البرمجة (1)",
+              instructorName: "منصور السالم",
+              imageUrl: AppImages.courseImage,
+              progress: 22,
             ),
           ],
         ),

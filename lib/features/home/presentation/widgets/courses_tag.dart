@@ -45,11 +45,9 @@ class CoursesTag extends StatelessWidget {
         ),
         child: Text(
           "  $text  ",
-          style: TextStyle(
-            color: isSelected ? background.surfacePrimary : appBorder.secondary,
-            fontSize: 14.fs(context), // إضافة حجم خط مناسب
-            fontWeight: FontWeight.w500, // وزن الخط
-          ),
+          style: Theme.of(context).textTheme.labelMedium!.copyWith(
+              color:
+                  isSelected ? background.surfacePrimary : appBorder.secondary),
         ),
       ),
     );

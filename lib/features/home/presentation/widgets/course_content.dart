@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/core/themes/extentions/app_content.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_button.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/course_tags.dart';
 
@@ -23,6 +25,8 @@ class CourseContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final appContent = Theme.of(context).extension<AppContent>();
     return Padding(
       padding: EdgeInsets.all(12.w(context)),
       child: Column(
@@ -32,19 +36,14 @@ class CourseContent extends StatelessWidget {
             courseName,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 18.fs(context),
-              fontWeight: FontWeight.bold,
-            ),
+            style: textTheme.xHeadingMedium,
           ),
           SizedBox(height: 8.h(context)),
           Text(
             description,
             textDirection: TextDirection.rtl,
-            style: TextStyle(
-              fontSize: 14.fs(context),
-              color: Colors.grey[600],
-            ),
+            style: textTheme.xParagraphMedium
+                .copyWith(color: appContent!.secondary),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -63,10 +62,10 @@ class CourseContent extends StatelessWidget {
             width: double.infinity,
             child: Text(
               "عرض التفاصيل",
-              style: TextStyle(
-                color: background.surfacePrimary,
-                fontSize: 12.fs(context),
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .xLabelSmall
+                  .copyWith(color: appContent.primaryInverted),
             ),
           ),
         ],

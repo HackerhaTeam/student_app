@@ -13,6 +13,7 @@ class CustomTextField extends StatelessWidget {
   final IconData? prefixIcon;
   final IconData? suffixIcon;
   final TextEditingController controller;
+  final TextStyle textStyle;
 
   const CustomTextField({
     super.key,
@@ -22,6 +23,7 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     required this.controller,
+    required this.textStyle,
   });
 
   String? _validate(String? value) {
@@ -49,6 +51,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: textStyle,
       textDirection: TextDirection.rtl,
       controller: controller,
       obscureText: fieldType == FieldType.password,

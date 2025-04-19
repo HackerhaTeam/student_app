@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 
 class CoursesHeader extends StatelessWidget {
-  final AppBackgrounds background;
+  const CoursesHeader({
+    super.key,
+    required this.title,
+  });
 
-  const CoursesHeader({super.key, required this.background});
-
+  final String title;
   @override
   Widget build(BuildContext context) {
+    final AppBackgrounds background =
+        Theme.of(context).extension<AppBackgrounds>()!;
+    final textTheme = Theme.of(context).textTheme;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w(context)),
       child: Row(
@@ -16,18 +22,12 @@ class CoursesHeader extends StatelessWidget {
         children: [
           Text(
             "عرض الكل",
-            style: TextStyle(
-              color: background.primaryBrand,
-              fontSize: 14.fs(context),
-              fontWeight: FontWeight.w400,
-            ),
+            style:
+                textTheme.labelMedium!.copyWith(color: background.primaryBrand),
           ),
           Text(
-            "الدورات الجديدة",
-            style: TextStyle(
-              fontSize: 20.fs(context),
-              fontWeight: FontWeight.w400,
-            ),
+            title,
+            style: Theme.of(context).textTheme.xHeadingLarge,
           ),
         ],
       ),

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/course_item.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/course_list_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_search_section.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/my_course_card.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/my_courses_item.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/tags_section.dart';
 
 class HomePageBody extends StatefulWidget {
@@ -74,7 +78,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         ),
         SliverToBoxAdapter(child: SizedBox(height: 24.h(context))),
         SliverToBoxAdapter(
-          child: CoursesHeader(background: background),
+          child: CoursesHeader(title: "الدورات الجديدة"),
         ),
         SliverToBoxAdapter(child: SizedBox(height: 20.h(context))),
         SliverToBoxAdapter(
@@ -82,9 +86,39 @@ class _HomePageBodyState extends State<HomePageBody> {
             height: listHeight,
             border: border,
             background: background,
+            coursesItem: NewCoursesItem(
+              isNew: true,
+              border: border,
+              background: background,
+              courseName: 'البرمجة ( 1})',
+              description: 'وصف الدورة رقم ',
+              tagsTitle: ["مدرّس 1", "دورة شاملة", " 22 طالب"],
+            ),
           ),
         ),
-        SliverToBoxAdapter(child: SizedBox(height: 40.h(context))),
+        SliverToBoxAdapter(
+          child: CoursesHeader(
+            title: "دوراتي المسجل بها",
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 16.h(context),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: CourseListSection(
+            height: listHeight,
+            border: border,
+            background: background,
+            coursesItem: MyCoursesItem(
+              border: border,
+              background: background,
+              courseName: "البرمجة (1)",
+              description: "منصور السالم",
+            ),
+          ),
+        )
       ],
     );
   }

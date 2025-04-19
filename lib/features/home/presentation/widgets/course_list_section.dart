@@ -8,12 +8,13 @@ class CourseListSection extends StatelessWidget {
   final double height;
   final AppBorders border;
   final AppBackgrounds background;
-
+  final Widget coursesItem;
   const CourseListSection({
     super.key,
     required this.height,
     required this.border,
     required this.background,
+    required this.coursesItem,
   });
 
   @override
@@ -28,18 +29,7 @@ class CourseListSection extends StatelessWidget {
           padding: EdgeInsets.only(
               left: index == 0 ? 1.w(context) : 10.w(context),
               right: 10.w(context)),
-          child: CourseItem(
-            isNew: true,
-            border: border,
-            background: background,
-            courseName: 'البرمجة (${index + 1})',
-            description: 'وصف الدورة رقم ${index + 1}',
-            tagsTitle: [
-              "مدرّس ${index + 1}",
-              "دورة شاملة",
-              "${index + 20} طالب"
-            ],
-          ),
+          child: coursesItem,
         ),
       ),
     );
