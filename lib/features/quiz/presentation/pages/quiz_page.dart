@@ -6,8 +6,10 @@ class QuizPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: QuizPageBody(),
+    return  SafeArea(
+      child: Scaffold(
+        body: QuizPageBody(),
+      ),
     );
   }
 }

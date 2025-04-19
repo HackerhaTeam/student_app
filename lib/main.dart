@@ -3,10 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_state.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
-
 import 'package:student_hackerha/features/Auth/presentation/pages/auth_page1.dart';
 import 'package:student_hackerha/features/quiz/presentation/pages/quiz_page.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/quiz_page_body.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(
@@ -25,6 +24,15 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
         return MaterialApp(
+         locale: const Locale('ar'),
+          supportedLocales: const [
+            Locale('ar'),
+          ],
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
           debugShowCheckedModeBanner: false,
           themeMode: state.themeMode,
           theme: AppTheme.light,
