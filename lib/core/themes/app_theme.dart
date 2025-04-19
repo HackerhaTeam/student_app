@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/colors/app_colors.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_typography.dart';
 
@@ -28,6 +29,7 @@ class AppTheme {
     extensions: <ThemeExtension<dynamic>>[
       AppBorders.light,
       AppBackgrounds.light,
+      AppContent.light,
     ],
     colorScheme: ColorScheme.light(
       primary: AppColors.grey800,
@@ -51,6 +53,7 @@ class AppTheme {
     primaryColor: AppColors.grey50,
     fontFamily: AppTypography.arabicFontFamily,
     textTheme: const TextTheme(
+      
       displayLarge: AppTextStyles.displayLarge,
       displayMedium: AppTextStyles.displayMedium,
       displaySmall: AppTextStyles.displaySmall,
@@ -65,6 +68,7 @@ class AppTheme {
     extensions: <ThemeExtension<dynamic>>[
       AppBorders.dark,
       AppBackgrounds.dark,
+AppContent.dark,
     ],
     colorScheme: ColorScheme.dark(
       primary: AppColors.grey50,
