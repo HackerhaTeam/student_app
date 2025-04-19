@@ -10,8 +10,4 @@ class ThemeCubit extends Cubit<ThemeState> {
         state.themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     emit(state.copyWith(themeMode: newMode));
   }
-
-  // void setTheme(ThemeMode mode) {
-  //   emit(state.copyWith(themeMode: mode));
-  // }
 }
