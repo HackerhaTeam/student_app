@@ -4,15 +4,15 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 
 class TimerFillingLine extends StatelessWidget {
   const TimerFillingLine({
-    super.key,
+    super.key, required this.filledValue,
   });
-
+final double filledValue;
   @override
   Widget build(BuildContext context) {
     final contentColor = Theme.of(context).extension<AppContent>()!;
     return Container(
       height: 8.h(context),
-      width: 50,
+      width: filledValue,
       decoration: BoxDecoration(
         color: contentColor.brandPrimary,
         borderRadius: BorderRadius.circular(40.r(context)),

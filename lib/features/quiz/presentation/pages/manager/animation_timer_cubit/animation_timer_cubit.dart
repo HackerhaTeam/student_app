@@ -11,7 +11,8 @@ class AnimationTimerCubit extends Cubit<double> {
     _animation = Tween<double>(begin: 0, end: 1).animate(_controller)
       ..addListener(
         () {
-          emit(_animation.value);
+    
+          emit(_animation.value );
         },
       );
   }
