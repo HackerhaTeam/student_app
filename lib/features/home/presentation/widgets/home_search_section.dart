@@ -15,15 +15,19 @@ class HomeSearchSection extends StatelessWidget {
     required this.background,
     required this.searchController,
   });
-
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
       child: Column(
         children: [
           SizedBox(height: 24.h(context)),
-          SvgPicture.asset(AppImages.homeText, width: 372.w(context)),
+          SvgPicture.asset(
+            isDark ? AppImages.homeTextDark : AppImages.homeTextLight,
+            width: 372.w(context),
+          ),
           SizedBox(height: 24.h(context)),
           CustomTextField(
             textStyle: Theme.of(context).textTheme.labelLarge!,

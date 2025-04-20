@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/home_page_body.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/account_tab_page.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/animated_navbar.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/archive_tab_page.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/courses_tab_page.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/home_tabpage.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  final VoidCallback onThemeChanged;
+  final VoidCallback onLanguageChanged;
+  final bool isDarkMode;
+  final bool isArabic;
+
+  const HomePage({
+    super.key,
+    required this.onThemeChanged,
+    required this.onLanguageChanged,
+    required this.isDarkMode,
+    required this.isArabic,
+  });
 
   @override
-  Widget build(BuildContext context) {
-    final backgrounds = Theme.of(context).extension<AppBackgrounds>();
-    final borders = Theme.of(context).extension<AppBorders>();
+  State<HomePage> createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-      body: HomePageBody(
-        backgrounds: backgrounds,
-        borders: borders,
-      ),
+      body: const HomeTabPage(),
     );
   }
 }

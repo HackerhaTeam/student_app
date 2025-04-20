@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
@@ -50,11 +52,17 @@ class MyCourseCard extends StatelessWidget {
                       SizedBox(
                         height: 16.h(context),
                         width: 16.w(context),
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          backgroundColor: const Color(0xffD9D9D9),
-                          color: content!.success,
-                          value: progress / 100,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SvgPicture.asset(AppImages.progressImageIcon),
+                            CircularProgressIndicator(
+                              strokeWidth: 2,
+                              backgroundColor: const Color(0xffD9D9D9),
+                              color: content!.success,
+                              value: progress / 100,
+                            ),
+                          ],
                         ),
                       ),
                     ],

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/course_item.dart';
 
 class CourseListSection extends StatelessWidget {
   final double height;

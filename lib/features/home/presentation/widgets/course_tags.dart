@@ -33,7 +33,7 @@ class CourseTags extends StatelessWidget {
               text: tags[index],
               isSelected: false,
               borderColor: Colors.transparent,
-              backgroundColor: border.transparentStatic,
+              backgroundColor: background.fill,
             ),
           ),
         ),

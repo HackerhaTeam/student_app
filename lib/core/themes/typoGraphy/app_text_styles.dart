@@ -90,11 +90,14 @@ extension CustomTextTheme on TextTheme {
         fontWeight: AppTypography.regular,
       );
 
-  TextStyle get xParagraphLarge => TextStyle(
+  TextStyle get xParagraphLargeLose => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize300,
         height: AppTypography.lineHeight600 / AppTypography.fontSize300,
         fontWeight: AppTypography.light,
+      );
+  TextStyle get xParagraphLargeNormal => xParagraphLargeLose.copyWith(
+        height: AppTypography.lineHeight500 / AppTypography.fontSize300,
       );
 
   TextStyle get xParagraphMedium => TextStyle(

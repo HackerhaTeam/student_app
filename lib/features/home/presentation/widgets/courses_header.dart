@@ -23,7 +23,7 @@ class CoursesHeader extends StatelessWidget {
           Text(
             "عرض الكل",
             style:
-                textTheme.labelMedium!.copyWith(color: background.primaryBrand),
+                textTheme.xLabelMedium.copyWith(color: background.primaryBrand),
           ),
           Text(
             title,
