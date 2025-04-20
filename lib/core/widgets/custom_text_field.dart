@@ -3,13 +3,7 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 
-enum FieldType {
-  email,
-  password,
-  search,
-  name,
-  phoneNumber,
-}
+enum FieldType { email, password, search, name, phoneNumber, academicYear }
 
 class CustomTextField extends StatelessWidget {
   final FieldType fieldType;
@@ -77,6 +71,8 @@ class CustomTextField extends StatelessWidget {
           return 'رقم الهاتف غير صحيح. مثال: 9XXXXXXXX';
         }
         break;
+      case FieldType.academicYear:
+        if (value == null || value.trim().isEmpty) return "الرقم الجامعي مطلوب";
     }
     return null;
   }
@@ -103,12 +99,12 @@ class CustomTextField extends StatelessWidget {
         controller: controller,
         validator: _validate,
         obscureText: fieldType == FieldType.password || obscureOverride,
-        style: styles.bodyLarge,
+        style: styles.xLabelLarge,
         decoration: InputDecoration(
           errorStyle: TextStyle(
             fontSize: 12,
             color: Colors.red,
-            height: 0.5, // ارتفاع طبيعي للخطأ بدون يأثر على ارتفاع الحقل
+            height: 0.5,
           ),
           contentPadding: contentPadding ??
               const EdgeInsets.symmetric(horizontal: 12, vertical: 16),

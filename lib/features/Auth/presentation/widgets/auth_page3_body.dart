@@ -1,30 +1,113 @@
 import 'package:flutter/material.dart';
-import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/widgets/Custom_DropdownField.dart';
+import 'package:student_hackerha/core/widgets/custom_text_field.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/floating_next_button.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/introduction_header.dart';
 
-class AuthPage3Body extends StatelessWidget {
+class AuthPage3Body extends StatefulWidget {
   const AuthPage3Body({
     super.key,
-    required this.backgrounds,
     required this.onNext,
   });
 
-  final AppBackgrounds backgrounds;
   final VoidCallback onNext;
 
   @override
+  State<AuthPage3Body> createState() => _AuthPage3BodyState();
+}
+
+class _AuthPage3BodyState extends State<AuthPage3Body> {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController numberController = TextEditingController();
+
+  String? selectedUniversity;
+  String? selectedYear;
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      color: backgrounds.surfacePrimary,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text("Page 3", style: TextStyle(fontSize: 24)),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: onNext,
-            child: const Text("التالي"),
+    final styles = Theme.of(context).textTheme;
+
+    return Scaffold(
+      floatingActionButton: FloatingNextButton(
+        formKey: formKey,
+        onNext: () {
+          if (formKey.currentState!.validate()) {
+            widget.onNext();
+          }
+        },
+      ),
+      body: Padding(
+        padding: EdgeInsets.only(right: 20.w(context), left: 20.w(context)),
+        child: Form(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          key: formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IntroductionHeader(
+                styles: styles,
+                introText: " أخبرنا عن مسيرتك الأكاديمية!",
+                icon: PhosphorIcons.student(),
+              ),
+              Padding(
+                padding:
+                    EdgeInsets.only(top: 8.h(context), bottom: 32.h(context)),
+                child: Text(
+                  "زوّدنا بتفاصيل جامعتك لنقدّم لك محتوى مخصصًا!",
+                  style: styles.xParagraphLargeLose,
+                ),
+              ),
+              Center(
+                child: CustomDropdownField(
+                  type: DropdownType.university,
+                  label: "الجامعة",
+                  radius: 8,
+                  value: selectedUniversity,
+                  items: [
+                    "جامعة حلب",
+                    "جامعة إيبلا",
+                    "جامعة قرطبة",
+                    "جامعة الشهباء",
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      selectedUniversity = value;
+                    });
+                  },
+                ),
+              ),
+              SizedBox(height: 24.h(context)),
+              Center(
+                child: CustomDropdownField(
+                  type: DropdownType.academicYear,
+                  label: "السنة الدراسية",
+                  radius: 8,
+                  value: selectedYear,
+                  items: ["الأولى", "الثانية", "الثالثة", "الرابعة", "الخامسة"],
+                  onChanged: (value) {
+                    setState(() {
+                      selectedYear = value;
+                    });
+                  },
+                ),
+              ),
+              SizedBox(height: 24.h(context)),
+              Center(
+                child: CustomTextField(
+                  keyboardType: TextInputType.number,
+                  fieldType: FieldType.academicYear,
+                  label: "الرقم الجامعي",
+                  radius: 8.r(context),
+                  controller: numberController,
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

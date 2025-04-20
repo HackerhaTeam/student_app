@@ -7,8 +7,9 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/custom_button.dart';
+
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/floating_next_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/introduction_header.dart';
 
 class AuthPage2Body extends StatefulWidget {
@@ -46,26 +47,15 @@ class _AuthPage2BodyState extends State<AuthPage2Body> {
 
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: CustomButton(
-          borderRadius: 16.r(context),
-          color: widget.backgrounds.primaryBrand,
-          height: 44.h(context),
-          width: 82.w(context),
-          child: Text(
-            "التالي >",
-            style: styles.xLabelLarge
-                .copyWith(color: widget.content.brandDisabledPrimary),
-          ),
-          onPressed: () {
-            if (formKey.currentState!.validate()) {
-              widget.onNext();
-            }
-          },
+        floatingActionButton: FloatingNextButton(
+          formKey: formKey,
+          onNext: widget.onNext,
         ),
         body: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
           child: Form(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

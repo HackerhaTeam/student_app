@@ -26,10 +26,14 @@ class AuthPagesHeader extends StatelessWidget {
     if (currentPage == 0) {
       headerText = "توضيح هام";
     } else if (currentPage == 1) {
-      headerText = "المعلومات والبيانات الجامعية";
+      headerText = "المعلومات والبيانات الشخصية";
     } else if (currentPage == 2) {
-      headerText = "لضمان تجربة مخصصة مناسبة";
+      headerText = "المعلومات والبيانات الجامعية";
     } else if (currentPage == 3) {
+      headerText = "لضمان تجربة مخصصة مناسبة";
+    } else if (currentPage == 4) {
+      headerText = "سجل دخولك عبر رقم هاتفك فقط";
+    } else if (currentPage == 5) {
       headerText = "سجل دخولك عبر رقم هاتفك فقط";
     }
 
