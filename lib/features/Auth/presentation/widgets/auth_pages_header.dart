@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/back_button.dart';
 
 class AuthPagesHeader extends StatelessWidget {
@@ -19,6 +20,7 @@ class AuthPagesHeader extends StatelessWidget {
   final VoidCallback onBack;
   @override
   Widget build(BuildContext context) {
+    final styles = Theme.of(context).textTheme;
     final primaryColor = backgrounds.primaryBrand;
     String headerText = "";
     if (currentPage == 0) {
@@ -46,6 +48,7 @@ class AuthPagesHeader extends StatelessWidget {
             children: [
               Text(
                 headerText,
+                style: styles.xLabelSmall,
               ),
               SizedBox(
                 height: 8.r(context),

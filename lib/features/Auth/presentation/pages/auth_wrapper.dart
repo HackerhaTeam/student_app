@@ -60,6 +60,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
             // PageView
             Expanded(
               child: PageView(
+                key: const PageStorageKey('auth_pages'),
                 controller: _controller,
                 physics: const NeverScrollableScrollPhysics(),
                 onPageChanged: (index) {
