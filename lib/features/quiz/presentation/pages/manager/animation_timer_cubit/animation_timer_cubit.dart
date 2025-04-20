@@ -15,6 +15,9 @@ class AnimationTimerCubit extends Cubit<double> {
           emit(_animation.value );
         },
       );
+
+
+      startAnimation();
   }
 
   void startAnimation() {

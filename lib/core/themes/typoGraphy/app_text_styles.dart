@@ -18,6 +18,7 @@ extension CustomTextTheme on TextTheme {
       );
 
   TextStyle get xDisplaySmall => TextStyle(
+    
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize300,
         height: AppTypography.lineHeight500 / AppTypography.fontSize300,

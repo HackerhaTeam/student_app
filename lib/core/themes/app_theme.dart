@@ -37,7 +37,7 @@ class AppTheme {
 
   static ThemeData dark = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: AppColors.grey900,
+    scaffoldBackgroundColor: AppColors.grey1000,
     primaryColor: AppColors.grey50,
     fontFamily: AppTypography.arabicFontFamily,
   

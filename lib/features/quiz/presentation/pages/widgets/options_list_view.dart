@@ -1,0 +1,32 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/features/quiz/presentation/pages/manager/option_cubit.dart/option_cubit.dart';
+import 'package:student_hackerha/features/quiz/presentation/pages/widgets/option_box.dart';
+
+class OptionsListView extends StatelessWidget {
+  const OptionsListView({
+    super.key,
+    required this.selectedAnswerIndex,
+  });
+  final int? selectedAnswerIndex;
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: 4,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: EdgeInsets.only(bottom: 16.h(context)),
+          child: GestureDetector(
+            onTap: () {
+              context.read<OptionCubit>().selectAnswer(
+                    index: index,
+                  );
+            },
+            child: OptionBox(isSelected: selectedAnswerIndex == index),
+          ),
+        );
+      },
+    );
+  }
+}

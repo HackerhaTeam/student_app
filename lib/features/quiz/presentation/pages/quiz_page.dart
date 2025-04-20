@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/features/quiz/presentation/pages/manager/animation_timer_cubit/animation_timer_cubit.dart';
+import 'package:student_hackerha/features/quiz/presentation/pages/manager/count_down_timer_cubit/count_down_timer_cubit.dart';
+import 'package:student_hackerha/features/quiz/presentation/pages/manager/option_cubit.dart/option_cubit.dart';
 import 'package:student_hackerha/features/quiz/presentation/pages/widgets/quiz_page_body.dart';
 
 class QuizPage extends StatefulWidget {
@@ -14,9 +16,21 @@ class _QuizPageState extends State<QuizPage>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          AnimationTimerCubit(vsync: this, duration: Duration(seconds: 10)),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              AnimationTimerCubit(vsync: this, duration: Duration(minutes: 3)),
+        ),
+          BlocProvider(
+          create: (context) =>
+              OptionCubit()
+        ),
+            BlocProvider(
+          create: (context) =>
+              CountdownTimerCubit(initialDuration: Duration(minutes: 3))
+        )
+      ],
       child: SafeArea(
         child: Scaffold(
           body: QuizPageBody(),
