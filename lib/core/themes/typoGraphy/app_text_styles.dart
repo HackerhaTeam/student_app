@@ -3,21 +3,21 @@ import 'app_typography.dart';
 
 extension CustomTextTheme on TextTheme {
   // Display
-  TextStyle get displayLarge => TextStyle(
+  TextStyle get xDisplayLarge => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize700,
         height: AppTypography.lineHeight1000 / AppTypography.fontSize700,
         fontWeight: AppTypography.regular,
       );
 
-  TextStyle get displayMedium => TextStyle(
+  TextStyle get xDisplayMedium => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize400,
         height: AppTypography.lineHeight600 / AppTypography.fontSize400,
         fontWeight: AppTypography.regular,
       );
 
-  TextStyle get displaySmall => TextStyle(
+  TextStyle get xDisplaySmall => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize300,
         height: AppTypography.lineHeight500 / AppTypography.fontSize300,
@@ -25,28 +25,28 @@ extension CustomTextTheme on TextTheme {
       );
 
   // Heading
-  TextStyle get headingXLarge => TextStyle(
+  TextStyle get xHeadingXLarge => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize700,
         height: AppTypography.lineHeight1000 / AppTypography.fontSize700,
         fontWeight: AppTypography.regular,
       );
 
-  TextStyle get headingLarge => TextStyle(
+  TextStyle get xHeadingLarge => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize500,
         height: AppTypography.lineHeight700 / AppTypography.fontSize500,
         fontWeight: AppTypography.regular,
       );
 
-  TextStyle get headingMedium => TextStyle(
+  TextStyle get xHeadingMedium => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize400,
         height: AppTypography.lineHeight600 / AppTypography.fontSize400,
         fontWeight: AppTypography.regular,
       );
 
-  TextStyle get headingSmall => TextStyle(
+  TextStyle get xHeadingSmall => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize300,
         height: AppTypography.lineHeight500 / AppTypography.fontSize300,
@@ -54,28 +54,28 @@ extension CustomTextTheme on TextTheme {
       );
 
   // Label
-  TextStyle get labelXLarge => TextStyle(
+  TextStyle get xLabelXLarge => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize500,
         height: AppTypography.lineHeight700 / AppTypography.fontSize500,
         fontWeight: AppTypography.regular,
       );
 
-  TextStyle get labelLarge => TextStyle(
+  TextStyle get xLabelLarge => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize300,
         height: AppTypography.lineHeight500 / AppTypography.fontSize300,
         fontWeight: AppTypography.light,
       );
 
-  TextStyle get labelMedium => TextStyle(
+  TextStyle get xLabelMedium => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize200,
         height: AppTypography.lineHeight300 / AppTypography.fontSize200,
         fontWeight: AppTypography.light,
       );
 
-  TextStyle get labelSmall => TextStyle(
+  TextStyle get xLabelSmall => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize100,
         height: AppTypography.lineHeight200 / AppTypography.fontSize100,
@@ -83,28 +83,31 @@ extension CustomTextTheme on TextTheme {
       );
 
   // Paragraph
-  TextStyle get paragraphXLarge => TextStyle(
+  TextStyle get xParagraphXLarge => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize400,
         height: AppTypography.lineHeight800 / AppTypography.fontSize400,
         fontWeight: AppTypography.regular,
       );
 
-  TextStyle get paragraphLarge => TextStyle(
+  TextStyle get xParagraphLargeLose => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize300,
         height: AppTypography.lineHeight600 / AppTypography.fontSize300,
         fontWeight: AppTypography.light,
       );
+  TextStyle get xParagraphLargeNormal => xParagraphLargeLose.copyWith(
+        height: AppTypography.lineHeight500 / AppTypography.fontSize300,
+      );
 
-  TextStyle get paragraphMedium => TextStyle(
+  TextStyle get xParagraphMedium => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize200,
         height: AppTypography.lineHeight400 / AppTypography.fontSize200,
         fontWeight: AppTypography.light,
       );
 
-  TextStyle get paragraphSmall => TextStyle(
+  TextStyle get xParagraphSmall => TextStyle(
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize100,
         height: AppTypography.lineHeight200 / AppTypography.fontSize100,

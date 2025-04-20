@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon_button.dart';
 import 'package:student_hackerha/core/widgets/custom_icon_button.dart';
 
@@ -19,17 +20,20 @@ class QuizPageBody extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomCircleIconButton(
+             CustomIconButton(
+                  iconDataPhosphor: PhosphorIcons.list(), size: 24.w(context)),
+              Text(
+                'اختبار الشروط والحلقات',
+                style: Theme.of(context).textTheme.xHeadingXLarge,
+              ),
+             
+
+
+                    CustomCircleIconButton(
                 size: 24.w(context),
                 backgrounds: backgrounds,
                 iconDataPhosphor: PhosphorIcons.x(),
               ),
-              Text(
-                'اختبار الشروط والحلقات',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-              CustomIconButton(
-                  iconDataPhosphor: PhosphorIcons.list(), size: 24.w(context))
             ],
           )
         ],

@@ -14,10 +14,18 @@ class CustomIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
-      child: PhosphorIcon(iconDataPhosphor,
-      size: size,
+      onTap: () {},
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+        
+          PhosphorIcon(
+            iconDataPhosphor,
+            size: size,
+          ),
+        ],
       ),
     );
+    
   }
 }
