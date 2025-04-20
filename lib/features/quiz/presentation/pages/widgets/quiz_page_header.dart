@@ -15,7 +15,7 @@ class QuizPageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
+    final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
