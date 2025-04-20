@@ -5,7 +5,6 @@ import 'package:student_hackerha/core/manager/theme_cubit/theme_state.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:student_hackerha/features/Auth/presentation/pages/auth_page1.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/auth_wrapper.dart';
 
 void main() {
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
           themeMode: state.themeMode,
           theme: AppTheme.light,
           darkTheme: AppTheme.light,
-          home: const MyHomePage(),
+          home: const AuthWrapper(),
         );
       },
     );

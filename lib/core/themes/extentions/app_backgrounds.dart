@@ -16,8 +16,9 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
   final Color successSoft;
   final Color warningStrong;
   final Color warningSoft;
-
+  final Color brandDisabledPrimary;
   AppBackgrounds({
+    required this.brandDisabledPrimary,
     required this.surfacePrimary,
     required this.onSurfacePrimary,
     required this.onSurfaceSecondary,
@@ -49,6 +50,7 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
     successSoft: AppColors.green50,
     warningStrong: AppColors.yellow500,
     warningSoft: AppColors.yellow50,
+    brandDisabledPrimary: AppColors.brandNavyBlue200,
   );
 
   static AppBackgrounds dark = AppBackgrounds(
@@ -66,6 +68,7 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
     successSoft: AppColors.green1000,
     warningStrong: AppColors.yellow500,
     warningSoft: AppColors.yellow1000,
+    brandDisabledPrimary: AppColors.brandBlue800,
   );
 
   @override
@@ -89,26 +92,28 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
       successSoft: Color.lerp(successSoft, other.successSoft, t)!,
       warningStrong: Color.lerp(warningStrong, other.warningStrong, t)!,
       warningSoft: Color.lerp(warningSoft, other.warningSoft, t)!,
+      brandDisabledPrimary:
+          Color.lerp(brandDisabledPrimary, other.brandDisabledPrimary, t)!,
     );
   }
 
   @override
-  AppBackgrounds copyWith({
-    Color? surfacePrimary,
-    Color? onSurfacePrimary,
-    Color? onSurfaceSecondary,
-    Color? onSurfaceTransparent,
-    Color? containerStatic,
-    Color? fill,
-    Color? primaryBrand,
-    Color? secondaryBrand,
-    Color? negativeStrong,
-    Color? negativeSoft,
-    Color? successStrong,
-    Color? successSoft,
-    Color? warningStrong,
-    Color? warningSoft,
-  }) {
+  AppBackgrounds copyWith(
+      {Color? surfacePrimary,
+      Color? onSurfacePrimary,
+      Color? onSurfaceSecondary,
+      Color? onSurfaceTransparent,
+      Color? containerStatic,
+      Color? fill,
+      Color? primaryBrand,
+      Color? secondaryBrand,
+      Color? negativeStrong,
+      Color? negativeSoft,
+      Color? successStrong,
+      Color? successSoft,
+      Color? warningStrong,
+      Color? warningSoft,
+      Color? brandDisabledPrimary}) {
     return AppBackgrounds(
       surfacePrimary: surfacePrimary ?? this.surfacePrimary,
       onSurfacePrimary: onSurfacePrimary ?? this.onSurfacePrimary,
@@ -124,6 +129,7 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
       successSoft: successSoft ?? this.successSoft,
       warningStrong: warningStrong ?? this.warningStrong,
       warningSoft: warningSoft ?? this.warningSoft,
+      brandDisabledPrimary: brandDisabledPrimary ?? this.brandDisabledPrimary,
     );
   }
 }
