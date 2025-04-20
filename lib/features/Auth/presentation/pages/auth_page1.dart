@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/auth_page1_body.dart';
 
 class AuthPage1 extends StatelessWidget {
@@ -10,6 +11,11 @@ class AuthPage1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
-    return AuthPage1Body(backgrounds: backgrounds, onNext: onNext);
+    final content = Theme.of(context).extension<AppContent>()!;
+    return AuthPage1Body(
+      backgrounds: backgrounds,
+      onNext: onNext,
+      content: content,
+    );
   }
 }

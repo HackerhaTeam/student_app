@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:student_hackerha/core/constants/assets.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/core/themes/extentions/app_content.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_button.dart';
 import 'package:student_hackerha/core/widgets/custom_check_box.dart';
 
@@ -11,9 +13,11 @@ class AuthPage1Body extends StatefulWidget {
     super.key,
     required this.backgrounds,
     required this.onNext,
+    required this.content,
   });
 
   final AppBackgrounds backgrounds;
+  final AppContent content;
   final VoidCallback onNext;
 
   @override
@@ -25,6 +29,7 @@ class _AuthPage1BodyState extends State<AuthPage1Body> {
 
   @override
   Widget build(BuildContext context) {
+    final styles = Theme.of(context).textTheme;
     return Container(
       color: widget.backgrounds.surfacePrimary,
       child: Padding(
@@ -45,10 +50,7 @@ class _AuthPage1BodyState extends State<AuthPage1Body> {
                   ),
                   Text(
                     "  هل أنت مؤهل للتسجيل؟  ",
-                    style: TextStyle(
-                      fontSize: 24.fs(context),
-                      fontWeight: FontWeight.w500,
-                    ),
+                    style: styles.xHeadingXLarge,
                   )
                 ],
               ),
@@ -56,10 +58,7 @@ class _AuthPage1BodyState extends State<AuthPage1Body> {
             Text(
               textAlign: TextAlign.start,
               "مرحبًا بك في تطبيقنا! 🎓💡\n\nهذا التطبيق مصمم خصيصًا لطلاب كلية الهندسة المعلوماتية\nفي جامعة حلب فقط، ليكون رفيقك الذكي في رحلتك الأكاديمية، \nحيث يوفر لك تجربة سلسة ومتكاملة لإدارة معلوماتك الجامعية بسهولة.\n\nلكن رؤيتنا لا تتوقف هنا! 🚀 نحن نعمل على توسيع آفاقنا\nلنصل إلى جامعات أخرى مستقبلًا، بهدف بناء منصة تعليمية متطورة\nتلبي احتياجات جميع الطلاب في مختلف المؤسسات الأكاديمية.\n\nفإن كنت من كلية الهندسة المعلوماتية في جامعة حلب\nفانضم إلينا اليوم، وكن جزءًا من هذا المستقبل الواعد! ✨",
-              style: TextStyle(
-                fontSize: 16.fs(context),
-                fontWeight: FontWeight.w400,
-              ),
+              style: styles.xParagraphLargeLose,
             ),
             SizedBox(
               height: 24.h(context),
@@ -77,10 +76,7 @@ class _AuthPage1BodyState extends State<AuthPage1Body> {
                 SizedBox(width: 8.w(context)),
                 Text(
                   "أستوفي ما ذُكر وأنا في أتم الاستعداد!",
-                  style: TextStyle(
-                    fontSize: 16.fs(context),
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: styles.xLabelLarge,
                 ),
               ],
             ),
@@ -88,6 +84,7 @@ class _AuthPage1BodyState extends State<AuthPage1Body> {
               height: 154.h(context),
             ),
             CustomButton(
+                disabledColor: widget.backgrounds.brandDisabledPrimary,
                 disabled: value ? false : true,
                 borderRadius: 24.r(context),
                 height: 56.h(context),
@@ -96,11 +93,8 @@ class _AuthPage1BodyState extends State<AuthPage1Body> {
                 onPressed: widget.onNext,
                 child: Text(
                   "التالي >",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.fs(context),
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: styles.xLabelLarge
+                      .copyWith(color: widget.content.brandDisabledPrimary),
                 ))
           ],
         ),
