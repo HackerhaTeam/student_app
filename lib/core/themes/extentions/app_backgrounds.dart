@@ -17,7 +17,10 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
   final Color warningStrong;
   final Color warningSoft;
   final Color brandDisabledPrimary;
+  final Color disabled;
+
   AppBackgrounds({
+    required this.disabled,
     required this.brandDisabledPrimary,
     required this.surfacePrimary,
     required this.onSurfacePrimary,
@@ -51,6 +54,7 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
     warningStrong: AppColors.yellow500,
     warningSoft: AppColors.yellow50,
     brandDisabledPrimary: AppColors.brandNavyBlue200,
+    disabled: AppColors.grey300,
   );
 
   static AppBackgrounds dark = AppBackgrounds(
@@ -69,6 +73,7 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
     warningStrong: AppColors.yellow500,
     warningSoft: AppColors.yellow1000,
     brandDisabledPrimary: AppColors.brandBlue800,
+    disabled: AppColors.brandBlue500,
   );
 
   @override
@@ -94,6 +99,7 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
       warningSoft: Color.lerp(warningSoft, other.warningSoft, t)!,
       brandDisabledPrimary:
           Color.lerp(brandDisabledPrimary, other.brandDisabledPrimary, t)!,
+      disabled: Color.lerp(disabled, other.disabled, t)!,
     );
   }
 
@@ -113,7 +119,10 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
       Color? successSoft,
       Color? warningStrong,
       Color? warningSoft,
-      Color? brandDisabledPrimary}) {
+      Color? disabled,
+      Color? brandDisabledPrimary,
+      RadialGradient? radialSurfaceStart,
+      RadialGradient? radialSurfaceEnd}) {
     return AppBackgrounds(
       surfacePrimary: surfacePrimary ?? this.surfacePrimary,
       onSurfacePrimary: onSurfacePrimary ?? this.onSurfacePrimary,
@@ -130,6 +139,7 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
       warningStrong: warningStrong ?? this.warningStrong,
       warningSoft: warningSoft ?? this.warningSoft,
       brandDisabledPrimary: brandDisabledPrimary ?? this.brandDisabledPrimary,
+      disabled: disabled ?? this.disabled,
     );
   }
 }

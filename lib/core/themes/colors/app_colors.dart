@@ -30,17 +30,18 @@ class AppColors {
   static const yellow1000 = Color(0xFF432004);
 
   // Brand - Navy Blue
-  static const brandNavyBlue50 = Color(0xFFE6EAF0); // جديد
+  static const brandNavyBlue50 = Color(0xFFE6EAF0);
   static const brandNavyBlue100 = Color(0xFFB1BDD0);
-  static const brandNavyBlue200 = Color(0xFF8B9DBA); // جديد
+  static const brandNavyBlue200 = Color(0xFF8B9DBA);
   static const brandNavyBlue500 = Color(0xFF022A68);
 
   static const brandBlue100 = Color(0xFFC1E4F6);
-  static const brandBlue800 = Color(0xFF1E5D7C); // مستخدم في dark
+  static const brandBlue800 = Color(0xFF1E5D7C);
   static const brandBlue500 = Color(0xFF36A9E1);
 
   static const brandGreen500 = Color(0xFF60BA48);
 
+  // Transparent colors
   static const transparentBlack10 = Color(0x1A000000);
   static const transparentWhite10 = Color(0x1AFFFFFF);
   static const transparentWhite64 = Color(0xA3FFFFFF);

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/colors/app_colors.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
@@ -34,7 +36,7 @@ class AppTheme {
 
   static ThemeData dark = ThemeData(
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: AppColors.grey900,
+    scaffoldBackgroundColor: AppColors.grey1000,
     primaryColor: AppColors.grey50,
     fontFamily: AppTypography.arabicFontFamily,
     extensions: <ThemeExtension<dynamic>>[

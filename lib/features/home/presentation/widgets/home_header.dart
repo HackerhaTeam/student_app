@@ -8,7 +8,10 @@ import 'package:student_hackerha/features/home/presentation/widgets/notification
 class HomeHeader extends StatelessWidget {
   final AppBackgrounds? backgrounds;
 
-  const HomeHeader({super.key, required this.backgrounds});
+  const HomeHeader({
+    super.key,
+    required this.backgrounds,
+  });
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,12 +26,16 @@ class HomeHeader extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineLarge,
           ),
           const Spacer(),
-          CustomIconButton(
-            iconDataPhosphor: PhosphorIcons.list(),
-            onTap: () {},
-            hight: 44.h(context),
-            width: 44.w(context),
-          )
+          Builder(builder: (context) {
+            return CustomIconButton(
+              iconDataPhosphor: PhosphorIcons.list(),
+              onTap: () {
+                Scaffold.of(context).openEndDrawer();
+              },
+              hight: 44.h(context),
+              width: 44.w(context),
+            );
+          })
         ],
       ),
     );

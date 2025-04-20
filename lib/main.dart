@@ -1,28 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
+import 'package:student_hackerha/core/manager/theme_cubit/theme_state.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 import 'package:student_hackerha/features/home/presentation/pages/home_page.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/main_navigation.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    BlocProvider(
+      create: (_) => ThemeCubit(),
+      child: const MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      locale: const Locale('ar'),
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      home: MainNavigationPage(),
+    return BlocBuilder<ThemeCubit, ThemeState>(
+      builder: (context, state) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
+          themeMode: state.themeMode,
+          home: const HomePage(),
+        );
+      },
     );
   }
 }

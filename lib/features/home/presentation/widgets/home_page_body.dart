@@ -54,7 +54,10 @@ class _HomePageBodyState extends State<HomePageBody> {
     return SafeArea(
       child: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(child: HomeHeader(backgrounds: background)),
+          SliverToBoxAdapter(
+              child: HomeHeader(
+            backgrounds: background,
+          )),
           SliverToBoxAdapter(
             child: HomeSearchSection(
               background: background,
