@@ -13,7 +13,7 @@ class CustomIconButton extends StatelessWidget {
   final double size;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {},
       child: Stack(
         alignment: Alignment.center,
