@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/auth_page2_body.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/sign_up_page1_body.dart';
 
-class AuthPage2 extends StatelessWidget {
-  const AuthPage2({super.key, required this.onNext});
+class SignUpPage1 extends StatelessWidget {
+  const SignUpPage1({super.key, required this.onNext});
 
   final VoidCallback onNext;
 
   @override
   Widget build(BuildContext context) {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
-    final border = Theme.of(context).extension<AppBorders>()!;
     final content = Theme.of(context).extension<AppContent>()!;
-    return AuthPage2Body(
+    return SignUpPage1Body(
       backgrounds: backgrounds,
       onNext: onNext,
-      border: border,
       content: content,
     );
   }

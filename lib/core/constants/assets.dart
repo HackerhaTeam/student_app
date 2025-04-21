@@ -6,4 +6,5 @@ class AppAssets {
       "assets/images/icons/Right_Icon.svg";
 
   static const String flagIcon = "assets/images/icons/FlagIcon.svg";
+  static const String successImage = "assets/images/success.svg";
 }

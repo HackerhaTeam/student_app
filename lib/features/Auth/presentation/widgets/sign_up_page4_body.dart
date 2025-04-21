@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/custom_dropdownfield.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/day_field.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/floating_next_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/gender_sellector.dart';
@@ -10,8 +9,8 @@ import 'package:student_hackerha/features/Auth/presentation/widgets/introduction
 import 'package:student_hackerha/features/Auth/presentation/widgets/month_sellector.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/year_field.dart';
 
-class AuthPage4Body extends StatefulWidget {
-  const AuthPage4Body({
+class SignUpPage4Body extends StatefulWidget {
+  const SignUpPage4Body({
     super.key,
     required this.onNext,
   });
@@ -19,10 +18,10 @@ class AuthPage4Body extends StatefulWidget {
   final VoidCallback onNext;
 
   @override
-  State<AuthPage4Body> createState() => _AuthPage4BodyState();
+  State<SignUpPage4Body> createState() => _SignUpPage4BodyState();
 }
 
-class _AuthPage4BodyState extends State<AuthPage4Body> {
+class _SignUpPage4BodyState extends State<SignUpPage4Body> {
   final TextEditingController dayController = TextEditingController();
   final TextEditingController yearController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -37,8 +36,9 @@ class _AuthPage4BodyState extends State<AuthPage4Body> {
       floatingActionButton: FloatingNextButton(
         formKey: formKey,
         onNext: () {
-          widget.onNext();
-          if (formKey.currentState!.validate()) {}
+          if (formKey.currentState!.validate()) {
+            widget.onNext();
+          }
         },
       ),
       body: Padding(

@@ -8,8 +8,8 @@ import 'package:student_hackerha/core/widgets/custom_button.dart';
 import 'package:student_hackerha/core/widgets/custom_check_box.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/introduction_header.dart';
 
-class AuthPage1Body extends StatefulWidget {
-  const AuthPage1Body({
+class SignUpPage1Body extends StatefulWidget {
+  const SignUpPage1Body({
     super.key,
     required this.backgrounds,
     required this.onNext,
@@ -21,10 +21,10 @@ class AuthPage1Body extends StatefulWidget {
   final VoidCallback onNext;
 
   @override
-  State<AuthPage1Body> createState() => _AuthPage1BodyState();
+  State<SignUpPage1Body> createState() => _SignUpPage1BodyState();
 }
 
-class _AuthPage1BodyState extends State<AuthPage1Body> {
+class _SignUpPage1BodyState extends State<SignUpPage1Body> {
   bool value = false;
 
   @override

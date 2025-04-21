@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 enum FieldType {
   email,
@@ -14,7 +15,7 @@ enum FieldType {
   year
 }
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends StatefulWidget {
   final FieldType fieldType;
   final String? label;
   final String? hint;
@@ -44,8 +45,22 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType,
   });
 
+  @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  late bool _obscureText;
+
+  @override
+  void initState() {
+    super.initState();
+    _obscureText =
+        widget.fieldType == FieldType.password || widget.obscureOverride;
+  }
+
   String? _validate(String? value) {
-    switch (fieldType) {
+    switch (widget.fieldType) {
       case FieldType.email:
         if (value == null || value.isEmpty) return 'البريد الإلكتروني مطلوب';
         final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
@@ -75,17 +90,22 @@ class CustomTextField extends StatelessWidget {
       case FieldType.phoneNumber:
         if (value == null || value.trim().isEmpty) return 'رقم الهاتف مطلوب';
         final phoneRegex = RegExp(r'^9\d{8}$');
-
         if (!phoneRegex.hasMatch(value)) {
           return 'رقم الهاتف غير صحيح. مثال: 9XXXXXXXX';
         }
         break;
+
       case FieldType.academicYear:
         if (value == null || value.trim().isEmpty) return "الرقم الجامعي مطلوب";
+        break;
+
       case FieldType.day:
         if (value == null || value.trim().isEmpty) return "أدخل اليوم";
+        break;
+
       case FieldType.year:
         if (value == null || value.trim().isEmpty) return "أدخل السنة";
+        break;
     }
     return null;
   }
@@ -97,47 +117,63 @@ class CustomTextField extends StatelessWidget {
     final styles = Theme.of(context).textTheme;
 
     return SizedBox(
-      width: width,
-      height: height,
+      width: widget.width,
+      height: widget.height,
       child: TextFormField(
         expands: false,
-        textAlign: fieldType == FieldType.phoneNumber
+        textAlign: widget.fieldType == FieldType.phoneNumber
             ? TextAlign.left
             : TextAlign.right,
-        textDirection: fieldType == FieldType.phoneNumber
+        textDirection: widget.fieldType == FieldType.phoneNumber
             ? TextDirection.ltr
             : TextDirection.rtl,
-        keyboardType: keyboardType,
+        keyboardType: widget.keyboardType,
         cursorColor: backgrounds.primaryBrand,
-        controller: controller,
+        controller: widget.controller,
         validator: _validate,
-        obscureText: fieldType == FieldType.password || obscureOverride,
+        obscureText: widget.fieldType == FieldType.password
+            ? _obscureText
+            : widget.obscureOverride,
         style: styles.xLabelLarge,
         decoration: InputDecoration(
-          errorStyle: TextStyle(
+          errorStyle: const TextStyle(
             fontSize: 12,
             color: Colors.red,
             height: 0.5,
           ),
-          contentPadding: contentPadding ??
+          contentPadding: widget.contentPadding ??
               const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
-          labelText: label,
+          labelText: widget.label,
           labelStyle: styles.xLabelSmall,
-          hintText: hint,
+          hintText: widget.hint,
           hintTextDirection: TextDirection.rtl,
           hintStyle: styles.xParagraphLargeNormal,
-          prefixIcon: prefix,
-          suffixIcon: suffix,
+          prefixIcon: widget.prefix,
+          suffixIcon: widget.fieldType == FieldType.password
+              ? IconButton(
+                  icon: Icon(
+                    _obscureText
+                        ? PhosphorIcons.eyeSlash()
+                        : PhosphorIcons.eye(),
+                    color: backgrounds.primaryBrand,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscureText = !_obscureText;
+                    });
+                  },
+                )
+              : widget.suffix,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),
+            borderRadius: BorderRadius.circular(widget.radius),
             borderSide: BorderSide(color: backgrounds.primaryBrand),
           ),
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),
+            borderRadius: BorderRadius.circular(widget.radius),
             borderSide: BorderSide(color: border.secondary),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),
+            borderRadius: BorderRadius.circular(widget.radius),
             borderSide: BorderSide(color: backgrounds.primaryBrand, width: 2),
           ),
         ),

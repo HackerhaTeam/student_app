@@ -7,8 +7,8 @@ import 'package:student_hackerha/core/widgets/custom_text_field.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/floating_next_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/introduction_header.dart';
 
-class AuthPage3Body extends StatefulWidget {
-  const AuthPage3Body({
+class SignUpPage3Body extends StatefulWidget {
+  const SignUpPage3Body({
     super.key,
     required this.onNext,
   });
@@ -16,10 +16,10 @@ class AuthPage3Body extends StatefulWidget {
   final VoidCallback onNext;
 
   @override
-  State<AuthPage3Body> createState() => _AuthPage3BodyState();
+  State<SignUpPage3Body> createState() => _SignUpPage3BodyState();
 }
 
-class _AuthPage3BodyState extends State<AuthPage3Body> {
+class _SignUpPage3BodyState extends State<SignUpPage3Body> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController numberController = TextEditingController();
 
@@ -34,8 +34,9 @@ class _AuthPage3BodyState extends State<AuthPage3Body> {
       floatingActionButton: FloatingNextButton(
         formKey: formKey,
         onNext: () {
-          widget.onNext();
-          if (formKey.currentState!.validate()) {}
+          if (formKey.currentState!.validate()) {
+            widget.onNext();
+          }
         },
       ),
       body: Padding(

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/auth_page2.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/auth_page3.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/auth_page4.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/auth_page5.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/auth_page6.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_page2.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_page3.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_page4.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_page5.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_page6.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/auth_pages_header.dart';
-import 'auth_page1.dart';
+import 'sign_up_page1.dart';
 
 class AuthWrapper extends StatefulWidget {
   const AuthWrapper({super.key});
@@ -71,16 +71,16 @@ class _AuthWrapperState extends State<AuthWrapper> {
                   });
                 },
                 children: [
-                  AuthPage1(
+                  SignUpPage1(
                     onNext: _goToNextPage,
                   ),
-                  AuthPage2(
+                  SignUpPage2(
                     onNext: _goToNextPage,
                   ),
-                  AuthPage3(onNext: _goToNextPage),
-                  AuthPage4(onNext: _goToNextPage),
-                  AuthPage5(onNext: _goToNextPage),
-                  AuthPage6(onNext: _goToNextPage),
+                  SignUpPage3(onNext: _goToNextPage),
+                  SignUpPage4(onNext: _goToNextPage),
+                  SignUpPage5(onNext: _goToNextPage),
+                  SignUpPage6(onNext: _goToNextPage),
                 ],
               ),
             ),
