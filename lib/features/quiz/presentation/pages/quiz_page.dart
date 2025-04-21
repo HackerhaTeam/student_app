@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/manager/animation_timer_cubit/animation_timer_cubit.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/manager/count_down_timer_cubit/count_down_timer_cubit.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/manager/option_cubit.dart/option_cubit.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/quiz_page_body.dart';
+import 'package:student_hackerha/features/quiz/presentation/manager/animation_timer_cubit/animation_timer_cubit.dart';
+import 'package:student_hackerha/features/quiz/presentation/manager/count_down_timer_cubit/count_down_timer_cubit.dart';
+import 'package:student_hackerha/features/quiz/presentation/manager/option_cubit.dart/option_cubit.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/quiz_page_body.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key});

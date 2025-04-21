@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/quiz_body_section.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/quiz_buttom_section.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/quiz_page_header.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/quiz_top_section.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/quiz_body_section.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/quiz_buttom_section.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/quiz_page_header.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/quiz_top_section.dart';
 
 class QuizPageBody extends StatelessWidget {
   const QuizPageBody({super.key});

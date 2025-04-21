@@ -4,7 +4,7 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/widgets/custom_button.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/custom_button_quiz_item.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/custom_button_quiz_item.dart';
 
 class QuizButtomSection extends StatelessWidget {
   const QuizButtomSection({super.key});

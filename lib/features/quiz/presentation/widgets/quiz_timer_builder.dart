@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/widgets/custom_alert_dialog.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/manager/count_down_timer_cubit/count_down_timer_cubit.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/manager/count_down_timer_cubit/count_down_timer_state.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/quiz_timer.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/time_out_quiz_dialog_actions.dart';
+import 'package:student_hackerha/features/quiz/presentation/manager/count_down_timer_cubit/count_down_timer_cubit.dart';
+import 'package:student_hackerha/features/quiz/presentation/manager/count_down_timer_cubit/count_down_timer_state.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/quiz_timer.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/time_out_quiz_dialog_actions.dart';
 
 class QuizTimerBuilder extends StatelessWidget {
   const QuizTimerBuilder({super.key});

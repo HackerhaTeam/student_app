@@ -6,7 +6,7 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_alert_dialog.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon_button.dart';
 import 'package:student_hackerha/core/widgets/custom_icon_button.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/time_out_quiz_dialog_actions.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/time_out_quiz_dialog_actions.dart';
 
 class QuizPageHeader extends StatelessWidget {
   const QuizPageHeader({

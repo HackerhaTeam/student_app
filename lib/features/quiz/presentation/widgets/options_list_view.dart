@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/manager/option_cubit.dart/option_cubit.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/option_box.dart';
+import 'package:student_hackerha/features/quiz/presentation/manager/option_cubit.dart/option_cubit.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/option_box.dart';
 
 class OptionsListView extends StatelessWidget {
   const OptionsListView({

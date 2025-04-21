@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/manager/count_down_timer_cubit/count_down_timer_state.dart';
+import 'package:student_hackerha/features/quiz/presentation/manager/count_down_timer_cubit/count_down_timer_state.dart';
 
 class CountdownTimerCubit extends Cubit<CountDownTimerState> {
   final Duration initialDuration;
