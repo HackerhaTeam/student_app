@@ -34,9 +34,8 @@ class _AuthPage3BodyState extends State<AuthPage3Body> {
       floatingActionButton: FloatingNextButton(
         formKey: formKey,
         onNext: () {
-          if (formKey.currentState!.validate()) {
-            widget.onNext();
-          }
+          widget.onNext();
+          if (formKey.currentState!.validate()) {}
         },
       ),
       body: Padding(

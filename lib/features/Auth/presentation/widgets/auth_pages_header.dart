@@ -32,9 +32,9 @@ class AuthPagesHeader extends StatelessWidget {
     } else if (currentPage == 3) {
       headerText = "لضمان تجربة مخصصة مناسبة";
     } else if (currentPage == 4) {
-      headerText = "سجل دخولك عبر رقم هاتفك فقط";
+      headerText = "سجل دخولك عبر بريدك الإلكتروني فقط";
     } else if (currentPage == 5) {
-      headerText = "سجل دخولك عبر رقم هاتفك فقط";
+      headerText = "حماية وأمان حسابك";
     }
 
     return Row(

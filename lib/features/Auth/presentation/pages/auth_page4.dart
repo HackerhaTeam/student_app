@@ -9,7 +9,6 @@ class AuthPage4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
-    return AuthPage4Body(backgrounds: backgrounds, onNext: onNext);
+    return AuthPage4Body(onNext: onNext);
   }
 }

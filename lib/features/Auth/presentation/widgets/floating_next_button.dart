@@ -30,9 +30,8 @@ class FloatingNextButton extends StatelessWidget {
         style: styles.xLabelLarge.copyWith(color: content.brandDisabledPrimary),
       ),
       onPressed: () {
-        if (formKey.currentState!.validate()) {
-          onNext();
-        }
+        onNext();
+        if (formKey.currentState!.validate()) {}
       },
     );
   }

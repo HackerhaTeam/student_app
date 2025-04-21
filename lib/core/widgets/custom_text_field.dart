@@ -3,7 +3,16 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 
-enum FieldType { email, password, search, name, phoneNumber, academicYear }
+enum FieldType {
+  email,
+  password,
+  search,
+  name,
+  phoneNumber,
+  academicYear,
+  day,
+  year
+}
 
 class CustomTextField extends StatelessWidget {
   final FieldType fieldType;
@@ -73,6 +82,10 @@ class CustomTextField extends StatelessWidget {
         break;
       case FieldType.academicYear:
         if (value == null || value.trim().isEmpty) return "الرقم الجامعي مطلوب";
+      case FieldType.day:
+        if (value == null || value.trim().isEmpty) return "أدخل اليوم";
+      case FieldType.year:
+        if (value == null || value.trim().isEmpty) return "أدخل السنة";
     }
     return null;
   }

@@ -4,6 +4,8 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/auth_page2.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/auth_page3.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/auth_page4.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/auth_page5.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/auth_page6.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/auth_pages_header.dart';
 import 'auth_page1.dart';
 
@@ -17,7 +19,7 @@ class AuthWrapper extends StatefulWidget {
 class _AuthWrapperState extends State<AuthWrapper> {
   final PageController _controller = PageController();
   int _currentPage = 0;
-  final int _totalPages = 4;
+  final int _totalPages = 6;
 
   double get _progress => (_currentPage + 1) / _totalPages;
 
@@ -77,6 +79,8 @@ class _AuthWrapperState extends State<AuthWrapper> {
                   ),
                   AuthPage3(onNext: _goToNextPage),
                   AuthPage4(onNext: _goToNextPage),
+                  AuthPage5(onNext: _goToNextPage),
+                  AuthPage6(onNext: _goToNextPage),
                 ],
               ),
             ),

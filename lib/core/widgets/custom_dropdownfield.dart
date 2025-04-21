@@ -64,6 +64,11 @@ class CustomDropdownField extends StatelessWidget {
         validator: _validate,
         icon: const Icon(Icons.arrow_drop_down, color: Colors.black),
         decoration: InputDecoration(
+          errorStyle: TextStyle(
+            fontSize: 12,
+            color: Colors.red,
+            height: 0.06,
+          ),
           labelText: label,
           floatingLabelBehavior: FloatingLabelBehavior.auto,
           // alignLabelWithHint: true,
