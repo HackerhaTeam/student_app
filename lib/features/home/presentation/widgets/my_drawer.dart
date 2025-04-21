@@ -10,10 +10,37 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/custom_list_tile.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/gradient_divider.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
   const MyDrawer({
     super.key,
+    required this.animationController,
   });
+  final AnimationController animationController;
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  bool isClosed = false;
+  @override
+  void initState() {
+    _animationController = widget.animationController;
+    iconTaped();
+    super.initState();
+  }
+
+  bool isopen = false;
+  void iconTaped() {
+    if (!isopen) {
+      _animationController.forward();
+      isopen = true;
+    } else {
+      _animationController.reverse();
+      isopen = false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +52,7 @@ class MyDrawer extends StatelessWidget {
         backgroundColor: backgroundColor!.surfacePrimary,
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(right: 20.w(context), top: 72.h(context)),
+            padding: EdgeInsets.only(right: 20.w(context), top: 32.h(context)),
             child: Column(
               children: [
                 Row(
@@ -39,9 +66,15 @@ class MyDrawer extends StatelessWidget {
                     SizedBox(
                       width: 12.w(context),
                     ),
-                    PhosphorIcon(
-                      PhosphorIcons.x(),
-                      color: contentColor.brandPrimary,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        iconTaped();
+                      },
+                      child: AnimatedIcon(
+                          color: contentColor.brandPrimary,
+                          icon: AnimatedIcons.menu_close,
+                          progress: _animationController),
                     ),
                   ],
                 ),
@@ -53,14 +86,14 @@ class MyDrawer extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 24.h(context),
+                  height: 10.h(context),
                 ),
                 Text(
                   "محمد المحمد",
                   style: textTheme.xLabelXLarge,
                 ),
                 SizedBox(
-                  height: 24.h(context),
+                  height: 10.h(context),
                 ),
                 GradientDivider(),
                 Row(
@@ -74,7 +107,7 @@ class MyDrawer extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 16.h(context),
+                  height: 5.h(context),
                 ),
                 Directionality(
                   textDirection: TextDirection.rtl,
@@ -117,18 +150,12 @@ class MyDrawer extends StatelessWidget {
                         iconColor: contentColor.secondary,
                         titleColor: contentColor.secondary,
                       ),
-                      SizedBox(
-                        height: 91.h(context),
-                      ),
                       GradientDivider(),
                       CustomListTile(
                           phosphorIcondata: PhosphorIcons.signOut(),
                           title: "تسجيل الخروج",
                           iconColor: contentColor.negative,
                           titleColor: contentColor.negative),
-                      SizedBox(
-                        height: 16.h(context),
-                      ),
                       GradientDivider(),
                       BlocBuilder<ThemeCubit, ThemeState>(
                         builder: (context, state) {
@@ -152,7 +179,7 @@ class MyDrawer extends StatelessWidget {
                         },
                       ),
                       SizedBox(
-                        height: 40.h(context),
+                        height: 0.h(context),
                       )
                     ],
                   ),

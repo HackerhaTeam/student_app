@@ -10,7 +10,7 @@ class GradientDivider extends StatelessWidget {
     return Container(
       height: 2.h(context),
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 24.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [

@@ -13,7 +13,9 @@ import 'package:student_hackerha/features/home/presentation/widgets/tags_section
 class HomePageBody extends StatefulWidget {
   const HomePageBody({
     super.key,
+    this.animationController,
   });
+  final AnimationController? animationController;
 
   @override
   State<HomePageBody> createState() => _HomePageBodyState();
@@ -57,6 +59,7 @@ class _HomePageBodyState extends State<HomePageBody> {
           SliverToBoxAdapter(
               child: HomeHeader(
             backgrounds: background,
+            animationController: widget.animationController!,
           )),
           SliverToBoxAdapter(
             child: HomeSearchSection(

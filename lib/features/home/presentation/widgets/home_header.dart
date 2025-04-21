@@ -5,13 +5,38 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/widgets/custom_icon_button.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/notification_icon.dart';
 
-class HomeHeader extends StatelessWidget {
+class HomeHeader extends StatefulWidget {
   final AppBackgrounds? backgrounds;
+  final AnimationController animationController;
 
   const HomeHeader({
     super.key,
     required this.backgrounds,
+    required this.animationController,
   });
+
+  @override
+  State<HomeHeader> createState() => _HomeHeaderState();
+}
+
+class _HomeHeaderState extends State<HomeHeader>
+    with SingleTickerProviderStateMixin {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  bool isopen = false;
+  void iconTaped() {
+    if (!isopen) {
+      widget.animationController.forward();
+      isopen = true;
+    } else {
+      widget.animationController.reverse();
+      isopen = false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +44,7 @@ class HomeHeader extends StatelessWidget {
           top: 25.h(context), right: 20.w(context), left: 20.w(context)),
       child: Row(
         children: [
-          NotificationIcon(backgrounds: backgrounds),
+          NotificationIcon(backgrounds: widget.backgrounds),
           const Spacer(),
           Text(
             'الرئيسية',
@@ -27,13 +52,14 @@ class HomeHeader extends StatelessWidget {
           ),
           const Spacer(),
           Builder(builder: (context) {
-            return CustomIconButton(
-              iconDataPhosphor: PhosphorIcons.list(),
+            return GestureDetector(
               onTap: () {
+                iconTaped();
                 Scaffold.of(context).openEndDrawer();
               },
-              hight: 44.h(context),
-              width: 44.w(context),
+              child: AnimatedIcon(
+                  icon: AnimatedIcons.menu_close,
+                  progress: widget.animationController),
             );
           })
         ],
