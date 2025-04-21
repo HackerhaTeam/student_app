@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/features/quiz/presentation/pages/widgets/options_list_view.dart';
 import 'package:student_hackerha/features/quiz/presentation/pages/widgets/options_list_view_builder.dart';
 
 class QuizBodySection extends StatelessWidget {

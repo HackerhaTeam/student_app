@@ -20,7 +20,7 @@ class _QuizPageState extends State<QuizPage>
       providers: [
         BlocProvider(
           create: (context) =>
-              AnimationTimerCubit(vsync: this, duration: Duration(minutes: 3)),
+              AnimationTimerCubit(vsync: this, duration: Duration(seconds: 6)),
         ),
           BlocProvider(
           create: (context) =>
@@ -28,7 +28,7 @@ class _QuizPageState extends State<QuizPage>
         ),
             BlocProvider(
           create: (context) =>
-              CountdownTimerCubit(initialDuration: Duration(minutes: 3))
+              CountdownTimerCubit(initialDuration: Duration(seconds: 5))
         )
       ],
       child: SafeArea(

@@ -33,7 +33,7 @@ class OptionBox extends StatelessWidget {
     if (isSelected) {
       return borderColor.primaryBrand;
     } else {
-      return backgroundColor.onSurfaceSecondary;
+      return borderColor.transparent;
     }
   }
 }

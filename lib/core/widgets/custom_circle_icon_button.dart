@@ -7,17 +7,17 @@ class CustomCircleIconButton extends StatelessWidget {
     super.key,
     this.backgrounds,
     required this.iconDataPhosphor,
-    required this.size,
+    required this.size, required this.onTap,
   });
 
   final AppBackgrounds? backgrounds;
   final IconData iconDataPhosphor;
   final double size;
-
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Stack(
         alignment: Alignment.center,
         children: [
