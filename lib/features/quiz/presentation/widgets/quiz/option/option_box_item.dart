@@ -20,9 +20,8 @@ class OptionBoxItem extends StatelessWidget {
       child: Row(
         children: [
           PhosphorIcon(
-fill: 1,
             textDirection: TextDirection.ltr,
-            color: _getColor(isSelected,contentColor),
+            color: _getColor(isSelected, contentColor),
             _getIcon(isSelected),
             size: 16.w(context),
           ),
@@ -31,9 +30,10 @@ fill: 1,
           ),
           Text(
             'نص الخيار الأول هنا.',
-            style: Theme.of(context).textTheme.xLabelLarge.copyWith(
-              color: _getColor(isSelected, contentColor)
-            ),
+            style: Theme.of(context)
+                .textTheme
+                .xLabelLarge
+                .copyWith(color: _getColor(isSelected, contentColor)),
           ),
         ],
       ),

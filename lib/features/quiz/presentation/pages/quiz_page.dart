@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/features/quiz/presentation/manager/animation_timer_cubit/animation_timer_cubit.dart';
 import 'package:student_hackerha/features/quiz/presentation/manager/count_down_timer_cubit/count_down_timer_cubit.dart';
 import 'package:student_hackerha/features/quiz/presentation/manager/option_cubit.dart/option_cubit.dart';
-import 'package:student_hackerha/features/quiz/presentation/widgets/quiz_page_body.dart';
+import 'package:student_hackerha/features/quiz/presentation/manager/page_view_cubit/page_view_cubit.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/quiz/sections/quiz_page_body.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key});
@@ -20,16 +21,21 @@ class _QuizPageState extends State<QuizPage>
       providers: [
         BlocProvider(
           create: (context) =>
-              AnimationTimerCubit(vsync: this, duration: Duration(seconds: 6)),
+              AnimationTimerCubit(vsync: this, duration: Duration(minutes: 3)),
         ),
           BlocProvider(
           create: (context) =>
-              OptionCubit()
+              OptionCubit(questionCount: 10)
         ),
             BlocProvider(
           create: (context) =>
-              CountdownTimerCubit(initialDuration: Duration(seconds: 5))
+              CountdownTimerCubit(initialDuration: Duration(minutes: 3))
+        ),
+        BlocProvider(
+          create: (context) =>
+           PageViewCubit()
         )
+
       ],
       child: SafeArea(
         child: Scaffold(

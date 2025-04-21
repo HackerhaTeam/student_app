@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           ],
           debugShowCheckedModeBanner: false,
           themeMode: state.themeMode,
-          theme: AppTheme.light                               ,
+          theme: AppTheme.dark                               ,
           darkTheme: AppTheme.dark,
           home: const QuizPage(),
         );

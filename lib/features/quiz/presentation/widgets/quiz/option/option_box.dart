@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
-import 'package:student_hackerha/features/quiz/presentation/widgets/option_box_item.dart';
+import 'package:student_hackerha/features/quiz/presentation/widgets/quiz/option/option_box_item.dart';
 
 class OptionBox extends StatelessWidget {
   const OptionBox({

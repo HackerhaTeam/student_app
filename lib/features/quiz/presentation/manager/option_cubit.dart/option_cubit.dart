@@ -1,19 +1,20 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class OptionCubit extends Cubit<int?> {
-  OptionCubit() : super(null);
+class OptionCubit extends Cubit<List<int?>> {
+  OptionCubit({required int questionCount})
+      : super(List.filled(questionCount, null));
 
-  int? selectedIndex;
-  
   void selectAnswer({
-    required int index,
+    required int questionIndex,
+    required int? answerIndex,
   }) {
-    selectedIndex = index;
-    emit(index);
+    final updated = List<int?>.from(state);
+    updated[questionIndex] = answerIndex;
+    emit(updated);
   }
 
-  void onQuestionChanged() {
-    selectedIndex = null;
-    emit(null);
+
+  void clearAllSelections() {
+    emit(List.filled(state.length, null));
   }
 }
