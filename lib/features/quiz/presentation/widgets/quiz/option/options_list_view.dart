@@ -22,16 +22,16 @@ class OptionsListView extends StatelessWidget {
             onTap: () {
               final questionIndex = context.read<PageViewCubit>().state;
               final selectedAnswerIndex =
-                  context.read<OptionCubit>().state[questionIndex];
+                  context.read<OptionCubit>().state[questionIndex.questionIndex];
 
               if (selectedAnswerIndex == index) {
                 context.read<OptionCubit>().selectAnswer(
-                      questionIndex: questionIndex,
+                      questionIndex: questionIndex.questionIndex,
                       answerIndex: null,
                     );
               } else {
                 context.read<OptionCubit>().selectAnswer(
-                      questionIndex: questionIndex,
+                      questionIndex: questionIndex.questionIndex,
                       answerIndex: index,
                     );
               }

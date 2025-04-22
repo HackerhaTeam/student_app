@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
@@ -7,11 +6,18 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_button.dart';
 
-class CloseQuizDialogActions extends StatelessWidget {
-  const CloseQuizDialogActions({
-    super.key,
-  });
+class AlertDialogActions extends StatelessWidget {
+  const AlertDialogActions(
+      {super.key,
+      required this.leftText,
+      required this.rightText,
+      required this.leftOnPressed,
+      required this.rightOnPressed});
 
+  final String leftText;
+  final String rightText;
+  final void Function() leftOnPressed;
+  final void Function() rightOnPressed;
   @override
   Widget build(BuildContext context) {
     final backgroundColor = Theme.of(context).extension<AppBackgrounds>()!;
@@ -22,19 +28,16 @@ class CloseQuizDialogActions extends StatelessWidget {
       children: [
         Expanded(
           child: CustomButton(
-            borderColor: borderColor.primaryBrand,
-            borderRadius: 16.r(context),
-            color: Colors.transparent,
-            width: 158.w(context),
-            height: 46.h(context),
-            child: Text(
-              'العودة للاختبار',
-              style: Theme.of(context).textTheme.xLabelMedium,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
+              borderColor: borderColor.primaryBrand,
+              borderRadius: 16.r(context),
+              color: Colors.transparent,
+              width: 158.w(context),
+              height: 46.h(context),
+              onPressed: rightOnPressed,
+              child: Text(
+                rightText,
+                style: Theme.of(context).textTheme.xLabelMedium,
+              )),
         ),
         SizedBox(width: 8.w(context)),
         Expanded(
@@ -43,14 +46,13 @@ class CloseQuizDialogActions extends StatelessWidget {
             color: backgroundColor.primaryBrand,
             width: 158.w(context),
             height: 46.h(context),
+            onPressed: leftOnPressed,
             child: Text(
-              'إنهاء الاختبار',
-              style: Theme.of(context)
-                  .textTheme
-                  .xLabelMedium
-                  .copyWith(color: contentColor.primaryInverted),
+              leftText,
+              style: Theme.of(context).textTheme.xLabelMedium.copyWith(
+                    color: contentColor.primaryInverted,
+                  ),
             ),
-            onPressed: () {},
           ),
         ),
       ],

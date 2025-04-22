@@ -6,7 +6,7 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_alert_dialog.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon_button.dart';
 import 'package:student_hackerha/core/widgets/custom_icon_button.dart';
-import 'package:student_hackerha/features/quiz/presentation/widgets/quiz/dialogs/time_out_quiz_dialog_actions.dart';
+import 'package:student_hackerha/core/widgets/alert_dialog_actions.dart';
 
 class QuizPageHeader extends StatelessWidget {
   const QuizPageHeader({
@@ -18,7 +18,7 @@ class QuizPageHeader extends StatelessWidget {
     final backgroundColor = Theme.of(context).extension<AppBackgrounds>()!;
 
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal:20.w(context) ),
+      padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -36,7 +36,14 @@ class QuizPageHeader extends StatelessWidget {
                   return CustomAlertDialog(
                     canPop: true,
                     actions: [
-                      TimeOutQuizDialogActions(),
+                      AlertDialogActions(
+                        leftText: 'إنهاء الاختبار',
+                        rightText: 'العودة للاختبار',
+                        leftOnPressed: () {},
+                        rightOnPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                     ],
                     title: 'هل تود أن إنهاء الامتحان؟',
                     content:

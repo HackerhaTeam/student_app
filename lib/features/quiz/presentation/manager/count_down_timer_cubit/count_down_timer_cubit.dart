@@ -8,14 +8,14 @@ class CountdownTimerCubit extends Cubit<CountDownTimerState> {
   Timer? _timer;
 
   CountdownTimerCubit({required this.initialDuration})
-      : super(CountdownTimerInitialState(duration: initialDuration)) {
+      : super(InitialState(duration: initialDuration)) {
     _startCountdown();
   }
 
   void _startCountdown() async {
     _timer?.cancel();
 
-    emit(CountdownTimerContinueState(duration: state.duration));
+    emit(ContinueState(duration: state.duration));
 
     await Future.delayed(const Duration(seconds: 1));
 
@@ -28,10 +28,10 @@ class CountdownTimerCubit extends Cubit<CountDownTimerState> {
       }
 
       if (newDuration.inSeconds <= 0) {
-        emit(CountdownTimerTimeOutState(duration: Duration.zero));
+        emit(TimeOutState(duration: Duration.zero));
         _timer?.cancel();
       } else {
-        emit(CountdownTimerContinueState(duration: newDuration));
+        emit(ContinueState(duration: newDuration));
       }
     });
   }

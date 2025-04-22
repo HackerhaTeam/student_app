@@ -5,14 +5,14 @@ abstract class CountDownTimerState {
 }
 
 
-class CountdownTimerInitialState extends CountDownTimerState {
-  CountdownTimerInitialState({required super.duration});
+class InitialState extends CountDownTimerState {
+  InitialState({required super.duration});
 }
 
-class CountdownTimerContinueState extends CountDownTimerState {
-  CountdownTimerContinueState({required super.duration});
+class ContinueState extends CountDownTimerState {
+  ContinueState({required super.duration});
 }
 
-class CountdownTimerTimeOutState extends CountDownTimerState {
-  CountdownTimerTimeOutState({required super.duration});
+class TimeOutState extends CountDownTimerState {
+  TimeOutState({required super.duration});
 }

@@ -14,7 +14,7 @@ class OptionsListViewBuilder extends StatelessWidget {
         final questionIndex = context.read<PageViewCubit>().state;
 
         return OptionsListView(
-          selectedAnswerIndex: answerList[questionIndex],
+          selectedAnswerIndex: answerList[questionIndex.questionIndex],
         );
       },
     );

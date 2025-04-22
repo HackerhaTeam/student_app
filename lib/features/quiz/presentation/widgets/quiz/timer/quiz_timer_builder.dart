@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/widgets/custom_alert_dialog.dart';
 import 'package:student_hackerha/features/quiz/presentation/manager/count_down_timer_cubit/count_down_timer_cubit.dart';
 import 'package:student_hackerha/features/quiz/presentation/manager/count_down_timer_cubit/count_down_timer_state.dart';
+import 'package:student_hackerha/core/widgets/alert_dialog_actions.dart';
 import 'package:student_hackerha/features/quiz/presentation/widgets/quiz/timer/quiz_timer.dart';
-import 'package:student_hackerha/features/quiz/presentation/widgets/quiz/dialogs/time_out_quiz_dialog_actions.dart';
 
 class QuizTimerBuilder extends StatelessWidget {
   const QuizTimerBuilder({super.key});
@@ -13,14 +13,24 @@ class QuizTimerBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<CountdownTimerCubit, CountDownTimerState>(
       listener: (context, state) {
-        if (state is CountdownTimerTimeOutState) {
+        if (state is TimeOutState) {
+          while (Navigator.canPop(context)) {
+            Navigator.pop(context);
+          }
           showDialog(
             context: context,
             builder: (BuildContext context) {
               return CustomAlertDialog(
                 canPop: false,
                 actions: [
-                  TimeOutQuizDialogActions(),
+                  AlertDialogActions(
+                    leftText: 'عرض النتائج',
+                    rightText: 'العودة للقائمة',
+                    leftOnPressed: () {},
+                    rightOnPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
                 ],
                 title: 'انتهت مدة الامتحان!',
                 content:

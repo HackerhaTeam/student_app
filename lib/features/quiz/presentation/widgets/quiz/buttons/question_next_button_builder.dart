@@ -11,7 +11,7 @@ class QuestionNextButtonBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<OptionCubit, List<int?>>(builder: (context, state) {
       return QuestionNextButton(
-        isSelected:  state[context.watch<PageViewCubit>().state] != null,
+        isSelected:  state[context.watch<PageViewCubit>().state.questionIndex] != null,
       );
     });
   }

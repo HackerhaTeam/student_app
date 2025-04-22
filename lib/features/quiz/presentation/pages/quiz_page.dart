@@ -33,7 +33,7 @@ class _QuizPageState extends State<QuizPage>
         ),
         BlocProvider(
           create: (context) =>
-           PageViewCubit()
+           PageViewCubit(totalQuestions: 10)
         )
 
       ],

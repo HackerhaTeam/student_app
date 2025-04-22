@@ -6,6 +6,7 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_button.dart';
+import 'package:student_hackerha/features/quiz/presentation/manager/option_cubit.dart/option_cubit.dart';
 import 'package:student_hackerha/features/quiz/presentation/manager/page_view_cubit/page_view_cubit.dart';
 import 'package:student_hackerha/features/quiz/presentation/widgets/quiz/buttons/custom_next_button_item.dart';
 
@@ -26,14 +27,15 @@ class QuestionNextButton extends StatelessWidget {
       width: double.infinity,
       color: backgroundColor.primaryBrand,
       onPressed: () {
-        context.read<PageViewCubit>().nextPage(10);
+        bool isThereSkippedQuestions =
+            context.read<OptionCubit>().isThereSkippedQuestions();
+        context.read<PageViewCubit>().nextPage(10, isThereSkippedQuestions);
       },
       child: CustomNextButtonItem(
-      
-        textStyle:  Theme.of(context)
-              .textTheme
-              .xLabelLarge
-              .copyWith(color: contentColor.primaryInverted),
+        textStyle: Theme.of(context)
+            .textTheme
+            .xLabelLarge
+            .copyWith(color: contentColor.primaryInverted),
         text: _getText(isSelected),
         icon: _getIcon(isSelected),
       ),
