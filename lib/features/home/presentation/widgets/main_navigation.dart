@@ -1,3 +1,4 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/account_tab_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/animated_navbar.dart';
@@ -7,9 +8,8 @@ import 'package:student_hackerha/features/home/presentation/widgets/home_page_bo
 import 'package:student_hackerha/features/home/presentation/widgets/my_drawer.dart';
 
 class MainNavigationPage extends StatefulWidget {
-  const MainNavigationPage({
-    super.key,
-  });
+  const MainNavigationPage({super.key});
+
   @override
   State<MainNavigationPage> createState() => _MainNavigationPageState();
 }
@@ -20,6 +20,7 @@ class _MainNavigationPageState extends State<MainNavigationPage>
   int _currentIndex = 0;
   late AnimationController animationController;
   late List<Widget> _pages;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -55,32 +56,40 @@ class _MainNavigationPageState extends State<MainNavigationPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      onEndDrawerChanged: (isOpened) {
-        iconTaped(isOpened);
-      },
-      endDrawer: MyDrawer(
-        animationController: animationController,
-      ),
-      body: PageView(
-        reverse: true,
-        controller: _pageController,
-        physics: const ClampingScrollPhysics(),
-        children: _pages,
-        onPageChanged: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+    return ThemeSwitchingArea(
+      child: Scaffold(
+        key: _scaffoldKey,
+        onEndDrawerChanged: (isOpened) {
+          iconTaped(isOpened);
         },
-      ),
-      bottomNavigationBar: AnimatedBottomNavBar(
-        currentIndex: _currentIndex,
-        onTap: (newIndex) {
-          setState(() {
-            _currentIndex = newIndex;
-          });
-          _pageController.jumpToPage(newIndex);
-        },
+        endDrawer: MyDrawer(
+          animationController: animationController,
+          onThemeChanged: () {
+            if (_scaffoldKey.currentState?.isEndDrawerOpen ?? false) {
+              _scaffoldKey.currentState?.openEndDrawer();
+            }
+          },
+        ),
+        body: PageView(
+          reverse: true,
+          controller: _pageController,
+          physics: const ClampingScrollPhysics(),
+          children: _pages,
+          onPageChanged: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+        ),
+        bottomNavigationBar: AnimatedBottomNavBar(
+          currentIndex: _currentIndex,
+          onTap: (newIndex) {
+            setState(() {
+              _currentIndex = newIndex;
+            });
+            _pageController.jumpToPage(newIndex);
+          },
+        ),
       ),
     );
   }

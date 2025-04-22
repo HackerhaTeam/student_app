@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-import 'package:student_hackerha/core/widgets/custom_icon_button.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/notification_icon.dart';
 
 class HomeHeader extends StatefulWidget {

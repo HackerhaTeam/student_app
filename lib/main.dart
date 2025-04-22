@@ -1,3 +1,4 @@
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
@@ -16,17 +17,21 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit, ThemeState>(
+    return BlocBuilder<ThemeCubit, bool>(
       builder: (context, state) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.light,
-          darkTheme: AppTheme.dark,
-          themeMode: state.themeMode,
-          home: MainNavigationPage(),
+        return ThemeProvider(
+          duration: Duration(milliseconds: 500),
+          initTheme: AppTheme.light,
+          builder: (_, myTheme) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: AppTheme.light,
+              darkTheme: AppTheme.dark,
+              home: MainNavigationPage(),
+            );
+          },
         );
       },
     );
