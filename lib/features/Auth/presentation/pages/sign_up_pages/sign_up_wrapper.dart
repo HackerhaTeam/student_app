@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_page2.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_page3.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_page4.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_page5.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_page6.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/auth_pages_header.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page2.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page3.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page4.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page5.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page6.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/headers/auth_pages_header.dart';
 import 'sign_up_page1.dart';
 
 class AuthWrapper extends StatefulWidget {

@@ -9,8 +9,8 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/floating_next_button.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/introduction_header.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/headers/introduction_header.dart';
 
 class SignUpPage2Body extends StatefulWidget {
   const SignUpPage2Body({

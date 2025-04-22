@@ -28,7 +28,7 @@ class CustomSuccessDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: 24.w(context), vertical: 32.h(context)),
+            horizontal: 24.w(context), vertical: 24.h(context)),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -38,7 +38,7 @@ class CustomSuccessDialog extends StatelessWidget {
               width: 115.w(context),
               fit: BoxFit.contain,
             ),
-            const SizedBox(height: 24),
+            SizedBox(height: 24.h(context)),
             Text(
               title,
               style: Theme.of(context)
@@ -47,7 +47,7 @@ class CustomSuccessDialog extends StatelessWidget {
                   .copyWith(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 8.h(context)),
             Text(
               subtitle,
               style: Theme.of(context).textTheme.xParagraphLargeLose,

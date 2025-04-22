@@ -12,11 +12,15 @@ class FloatingNextButton extends StatelessWidget {
     required this.formKey,
     required this.onNext,
     this.disabled,
+    this.buttonText,
+    this.width,
   });
 
   final GlobalKey<FormState> formKey;
   final VoidCallback onNext;
   final bool? disabled;
+  final String? buttonText;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
@@ -27,12 +31,12 @@ class FloatingNextButton extends StatelessWidget {
       borderRadius: 16.r(context),
       color: backgrounds.primaryBrand,
       height: 44.h(context),
-      width: 82.w(context),
+      width: width ?? 82.w(context),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "التالي",
+            buttonText ?? "التالي",
             style: styles.xLabelLarge
                 .copyWith(color: content.brandDisabledPrimary),
           ),

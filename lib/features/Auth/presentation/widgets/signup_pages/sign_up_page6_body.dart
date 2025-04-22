@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/constants/assets.dart';
@@ -9,10 +11,10 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_success_dialog.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/log_in_page.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/floating_next_button.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/introduction_header.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/pin_code_fields.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/log_in_page.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/headers/introduction_header.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/fields/pin_code_fields.dart';
 
 class SignUpPage6Body extends StatefulWidget {
   const SignUpPage6Body({
@@ -32,6 +34,7 @@ class _SignUpPage6BodyState extends State<SignUpPage6Body> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController otpController = TextEditingController();
   final FocusNode pinFocusNode = FocusNode();
+  bool isButtonDisabled = true;
   @override
   void initState() {
     super.initState();
@@ -46,10 +49,12 @@ class _SignUpPage6BodyState extends State<SignUpPage6Body> {
     final content = Theme.of(context).extension<AppContent>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
     final styles = Theme.of(context).textTheme;
-    final bool disabled = true;
+
     return Scaffold(
       floatingActionButton: FloatingNextButton(
-        disabled: disabled,
+        width: 139.w(context),
+        buttonText: "تحقق من الرمز",
+        disabled: isButtonDisabled,
         formKey: formKey,
         onNext: () async {
           if (formKey.currentState!.validate()) {
@@ -65,7 +70,9 @@ class _SignUpPage6BodyState extends State<SignUpPage6Body> {
             );
           }
 
-          await Future.delayed(const Duration(seconds: 3));
+          await Future.delayed(
+            const Duration(seconds: 3),
+          );
 
           Navigator.of(context).pop();
           Navigator.of(context).push(
@@ -100,7 +107,10 @@ class _SignUpPage6BodyState extends State<SignUpPage6Body> {
                 focusedBorderColor: border.primaryBrand,
                 controller: otpController,
                 onCompleted: (code) {
-                  print("OTP Completed: $code");
+                  setState(() {
+                    isButtonDisabled = false;
+                  });
+                  log("OTP Completed: $code");
                 },
               ),
               SizedBox(height: 32.h(context)),

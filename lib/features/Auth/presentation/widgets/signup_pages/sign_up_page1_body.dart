@@ -6,7 +6,7 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_button.dart';
 import 'package:student_hackerha/core/widgets/custom_check_box.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/introduction_header.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/headers/introduction_header.dart';
 
 class SignUpPage1Body extends StatefulWidget {
   const SignUpPage1Body({

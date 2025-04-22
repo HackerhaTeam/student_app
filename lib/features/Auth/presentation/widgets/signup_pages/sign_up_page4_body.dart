@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/day_field.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/floating_next_button.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/gender_sellector.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/introduction_header.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/month_sellector.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/year_field.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/fields/day_field.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/fields/gender_sellector.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/headers/introduction_header.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/fields/month_sellector.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/fields/year_field.dart';
 
 class SignUpPage4Body extends StatefulWidget {
   const SignUpPage4Body({

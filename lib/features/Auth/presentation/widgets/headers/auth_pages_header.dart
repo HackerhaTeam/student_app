@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/back_button.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/back_button.dart';
 
 class AuthPagesHeader extends StatelessWidget {
   const AuthPagesHeader({
