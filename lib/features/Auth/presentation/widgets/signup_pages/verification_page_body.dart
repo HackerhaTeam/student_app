@@ -10,27 +10,29 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/util/navigator.dart';
 import 'package:student_hackerha/core/widgets/custom_success_dialog.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/log_in_page.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/reset_pawword_page.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/back_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/headers/introduction_header.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/pin_code_fields.dart';
 
-class SignUpPage6Body extends StatefulWidget {
-  const SignUpPage6Body({
+class VerificationPageBody extends StatefulWidget {
+  const VerificationPageBody({
     super.key,
     required this.backgrounds,
-    required this.onNext,
+    required this.isSignin,
   });
 
   final AppBackgrounds backgrounds;
-  final VoidCallback onNext;
-
+  final bool isSignin;
   @override
-  State<SignUpPage6Body> createState() => _SignUpPage6BodyState();
+  State<VerificationPageBody> createState() => _VerificationPageBodyState();
 }
 
-class _SignUpPage6BodyState extends State<SignUpPage6Body> {
+class _VerificationPageBodyState extends State<VerificationPageBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController otpController = TextEditingController();
   final FocusNode pinFocusNode = FocusNode();
@@ -58,26 +60,27 @@ class _SignUpPage6BodyState extends State<SignUpPage6Body> {
         formKey: formKey,
         onNext: () async {
           if (formKey.currentState!.validate()) {
-            showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) => const CustomSuccessDialog(
-                svgAssetPath: AppAssets.successImage,
-                title: 'تم إنشاء حسابك بنجاح!',
-                subtitle:
-                    "أهلاً بك في عائلة هكرها، هنا تهكير المادة علينا والباقي عليك!",
-              ),
-            );
+            if (widget.isSignin) {
+              Moving.navToPage(context: context, page: ResetPasswordPage());
+            } else {
+              showDialog(
+                context: context,
+                barrierDismissible: false,
+                builder: (context) => CustomSuccessDialog(
+                  svgAssetPath: AppAssets.successImage,
+                  title: "تم إنشاء حسابك بنجاح!",
+                  subtitle:
+                      "أهلاً بك في عائلة هكرها، هنا تهكير المادة علينا والباقي عليك!",
+                ),
+              );
+              await Future.delayed(
+                const Duration(seconds: 3),
+              );
+
+              Navigator.of(context).pop();
+              Moving.navToPage(context: context, page: LogInPage());
+            }
           }
-
-          await Future.delayed(
-            const Duration(seconds: 3),
-          );
-
-          Navigator.of(context).pop();
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const LogInPage()),
-          );
         },
       ),
       body: Padding(
@@ -88,6 +91,12 @@ class _SignUpPage6BodyState extends State<SignUpPage6Body> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              if (widget.isSignin)
+                SafeArea(
+                  child: AuthBackButton(onBack: () {
+                    Navigator.of(context).pop();
+                  }),
+                ),
               IntroductionHeader(
                 styles: styles,
                 introText: " أدخل رمز التحقق",

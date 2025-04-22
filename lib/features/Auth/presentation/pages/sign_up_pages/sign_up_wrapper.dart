@@ -5,7 +5,7 @@ import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page3.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page4.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page5.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page6.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/verification_page.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/headers/auth_pages_header.dart';
 import 'sign_up_page1.dart';
 
@@ -80,7 +80,9 @@ class _AuthWrapperState extends State<AuthWrapper> {
                   SignUpPage3(onNext: _goToNextPage),
                   SignUpPage4(onNext: _goToNextPage),
                   SignUpPage5(onNext: _goToNextPage),
-                  SignUpPage6(onNext: _goToNextPage),
+                  VerificationPage(
+                    isSignIn: false,
+                  ),
                 ],
               ),
             ),
