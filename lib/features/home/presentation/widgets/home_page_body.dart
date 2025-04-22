@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/new_course_item.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/course_list_section.dart';
+import 'package:student_hackerha/features/home/presentation/pages/home_page.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/new_course_item.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_list_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_search_section.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/my_courses_item.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/tags_section.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/my_courses_item.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/tags_section.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({
@@ -42,6 +43,7 @@ class _HomePageBodyState extends State<HomePageBody> {
   @override
   void dispose() {
     _searchController.dispose();
+    animationController.dispose();
     super.dispose();
   }
 

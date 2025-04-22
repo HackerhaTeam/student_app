@@ -14,19 +14,21 @@ class NotificationIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        CircleAvatar(
-          backgroundColor: backgrounds?.onSurfaceSecondary,
-        ),
-        CustomIconButton(
-          iconDataPhosphor: PhosphorIcons.bellSimple(),
-          onTap: () {},
-          hight: 44.h(context),
-          width: 44.w(context),
-        ),
-      ],
+    return SizedBox(
+      height: 24.h(context),
+      width: 24.w(context),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          CircleAvatar(
+            backgroundColor: backgrounds?.onSurfaceSecondary,
+          ),
+          CustomIconButton(
+            iconDataPhosphor: PhosphorIcons.bellSimple(),
+            onTap: () {},
+          ),
+        ],
+      ),
     );
   }
 }

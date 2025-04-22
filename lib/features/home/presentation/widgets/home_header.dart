@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/features/home/presentation/pages/home_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/notification_icon.dart';
 
 class HomeHeader extends StatefulWidget {
@@ -36,17 +38,23 @@ class _HomeHeaderState extends State<HomeHeader>
   }
 
   @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          top: 25.h(context), right: 20.w(context), left: 20.w(context)),
+          top: 20.h(context), right: 20.w(context), left: 20.w(context)),
       child: Row(
         children: [
           NotificationIcon(backgrounds: widget.backgrounds),
           const Spacer(),
           Text(
             'الرئيسية',
-            style: Theme.of(context).textTheme.headlineLarge,
+            style: Theme.of(context).textTheme.xHeadingLarge,
           ),
           const Spacer(),
           Builder(builder: (context) {

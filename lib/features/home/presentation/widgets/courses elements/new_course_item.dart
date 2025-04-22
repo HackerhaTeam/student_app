@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/course_image.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/my_course_card.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_content.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_image.dart';
 
-class MyCoursesItem extends StatelessWidget {
+class NewCoursesItem extends StatelessWidget {
   final AppBorders border;
   final AppBackgrounds background;
   final String courseName;
   final String description;
+  final List<String> tagsTitle;
+  final bool isNew;
 
-  const MyCoursesItem({
+  const NewCoursesItem({
     super.key,
     required this.border,
     required this.background,
     required this.courseName,
     required this.description,
+    required this.tagsTitle,
+    required this.isNew,
   });
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        margin: EdgeInsets.only(bottom: 8.h(context)),
         width: MediaQuery.of(context).size.width * 0.75,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(21.r(context)),
@@ -36,13 +38,14 @@ class MyCoursesItem extends StatelessWidget {
             CourseImage(
               border: border,
               background: background,
-              isNew: false,
+              isNew: isNew,
             ),
-            MyCourseCard(
-              title: "البرمجة (1)",
-              instructorName: "منصور السالم",
-              imageUrl: AppImages.courseImage,
-              progress: 22,
+            CourseContent(
+              border: border,
+              background: background,
+              courseName: courseName,
+              description: description,
+              tagsTitle: tagsTitle,
             ),
           ],
         ),

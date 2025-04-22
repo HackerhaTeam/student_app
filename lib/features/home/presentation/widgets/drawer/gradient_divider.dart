@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/themes/colors/app_colors.dart';
+import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 
 class GradientDivider extends StatelessWidget {
   const GradientDivider({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final bg = Theme.of(context).extension<AppBackgrounds>()!;
     return Container(
-      height: 2.h(context),
+      height: 1.h(context),
       width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 10.0),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.transparent,
-            AppColors.transparentWhite10,
-            Colors.transparent,
+            bg.radialSurfaceEnd,
+            bg.radialSurfaceStart,
+            bg.radialSurfaceEnd,
           ],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,

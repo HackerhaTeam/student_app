@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses_tag.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/courses_tag.dart';
 
 class TagsSection extends StatelessWidget {
   final List<String> tags;

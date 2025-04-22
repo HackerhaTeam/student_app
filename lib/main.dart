@@ -1,12 +1,13 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_hackerha/core/DI/%20service_locator.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
-import 'package:student_hackerha/core/manager/theme_cubit/theme_state.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/main_navigation.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 
 void main() {
+  setup();
   runApp(
     BlocProvider(
       create: (_) => ThemeCubit(),

@@ -5,7 +5,7 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_button.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/course_tags.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_tags.dart';
 
 class CourseContent extends StatelessWidget {
   final AppBorders border;

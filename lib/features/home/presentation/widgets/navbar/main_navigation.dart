@@ -1,11 +1,11 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/account_tab_page.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/animated_navbar.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/archive_tab_page.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses_tab_page.dart';
+import 'package:student_hackerha/features/home/presentation/pages/account_tab_page.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/navbar/animated_navbar.dart';
+import 'package:student_hackerha/features/home/presentation/pages/archive_tab_page.dart';
+import 'package:student_hackerha/features/home/presentation/pages/courses_tab_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_page_body.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/my_drawer.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/drawer/my_drawer.dart';
 
 class MainNavigationPage extends StatefulWidget {
   const MainNavigationPage({super.key});

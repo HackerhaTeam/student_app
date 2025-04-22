@@ -4,6 +4,7 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 
@@ -92,19 +93,19 @@ class _AdvancedThemeSwitcherState extends State<AdvancedThemeSwitcher>
                       ),
                     );
                   },
-                  child: isDarkModeEnabled
+                  child: !isDarkModeEnabled
                       ? RotationTransition(
                           turns: AlwaysStoppedAnimation(1 / 360),
                           child: PhosphorIcon(
                             PhosphorIcons.moonStars(),
                             key: ValueKey<bool>(isDarkModeEnabled),
-                            size: 28,
+                            size: 24.w(context),
                           ),
                         )
                       : PhosphorIcon(
                           PhosphorIcons.sunDim(),
                           key: ValueKey<bool>(isDarkModeEnabled),
-                          size: 28,
+                          size: 24.w(context),
                         ),
                 ),
               ),
