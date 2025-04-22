@@ -31,11 +31,14 @@ class SignUpPage6Body extends StatefulWidget {
 class _SignUpPage6BodyState extends State<SignUpPage6Body> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController otpController = TextEditingController();
-
+  final FocusNode pinFocusNode = FocusNode();
   @override
-  void dispose() {
-    otpController.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      pinFocusNode.requestFocus();
+    });
   }
 
   @override
@@ -86,11 +89,12 @@ class _SignUpPage6BodyState extends State<SignUpPage6Body> {
                 padding:
                     EdgeInsets.only(top: 8.h(context), bottom: 32.h(context)),
                 child: Text(
-                  "لقد أرسلنا رمز تحقق مكونًا من 5 أرقام إلى رقم هاتفك. أدخله أدناه لإكمال التسجيل",
+                  "لقد أرسلنا رمز إعادة تعيين إلى contact@gmail.com، أدخل الرمز المكون من 5 أرقام المذكور في البريد الإلكتروني.",
                   style: styles.xParagraphLargeLose,
                 ),
               ),
               OTPInput(
+                focusNode: pinFocusNode,
                 borderColor: border.secondary,
                 focusedBorderColor: border.primaryBrand,
                 controller: otpController,

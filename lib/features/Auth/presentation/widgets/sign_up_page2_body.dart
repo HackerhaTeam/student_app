@@ -34,11 +34,14 @@ class _SignUpPage2BodyState extends State<SignUpPage2Body> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  final FocusNode nameFocusNode = FocusNode();
   @override
-  void dispose() {
-    nameController.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      nameFocusNode.requestFocus();
+    });
   }
 
   @override
@@ -55,7 +58,7 @@ class _SignUpPage2BodyState extends State<SignUpPage2Body> {
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
           child: Form(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            // autovalidateMode: AutovalidateMode.onUserInteraction,
             key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,6 +78,7 @@ class _SignUpPage2BodyState extends State<SignUpPage2Body> {
                 const SizedBox(height: 16),
                 Center(
                   child: CustomTextField(
+                    focusNode: nameFocusNode,
                     fieldType: FieldType.name,
                     label: "الاسم الكامل",
                     radius: 8.r(context),

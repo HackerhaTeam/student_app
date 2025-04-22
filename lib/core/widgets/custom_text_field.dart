@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -28,6 +29,7 @@ class CustomTextField extends StatefulWidget {
   final double? height;
   final EdgeInsetsGeometry? contentPadding;
   final bool obscureOverride;
+  final FocusNode? focusNode;
 
   const CustomTextField({
     super.key,
@@ -43,6 +45,7 @@ class CustomTextField extends StatefulWidget {
     this.contentPadding,
     this.obscureOverride = false,
     this.keyboardType,
+    this.focusNode,
   });
 
   @override
@@ -101,10 +104,20 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
       case FieldType.day:
         if (value == null || value.trim().isEmpty) return "أدخل اليوم";
+        final day = int.tryParse(value.trim());
+        if (day == null) return "قيمة خاطئة";
+        if (day < 0) return "قيمة خاطئة";
         break;
 
       case FieldType.year:
         if (value == null || value.trim().isEmpty) return "أدخل السنة";
+        final year = int.tryParse(value.trim());
+        if (year == null) return "قيمة خاطئة";
+        if (year < 0) return "قيمة خاطئة";
+        if (year < 1900) return "قيمة خاطئة";
+        if (year > DateTime.now().year) {
+          return "قيمة خاطئة";
+        }
         break;
     }
     return null;
@@ -114,17 +127,21 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
+    final content = Theme.of(context).extension<AppContent>()!;
     final styles = Theme.of(context).textTheme;
 
     return SizedBox(
       width: widget.width,
       height: widget.height,
       child: TextFormField(
+        focusNode: widget.focusNode,
         expands: false,
-        textAlign: widget.fieldType == FieldType.phoneNumber
+        textAlign: widget.fieldType == FieldType.phoneNumber ||
+                widget.fieldType == FieldType.email
             ? TextAlign.left
             : TextAlign.right,
-        textDirection: widget.fieldType == FieldType.phoneNumber
+        textDirection: widget.fieldType == FieldType.phoneNumber ||
+                widget.fieldType == FieldType.email
             ? TextDirection.ltr
             : TextDirection.rtl,
         keyboardType: widget.keyboardType,
@@ -155,7 +172,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     _obscureText
                         ? PhosphorIcons.eyeSlash()
                         : PhosphorIcons.eye(),
-                    color: backgrounds.primaryBrand,
+                    color: content.primary,
                   ),
                   onPressed: () {
                     setState(() {

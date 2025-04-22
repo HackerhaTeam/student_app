@@ -10,20 +10,19 @@ class GenderSellector extends StatelessWidget {
   });
 
   final String? selectedGender;
-  final void Function(String?)? onChanged;
+  final dynamic Function(String) onChanged;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
         width: 365.w(context),
-        height: 56.h(context),
-        child: CustomDropdownField(
-          type: DropdownType.gender,
+        height: 61.h(context),
+        child: CustomDropdown(
           label: "الجنس",
-          radius: 8,
-          value: selectedGender,
           items: ["ذكر", "أنثى"],
+          selectedItem: selectedGender,
           onChanged: onChanged,
+          type: DropdownType.gender,
         ),
       ),
     );

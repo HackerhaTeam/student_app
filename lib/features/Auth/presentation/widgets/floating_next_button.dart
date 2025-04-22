@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
@@ -25,9 +26,17 @@ class FloatingNextButton extends StatelessWidget {
       color: backgrounds.primaryBrand,
       height: 44.h(context),
       width: 82.w(context),
-      child: Text(
-        "التالي >",
-        style: styles.xLabelLarge.copyWith(color: content.brandDisabledPrimary),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "التالي",
+            style: styles.xLabelLarge
+                .copyWith(color: content.brandDisabledPrimary),
+          ),
+          PhosphorIcon(PhosphorIcons.caretRight(),
+              size: 16.w(context), color: content.brandDisabledPrimary),
+        ],
       ),
       onPressed: () {
         if (formKey.currentState!.validate()) {

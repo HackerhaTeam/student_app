@@ -22,6 +22,16 @@ class _SignUpPage5BodyState extends State<SignUpPage5Body> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final FocusNode emailFocusNode = FocusNode();
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      emailFocusNode.requestFocus();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final styles = Theme.of(context).textTheme;
@@ -57,6 +67,7 @@ class _SignUpPage5BodyState extends State<SignUpPage5Body> {
               ),
               Center(
                 child: CustomTextField(
+                  focusNode: emailFocusNode,
                   keyboardType: TextInputType.emailAddress,
                   fieldType: FieldType.email,
                   label: "البريد الإلكتروني",

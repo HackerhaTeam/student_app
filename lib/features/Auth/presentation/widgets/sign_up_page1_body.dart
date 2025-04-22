@@ -31,48 +31,76 @@ class _SignUpPage1BodyState extends State<SignUpPage1Body> {
   Widget build(BuildContext context) {
     final styles = Theme.of(context).textTheme;
     return SingleChildScrollView(
-      child: Container(
-        color: widget.backgrounds.surfacePrimary,
-        child: Padding(
-          padding: EdgeInsets.only(right: 20.w(context)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IntroductionHeader(
-                styles: styles,
-                introText: "  هل أنت مؤهل للتسجيل؟  ",
-                icon: PhosphorIcons.questionMark(),
-              ),
-              Text(
-                textAlign: TextAlign.start,
-                "مرحبًا بك في تطبيقنا! 🎓💡\n\nهذا التطبيق مصمم خصيصًا لطلاب كلية الهندسة المعلوماتية\nفي جامعة حلب فقط، ليكون رفيقك الذكي في رحلتك الأكاديمية، \nحيث يوفر لك تجربة سلسة ومتكاملة لإدارة معلوماتك الجامعية بسهولة.\n\nلكن رؤيتنا لا تتوقف هنا! 🚀 نحن نعمل على توسيع آفاقنا\nلنصل إلى جامعات أخرى مستقبلًا، بهدف بناء منصة تعليمية متطورة\nتلبي احتياجات جميع الطلاب في مختلف المؤسسات الأكاديمية.\n\nفإن كنت من كلية الهندسة المعلوماتية في جامعة حلب\nفانضم إلينا اليوم، وكن جزءًا من هذا المستقبل الواعد! ✨",
-                style: styles.xParagraphLargeLose,
-              ),
-              SizedBox(
-                height: 24.h(context),
-              ),
-              Row(
+      child: Padding(
+        padding: EdgeInsets.only(right: 20.w(context), left: 20.w(context)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            IntroductionHeader(
+              styles: styles,
+              introText: "  هل أنت مؤهل للتسجيل؟  ",
+              icon: PhosphorIcons.questionMark(),
+            ),
+            RichText(
+              textAlign: TextAlign.start,
+              text: TextSpan(
+                style: styles.xParagraphLargeLose
+                    .copyWith(color: widget.content.primary),
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        value = !value;
-                      });
-                    },
-                    child: CustomCheckBox(value: value, widget: widget),
+                  const TextSpan(
+                    text: "مرحبًا بك في تطبيقنا! 🎓💡\n\n",
                   ),
-                  SizedBox(width: 8.w(context)),
-                  Text(
-                    "أستوفي ما ذُكر وأنا في أتم الاستعداد!",
-                    style: styles.xLabelLarge,
+                  const TextSpan(
+                      text:
+                          "هذا التطبيق مصمم خصيصًا لطلاب كلية الهندسة المعلوماتية في كل من "),
+                  TextSpan(
+                    text: "جامعة حلب، قرطبة، إيبلا",
+                    style: styles.xParagraphLargeLose.copyWith(
+                      color: widget.content.brandSecondary,
+                    ),
+                  ),
+                  const TextSpan(
+                    text:
+                        "،\nليكون رفيقك الذكي في رحلتك الأكاديمية، حيث يوفر لك \nتجربة سلسة ومتكاملة لإدارة معلوماتك الجامعية بسهولة.\n\n",
+                  ),
+                  const TextSpan(
+                    text:
+                        "لكن رؤيتنا لا تتوقف هنا! 🚀 نحن نعمل على توسيع آفاقنا إلى جامعات أخرى مستقبلًا، بهدف بناء منصة تعليمية متطورة تلبي احتياجات جميع الطلاب في مختلف المؤسسات الأكاديمية.\n\n",
+                  ),
+                  const TextSpan(
+                    text:
+                        "فإن كنت من كلية الهندسة المعلوماتية في جامعة حلب \nفانضم إلينا اليوم، وكن جزءًا من هذا المستقبل الواعد! ✨",
                   ),
                 ],
               ),
-              SizedBox(
-                height: 154.h(context),
-              ),
-              CustomButton(
+            ),
+            SizedBox(
+              height: 24.h(context),
+            ),
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      value = !value;
+                    });
+                  },
+                  child: CustomCheckBox(value: value, widget: widget),
+                ),
+                SizedBox(width: 8.w(context)),
+                Text(
+                  "أستوفي ما ذُكر وأنا في أتم الاستعداد!",
+                  style: styles.xLabelLarge,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 98.h(context),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 32.h(context)),
+              child: CustomButton(
                   disabledColor: widget.backgrounds.brandDisabledPrimary,
                   disabled: value ? false : true,
                   borderRadius: 24.r(context),
@@ -80,13 +108,21 @@ class _SignUpPage1BodyState extends State<SignUpPage1Body> {
                   width: 372.w(context),
                   color: widget.backgrounds.primaryBrand,
                   onPressed: widget.onNext,
-                  child: Text(
-                    "التالي >",
-                    style: styles.xLabelLarge
-                        .copyWith(color: widget.content.brandDisabledPrimary),
-                  ))
-            ],
-          ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "التالي",
+                        style: styles.xLabelLarge.copyWith(
+                            color: widget.content.brandDisabledPrimary),
+                      ),
+                      PhosphorIcon(PhosphorIcons.caretRight(),
+                          size: 16.w(context),
+                          color: widget.content.brandDisabledPrimary),
+                    ],
+                  )),
+            )
+          ],
         ),
       ),
     );

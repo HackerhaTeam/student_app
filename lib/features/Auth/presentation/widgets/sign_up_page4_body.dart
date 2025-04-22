@@ -25,8 +25,19 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
   final TextEditingController dayController = TextEditingController();
   final TextEditingController yearController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final FocusNode dayFocusNode = FocusNode();
+
   String? selectedMonth;
   String? selectedGender;
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      dayFocusNode.requestFocus();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
@@ -44,6 +55,7 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
       body: Padding(
         padding: EdgeInsets.only(left: 20.w(context), right: 20.w(context)),
         child: Form(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           key: formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -64,7 +76,10 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  DayField(dayController: dayController),
+                  DayField(
+                    dayController: dayController,
+                    focusNode: dayFocusNode,
+                  ),
                   MonthSellector(
                     selectedMonth: selectedMonth,
                     onChanged: (value) {

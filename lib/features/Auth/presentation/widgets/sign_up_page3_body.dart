@@ -61,48 +61,61 @@ class _SignUpPage3BodyState extends State<SignUpPage3Body> {
                   style: styles.xParagraphLargeLose,
                 ),
               ),
-              Center(
-                child: CustomDropdownField(
-                  type: DropdownType.university,
-                  label: "الجامعة",
-                  radius: 8,
-                  value: selectedUniversity,
-                  items: [
-                    "جامعة حلب",
-                    "جامعة إيبلا",
-                    "جامعة قرطبة",
-                    "جامعة الشهباء",
-                  ],
-                  onChanged: (value) {
-                    setState(() {
-                      selectedUniversity = value;
-                    });
-                  },
+              SizedBox(
+                height: 57.h(context),
+                child: Center(
+                  child: CustomDropdown(
+                    label: "الجامعة",
+                    items: [
+                      'جامعة حلب',
+                      'جامعة قرطبة',
+                      'جامعة إيبلا',
+                      'جامعة الشهباء'
+                    ],
+                    selectedItem: selectedUniversity,
+                    onChanged: (val) {
+                      setState(() {
+                        selectedUniversity = val;
+                      });
+                    },
+                    type: DropdownType.university,
+                  ),
                 ),
               ),
               SizedBox(height: 24.h(context)),
-              Center(
-                child: CustomDropdownField(
-                  type: DropdownType.academicYear,
-                  label: "السنة الدراسية",
-                  radius: 8,
-                  value: selectedYear,
-                  items: ["الأولى", "الثانية", "الثالثة", "الرابعة", "الخامسة"],
-                  onChanged: (value) {
-                    setState(() {
-                      selectedYear = value;
-                    });
-                  },
+              SizedBox(
+                height: 57.h(context),
+                child: Center(
+                  child: CustomDropdown(
+                    label: "السنة الدراسية",
+                    items: [
+                      "الأولى",
+                      "الثانية",
+                      "الثالثة",
+                      "الرابعة",
+                      "الخامسة"
+                    ],
+                    selectedItem: selectedYear,
+                    onChanged: (val) {
+                      setState(() {
+                        selectedYear = val;
+                      });
+                    },
+                    type: DropdownType.academicYear,
+                  ),
                 ),
               ),
               SizedBox(height: 24.h(context)),
-              Center(
-                child: CustomTextField(
-                  keyboardType: TextInputType.number,
-                  fieldType: FieldType.academicYear,
-                  label: "الرقم الجامعي",
-                  radius: 8.r(context),
-                  controller: numberController,
+              SizedBox(
+                height: 56.h(context),
+                child: Center(
+                  child: CustomTextField(
+                    keyboardType: TextInputType.number,
+                    fieldType: FieldType.academicYear,
+                    label: "الرقم الجامعي",
+                    radius: 8.r(context),
+                    controller: numberController,
+                  ),
                 ),
               ),
             ],

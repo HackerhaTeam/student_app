@@ -17,22 +17,26 @@ class CustomCheckBox extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
+        checkContainer(24.w(context), 24.h(context), Colors.transparent,
+            Border.all(), 8.r(context)),
         checkContainer(
-            24.w(context), 24.h(context), Colors.transparent, Border.all()),
-        checkContainer(16.w(context), 16.h(context),
-            value ? widget.backgrounds.secondaryBrand : Colors.white, null),
+            16.w(context),
+            16.h(context),
+            value ? widget.backgrounds.secondaryBrand : Colors.white,
+            null,
+            5.r(context)),
       ],
     );
   }
 
-  Container checkContainer(
-      double? width, double? height, Color? color, BoxBorder? border) {
+  Container checkContainer(double? width, double? height, Color? color,
+      BoxBorder? border, double radius) {
     return Container(
       width: width,
       height: height,
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(radius),
           border: border,
           color: color),
       // child: value

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 
@@ -10,31 +13,68 @@ enum DropdownType {
   gender,
 }
 
-class CustomDropdownField extends StatelessWidget {
+class CustomDropdown extends StatefulWidget {
+  final List<String> items;
+  final String? selectedItem;
+  final Function(String) onChanged;
   final DropdownType type;
   final String? label;
   final double radius;
-  final String? value;
-  final void Function(String?)? onChanged;
-  final List<String> items;
   final double? width;
   final double? height;
 
-  const CustomDropdownField({
+  const CustomDropdown({
     super.key,
+    required this.items,
+    required this.selectedItem,
+    required this.onChanged,
     required this.type,
     this.label,
-    required this.radius,
-    required this.value,
-    required this.onChanged,
-    required this.items,
+    this.radius = 8,
     this.width,
     this.height,
   });
 
+  @override
+  State<CustomDropdown> createState() => _CustomDropdownState();
+}
+
+class _CustomDropdownState extends State<CustomDropdown>
+    with SingleTickerProviderStateMixin {
+  final LayerLink _layerLink = LayerLink();
+  OverlayEntry? _overlayEntry;
+  bool _isDropdownOpen = false;
+  late AnimationController _animationController;
+  late Animation<Offset> _slideAnimation;
+  late Animation<double> _fadeAnimation;
+  final GlobalKey _fieldKey = GlobalKey();
+  String? _errorText;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 200),
+    );
+
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(0, -0.05),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeOut,
+    ));
+
+    _fadeAnimation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeOut,
+    );
+  }
+
   String? _validate(String? value) {
     if (value == null || value.isEmpty) {
-      switch (type) {
+      switch (widget.type) {
         case DropdownType.university:
           return 'يرجى اختيار الجامعة';
         case DropdownType.academicYear:
@@ -48,71 +88,198 @@ class CustomDropdownField extends StatelessWidget {
     return null;
   }
 
+  void _toggleDropdown() {
+    if (_isDropdownOpen) {
+      _removeDropdown();
+    } else {
+      _showDropdown();
+    }
+  }
+
+  void _showDropdown() {
+    _overlayEntry = _createOverlayEntry();
+    Overlay.of(context).insert(_overlayEntry!);
+    _animationController.forward();
+    setState(() => _isDropdownOpen = true);
+  }
+
+  void _removeDropdown() {
+    _animationController.reverse().then((_) {
+      _overlayEntry?.remove();
+      setState(() => _isDropdownOpen = false);
+    });
+  }
+
+  OverlayEntry _createOverlayEntry() {
+    final renderBox = _fieldKey.currentContext!.findRenderObject() as RenderBox;
+    final size = renderBox.size;
+    final offset = renderBox.localToGlobal(Offset.zero);
+
+    final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
+    final border = Theme.of(context).extension<AppBorders>()!;
+    final content = Theme.of(context).extension<AppContent>()!;
+    final styles = Theme.of(context).textTheme;
+
+    return OverlayEntry(
+      builder: (context) => Positioned(
+        left: offset.dx,
+        top: offset.dy + size.height + 4,
+        width: size.width,
+        child: CompositedTransformFollower(
+          link: _layerLink,
+          showWhenUnlinked: false,
+          child: Material(
+            color: Colors.transparent,
+            child: SlideTransition(
+              position: _slideAnimation,
+              child: FadeTransition(
+                opacity: _fadeAnimation,
+                child: Material(
+                  elevation: 0,
+                  color: backgrounds.onSurfacePrimary,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: border.transparent, width: 1),
+                    borderRadius: BorderRadius.circular(widget.radius),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: widget.items.map((item) {
+                      final isSelected = item == widget.selectedItem;
+                      return InkWell(
+                        onTap: () {
+                          widget.onChanged(item);
+                          _validateAndUpdate(item);
+                          _removeDropdown();
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              if (isSelected)
+                                PhosphorIcon(PhosphorIcons.caretRight(),
+                                    size: 16, color: content.brandPrimary),
+                              Text(
+                                item,
+                                textDirection: TextDirection.rtl,
+                                style: styles.xParagraphLargeNormal.copyWith(
+                                    color: isSelected
+                                        ? content.brandPrimary
+                                        : content.primary),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _validateAndUpdate(String? value) {
+    final validationResult = _validate(value);
+    setState(() {
+      _errorText = validationResult;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
-
+    final border = Theme.of(context).extension<AppBorders>()!;
     final content = Theme.of(context).extension<AppContent>()!;
     final styles = Theme.of(context).textTheme;
 
     return SizedBox(
-      width: width,
-      height: height,
-      child: DropdownButtonFormField<String>(
-        value: value,
-        isExpanded: true,
-        validator: _validate,
-        icon: const Icon(Icons.arrow_drop_down, color: Colors.black),
-        decoration: InputDecoration(
-          errorStyle: TextStyle(
-            fontSize: 12,
-            color: Colors.red,
-            height: 0.06,
-          ),
-          labelText: label,
-          floatingLabelBehavior: FloatingLabelBehavior.auto,
-          // alignLabelWithHint: true,
-          labelStyle: styles.xLabelSmall.copyWith(
-            color: content.primary,
-            fontSize: 14,
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),
-            borderSide: BorderSide(color: backgrounds.primaryBrand),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),
-            borderSide: BorderSide(color: backgrounds.primaryBrand),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),
-            borderSide: BorderSide(color: backgrounds.primaryBrand, width: 2),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),
-            borderSide: const BorderSide(color: Colors.red),
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius),
-            borderSide: const BorderSide(color: Colors.red, width: 2),
+      width: widget.width,
+      height: widget.height,
+      child: CompositedTransformTarget(
+        link: _layerLink,
+        child: GestureDetector(
+          onTap: _toggleDropdown,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              InputDecorator(
+                key: _fieldKey,
+                decoration: InputDecoration(
+                  labelText: widget.label,
+                  floatingLabelBehavior: FloatingLabelBehavior.auto,
+                  labelStyle: styles.xLabelSmall.copyWith(
+                    color: widget.selectedItem == null
+                        ? content.primary
+                        : backgrounds.primaryBrand,
+                    fontSize: 14,
+                  ),
+                  contentPadding: EdgeInsets.symmetric(
+                      horizontal: 16.w(context), vertical: 14.h(context)),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(widget.radius),
+                    borderSide: BorderSide(color: border.primaryBrand),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(widget.radius),
+                    borderSide: BorderSide(
+                      color: widget.selectedItem == null
+                          ? border.secondary
+                          : backgrounds.primaryBrand,
+                      width: widget.selectedItem == null ? 1 : 2,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(widget.radius),
+                    borderSide: BorderSide(color: border.primaryBrand),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(widget.radius),
+                    borderSide: const BorderSide(color: Colors.red),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(widget.radius),
+                    borderSide: const BorderSide(color: Colors.red),
+                  ),
+                  errorText: _errorText,
+                  errorStyle: const TextStyle(
+                    fontSize: 12,
+                    color: Colors.red,
+                    height: 0.06,
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        widget.selectedItem ?? widget.label ?? "",
+                        style: styles.xParagraphLargeNormal.copyWith(
+                          color: widget.selectedItem == null
+                              ? Colors.grey
+                              : content.primary,
+                        ),
+                        textDirection: TextDirection.rtl,
+                      ),
+                    ),
+                    const Icon(Icons.arrow_drop_down, color: Colors.black),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
-        dropdownColor: backgrounds.onSurfacePrimary,
-        style: styles.xParagraphLargeNormal.copyWith(color: content.primary),
-        onChanged: onChanged,
-        items: items.map((item) {
-          return DropdownMenuItem<String>(
-            value: item,
-            child: Text(
-              item,
-              textDirection: TextDirection.rtl,
-              style: styles.xParagraphLargeNormal,
-            ),
-          );
-        }).toList(),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 }

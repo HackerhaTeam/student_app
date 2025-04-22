@@ -6,10 +6,11 @@ class DayField extends StatelessWidget {
   const DayField({
     super.key,
     required this.dayController,
+    required this.focusNode,
   });
 
   final TextEditingController dayController;
-
+  final FocusNode focusNode;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -17,6 +18,7 @@ class DayField extends StatelessWidget {
       height: 67.h(context),
       child: Center(
         child: CustomTextField(
+          focusNode: focusNode,
           keyboardType: TextInputType.number,
           fieldType: FieldType.day,
           label: "اليوم",

@@ -50,7 +50,7 @@ extension CustomTextTheme on TextTheme {
         fontFamily: AppTypography.arabicFontFamily,
         fontSize: AppTypography.fontSize300,
         height: AppTypography.lineHeight500 / AppTypography.fontSize300,
-        fontWeight: AppTypography.regular,
+        fontWeight: AppTypography.light,
       );
 
   // Label
