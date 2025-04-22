@@ -48,7 +48,6 @@ class _CustomDropdownState extends State<CustomDropdown>
   late Animation<Offset> _slideAnimation;
   late Animation<double> _fadeAnimation;
   final GlobalKey _fieldKey = GlobalKey();
-  String? _errorText;
 
   @override
   void initState() {
@@ -88,16 +87,16 @@ class _CustomDropdownState extends State<CustomDropdown>
     return null;
   }
 
-  void _toggleDropdown() {
+  void _toggleDropdown(FormFieldState<String> fieldState) {
     if (_isDropdownOpen) {
       _removeDropdown();
     } else {
-      _showDropdown();
+      _showDropdown(fieldState);
     }
   }
 
-  void _showDropdown() {
-    _overlayEntry = _createOverlayEntry();
+  void _showDropdown(FormFieldState<String> fieldState) {
+    _overlayEntry = _createOverlayEntry(fieldState);
     Overlay.of(context).insert(_overlayEntry!);
     _animationController.forward();
     setState(() => _isDropdownOpen = true);
@@ -110,7 +109,7 @@ class _CustomDropdownState extends State<CustomDropdown>
     });
   }
 
-  OverlayEntry _createOverlayEntry() {
+  OverlayEntry _createOverlayEntry(FormFieldState<String> fieldState) {
     final renderBox = _fieldKey.currentContext!.findRenderObject() as RenderBox;
     final size = renderBox.size;
     final offset = renderBox.localToGlobal(Offset.zero);
@@ -147,9 +146,11 @@ class _CustomDropdownState extends State<CustomDropdown>
                       final isSelected = item == widget.selectedItem;
                       return InkWell(
                         onTap: () {
-                          widget.onChanged(item);
-                          _validateAndUpdate(item);
-                          _removeDropdown();
+                          setState(() {
+                            fieldState.didChange(item);
+                            widget.onChanged(item);
+                            _removeDropdown();
+                          });
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
@@ -183,13 +184,6 @@ class _CustomDropdownState extends State<CustomDropdown>
     );
   }
 
-  void _validateAndUpdate(String? value) {
-    final validationResult = _validate(value);
-    setState(() {
-      _errorText = validationResult;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
@@ -197,83 +191,90 @@ class _CustomDropdownState extends State<CustomDropdown>
     final content = Theme.of(context).extension<AppContent>()!;
     final styles = Theme.of(context).textTheme;
 
-    return SizedBox(
-      width: widget.width,
-      height: widget.height,
-      child: CompositedTransformTarget(
-        link: _layerLink,
-        child: GestureDetector(
-          onTap: _toggleDropdown,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              InputDecorator(
-                key: _fieldKey,
-                decoration: InputDecoration(
-                  labelText: widget.label,
-                  floatingLabelBehavior: FloatingLabelBehavior.auto,
-                  labelStyle: styles.xLabelSmall.copyWith(
-                    color: widget.selectedItem == null
-                        ? content.primary
-                        : backgrounds.primaryBrand,
-                    fontSize: 14,
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                      horizontal: 16.w(context), vertical: 14.h(context)),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(widget.radius),
-                    borderSide: BorderSide(color: border.primaryBrand),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(widget.radius),
-                    borderSide: BorderSide(
-                      color: widget.selectedItem == null
-                          ? border.secondary
-                          : backgrounds.primaryBrand,
-                      width: widget.selectedItem == null ? 1 : 2,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(widget.radius),
-                    borderSide: BorderSide(color: border.primaryBrand),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(widget.radius),
-                    borderSide: const BorderSide(color: Colors.red),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(widget.radius),
-                    borderSide: const BorderSide(color: Colors.red),
-                  ),
-                  errorText: _errorText,
-                  errorStyle: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.red,
-                    height: 0.06,
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        widget.selectedItem ?? widget.label ?? "",
-                        style: styles.xParagraphLargeNormal.copyWith(
+    return FormField<String>(
+      validator: (value) => _validate(value),
+      builder: (FormFieldState<String> fieldState) {
+        return SizedBox(
+          width: widget.width,
+          height: widget.height,
+          child: CompositedTransformTarget(
+            link: _layerLink,
+            child: GestureDetector(
+              onTap: () {
+                _toggleDropdown(fieldState);
+              },
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  InputDecorator(
+                    key: _fieldKey,
+                    decoration: InputDecoration(
+                      labelText: widget.label,
+                      floatingLabelBehavior: FloatingLabelBehavior.auto,
+                      labelStyle: styles.xLabelSmall.copyWith(
+                        color: widget.selectedItem == null
+                            ? content.primary
+                            : backgrounds.primaryBrand,
+                        fontSize: 14,
+                      ),
+                      contentPadding: EdgeInsets.symmetric(
+                          horizontal: 16.w(context), vertical: 14.h(context)),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(widget.radius),
+                        borderSide: BorderSide(color: border.primaryBrand),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(widget.radius),
+                        borderSide: BorderSide(
                           color: widget.selectedItem == null
-                              ? Colors.grey
-                              : content.primary,
+                              ? border.secondary
+                              : backgrounds.primaryBrand,
+                          width: widget.selectedItem == null ? 1 : 2,
                         ),
-                        textDirection: TextDirection.rtl,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(widget.radius),
+                        borderSide: BorderSide(color: border.primaryBrand),
+                      ),
+                      errorText: fieldState.errorText,
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(widget.radius),
+                        borderSide: const BorderSide(color: Colors.red),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(widget.radius),
+                        borderSide: const BorderSide(color: Colors.red),
+                      ),
+                      errorStyle: const TextStyle(
+                        fontSize: 12,
+                        color: Colors.red,
+                        height: 0.06,
                       ),
                     ),
-                    const Icon(Icons.arrow_drop_down, color: Colors.black),
-                  ],
-                ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            widget.selectedItem ?? widget.label ?? "",
+                            style: styles.xParagraphLargeNormal.copyWith(
+                              color: widget.selectedItem == null
+                                  ? Colors.grey
+                                  : content.primary,
+                            ),
+                            textDirection: TextDirection.rtl,
+                          ),
+                        ),
+                        const Icon(Icons.arrow_drop_down, color: Colors.black),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

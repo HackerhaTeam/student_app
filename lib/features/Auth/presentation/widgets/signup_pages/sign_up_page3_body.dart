@@ -62,7 +62,7 @@ class _SignUpPage3BodyState extends State<SignUpPage3Body> {
                 ),
               ),
               SizedBox(
-                height: 57.h(context),
+                height: 59.h(context),
                 child: Center(
                   child: CustomDropdown(
                     label: "الجامعة",
@@ -84,7 +84,7 @@ class _SignUpPage3BodyState extends State<SignUpPage3Body> {
               ),
               SizedBox(height: 24.h(context)),
               SizedBox(
-                height: 57.h(context),
+                height: 59.h(context),
                 child: Center(
                   child: CustomDropdown(
                     label: "السنة الدراسية",

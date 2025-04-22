@@ -46,9 +46,10 @@ class _SignUpPage6BodyState extends State<SignUpPage6Body> {
     final content = Theme.of(context).extension<AppContent>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
     final styles = Theme.of(context).textTheme;
-
+    final bool disabled = true;
     return Scaffold(
       floatingActionButton: FloatingNextButton(
+        disabled: disabled,
         formKey: formKey,
         onNext: () async {
           if (formKey.currentState!.validate()) {

@@ -11,17 +11,19 @@ class FloatingNextButton extends StatelessWidget {
     super.key,
     required this.formKey,
     required this.onNext,
+    this.disabled,
   });
 
   final GlobalKey<FormState> formKey;
   final VoidCallback onNext;
-
+  final bool? disabled;
   @override
   Widget build(BuildContext context) {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     final content = Theme.of(context).extension<AppContent>()!;
     final styles = Theme.of(context).textTheme;
     return CustomButton(
+      disabled: disabled ?? false,
       borderRadius: 16.r(context),
       color: backgrounds.primaryBrand,
       height: 44.h(context),

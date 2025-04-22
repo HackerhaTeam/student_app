@@ -75,6 +75,7 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   DayField(
                     dayController: dayController,
