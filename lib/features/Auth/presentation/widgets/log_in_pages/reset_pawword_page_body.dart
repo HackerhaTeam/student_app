@@ -38,7 +38,6 @@ class _ResetPasswordPageBodyState extends State<ResetPasswordPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    final border = Theme.of(context).extension<AppBorders>()!;
     final styles = Theme.of(context).textTheme;
     return Scaffold(
       floatingActionButton: FloatingNextButton(
@@ -109,6 +108,15 @@ class _ResetPasswordPageBodyState extends State<ResetPasswordPageBody> {
                   hint: "أعد إدخال كلمة المرور",
                   radius: 8.r(context),
                   controller: confirmPasswordController,
+                  customValidator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'يرجى تأكيد كلمة المرور';
+                    }
+                    if (value != passwordController.text) {
+                      return 'كلمات المرور غير متطابقة';
+                    }
+                    return null;
+                  },
                 ),
               )
             ],

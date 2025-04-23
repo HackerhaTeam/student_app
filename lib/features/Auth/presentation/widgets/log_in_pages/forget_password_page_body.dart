@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/util/navigator.dart';
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
@@ -32,7 +31,6 @@ class _ForgetPasswordPageBodyState extends State<ForgetPasswordPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     final styles = Theme.of(context).textTheme;
     return Scaffold(
       floatingActionButton: FloatingNextButton(

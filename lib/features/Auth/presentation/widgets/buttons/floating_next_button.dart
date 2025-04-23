@@ -27,6 +27,7 @@ class FloatingNextButton extends StatelessWidget {
     final content = Theme.of(context).extension<AppContent>()!;
     final styles = Theme.of(context).textTheme;
     return CustomButton(
+      disabledColor: backgrounds.brandDisabledPrimary,
       disabled: disabled ?? false,
       borderRadius: 16.r(context),
       color: backgrounds.primaryBrand,
@@ -39,6 +40,9 @@ class FloatingNextButton extends StatelessWidget {
             buttonText ?? "التالي",
             style: styles.xLabelLarge
                 .copyWith(color: content.brandDisabledPrimary),
+          ),
+          SizedBox(
+            width: 4.w(context),
           ),
           PhosphorIcon(PhosphorIcons.caretRight(),
               size: 16.w(context), color: content.brandDisabledPrimary),

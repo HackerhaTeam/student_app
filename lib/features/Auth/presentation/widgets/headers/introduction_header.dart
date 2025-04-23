@@ -15,6 +15,7 @@ class IntroductionHeader extends StatelessWidget {
   final TextTheme styles;
   final IconData icon;
   final String introText;
+
   @override
   Widget build(BuildContext context) {
     final content = Theme.of(context).extension<AppContent>()!;

@@ -5,6 +5,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/constants/assets.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/util/navigator.dart';
@@ -40,6 +41,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
   @override
   Widget build(BuildContext context) {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
+    final content = Theme.of(context).extension<AppContent>()!;
     final styles = Theme.of(context).textTheme;
     return Scaffold(
       floatingActionButton: FloatingNextButton(
@@ -124,7 +126,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                   },
                   child: Text(
                     "هل نسيت كلمة المرور؟",
-                    style: styles.xLabelLarge,
+                    style: styles.xLabelLarge.copyWith(color: content.primary),
                   ),
                 )
               ],

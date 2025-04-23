@@ -30,6 +30,7 @@ class CustomTextField extends StatefulWidget {
   final EdgeInsetsGeometry? contentPadding;
   final bool obscureOverride;
   final FocusNode? focusNode;
+  final String? Function(String?)? customValidator;
 
   const CustomTextField({
     super.key,
@@ -46,6 +47,7 @@ class CustomTextField extends StatefulWidget {
     this.obscureOverride = false,
     this.keyboardType,
     this.focusNode,
+    this.customValidator,
   });
 
   @override
@@ -147,7 +149,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         keyboardType: widget.keyboardType,
         cursorColor: backgrounds.primaryBrand,
         controller: widget.controller,
-        validator: _validate,
+        validator: widget.customValidator ?? _validate,
         obscureText: widget.fieldType == FieldType.password
             ? _obscureText
             : widget.obscureOverride,
