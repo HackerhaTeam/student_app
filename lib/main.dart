@@ -7,6 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/log_in_page.dart';
 
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_wrapper.dart';
+import 'package:student_hackerha/features/Enroll-Course/presentation/pages/enroll_pages_wraper.dart';
 
 void main() {
   runApp(
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
           themeMode: state.themeMode,
           theme: AppTheme.light,
           darkTheme: AppTheme.light,
-          home: const LogInPage(),
+          home: const MyHomePage(),
         );
       },
     );
@@ -68,7 +69,7 @@ class MyHomePage extends StatelessWidget {
       //     ),
       //   ],
       // ),
-      body: AuthWrapper(),
+      body: EnrollCourseWraper(),
     );
   }
 }

@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/signup_pages/sign_up_page1_body.dart';
+import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 
 class CustomCheckBox extends StatelessWidget {
   const CustomCheckBox({
     super.key,
     required this.value,
-    required this.widget,
   });
 
   final bool value;
-  final SignUpPage1Body widget;
 
   @override
   Widget build(BuildContext context) {
+    final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -22,7 +21,7 @@ class CustomCheckBox extends StatelessWidget {
         checkContainer(
             16.w(context),
             16.h(context),
-            value ? widget.backgrounds.secondaryBrand : Colors.white,
+            value ? backgrounds.secondaryBrand : Colors.white,
             null,
             5.r(context)),
       ],

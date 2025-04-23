@@ -1,25 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page2.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page3.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page4.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page5.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/verification_page.dart';
 import 'package:student_hackerha/core/widgets/headers/custom_pages_header.dart';
-import 'sign_up_page1.dart';
+import 'package:student_hackerha/features/Enroll-Course/presentation/pages/active_course_page.dart';
+import 'package:student_hackerha/features/Enroll-Course/presentation/pages/enroll_course_page.dart';
 
-class AuthWrapper extends StatefulWidget {
-  const AuthWrapper({super.key});
+class EnrollCourseWraper extends StatefulWidget {
+  const EnrollCourseWraper({super.key});
 
   @override
-  State<AuthWrapper> createState() => _AuthWrapperState();
+  State<EnrollCourseWraper> createState() => _EnrollCourseWraperState();
 }
 
-class _AuthWrapperState extends State<AuthWrapper> {
+class _EnrollCourseWraperState extends State<EnrollCourseWraper> {
   final PageController _controller = PageController();
   int _currentPage = 0;
-  final int _totalPages = 6;
+  final int _totalPages = 2;
 
   double get _progress => (_currentPage + 1) / _totalPages;
 
@@ -58,7 +54,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
               backgrounds: backgrounds,
               onBack: _goToPreviousPage,
               currentPage: _currentPage,
-              isAuth: true,
+              isAuth: false,
             ),
             // PageView
             Expanded(
@@ -72,18 +68,10 @@ class _AuthWrapperState extends State<AuthWrapper> {
                   });
                 },
                 children: [
-                  SignUpPage1(
+                  EnrollCoursePage(
                     onNext: _goToNextPage,
                   ),
-                  SignUpPage2(
-                    onNext: _goToNextPage,
-                  ),
-                  SignUpPage3(onNext: _goToNextPage),
-                  SignUpPage4(onNext: _goToNextPage),
-                  SignUpPage5(onNext: _goToNextPage),
-                  VerificationPage(
-                    isSignIn: false,
-                  ),
+                  ActiveCoursePage(onNext: _goToNextPage)
                 ],
               ),
             ),

@@ -30,6 +30,7 @@ class OTPInput extends StatelessWidget {
       keyboardType: TextInputType.number,
       enableActiveFill: false,
       pinTheme: PinTheme(
+        borderWidth: 2,
         shape: PinCodeFieldShape.box,
         borderRadius: BorderRadius.circular(12),
         fieldHeight: 68.h(context),

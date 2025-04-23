@@ -11,7 +11,7 @@ import 'package:student_hackerha/core/widgets/custom_text_field.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_wrapper.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/back_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/headers/introduction_header.dart';
+import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 
 class ResetPasswordPageBody extends StatefulWidget {
   const ResetPasswordPageBody({super.key});

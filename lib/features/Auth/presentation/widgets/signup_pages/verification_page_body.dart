@@ -16,7 +16,7 @@ import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/l
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/reset_pawword_page.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/back_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/headers/introduction_header.dart';
+import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/pin_code_fields.dart';
 
 class VerificationPageBody extends StatefulWidget {

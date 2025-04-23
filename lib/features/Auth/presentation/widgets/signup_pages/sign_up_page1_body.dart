@@ -6,7 +6,7 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_button.dart';
 import 'package:student_hackerha/core/widgets/custom_check_box.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/headers/introduction_header.dart';
+import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 
 class SignUpPage1Body extends StatefulWidget {
   const SignUpPage1Body({
@@ -86,7 +86,9 @@ class _SignUpPage1BodyState extends State<SignUpPage1Body> {
                       value = !value;
                     });
                   },
-                  child: CustomCheckBox(value: value, widget: widget),
+                  child: CustomCheckBox(
+                    value: value,
+                  ),
                 ),
                 SizedBox(width: 8.w(context)),
                 Text(

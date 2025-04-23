@@ -5,36 +5,46 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/back_button.dart';
 
-class AuthPagesHeader extends StatelessWidget {
-  const AuthPagesHeader({
+class CustomPagesHeader extends StatelessWidget {
+  const CustomPagesHeader({
     super.key,
     required double progress,
     required this.backgrounds,
     required this.onBack,
     required this.currentPage,
+    required this.isAuth,
   }) : _progress = progress;
 
   final double _progress;
   final AppBackgrounds backgrounds;
   final int currentPage;
   final VoidCallback onBack;
+  final bool isAuth;
   @override
   Widget build(BuildContext context) {
     final styles = Theme.of(context).textTheme;
     final primaryColor = backgrounds.primaryBrand;
     String headerText = "";
-    if (currentPage == 0) {
-      headerText = "توضيح هام";
-    } else if (currentPage == 1) {
-      headerText = "المعلومات والبيانات الشخصية";
-    } else if (currentPage == 2) {
-      headerText = "المعلومات والبيانات الجامعية";
-    } else if (currentPage == 3) {
-      headerText = "لضمان تجربة مخصصة مناسبة";
-    } else if (currentPage == 4) {
-      headerText = "سجل دخولك عبر بريدك الإلكتروني فقط";
-    } else if (currentPage == 5) {
-      headerText = "حماية وأمان حسابك";
+    if (isAuth) {
+      if (currentPage == 0) {
+        headerText = "توضيح هام";
+      } else if (currentPage == 1) {
+        headerText = "المعلومات والبيانات الشخصية";
+      } else if (currentPage == 2) {
+        headerText = "المعلومات والبيانات الجامعية";
+      } else if (currentPage == 3) {
+        headerText = "لضمان تجربة مخصصة مناسبة";
+      } else if (currentPage == 4) {
+        headerText = "سجل دخولك عبر بريدك الإلكتروني فقط";
+      } else if (currentPage == 5) {
+        headerText = "حماية وأمان حسابك";
+      }
+    } else {
+      if (currentPage == 0) {
+        headerText = "توضيحات وشروط هامة";
+      } else if (currentPage == 1) {
+        headerText = "تفعيل الدورة";
+      }
     }
 
     return Row(
