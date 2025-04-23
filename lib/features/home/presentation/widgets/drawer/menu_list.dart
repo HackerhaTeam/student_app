@@ -17,7 +17,6 @@ class MenuList extends StatelessWidget {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
               "القائمة",
@@ -27,50 +26,47 @@ class MenuList extends StatelessWidget {
           ],
         ),
         SizedBox(height: 16.h(context)),
-        Directionality(
-          textDirection: TextDirection.rtl,
-          child: Column(
-            children: [
-              _buildMenuItem(
-                icon: PhosphorIcons.user(),
-                title: "حسابي",
-                color: contentColor.primary,
-              ),
-              _buildMenuItem(
-                icon: PhosphorIcons.magnifyingGlass(),
-                title: "البحث",
-                color: contentColor.primary,
-              ),
-              _buildMenuItem(
-                icon: PhosphorIcons.arrowsCounterClockwise(),
-                title: "تبديل الكلية",
-                color: contentColor.primary,
-              ),
-              _buildMenuItem(
-                icon: PhosphorIcons.gift(),
-                title: "شارك رابط التطبيق",
-                color: contentColor.primary,
-              ),
-              _buildMenuItem(
-                icon: PhosphorIcons.chatsTeardrop(),
-                title: "راسلنا",
-                color: contentColor.primary,
-              ),
-              _buildMenuItem(
-                icon: PhosphorIcons.cardsThree(),
-                title: "إصدار التطبيق 1.0.0",
-                color: contentColor.secondary,
-              ),
-              SizedBox(height: 16.h(context)),
-              GradientDivider(),
-              SizedBox(height: 16.h(context)),
-              _buildMenuItem(
-                icon: PhosphorIcons.signOut(),
-                title: "تسجيل الخروج",
-                color: contentColor.negative,
-              ),
-            ],
-          ),
+        Column(
+          children: [
+            _buildMenuItem(
+              icon: PhosphorIcons.user(),
+              title: "حسابي",
+              color: contentColor.primary,
+            ),
+            _buildMenuItem(
+              icon: PhosphorIcons.magnifyingGlass(),
+              title: "البحث",
+              color: contentColor.primary,
+            ),
+            _buildMenuItem(
+              icon: PhosphorIcons.arrowsCounterClockwise(),
+              title: "تبديل الكلية",
+              color: contentColor.primary,
+            ),
+            _buildMenuItem(
+              icon: PhosphorIcons.gift(),
+              title: "شارك رابط التطبيق",
+              color: contentColor.primary,
+            ),
+            _buildMenuItem(
+              icon: PhosphorIcons.chatsTeardrop(),
+              title: "راسلنا",
+              color: contentColor.primary,
+            ),
+            _buildMenuItem(
+              icon: PhosphorIcons.cardsThree(),
+              title: "إصدار التطبيق 1.0.0",
+              color: contentColor.secondary,
+            ),
+            SizedBox(height: 16.h(context)),
+            GradientDivider(),
+            SizedBox(height: 16.h(context)),
+            _buildMenuItem(
+              icon: PhosphorIcons.signOut(),
+              title: "تسجيل الخروج",
+              color: contentColor.negative,
+            ),
+          ],
         ),
       ],
     );

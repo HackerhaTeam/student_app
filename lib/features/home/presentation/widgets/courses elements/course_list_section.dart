@@ -21,7 +21,6 @@ class CourseListSection extends StatelessWidget {
     return SizedBox(
       height: height,
       child: ListView.builder(
-        reverse: true,
         scrollDirection: Axis.horizontal,
         itemCount: 50,
         itemBuilder: (context, index) => Padding(

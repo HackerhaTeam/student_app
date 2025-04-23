@@ -16,24 +16,23 @@ class DrawerHeadding extends StatelessWidget {
     final contentColor = Theme.of(context).extension<AppContent>();
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        AdvancedThemeSwitcher(),
-        const Spacer(),
-        Text(
-          "إغلاق",
-          style: textTheme.xLabelXLarge
-              .copyWith(color: contentColor!.brandPrimary),
-        ),
-        SizedBox(width: 12.w(context)),
         GestureDetector(
           onTap: onClose,
           child: AnimatedIcon(
-            color: contentColor.brandPrimary,
+            color: contentColor!.brandPrimary,
             icon: AnimatedIcons.menu_close,
             progress: animationController,
           ),
         ),
+        Text(
+          "إغلاق",
+          style:
+              textTheme.xLabelXLarge.copyWith(color: contentColor.brandPrimary),
+        ),
+        SizedBox(width: 12.w(context)),
+        const Spacer(),
+        AdvancedThemeSwitcher(),
       ],
     );
   }

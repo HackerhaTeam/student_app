@@ -5,6 +5,7 @@ import 'package:student_hackerha/core/DI/%20service_locator.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   setup();
@@ -27,6 +28,15 @@ class MyApp extends StatelessWidget {
           initTheme: AppTheme.light,
           builder: (_, myTheme) {
             return MaterialApp(
+              locale: Locale('ar'),
+              localizationsDelegates: [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+              ],
+              supportedLocales: [
+                const Locale('ar', ''), // Arabic
+                const Locale('en', ''), // English
+              ],
               debugShowCheckedModeBanner: false,
               theme: AppTheme.light,
               darkTheme: AppTheme.dark,

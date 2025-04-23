@@ -21,13 +21,13 @@ class CoursesHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
+            title,
+            style: Theme.of(context).textTheme.xHeadingLarge,
+          ),
+          Text(
             "عرض الكل",
             style:
                 textTheme.xLabelMedium.copyWith(color: background.primaryBrand),
-          ),
-          Text(
-            title,
-            style: Theme.of(context).textTheme.xHeadingLarge,
           ),
         ],
       ),

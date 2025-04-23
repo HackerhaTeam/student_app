@@ -69,19 +69,15 @@ class AnimatedBottomNavBar extends StatelessWidget {
     final content = theme.extension<AppContent>();
 
     final xLabelSmall = Theme.of(context).textTheme.xLabelSmall;
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: BottomNavigationBar(
-        selectedLabelStyle: xLabelSmall,
-        unselectedLabelStyle: xLabelSmall,
-        selectedItemColor: selectedColor ?? content?.brandPrimary,
-        unselectedItemColor: unselectedColor ?? content?.secondary,
-        currentIndex: currentIndex,
-        onTap: onTap,
-        type: BottomNavigationBarType.fixed,
-        items:
-            NavConstants.navItems.map((item) => _buildNavItem(item)).toList(),
-      ),
+    return BottomNavigationBar(
+      selectedLabelStyle: xLabelSmall,
+      unselectedLabelStyle: xLabelSmall,
+      selectedItemColor: selectedColor ?? content?.brandPrimary,
+      unselectedItemColor: unselectedColor ?? content?.secondary,
+      currentIndex: currentIndex,
+      onTap: onTap,
+      type: BottomNavigationBarType.fixed,
+      items: NavConstants.navItems.map((item) => _buildNavItem(item)).toList(),
     );
   }
 

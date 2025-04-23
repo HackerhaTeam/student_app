@@ -50,24 +50,24 @@ class _HomeHeaderState extends State<HomeHeader>
           top: 20.h(context), right: 20.w(context), left: 20.w(context)),
       child: Row(
         children: [
-          NotificationIcon(backgrounds: widget.backgrounds),
+          Builder(builder: (context) {
+            return GestureDetector(
+              onTap: () {
+                iconTaped();
+                Scaffold.of(context).openDrawer();
+              },
+              child: AnimatedIcon(
+                  icon: AnimatedIcons.menu_close,
+                  progress: widget.animationController),
+            );
+          }),
           const Spacer(),
           Text(
             'الرئيسية',
             style: Theme.of(context).textTheme.xHeadingLarge,
           ),
           const Spacer(),
-          Builder(builder: (context) {
-            return GestureDetector(
-              onTap: () {
-                iconTaped();
-                Scaffold.of(context).openEndDrawer();
-              },
-              child: AnimatedIcon(
-                  icon: AnimatedIcons.menu_close,
-                  progress: widget.animationController),
-            );
-          })
+          NotificationIcon(backgrounds: widget.backgrounds),
         ],
       ),
     );

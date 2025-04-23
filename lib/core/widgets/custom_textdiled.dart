@@ -52,12 +52,10 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       style: textStyle,
-      textDirection: TextDirection.rtl,
       controller: controller,
       obscureText: fieldType == FieldType.password,
       validator: _validate,
       decoration: InputDecoration(
-        hintTextDirection: TextDirection.rtl,
         hintText: hint,
         prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
         suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,

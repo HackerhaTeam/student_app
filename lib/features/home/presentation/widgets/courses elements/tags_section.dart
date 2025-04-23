@@ -23,24 +23,21 @@ class TagsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
+      padding: EdgeInsets.only(right: 20.w(context)),
       child: SizedBox(
         height: 36.h(context),
-        child: Directionality(
-          textDirection: TextDirection.rtl,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: tags.length,
-            itemBuilder: (context, index) => Padding(
-              padding: EdgeInsets.only(left: 8.w(context)),
-              child: CoursesTag(
-                background: background,
-                appBorder: border,
-                text: tags[index],
-                isSelected: index == selectedIndex,
-                onTap: () => onTagSelected(index),
-                borderColor: border.primaryBrand,
-              ),
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: tags.length,
+          itemBuilder: (context, index) => Padding(
+            padding: EdgeInsets.only(left: 8.w(context)),
+            child: CoursesTag(
+              background: background,
+              appBorder: border,
+              text: tags[index],
+              isSelected: index == selectedIndex,
+              onTap: () => onTagSelected(index),
+              borderColor: border.primaryBrand,
             ),
           ),
         ),

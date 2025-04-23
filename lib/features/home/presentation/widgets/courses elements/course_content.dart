@@ -30,7 +30,7 @@ class CourseContent extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(12.w(context)),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             courseName,
@@ -41,7 +41,6 @@ class CourseContent extends StatelessWidget {
           SizedBox(height: 8.h(context)),
           Text(
             description,
-            textDirection: TextDirection.rtl,
             style: textTheme.xParagraphMedium
                 .copyWith(color: appContent!.secondary),
             maxLines: 1,

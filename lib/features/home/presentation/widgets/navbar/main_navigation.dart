@@ -59,10 +59,10 @@ class _MainNavigationPageState extends State<MainNavigationPage>
     return ThemeSwitchingArea(
       child: Scaffold(
         key: _scaffoldKey,
-        onEndDrawerChanged: (isOpened) {
+        onDrawerChanged: (isOpened) {
           iconTaped(isOpened);
         },
-        endDrawer: MyDrawer(
+        drawer: MyDrawer(
           animationController: animationController,
           onThemeChanged: () {
             if (_scaffoldKey.currentState?.isEndDrawerOpen ?? false) {

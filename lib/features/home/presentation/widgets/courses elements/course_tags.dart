@@ -20,21 +20,18 @@ class CourseTags extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 36.h(context),
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: tags.length,
-          itemBuilder: (context, index) => Padding(
-            padding: EdgeInsets.only(left: 8.w(context)),
-            child: CoursesTag(
-              background: background,
-              appBorder: border,
-              text: tags[index],
-              isSelected: false,
-              borderColor: Colors.transparent,
-              backgroundColor: background.fill,
-            ),
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: tags.length,
+        itemBuilder: (context, index) => Padding(
+          padding: EdgeInsets.only(left: 8.w(context)),
+          child: CoursesTag(
+            background: background,
+            appBorder: border,
+            text: tags[index],
+            isSelected: false,
+            borderColor: Colors.transparent,
+            backgroundColor: background.fill,
           ),
         ),
       ),
