@@ -8,6 +8,7 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/util/navigator.dart';
 import 'package:student_hackerha/core/widgets/custom_success_dialog.dart';
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/float_next_button_with_dialog.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_wrapper.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/back_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
@@ -37,32 +38,17 @@ class _ResetPasswordPageBodyState extends State<ResetPasswordPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
     return Scaffold(
-      floatingActionButton: FloatingNextButton(
-          width: 139.w(context),
-          buttonText: "إعادة التعيين",
-          formKey: formKey,
-          onNext: () async {
-            if (formKey.currentState!.validate()) {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (context) => const CustomSuccessDialog(
-                  svgAssetPath: AppAssets.successImage,
-                  title: "تم إعادة تعيين كلمة المرور!",
-                  subtitle:
-                      "مبروك! تم تحديث كلمة المرور بنجاح. يمكنك الآن تسجيل الدخول باستخدام الكلمة الجديدة.",
-                ),
-              );
-              await Future.delayed(
-                const Duration(seconds: 3),
-              );
-
-              Navigator.of(context).pop();
-              Moving.navToPage(context: context, page: AuthWrapper());
-            }
-          }),
+      floatingActionButton: FloatNextButtonWithDialog(
+        formKey: formKey,
+        width: 139.w(context),
+        buttonText: "إعادة التعيين",
+        title: "تم إعادة تعيين كلمة المرور!",
+        subtitle:
+            "مبروك! تم تحديث كلمة المرور بنجاح. يمكنك الآن تسجيل الدخول باستخدام الكلمة الجديدة.",
+        nextPage: AuthWrapper(),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
         child: SafeArea(
@@ -76,7 +62,6 @@ class _ResetPasswordPageBodyState extends State<ResetPasswordPageBody> {
                 Navigator.of(context).pop();
               }),
               IntroductionHeader(
-                  styles: styles,
                   introText: " قم بتعيين كلمة مرور جديدة",
                   icon: PhosphorIcons.password()),
               Padding(

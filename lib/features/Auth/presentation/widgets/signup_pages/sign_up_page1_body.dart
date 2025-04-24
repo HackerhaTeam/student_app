@@ -4,9 +4,9 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/custom_button.dart';
 import 'package:student_hackerha/core/widgets/custom_check_box.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/big_next_button.dart';
 
 class SignUpPage1Body extends StatefulWidget {
   const SignUpPage1Body({
@@ -29,7 +29,7 @@ class _SignUpPage1BodyState extends State<SignUpPage1Body> {
 
   @override
   Widget build(BuildContext context) {
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.only(right: 20.w(context), left: 20.w(context)),
@@ -38,7 +38,6 @@ class _SignUpPage1BodyState extends State<SignUpPage1Body> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IntroductionHeader(
-              styles: styles,
               introText: "  هل أنت مؤهل للتسجيل؟  ",
               icon: PhosphorIcons.questionMark(),
             ),
@@ -102,27 +101,10 @@ class _SignUpPage1BodyState extends State<SignUpPage1Body> {
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 32.h(context)),
-              child: CustomButton(
-                  disabledColor: widget.backgrounds.brandDisabledPrimary,
-                  disabled: value ? false : true,
-                  borderRadius: 24.r(context),
-                  height: 56.h(context),
-                  width: 372.w(context),
-                  color: widget.backgrounds.primaryBrand,
-                  onPressed: widget.onNext,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "التالي",
-                        style: styles.xLabelLarge.copyWith(
-                            color: widget.content.brandDisabledPrimary),
-                      ),
-                      PhosphorIcon(PhosphorIcons.caretRight(),
-                          size: 16.w(context),
-                          color: widget.content.brandDisabledPrimary),
-                    ],
-                  )),
+              child: BigNextButton(
+                value: value,
+                onPressed: widget.onNext,
+              ),
             )
           ],
         ),

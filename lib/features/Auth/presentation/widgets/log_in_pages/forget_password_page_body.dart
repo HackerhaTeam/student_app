@@ -31,7 +31,7 @@ class _ForgetPasswordPageBodyState extends State<ForgetPasswordPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
     return Scaffold(
       floatingActionButton: FloatingNextButton(
         formKey: formKey,
@@ -61,7 +61,6 @@ class _ForgetPasswordPageBodyState extends State<ForgetPasswordPageBody> {
                 Navigator.of(context).pop();
               }),
               IntroductionHeader(
-                  styles: styles,
                   introText: " هل نسيت كلمة المرور؟",
                   icon: PhosphorIcons.password()),
               Padding(

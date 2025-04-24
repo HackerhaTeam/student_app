@@ -117,7 +117,7 @@ class _CustomDropdownState extends State<CustomDropdown>
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
     final content = Theme.of(context).extension<AppContent>()!;
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
 
     return OverlayEntry(
       builder: (context) => Positioned(
@@ -189,7 +189,7 @@ class _CustomDropdownState extends State<CustomDropdown>
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
     final content = Theme.of(context).extension<AppContent>()!;
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
 
     return FormField<String>(
       validator: (value) => _validate(value),

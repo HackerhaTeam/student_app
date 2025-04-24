@@ -13,7 +13,8 @@ enum FieldType {
   phoneNumber,
   academicYear,
   day,
-  year
+  year,
+  activationCode
 }
 
 class CustomTextField extends StatefulWidget {
@@ -121,6 +122,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
           return "قيمة خاطئة";
         }
         break;
+      case FieldType.activationCode:
+        if (value == null || value.isEmpty) {
+          return "الكود الذي أدخلته غير صالح، أعد المحاولة مجدداً.";
+        }
     }
     return null;
   }
@@ -130,7 +135,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
     final content = Theme.of(context).extension<AppContent>()!;
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
 
     return SizedBox(
       width: widget.width,
@@ -139,11 +144,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
         focusNode: widget.focusNode,
         expands: false,
         textAlign: widget.fieldType == FieldType.phoneNumber ||
-                widget.fieldType == FieldType.email
+                widget.fieldType == FieldType.email ||
+                widget.fieldType == FieldType.activationCode
             ? TextAlign.left
             : TextAlign.right,
         textDirection: widget.fieldType == FieldType.phoneNumber ||
-                widget.fieldType == FieldType.email
+                widget.fieldType == FieldType.email ||
+                widget.fieldType == FieldType.activationCode
             ? TextDirection.ltr
             : TextDirection.rtl,
         keyboardType: widget.keyboardType,

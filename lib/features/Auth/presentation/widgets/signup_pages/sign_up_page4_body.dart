@@ -41,7 +41,7 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
   @override
   Widget build(BuildContext context) {
     // final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
 
     return Scaffold(
       floatingActionButton: FloatingNextButton(
@@ -61,7 +61,6 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               IntroductionHeader(
-                styles: styles,
                 introText: " معلومات إضافية",
                 icon: PhosphorIcons.userPlus(),
               ),

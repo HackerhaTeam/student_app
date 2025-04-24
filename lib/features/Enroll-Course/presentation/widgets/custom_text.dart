@@ -5,14 +5,12 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 class CustomText extends StatelessWidget {
   const CustomText({
     super.key,
-    required this.styles,
     required this.content,
     required this.title,
     this.subTitle,
     this.bullets,
   });
 
-  final TextTheme styles;
   final AppContent content;
   final String title;
   final String? subTitle;
@@ -20,6 +18,7 @@ class CustomText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final styles = context;
     List<TextSpan> children = [];
 
     children.add(

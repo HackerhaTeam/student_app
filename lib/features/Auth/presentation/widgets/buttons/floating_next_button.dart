@@ -25,7 +25,7 @@ class FloatingNextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     final content = Theme.of(context).extension<AppContent>()!;
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
     return CustomButton(
       disabledColor: backgrounds.brandDisabledPrimary,
       disabled: disabled ?? false,

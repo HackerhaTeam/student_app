@@ -50,7 +50,7 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
   Widget build(BuildContext context) {
     final content = Theme.of(context).extension<AppContent>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
 
     return Scaffold(
       floatingActionButton: FloatingNextButton(
@@ -98,7 +98,6 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
                   }),
                 ),
               IntroductionHeader(
-                styles: styles,
                 introText: " أدخل رمز التحقق",
                 icon: PhosphorIcons.numpad(),
               ),

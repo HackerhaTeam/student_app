@@ -10,12 +10,10 @@ class ConnectWithUsButton extends StatelessWidget {
     super.key,
     required this.backgrounds,
     required this.border,
-    required this.styles,
   });
 
   final AppBackgrounds backgrounds;
   final AppBorders border;
-  final TextTheme styles;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class ConnectWithUsButton extends StatelessWidget {
         borderColor: border.primaryBrand,
         child: Text(
           "تواصل معنا للحصول على الكود",
-          style: styles.xLabelLarge,
+          style: context.xLabelLarge,
         ),
         onPressed: () {});
   }

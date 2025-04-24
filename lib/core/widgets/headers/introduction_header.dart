@@ -7,12 +7,10 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 class IntroductionHeader extends StatelessWidget {
   const IntroductionHeader({
     super.key,
-    required this.styles,
     required this.introText,
     required this.icon,
   });
 
-  final TextTheme styles;
   final IconData icon;
   final String introText;
 
@@ -39,7 +37,7 @@ class IntroductionHeader extends StatelessWidget {
           ),
           Text(
             introText,
-            style: styles.xHeadingXLarge,
+            style: context.xHeadingXLarge,
           )
         ],
       ),

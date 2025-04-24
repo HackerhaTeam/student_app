@@ -41,16 +41,14 @@ class CustomSuccessDialog extends StatelessWidget {
             SizedBox(height: 24.h(context)),
             Text(
               title,
-              style: Theme.of(context)
-                  .textTheme
-                  .xHeadingXLarge
-                  .copyWith(fontWeight: FontWeight.bold),
+              style:
+                  context.xHeadingXLarge.copyWith(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 8.h(context)),
             Text(
               subtitle,
-              style: Theme.of(context).textTheme.xParagraphLargeLose,
+              style: context.xParagraphLargeLose,
               textAlign: TextAlign.center,
             ),
           ],

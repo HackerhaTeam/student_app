@@ -4,9 +4,7 @@ import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_state.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/log_in_page.dart';
 
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_wrapper.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/pages/enroll_pages_wraper.dart';
 
 void main() {

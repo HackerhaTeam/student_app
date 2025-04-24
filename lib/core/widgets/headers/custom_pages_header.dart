@@ -22,7 +22,7 @@ class CustomPagesHeader extends StatelessWidget {
   final bool isAuth;
   @override
   Widget build(BuildContext context) {
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
     final primaryColor = backgrounds.primaryBrand;
     String headerText = "";
     if (isAuth) {

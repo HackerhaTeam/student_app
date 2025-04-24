@@ -5,11 +5,11 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/custom_button.dart';
 import 'package:student_hackerha/core/widgets/custom_check_box.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/big_next_button.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/connect_with_us_button.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/duration_course_text.dart';
+import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/custom_text.dart';
 
 class EnrollCoursePageBody extends StatefulWidget {
   const EnrollCoursePageBody({super.key, required this.onNext});
@@ -23,27 +23,28 @@ class _EnrollCoursePageBodyState extends State<EnrollCoursePageBody> {
   bool value = false;
   @override
   Widget build(BuildContext context) {
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
     final content = Theme.of(context).extension<AppContent>()!;
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 20.w(context),
-          ),
+      floatingActionButton: BigNextButton(
+        value: value,
+        onPressed: widget.onNext,
+      ),
+      body: Padding(
+        padding: EdgeInsets.only(
+            right: 20.w(context), left: 20.w(context), bottom: 85.h(context)),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IntroductionHeader(
-                styles: styles,
                 introText: " معلومات وشروط التسجيل",
                 icon: PhosphorIcons.questionMark(),
               ),
               CustomText(
-                styles: styles,
                 content: content,
                 title: "كود التفعيل:\n",
                 subTitle:
@@ -53,19 +54,19 @@ class _EnrollCoursePageBodyState extends State<EnrollCoursePageBody> {
                 height: 16.h(context),
               ),
               ConnectWithUsButton(
-                  backgrounds: backgrounds, border: border, styles: styles),
+                backgrounds: backgrounds,
+                border: border,
+              ),
               SizedBox(
                 height: 16.h(context),
               ),
               CustomText(
-                styles: styles,
                 content: content,
                 title: "مدة الدورة:\n",
                 subTitle:
                     "عند تفعيل الدورة، يحق للمستخدم الوصول الكامل إلى محتوى الدورة، وذلك من تاريخ أول تسجيل باستخدام الكود وحتى موعد تقديم الامتحان الخاص بها.\n",
               ),
               CustomText(
-                styles: styles,
                 content: content,
                 title: "خلال هذه الفترة يمكنك:\n",
                 bullets: [
@@ -75,7 +76,6 @@ class _EnrollCoursePageBodyState extends State<EnrollCoursePageBody> {
                 ],
               ),
               CustomText(
-                styles: styles,
                 content: content,
                 title: "بعد انتهاء المدة:\n",
                 bullets: [
@@ -83,14 +83,12 @@ class _EnrollCoursePageBodyState extends State<EnrollCoursePageBody> {
                 ],
               ),
               CustomText(
-                styles: styles,
                 content: content,
                 title: "الملكية الفكرية:\n",
                 subTitle:
                     "جميع المحتويات التعليمية، بما في ذلك المستندات، الفيديوهات، والوسائط الأخرى، هي ملكية حصرية لفريق \"هكرها\".\n",
               ),
               CustomText(
-                styles: styles,
                 content: content,
                 title: "بذلك، يتعهد المستخدم بما يلي:\n",
                 bullets: [
@@ -100,7 +98,6 @@ class _EnrollCoursePageBodyState extends State<EnrollCoursePageBody> {
                 ],
               ),
               CustomText(
-                styles: styles,
                 content: content,
                 title: "الملكية الفردية للحساب:\n",
                 subTitle:
@@ -129,31 +126,6 @@ class _EnrollCoursePageBodyState extends State<EnrollCoursePageBody> {
                   SizedBox(height: 24.h(context)),
                 ],
               ),
-              Padding(
-                padding:
-                    EdgeInsets.only(bottom: 32.h(context), top: 24.h(context)),
-                child: CustomButton(
-                    disabledColor: backgrounds.brandDisabledPrimary,
-                    disabled: value ? false : true,
-                    borderRadius: 24.r(context),
-                    height: 56.h(context),
-                    width: 372.w(context),
-                    color: backgrounds.primaryBrand,
-                    onPressed: widget.onNext,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "التالي",
-                          style: styles.xLabelLarge
-                              .copyWith(color: content.brandDisabledPrimary),
-                        ),
-                        PhosphorIcon(PhosphorIcons.caretRight(),
-                            size: 16.w(context),
-                            color: content.brandDisabledPrimary),
-                      ],
-                    )),
-              )
             ],
           ),
         ),

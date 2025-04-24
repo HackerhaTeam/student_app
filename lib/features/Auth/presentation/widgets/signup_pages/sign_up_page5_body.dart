@@ -34,7 +34,7 @@ class _SignUpPage5BodyState extends State<SignUpPage5Body> {
 
   @override
   Widget build(BuildContext context) {
-    final styles = Theme.of(context).textTheme;
+    final styles = context;
     return Scaffold(
       floatingActionButton: FloatingNextButton(
         formKey: formKey,
@@ -53,7 +53,6 @@ class _SignUpPage5BodyState extends State<SignUpPage5Body> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IntroductionHeader(
-                styles: styles,
                 introText: " معلومات تسجيل الدخول",
                 icon: PhosphorIcons.signIn(),
               ),
