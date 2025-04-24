@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
@@ -8,19 +9,17 @@ import 'package:student_hackerha/features/home/presentation/widgets/courses%20el
 class NewCoursesItem extends StatelessWidget {
   final AppBorders border;
   final AppBackgrounds background;
-  final String courseName;
-  final String description;
+
   final List<String> tagsTitle;
-  final bool isNew;
+
+  final Course course;
 
   const NewCoursesItem({
     super.key,
+    required this.course,
     required this.border,
     required this.background,
-    required this.courseName,
-    required this.description,
     required this.tagsTitle,
-    required this.isNew,
   });
 
   @override
@@ -38,13 +37,13 @@ class NewCoursesItem extends StatelessWidget {
             CourseImage(
               border: border,
               background: background,
-              isNew: isNew,
+              isNew: true,
             ),
             CourseContent(
               border: border,
               background: background,
-              courseName: courseName,
-              description: description,
+              courseName: course.name,
+              description: course.description,
               tagsTitle: tagsTitle,
             ),
           ],

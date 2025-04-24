@@ -57,7 +57,6 @@ class _MyDrawerState extends State<MyDrawer>
                   height: 20.h(context),
                 ),
                 DrawerHeadding(
-                  animationController: _animationController,
                   onClose: () {
                     Navigator.of(context).pop();
                     iconTaped();

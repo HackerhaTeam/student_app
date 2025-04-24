@@ -10,21 +10,11 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-late AnimationController animationController;
-
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   @override
   void initState() {
-    animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
   }
 
   @override
@@ -33,9 +23,7 @@ class _HomePageState extends State<HomePage>
 
     return Scaffold(
       key: scaffoldKey,
-      body: HomePageBody(
-        animationController: animationController,
-      ),
+      body: HomePageBody(),
     );
   }
 }

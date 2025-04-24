@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
@@ -9,15 +10,13 @@ import 'package:student_hackerha/features/home/presentation/widgets/courses%20el
 class MyCoursesItem extends StatelessWidget {
   final AppBorders border;
   final AppBackgrounds background;
-  final String courseName;
-  final String description;
+  final Course course;
 
   const MyCoursesItem({
     super.key,
     required this.border,
+    required this.course,
     required this.background,
-    required this.courseName,
-    required this.description,
   });
 
   @override
@@ -39,10 +38,9 @@ class MyCoursesItem extends StatelessWidget {
               isNew: false,
             ),
             MyCourseCard(
-              title: "البرمجة (1)",
-              instructorName: "منصور السالم",
               imageUrl: AppImages.courseImage,
               progress: 22,
+              course: course,
             ),
           ],
         ),

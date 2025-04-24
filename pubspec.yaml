@@ -12,6 +12,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   day_night_switch: ^1.0.4
   day_night_switcher: ^0.2.0+1
+  equatable: ^2.0.7
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.0
@@ -20,6 +21,7 @@ dependencies:
   flutter_svg: ^2.0.17
   get_it: ^8.0.3
   phosphor_flutter: ^2.1.0
+  smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
   flutter_lints: ^5.0.0

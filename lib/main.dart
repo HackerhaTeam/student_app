@@ -8,7 +8,7 @@ import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
-  setup();
+  setupDependencies();
   runApp(
     BlocProvider(
       create: (_) => ThemeCubit(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
@@ -8,17 +9,15 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_button.dart';
 
 class MyCourseCard extends StatelessWidget {
-  final String title;
-  final String instructorName;
   final String imageUrl;
   final double progress;
+  final Course course;
 
   const MyCourseCard({
     super.key,
-    required this.title,
-    required this.instructorName,
     required this.imageUrl,
     required this.progress,
+    required this.course,
   });
 
   @override
@@ -104,7 +103,7 @@ class MyCourseCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          title,
+          course.name,
           style: textTheme.xHeadingLarge,
         ),
         SizedBox(height: 4.h(context)),
@@ -128,7 +127,7 @@ class MyCourseCard extends StatelessWidget {
             ),
             SizedBox(width: 4.w(context)),
             Text(
-              instructorName,
+              "${course.teacher!.firstName} ${course.teacher!.lastName}",
               style: textTheme.xParagraphMedium,
             ),
           ],

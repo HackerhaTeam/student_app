@@ -1,50 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/features/home/presentation/pages/home_page.dart';
+import 'package:student_hackerha/features/home/presentation/manager/change_icon_cubit.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/notification_icon.dart';
 
-class HomeHeader extends StatefulWidget {
+class PageHeader extends StatefulWidget {
   final AppBackgrounds? backgrounds;
-  final AnimationController animationController;
 
-  const HomeHeader({
+  const PageHeader({
     super.key,
     required this.backgrounds,
-    required this.animationController,
   });
 
   @override
-  State<HomeHeader> createState() => _HomeHeaderState();
+  State<PageHeader> createState() => _PageHeaderState();
 }
 
-class _HomeHeaderState extends State<HomeHeader>
+class _PageHeaderState extends State<PageHeader>
     with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
   }
 
-  bool isopen = false;
-  void iconTaped() {
-    if (!isopen) {
-      widget.animationController.forward();
-      isopen = true;
-    } else {
-      widget.animationController.reverse();
-      isopen = false;
-    }
-  }
-
-  @override
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
+    AnimationController animationController =
+        BlocProvider.of<ChangeIconCubit>(context).controller;
+
+    bool isopen = false;
+    void iconTaped() {
+      if (!isopen) {
+        animationController.forward();
+        isopen = true;
+      } else {
+        animationController.reverse();
+        isopen = false;
+      }
+    }
+
     return Padding(
       padding: EdgeInsets.only(
           top: 20.h(context), right: 20.w(context), left: 20.w(context)),
@@ -58,7 +54,7 @@ class _HomeHeaderState extends State<HomeHeader>
               },
               child: AnimatedIcon(
                   icon: AnimatedIcons.menu_close,
-                  progress: widget.animationController),
+                  progress: animationController),
             );
           }),
           const Spacer(),

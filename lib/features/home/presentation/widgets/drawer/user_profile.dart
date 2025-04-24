@@ -18,7 +18,11 @@ class UserProfile extends StatelessWidget {
       children: [
         Column(
           children: [
-            UserPhoto(background: background),
+            UserPhoto(
+              background: background,
+              height: 64.h(context),
+              width: 64.w(context),
+            ),
           ],
         ),
         SizedBox(height: 8.h(context)),

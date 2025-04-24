@@ -1,9 +1,11 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_hackerha/features/home/presentation/manager/change_icon_cubit.dart';
 import 'package:student_hackerha/features/home/presentation/pages/account_tab_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/animated_navbar.dart';
 import 'package:student_hackerha/features/home/presentation/pages/archive_tab_page.dart';
-import 'package:student_hackerha/features/home/presentation/pages/courses_tab_page.dart';
+import 'package:student_hackerha/features/courses/presentation/pages/courses_tab_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_page_body.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/drawer/my_drawer.dart';
 
@@ -18,18 +20,19 @@ class _MainNavigationPageState extends State<MainNavigationPage>
     with SingleTickerProviderStateMixin {
   final PageController _pageController = PageController();
   int _currentIndex = 0;
-  late AnimationController animationController;
   late List<Widget> _pages;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  late ChangeIconCubit _iconCubit;
 
   @override
   void initState() {
     super.initState();
-    animationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+
+    _iconCubit = ChangeIconCubit()..initController(this);
 
     _pages = [
-      HomePageBody(animationController: animationController),
+      HomePageBody(),
       CoursesTabPage(),
       ArchiveTabPage(),
       AccountTabPage(),
@@ -39,56 +42,47 @@ class _MainNavigationPageState extends State<MainNavigationPage>
   @override
   void dispose() {
     _pageController.dispose();
-    animationController.dispose();
     super.dispose();
-  }
-
-  bool isopen = false;
-  void iconTaped(isOpened) {
-    if (!isOpened) {
-      animationController.reverse();
-      isopen = true;
-    } else {
-      animationController.forward();
-      isopen = false;
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return ThemeSwitchingArea(
-      child: Scaffold(
-        key: _scaffoldKey,
-        onDrawerChanged: (isOpened) {
-          iconTaped(isOpened);
-        },
-        drawer: MyDrawer(
-          animationController: animationController,
-          onThemeChanged: () {
-            if (_scaffoldKey.currentState?.isEndDrawerOpen ?? false) {
-              _scaffoldKey.currentState?.openEndDrawer();
-            }
+    return BlocProvider.value(
+      value: _iconCubit,
+      child: ThemeSwitchingArea(
+        child: Scaffold(
+          key: _scaffoldKey,
+          onDrawerChanged: (isOpened) {
+            _iconCubit.toggleAnimation(isOpened);
           },
-        ),
-        body: PageView(
-          reverse: true,
-          controller: _pageController,
-          physics: const ClampingScrollPhysics(),
-          children: _pages,
-          onPageChanged: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-        ),
-        bottomNavigationBar: AnimatedBottomNavBar(
-          currentIndex: _currentIndex,
-          onTap: (newIndex) {
-            setState(() {
-              _currentIndex = newIndex;
-            });
-            _pageController.jumpToPage(newIndex);
-          },
+          drawer: MyDrawer(
+            animationController: _iconCubit.controller,
+            onThemeChanged: () {
+              if (_scaffoldKey.currentState?.isEndDrawerOpen ?? false) {
+                _scaffoldKey.currentState?.openEndDrawer();
+              }
+            },
+          ),
+          body: PageView(
+            reverse: true,
+            controller: _pageController,
+            physics: const ClampingScrollPhysics(),
+            children: _pages,
+            onPageChanged: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+          ),
+          bottomNavigationBar: AnimatedBottomNavBar(
+            currentIndex: _currentIndex,
+            onTap: (newIndex) {
+              setState(() {
+                _currentIndex = newIndex;
+              });
+              _pageController.jumpToPage(newIndex);
+            },
+          ),
         ),
       ),
     );

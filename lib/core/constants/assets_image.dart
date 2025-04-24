@@ -9,6 +9,7 @@ class AppImages {
   static const String coursesNavbar = "assets/images/svg/courses_navbar.svg";
   static const String archiveNavbar = "assets/images/svg/archive_navbar.svg";
   static const String accountNavbar = "assets/images/svg/account_navbar.svg";
+  static const String accounCheck = "assets/images/svg/account_check.svg";
   static const String progressImageIcon =
       "assets/images/svg/progress_indicator_icon.svg";
 }

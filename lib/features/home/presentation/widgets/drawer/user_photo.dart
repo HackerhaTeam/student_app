@@ -7,19 +7,23 @@ class UserPhoto extends StatelessWidget {
   const UserPhoto({
     super.key,
     required this.background,
+    required this.width,
+    required this.height,
   });
 
   final AppBackgrounds background;
+  final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 64.w(context),
-      height: 64.h(context),
+      width: width,
+      height: height,
       decoration: ShapeDecoration(
         color: background.onSurfaceSecondary,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100),
+          borderRadius: BorderRadius.circular(100.r(context)),
         ),
       ),
       child: PhosphorIcon(PhosphorIcons.user()),

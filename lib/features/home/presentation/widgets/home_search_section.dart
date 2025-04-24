@@ -34,7 +34,7 @@ class HomeSearchSection extends StatelessWidget {
             fieldType: FieldType.search,
             hint: "ابحث عن اسم مادة",
             radius: 8.r(context),
-            suffixIcon: PhosphorIcons.magnifyingGlass(),
+            prefixIcon: PhosphorIcons.magnifyingGlass(),
             controller: searchController,
           ),
           SizedBox(height: 24.h(context)),
