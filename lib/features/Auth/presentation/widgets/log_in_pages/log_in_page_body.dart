@@ -8,11 +8,11 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/util/navigator.dart';
+import 'package:student_hackerha/core/widgets/custom_icon_button.dart';
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
 import 'package:student_hackerha/core/widgets/float_next_button_with_dialog.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/forget_password_page.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_wrapper.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/back_button.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 
 class LoginPageBody extends StatefulWidget {
@@ -60,7 +60,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AuthBackButton(onBack: () {}),
+                CustomIconButton(iconDataPhosphor: PhosphorIcons.caretRight()),
                 IntroductionHeader(
                   introText: " تسجيل الدخول",
                   icon: PhosphorIcons.signIn(),

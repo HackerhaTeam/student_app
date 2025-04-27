@@ -11,10 +11,10 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/util/navigator.dart';
+import 'package:student_hackerha/core/widgets/custom_icon_button.dart';
 import 'package:student_hackerha/core/widgets/custom_success_dialog.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/log_in_page.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/reset_pawword_page.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/back_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/pin_code_fields.dart';
@@ -91,11 +91,12 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //
               if (widget.isSignin)
                 SafeArea(
-                  child: AuthBackButton(onBack: () {
-                    Navigator.of(context).pop();
-                  }),
+                  child: CustomIconButton(
+                      onTap: () => Navigator.of(context).pop(),
+                      iconDataPhosphor: PhosphorIcons.caretRight()),
                 ),
               IntroductionHeader(
                 introText: " أدخل رمز التحقق",

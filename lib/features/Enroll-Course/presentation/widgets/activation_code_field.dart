@@ -24,7 +24,7 @@ class ActivationCodeField extends StatelessWidget {
       child: CustomTextField(
         focusNode: codeFocusNode,
         fieldType: FieldType.activationCode,
-        keyboardType: TextInputType.number,
+        keyboardType: TextInputType.text,
         label: "كود التفعيل",
         hint: "XX XXX XXX",
         suffix: Padding(
