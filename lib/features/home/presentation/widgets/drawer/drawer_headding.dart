@@ -32,7 +32,7 @@ class DrawerHeadding extends StatelessWidget {
         Text(
           "إغلاق",
           style:
-              textTheme.xLabelXLarge.copyWith(color: contentColor.brandPrimary),
+              context.xLabelXLarge.copyWith(color: contentColor.brandPrimary),
         ),
         SizedBox(width: 12.w(context)),
         const Spacer(),

@@ -40,10 +40,7 @@ class CustomListTile extends StatelessWidget {
             ),
             Text(
               title,
-              style: Theme.of(context)
-                  .textTheme
-                  .xLabelLarge
-                  .copyWith(color: color),
+              style: context.xLabelLarge.copyWith(color: color),
             ),
           ],
         ),

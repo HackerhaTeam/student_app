@@ -99,13 +99,13 @@ class _AdvancedThemeSwitcherState extends State<AdvancedThemeSwitcher>
                           child: PhosphorIcon(
                             PhosphorIcons.moonStars(),
                             key: ValueKey<bool>(isDarkModeEnabled),
-                            size: 24.w(context),
+                            size: 40.w(context),
                           ),
                         )
                       : PhosphorIcon(
                           PhosphorIcons.sunDim(),
                           key: ValueKey<bool>(isDarkModeEnabled),
-                          size: 24.w(context),
+                          size: 40.w(context),
                         ),
                 ),
               ),

@@ -12,4 +12,7 @@ class AppImages {
   static const String accounCheck = "assets/images/svg/account_check.svg";
   static const String progressImageIcon =
       "assets/images/svg/progress_indicator_icon.svg";
+  static const String noCoursesImage = "assets/images/svg/no_courses_found.svg";
+  static const String noCoursesDarkImage =
+      "assets/images/svg/no_courses_found_dark.svg";
 }

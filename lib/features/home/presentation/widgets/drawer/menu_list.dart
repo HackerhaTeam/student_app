@@ -20,7 +20,7 @@ class MenuList extends StatelessWidget {
           children: [
             Text(
               "القائمة",
-              style: textTheme.xHeadingSmall
+              style: context.xHeadingSmall
                   .copyWith(color: contentColor!.secondary),
             ),
           ],

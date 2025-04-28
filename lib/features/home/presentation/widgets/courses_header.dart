@@ -22,12 +22,12 @@ class CoursesHeader extends StatelessWidget {
         children: [
           Text(
             title,
-            style: Theme.of(context).textTheme.xHeadingLarge,
+            style: context.xHeadingLarge,
           ),
           Text(
             "عرض الكل",
             style:
-                textTheme.xLabelMedium.copyWith(color: background.primaryBrand),
+                context.xLabelMedium.copyWith(color: background.primaryBrand),
           ),
         ],
       ),

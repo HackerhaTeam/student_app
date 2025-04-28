@@ -10,7 +10,7 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/my_course_list_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_list_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/page_header.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/home_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_search_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/tags_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/monthly_trainer_page_view.dart';
@@ -55,7 +55,7 @@ class _HomePageBodyState extends State<HomePageBody> {
     return SafeArea(
       child: CustomScrollView(slivers: [
         SliverToBoxAdapter(
-            child: PageHeader(
+            child: HomeHeader(
           backgrounds: background,
         )),
         SliverToBoxAdapter(
@@ -69,8 +69,6 @@ class _HomePageBodyState extends State<HomePageBody> {
             tags: tags,
             selectedIndex: selectedTagIndex,
             onTagSelected: (index) => setState(() => selectedTagIndex = index),
-            background: background,
-            border: border,
           ),
         ),
         SliverToBoxAdapter(child: SizedBox(height: 24.h(context))),
@@ -81,8 +79,6 @@ class _HomePageBodyState extends State<HomePageBody> {
         SliverToBoxAdapter(
           child: NewCourseListSection(
             height: listHeight,
-            border: border,
-            background: background,
             courses: courses,
           ),
         ),
@@ -109,7 +105,7 @@ class _HomePageBodyState extends State<HomePageBody> {
             padding: EdgeInsets.only(right: 20.w(context)),
             child: Text(
               "مدرسي الشهر",
-              style: Theme.of(context).textTheme.xHeadingLarge,
+              style: context.xHeadingLarge,
             ),
           ),
         ),

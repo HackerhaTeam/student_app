@@ -64,7 +64,6 @@ class _MainNavigationPageState extends State<MainNavigationPage>
             },
           ),
           body: PageView(
-            reverse: true,
             controller: _pageController,
             physics: const ClampingScrollPhysics(),
             children: _pages,

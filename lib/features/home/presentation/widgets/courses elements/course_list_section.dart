@@ -7,20 +7,18 @@ import 'package:student_hackerha/features/home/presentation/widgets/courses%20el
 
 class NewCourseListSection extends StatelessWidget {
   final double height;
-  final AppBorders border;
-  final AppBackgrounds background;
 
   final List<Course> courses;
   const NewCourseListSection({
     super.key,
     required this.height,
-    required this.border,
-    required this.background,
     required this.courses,
   });
 
   @override
   Widget build(BuildContext context) {
+    final background = Theme.of(context).extension<AppBackgrounds>()!;
+    final border = Theme.of(context).extension<AppBorders>()!;
     return SizedBox(
       height: height,
       child: ListView.builder(

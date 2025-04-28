@@ -28,7 +28,7 @@ class UserProfile extends StatelessWidget {
         SizedBox(height: 8.h(context)),
         Text(
           userName,
-          style: textTheme.xLabelXLarge,
+          style: context.xLabelXLarge,
         ),
       ],
     );

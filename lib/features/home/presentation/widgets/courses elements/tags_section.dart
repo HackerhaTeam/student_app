@@ -8,20 +8,18 @@ class TagsSection extends StatelessWidget {
   final List<String> tags;
   final int selectedIndex;
   final void Function(int) onTagSelected;
-  final AppBackgrounds background;
-  final AppBorders border;
 
   const TagsSection({
     super.key,
     required this.tags,
     required this.selectedIndex,
     required this.onTagSelected,
-    required this.background,
-    required this.border,
   });
 
   @override
   Widget build(BuildContext context) {
+    final background = Theme.of(context).extension<AppBackgrounds>()!;
+    final border = Theme.of(context).extension<AppBorders>()!;
     return Padding(
       padding: EdgeInsets.only(right: 20.w(context)),
       child: SizedBox(
