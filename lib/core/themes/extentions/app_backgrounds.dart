@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/colors/app_colors.dart';
 
@@ -17,7 +19,14 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
   final Color warningStrong;
   final Color warningSoft;
   final Color brandDisabledPrimary;
+  final Color disabled;
+  final Color radialSurfaceStart;
+  final Color radialSurfaceEnd;
+
   AppBackgrounds({
+    required this.radialSurfaceStart,
+    required this.radialSurfaceEnd,
+    required this.disabled,
     required this.brandDisabledPrimary,
     required this.surfacePrimary,
     required this.onSurfacePrimary,
@@ -51,6 +60,9 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
     warningStrong: AppColors.yellow500,
     warningSoft: AppColors.yellow50,
     brandDisabledPrimary: AppColors.brandNavyBlue200,
+    disabled: AppColors.grey300,
+    radialSurfaceStart: Color(0xff222222).withOpacity(50 / 100),
+    radialSurfaceEnd: Color(0xff222222).withOpacity(0),
   );
 
   static AppBackgrounds dark = AppBackgrounds(
@@ -69,6 +81,9 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
     warningStrong: AppColors.yellow500,
     warningSoft: AppColors.yellow1000,
     brandDisabledPrimary: AppColors.brandBlue800,
+    disabled: AppColors.brandBlue500,
+    radialSurfaceStart: Color(0xffFFFFFF).withOpacity(50 / 100),
+    radialSurfaceEnd: Color(0xffFFFFFF).withOpacity(0),
   );
 
   @override
@@ -94,6 +109,11 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
       warningSoft: Color.lerp(warningSoft, other.warningSoft, t)!,
       brandDisabledPrimary:
           Color.lerp(brandDisabledPrimary, other.brandDisabledPrimary, t)!,
+      disabled: Color.lerp(disabled, other.disabled, t)!,
+      radialSurfaceStart:
+          Color.lerp(radialSurfaceStart, other.radialSurfaceStart, t)!,
+      radialSurfaceEnd:
+          Color.lerp(radialSurfaceEnd, other.radialSurfaceEnd, t)!,
     );
   }
 
@@ -113,7 +133,10 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
       Color? successSoft,
       Color? warningStrong,
       Color? warningSoft,
-      Color? brandDisabledPrimary}) {
+      Color? disabled,
+      Color? brandDisabledPrimary,
+      Color? radialSurfaceStart,
+      Color? radialSurfaceEnd}) {
     return AppBackgrounds(
       surfacePrimary: surfacePrimary ?? this.surfacePrimary,
       onSurfacePrimary: onSurfacePrimary ?? this.onSurfacePrimary,
@@ -130,6 +153,9 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
       warningStrong: warningStrong ?? this.warningStrong,
       warningSoft: warningSoft ?? this.warningSoft,
       brandDisabledPrimary: brandDisabledPrimary ?? this.brandDisabledPrimary,
+      disabled: disabled ?? this.disabled,
+      radialSurfaceStart: radialSurfaceStart ?? this.radialSurfaceStart,
+      radialSurfaceEnd: radialSurfaceEnd ?? this.radialSurfaceEnd,
     );
   }
 }

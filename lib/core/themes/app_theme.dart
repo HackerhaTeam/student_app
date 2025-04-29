@@ -46,7 +46,7 @@ class AppTheme {
       cursorColor: Color(0xff36A9E1),
     ),
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: AppColors.grey900,
+    scaffoldBackgroundColor: AppColors.grey1000,
     primaryColor: AppColors.grey50,
     fontFamily: AppTypography.arabicFontFamily,
     extensions: <ThemeExtension<dynamic>>[

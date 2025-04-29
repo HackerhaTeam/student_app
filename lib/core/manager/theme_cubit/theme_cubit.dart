@@ -1,17 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'theme_state.dart';
 
-class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit() : super(ThemeState(themeMode: ThemeMode.system));
+class ThemeCubit extends Cubit<bool> {
+  ThemeCubit() : super(false);
 
   void toggleTheme() {
-    final newMode =
-        state.themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
-    emit(state.copyWith(themeMode: newMode));
+    // إضافة تأخير بسيط لمزامنة الأنيميشن
+    Future.delayed(const Duration(milliseconds: 50), () {
+      emit(!state);
+    });
   }
-
-  // void setTheme(ThemeMode mode) {
-  //   emit(state.copyWith(themeMode: mode));
-  // }
 }

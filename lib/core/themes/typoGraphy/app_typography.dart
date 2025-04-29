@@ -33,4 +33,16 @@ class AppTypography {
   static const FontWeight light = FontWeight.w300;
   static const FontWeight regular = FontWeight.w400;
   static const FontWeight bold = FontWeight.w700;
+
+  // Line Heights
+  static const double lineHeight100 = 16;
+  static const double lineHeight200 = 18;
+  static const double lineHeight300 = 20;
+  static const double lineHeight400 = 22;
+  static const double lineHeight500 = 24;
+  static const double lineHeight600 = 26;
+  static const double lineHeight700 = 30;
+  static const double lineHeight800 = 32;
+  static const double lineHeight900 = 40;
+  static const double lineHeight1000 = 44;
 }
