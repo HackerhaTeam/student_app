@@ -76,6 +76,8 @@ class AppContent extends ThemeExtension<AppContent> {
     primaryInverted: AppColors.black,
   );
 
+  get backgroundPrimary => null;
+
   @override
   AppContent copyWith({
     Color? primary,

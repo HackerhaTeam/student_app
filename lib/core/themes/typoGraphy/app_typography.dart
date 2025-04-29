@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 
 class AppTypography {
-  // Font Families
   static const String arabicFontFamily = 'Montserrat-Arabic';
 
   // Font Sizes (Responsive)
@@ -29,7 +28,6 @@ class AppTypography {
   static double lineHeight900(BuildContext context) => 40.fs(context);
   static double lineHeight1000(BuildContext context) => 44.fs(context);
 
-  // Font Weights
   static const FontWeight light = FontWeight.w300;
   static const FontWeight regular = FontWeight.w400;
   static const FontWeight bold = FontWeight.w700;

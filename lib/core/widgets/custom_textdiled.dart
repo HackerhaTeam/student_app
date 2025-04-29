@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_hackerha/core/DI/%20service_locator.dart';
+import 'package:student_hackerha/core/Entities/course.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
 
 enum FieldType {
   email,
@@ -12,18 +16,40 @@ class CustomTextField extends StatelessWidget {
   final double radius;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
-  final TextEditingController controller;
-  final TextStyle textStyle;
+  final Widget? prefixWidget;
+  final Widget? suffixWidget;
+  final TextEditingController? controller;
+  final TextStyle? textStyle;
+  final bool autoFocus;
+  final TextInputAction? textInputAction;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onSubmitted;
+  final FocusNode? focusNode;
+  final bool showClearButton;
+  final String? initialValue;
+  final bool readOnly;
+  final int? maxLines;
 
   const CustomTextField({
     super.key,
     required this.fieldType,
     required this.hint,
-    required this.radius,
+    this.radius = 8.0,
     this.prefixIcon,
     this.suffixIcon,
-    required this.controller,
-    required this.textStyle,
+    this.prefixWidget,
+    this.suffixWidget,
+    this.controller,
+    this.textStyle,
+    this.autoFocus = false,
+    this.textInputAction,
+    this.onChanged,
+    this.onSubmitted,
+    this.focusNode,
+    this.showClearButton = false,
+    this.initialValue,
+    this.readOnly = false,
+    this.maxLines = 1,
   });
 
   String? _validate(String? value) {
@@ -50,19 +76,61 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final effectiveController =
+        controller ?? TextEditingController(text: initialValue);
+    final effectiveFocusNode = focusNode ?? FocusNode();
+    final effectiveStyle = textStyle ?? Theme.of(context).textTheme.bodyMedium;
+
     return TextFormField(
-      style: textStyle,
-      controller: controller,
+      controller: effectiveController,
+      focusNode: effectiveFocusNode,
+      style: effectiveStyle,
       obscureText: fieldType == FieldType.password,
       validator: _validate,
+      autofocus: autoFocus,
+      textInputAction: textInputAction,
+      readOnly: readOnly,
+      maxLines: maxLines,
+      onChanged: (value) {
+        if (onChanged != null) {
+          onChanged!(value);
+        }
+
+        if (fieldType == FieldType.search) {
+          final courses = locator.get<List<Course>>(instanceName: 'courses');
+          BlocProvider.of<SearchCoursesCubit>(context)
+              .searchCourses(value, courses);
+        }
+      },
+      onFieldSubmitted: onSubmitted,
       decoration: InputDecoration(
         hintText: hint,
-        prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-        suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
+        prefixIcon:
+            prefixWidget ?? (prefixIcon != null ? Icon(prefixIcon) : null),
+        suffixIcon: _buildSuffixIcon(effectiveController),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radius),
         ),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       ),
     );
+  }
+
+  Widget? _buildSuffixIcon(TextEditingController controller) {
+    if (suffixWidget != null) return suffixWidget;
+    if (suffixIcon != null) return Icon(suffixIcon);
+    if (showClearButton && controller.text.isNotEmpty) {
+      return IconButton(
+        icon: const Icon(Icons.clear),
+        onPressed: () {
+          controller.clear();
+          if (onChanged != null) {
+            onChanged!('');
+          }
+        },
+      );
+    }
+    return null;
   }
 }

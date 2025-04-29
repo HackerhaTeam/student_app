@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/drawer/custom_list_tile.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/drawer/gradient_divider.dart';
 
@@ -36,6 +38,9 @@ class MenuList extends StatelessWidget {
               icon: PhosphorIcons.magnifyingGlass(),
               title: "البحث",
               color: contentColor.primary,
+              onTap: () {
+                context.navigateWithSlideTransition(SearchPage());
+              },
             ),
             _buildMenuItem(
               icon: PhosphorIcons.arrowsCounterClockwise(),
@@ -71,15 +76,18 @@ class MenuList extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuItem({
-    required PhosphorIconData icon,
-    required String title,
-    required Color color,
-  }) {
-    return CustomListTile(
-      phosphorIcondata: icon,
-      title: title,
-      color: color,
+  Widget _buildMenuItem(
+      {required PhosphorIconData icon,
+      required String title,
+      required Color color,
+      void Function()? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: CustomListTile(
+        phosphorIcondata: icon,
+        title: title,
+        color: color,
+      ),
     );
   }
 }

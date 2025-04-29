@@ -7,29 +7,30 @@ import 'package:student_hackerha/features/home/presentation/widgets/courses%20el
 
 class NewCourseListSection extends StatelessWidget {
   final double height;
-  final AppBorders border;
-  final AppBackgrounds background;
-
+  final Axis scrollDirection;
   final List<Course> courses;
-  const NewCourseListSection({
-    super.key,
-    required this.height,
-    required this.border,
-    required this.background,
-    required this.courses,
-  });
+  const NewCourseListSection(
+      {super.key,
+      required this.height,
+      required this.courses,
+      this.scrollDirection = Axis.horizontal});
 
   @override
   Widget build(BuildContext context) {
+    final background = Theme.of(context).extension<AppBackgrounds>()!;
+    final border = Theme.of(context).extension<AppBorders>()!;
     return SizedBox(
       height: height,
       child: ListView.builder(
-        scrollDirection: Axis.horizontal,
+        scrollDirection: scrollDirection,
         itemCount: courses.length,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.only(
-              left: index == 0 ? 1.w(context) : 10.w(context),
-              right: 10.w(context)),
+              left: index == 0 && scrollDirection == Axis.horizontal
+                  ? 1.w(context)
+                  : 10.w(context),
+              right: 10.w(context),
+              bottom: scrollDirection == Axis.vertical ? 16 : 0),
           child: NewCoursesItem(
             course: courses[index],
             border: border,

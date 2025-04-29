@@ -5,26 +5,50 @@ import 'package:student_hackerha/core/Entities/subject.dart';
 import 'package:student_hackerha/core/Entities/teacher.dart';
 
 final locator = GetIt.instance;
-
 void setupDependencies() {
   // 1. تهيئة المواد (Subjects)
-  final mathSubject = Subject(
-    id: 1,
-    name: 'الرياضيات',
-    description: 'مادة الرياضيات الأساسية',
-    year: 1,
-    semester: 1,
-    universityId: 1,
-  );
-
-  final programmingSubject = Subject(
-    id: 2,
-    name: 'البرمجة',
-    description: 'مبادئ البرمجة وهياكل البيانات',
-    year: 1,
-    semester: 2,
-    universityId: 1,
-  );
+  final subjects = [
+    Subject(
+      id: 1,
+      name: 'الرياضيات',
+      description: 'مادة الرياضيات الأساسية',
+      year: 1,
+      semester: 1,
+      universityId: 1,
+    ),
+    Subject(
+      id: 2,
+      name: 'البرمجة',
+      description: 'مبادئ البرمجة وهياكل البيانات',
+      year: 1,
+      semester: 2,
+      universityId: 1,
+    ),
+    Subject(
+      id: 3,
+      name: 'الفيزياء',
+      description: 'مبادئ الفيزياء الجامعية',
+      year: 1,
+      semester: 1,
+      universityId: 1,
+    ),
+    Subject(
+      id: 4,
+      name: 'الإحصاء',
+      description: 'مبادئ الإحصاء للمهندسين',
+      year: 1,
+      semester: 2,
+      universityId: 1,
+    ),
+    Subject(
+      id: 5,
+      name: 'هياكل بيانات',
+      description: 'مادة متقدمة في البرمجة وهياكل البيانات',
+      year: 1,
+      semester: 2,
+      universityId: 1,
+    ),
+  ];
 
   // 2. تهيئة المدرسين
   final teacher1 = Teacher(
@@ -36,38 +60,90 @@ void setupDependencies() {
     description: 'أستاذ في كلية الهندسة المعلوماتية',
   );
 
-  // 3. تهيئة الكورسات
-  final programmingCourse = Course(
-    id: 1,
-    name: 'البرمجة (1)',
-    summary: 'مقدمة في البرمجة وهياكل البيانات الأساسية',
-    description: 'هذه الدورة موجهة لطلاب كلية الهندسة المعلوماتية',
-    duration: 45, // ساعات
-    likes: 120,
-    dislikes: 5,
-    endDate: DateTime(2024, 6, 30),
-    year: 2023,
-    section: "A",
-    subject: programmingSubject,
-    teacher: teacher1,
-  );
-
-  final mathCourse = Course(
+  final teacher2 = Teacher(
     id: 2,
-    name: 'الرياضيات (1)',
-    summary: 'الجبر الخطي وحساب المثلثات',
-    description: 'مقدمة في الرياضيات الجامعية',
-    duration: 60,
-    likes: 95,
-    dislikes: 3,
-    endDate: DateTime(2024, 6, 30),
-    year: 2023,
-    section: "B",
-    subject: mathSubject,
-    teacher: teacher1,
+    email: 'teacher2@university.edu',
+    firstName: 'ليلى',
+    lastName: 'حسن',
+    phone: '0997654321',
+    description: 'أستاذة في قسم الرياضيات',
   );
 
-  // 4. تهيئة الطلاب
+  // 3. تهيئة الكورسات (أكتر من كورس)
+  final courses = [
+    Course(
+      id: 1,
+      name: 'الرياضيات (1)',
+      summary: 'مقدمة في الجبر وحساب المثلثات',
+      description: 'أساسيات الرياضيات للسنة الأولى',
+      duration: 60,
+      likes: 100,
+      dislikes: 2,
+      endDate: DateTime(2024, 6, 30),
+      year: 1,
+      section: "A",
+      subject: subjects[0], // رياضيات
+      teacher: teacher2,
+    ),
+    Course(
+      id: 2,
+      name: 'البرمجة (1)',
+      summary: 'مقدمة في البرمجة بلغة C++',
+      description: 'تعلم البرمجة من الصفر',
+      duration: 45,
+      likes: 120,
+      dislikes: 5,
+      endDate: DateTime(2024, 6, 30),
+      year: 2,
+      section: "A",
+      subject: subjects[1], // برمجة
+      teacher: teacher1,
+    ),
+    Course(
+      id: 3,
+      name: 'فيزياء عامة (1)',
+      summary: 'مبادئ الحركة والميكانيكا',
+      description: 'فيزياء كلاسيكية أساسية',
+      duration: 50,
+      likes: 90,
+      dislikes: 3,
+      endDate: DateTime(2024, 6, 30),
+      year: 1,
+      section: "B",
+      subject: subjects[2], // فيزياء
+      teacher: teacher2,
+    ),
+    Course(
+      id: 4,
+      name: 'مبادئ الإحصاء',
+      summary: 'مفاهيم إحصائية لطلاب الهندسة',
+      description: 'احتمالات وتوزيعات إحصائية',
+      duration: 40,
+      likes: 75,
+      dislikes: 4,
+      endDate: DateTime(2024, 6, 30),
+      year: 2,
+      section: "B",
+      subject: subjects[3], // إحصاء
+      teacher: teacher1,
+    ),
+    Course(
+      id: 5,
+      name: 'هياكل بيانات (1)',
+      summary: 'مقدمة في هياكل البيانات',
+      description: 'قوائم، مكدسات، طوابير، أشجار',
+      duration: 55,
+      likes: 85,
+      dislikes: 2,
+      endDate: DateTime(2024, 6, 30),
+      year: 2,
+      section: "A",
+      subject: subjects[4], // هياكل بيانات
+      teacher: teacher1,
+    ),
+  ];
+
+  // 4. تهيئة طالب تجريبي
   final student1 = Student(
     id: 1,
     email: 'student1@university.edu',
@@ -75,28 +151,21 @@ void setupDependencies() {
     lastName: 'خالد',
     phone: 0999876543,
     studentNumber: '2023001',
-    enrolledCourses: [programmingCourse, mathCourse],
+    enrolledCourses: courses,
   );
 
-  List<Course> courses = [programmingCourse, mathCourse];
   // 5. التسجيل في GetIt
-  // الكورسات - Singleton لأنها لا تتغير
-
   locator.registerSingleton<List<Course>>(courses, instanceName: 'courses');
 
-  locator.registerSingleton<Course>(mathCourse, instanceName: 'math_course');
+  for (var i = 0; i < subjects.length; i++) {
+    locator.registerSingleton<Subject>(subjects[i],
+        instanceName: 'subject_${i + 1}');
+  }
 
-  // المواد - Singleton
-  locator.registerSingleton<Subject>(mathSubject, instanceName: 'math_subject');
-  locator.registerSingleton<Subject>(programmingSubject,
-      instanceName: 'programming_subject');
-
-  // المدرسون - Singleton
   locator.registerSingleton<Teacher>(teacher1, instanceName: 'teacher_1');
+  locator.registerSingleton<Teacher>(teacher2, instanceName: 'teacher_2');
 
-  // الطلاب - Factory لأنها قد تتغير (تسجيل دخول/خروج)
   locator.registerFactoryParam<Student, void, void>((_, __) => student1);
 
-  // قائمة الكورسات - Factory لأنها قد تتحدّث
-  locator.registerFactory<List<Course>>(() => [programmingCourse, mathCourse]);
+  locator.registerFactory<List<Course>>(() => courses);
 }

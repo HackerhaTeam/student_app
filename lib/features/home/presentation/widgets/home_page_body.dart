@@ -1,16 +1,20 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:student_hackerha/core/DI/%20service_locator.dart';
 import 'package:student_hackerha/core/Entities/course.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/my_course_list_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_list_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/page_header.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/home_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_search_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/tags_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/monthly_trainer_page_view.dart';
@@ -54,14 +58,28 @@ class _HomePageBodyState extends State<HomePageBody> {
 
     return SafeArea(
       child: CustomScrollView(slivers: [
+        SliverToBoxAdapter(child: HomeHeader()),
         SliverToBoxAdapter(
-            child: PageHeader(
-          backgrounds: background,
-        )),
+          child: HomePageText(),
+        ),
         SliverToBoxAdapter(
-          child: HomeSearchSection(
-            background: background,
-            searchController: _searchController,
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              HomeSearchSection(
+                searchController: _searchController,
+              ),
+              GestureDetector(
+                onTap: () {
+                  context.navigateWithSlideTransition(SearchPage());
+                },
+                child: Container(
+                  color: Colors.transparent,
+                  width: 372.w(context),
+                  height: 60,
+                ),
+              ),
+            ],
           ),
         ),
         SliverToBoxAdapter(
@@ -69,26 +87,26 @@ class _HomePageBodyState extends State<HomePageBody> {
             tags: tags,
             selectedIndex: selectedTagIndex,
             onTagSelected: (index) => setState(() => selectedTagIndex = index),
-            background: background,
-            border: border,
           ),
         ),
         SliverToBoxAdapter(child: SizedBox(height: 24.h(context))),
         SliverToBoxAdapter(
-          child: CoursesHeader(title: "الدورات الجديدة"),
+          child: CoursesHeader(
+            title: "الدورات الجديدة",
+            onPressed: () {},
+          ),
         ),
         SliverToBoxAdapter(child: SizedBox(height: 20.h(context))),
         SliverToBoxAdapter(
           child: NewCourseListSection(
             height: listHeight,
-            border: border,
-            background: background,
             courses: courses,
           ),
         ),
         SliverToBoxAdapter(
           child: CoursesHeader(
             title: "دوراتي المسجل بها",
+            onPressed: () {},
           ),
         ),
         SliverToBoxAdapter(
@@ -126,6 +144,28 @@ class _HomePageBodyState extends State<HomePageBody> {
           ),
         )
       ]),
+    );
+  }
+}
+
+class HomePageText extends StatelessWidget {
+  const HomePageText({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    return Column(
+      children: [
+        SizedBox(height: 24.h(context)),
+        SvgPicture.asset(
+          isDark ? AppImages.homeTextDark : AppImages.homeTextLight,
+          width: 372.w(context),
+        ),
+        SizedBox(height: 24.h(context)),
+      ],
     );
   }
 }

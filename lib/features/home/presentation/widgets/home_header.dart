@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/home/presentation/manager/change_icon_cubit.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/notification_icon.dart';
+import 'package:student_hackerha/core/widgets/circled_splash_icon.dart';
 
-class PageHeader extends StatefulWidget {
-  final AppBackgrounds? backgrounds;
-
-  const PageHeader({
+class HomeHeader extends StatefulWidget {
+  const HomeHeader({
     super.key,
-    required this.backgrounds,
   });
 
   @override
-  State<PageHeader> createState() => _PageHeaderState();
+  State<HomeHeader> createState() => _HomeHeaderState();
 }
 
-class _PageHeaderState extends State<PageHeader>
+class _HomeHeaderState extends State<HomeHeader>
     with SingleTickerProviderStateMixin {
   @override
   void initState() {
@@ -63,7 +60,10 @@ class _PageHeaderState extends State<PageHeader>
             style: context.xHeadingLarge,
           ),
           const Spacer(),
-          NotificationIcon(backgrounds: widget.backgrounds),
+          CircledSplashIcon(
+            iconDataPhosphor: PhosphorIcons.bellSimple(),
+            onTap: () {},
+          ),
         ],
       ),
     );
