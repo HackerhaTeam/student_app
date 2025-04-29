@@ -16,7 +16,6 @@ class DrawerHeadding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final contentColor = Theme.of(context).extension<AppContent>();
     final animationController = context.read<ChangeIconCubit>().controller;
     return Row(

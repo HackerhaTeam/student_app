@@ -7,10 +7,11 @@ class CircledSplashIcon extends StatelessWidget {
   const CircledSplashIcon({
     super.key,
     required this.iconDataPhosphor,
+    required this.onTap,
   });
 
   final IconData iconDataPhosphor;
-
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     AppBackgrounds backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
@@ -28,7 +29,7 @@ class CircledSplashIcon extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100.r(context)))),
           CustomIconButton(
             iconDataPhosphor: iconDataPhosphor,
-            onTap: () {},
+            onTap: onTap,
           ),
         ],
       ),

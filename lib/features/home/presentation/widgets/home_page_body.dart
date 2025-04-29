@@ -54,10 +54,7 @@ class _HomePageBodyState extends State<HomePageBody> {
 
     return SafeArea(
       child: CustomScrollView(slivers: [
-        SliverToBoxAdapter(
-            child: HomeHeader(
-          backgrounds: background,
-        )),
+        SliverToBoxAdapter(child: HomeHeader()),
         SliverToBoxAdapter(
           child: HomeSearchSection(
             background: background,
@@ -73,7 +70,10 @@ class _HomePageBodyState extends State<HomePageBody> {
         ),
         SliverToBoxAdapter(child: SizedBox(height: 24.h(context))),
         SliverToBoxAdapter(
-          child: CoursesHeader(title: "الدورات الجديدة"),
+          child: CoursesHeader(
+            title: "الدورات الجديدة",
+            onPressed: () {},
+          ),
         ),
         SliverToBoxAdapter(child: SizedBox(height: 20.h(context))),
         SliverToBoxAdapter(
@@ -85,6 +85,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         SliverToBoxAdapter(
           child: CoursesHeader(
             title: "دوراتي المسجل بها",
+            onPressed: () {},
           ),
         ),
         SliverToBoxAdapter(

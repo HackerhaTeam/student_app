@@ -11,7 +11,6 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final background = Theme.of(context).extension<AppBackgrounds>()!;
 
     return Column(

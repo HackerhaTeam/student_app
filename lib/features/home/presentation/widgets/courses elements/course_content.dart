@@ -25,7 +25,6 @@ class CourseContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final appContent = Theme.of(context).extension<AppContent>();
     return Padding(
       padding: EdgeInsets.all(12.w(context)),

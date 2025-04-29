@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/home/presentation/manager/change_icon_cubit.dart';
 import 'package:student_hackerha/core/widgets/circled_splash_icon.dart';
 
 class HomeHeader extends StatefulWidget {
-  final AppBackgrounds? backgrounds;
-
   const HomeHeader({
     super.key,
-    required this.backgrounds,
   });
 
   @override
@@ -66,6 +62,7 @@ class _HomeHeaderState extends State<HomeHeader>
           const Spacer(),
           CircledSplashIcon(
             iconDataPhosphor: PhosphorIcons.bellSimple(),
+            onTap: () {},
           ),
         ],
       ),

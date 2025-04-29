@@ -19,7 +19,10 @@ class CoursesPageHeader extends StatelessWidget {
             style: context.xHeadingLarge,
           ),
           const Spacer(),
-          CircledSplashIcon(iconDataPhosphor: PhosphorIcons.magnifyingGlass())
+          CircledSplashIcon(
+            iconDataPhosphor: PhosphorIcons.magnifyingGlass(),
+            onTap: () {},
+          )
         ],
       ),
     );
