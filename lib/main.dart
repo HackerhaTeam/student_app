@@ -4,14 +4,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/DI/%20service_locator.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   setupDependencies();
   runApp(
-    BlocProvider(
-      create: (_) => ThemeCubit(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => ThemeCubit(),
+        ),
+        BlocProvider(
+          create: (context) => SearchCoursesCubit(),
+        ),
+      ],
       child: const MyApp(),
     ),
   );
@@ -40,7 +48,10 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: AppTheme.light,
               darkTheme: AppTheme.dark,
-              home: MainNavigationPage(),
+              home: BlocProvider(
+                create: (context) => SearchCoursesCubit(),
+                child: MainNavigationPage(),
+              ),
             );
           },
         );

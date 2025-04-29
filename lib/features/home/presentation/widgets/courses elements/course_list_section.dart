@@ -26,7 +26,9 @@ class NewCourseListSection extends StatelessWidget {
         itemCount: courses.length,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.only(
-              left: index == 0 ? 1.w(context) : 10.w(context),
+              left: index == 0 && scrollDirection == Axis.horizontal
+                  ? 1.w(context)
+                  : 10.w(context),
               right: 10.w(context),
               bottom: scrollDirection == Axis.vertical ? 16 : 0),
           child: NewCoursesItem(

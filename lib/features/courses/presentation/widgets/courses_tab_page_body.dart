@@ -1,8 +1,8 @@
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/DI/%20service_locator.dart';
 import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/courses_headdr.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/year_courses_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_list_section.dart';
@@ -68,31 +68,7 @@ class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
                   child: CoursesHeader(
                       title: title,
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder: (context, animation,
-                                    secondaryAnimation) =>
-                                ThemeSwitchingArea(child: YearCoursesPage()),
-                            transitionsBuilder: (context, animation,
-                                secondaryAnimation, child) {
-                              const begin = Offset(1.0, 0.0);
-                              const end = Offset.zero;
-                              const curve = Curves.easeInOut;
-
-                              var tween = Tween(begin: begin, end: end).chain(
-                                CurveTween(curve: curve),
-                              );
-
-                              return SlideTransition(
-                                position: animation.drive(tween),
-                                child: child,
-                              );
-                            },
-                            transitionDuration:
-                                const Duration(milliseconds: 300),
-                          ),
-                        );
+                        context.navigateWithSlideTransition(YearCoursesPage());
                       })),
               const SliverToBoxAdapter(child: SizedBox(height: 16)),
               SliverToBoxAdapter(

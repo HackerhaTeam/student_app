@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/circled_splash_icon.dart';
+import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 
 class YearPageHeader extends StatelessWidget {
   const YearPageHeader({
@@ -44,7 +46,9 @@ class YearPageHeader extends StatelessWidget {
           const Spacer(),
           CircledSplashIcon(
             iconDataPhosphor: PhosphorIcons.magnifyingGlass(),
-            onTap: () {},
+            onTap: () {
+              context.navigateWithSlideTransition(SearchPage());
+            },
           )
         ],
       ),

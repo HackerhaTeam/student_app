@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/features/home/presentation/manager/change_icon_cubit.dart';
 import 'package:student_hackerha/features/home/presentation/pages/account_tab_page.dart';
-import 'package:student_hackerha/features/home/presentation/pages/archive_tab_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/animated_navbar.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/courses_tab_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_page_body.dart';
@@ -34,7 +33,7 @@ class _MainNavigationPageState extends State<MainNavigationPage>
     _pages = [
       HomePageBody(),
       CoursesTabPage(),
-      ArchiveTabPage(),
+      AccountTabPage(),
       AccountTabPage(),
     ];
   }

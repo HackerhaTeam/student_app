@@ -15,4 +15,7 @@ class AppImages {
   static const String noCoursesImage = "assets/images/svg/no_courses_found.svg";
   static const String noCoursesDarkImage =
       "assets/images/svg/no_courses_found_dark.svg";
+  static const String searchIconLight =
+      "assets/images/svg/search_icon_light.svg";
+  static const String searchIconDark = "assets/images/svg/search_icon_dark.svg";
 }
