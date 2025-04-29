@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/widgets/Custom_DropdownField.dart';
+import 'package:student_hackerha/core/widgets/custom_dropdownfield.dart';
 
 class AcademicYearSellector extends StatelessWidget {
   const AcademicYearSellector({

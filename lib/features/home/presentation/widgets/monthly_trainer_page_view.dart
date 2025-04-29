@@ -60,7 +60,6 @@ class _MonthlyTrainerPageViewState extends State<MonthlyTrainerPageView> {
   @override
   Widget build(BuildContext context) {
     final content = Theme.of(context).extension<AppContent>();
-    final textTheme = Theme.of(context).textTheme;
     final bg = widget.bg;
     final border = widget.border;
 
@@ -123,7 +122,7 @@ class _MonthlyTrainerPageViewState extends State<MonthlyTrainerPageView> {
                                 ),
                               ),
                               Text("محمد نور محمد",
-                                  style: textTheme.xDisplayMedium),
+                                  style: context.xDisplayMedium),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -133,7 +132,7 @@ class _MonthlyTrainerPageViewState extends State<MonthlyTrainerPageView> {
                                   Center(
                                     child: Text(" مدرب الشهر ",
                                         textAlign: TextAlign.center,
-                                        style: textTheme.xParagraphMedium),
+                                        style: context.xParagraphMedium),
                                   ),
                                 ],
                               )
@@ -142,7 +141,7 @@ class _MonthlyTrainerPageViewState extends State<MonthlyTrainerPageView> {
                           Column(
                             children: [
                               Text(889.toString()),
-                              Text("مراجعة", style: textTheme.xLabelSmall),
+                              Text("مراجعة", style: context.xLabelSmall),
                               SizedBox(height: 8.h(context)),
                               Container(
                                 width: 90.w(context),
@@ -152,8 +151,7 @@ class _MonthlyTrainerPageViewState extends State<MonthlyTrainerPageView> {
                               SizedBox(height: 8.h(context)),
                               Row(
                                 children: [
-                                  Text("${4.7} ",
-                                      style: textTheme.xDisplaySmall),
+                                  Text("${4.7} ", style: context.xDisplaySmall),
                                   PhosphorIcon(
                                     size: 16,
                                     PhosphorIcons.star(PhosphorIconsStyle.fill),
@@ -161,7 +159,7 @@ class _MonthlyTrainerPageViewState extends State<MonthlyTrainerPageView> {
                                   ),
                                 ],
                               ),
-                              Text("التقييم", style: textTheme.xLabelSmall),
+                              Text("التقييم", style: context.xLabelSmall),
                               SizedBox(height: 8.h(context)),
                               Container(
                                 width: 90.w(context),
@@ -169,8 +167,8 @@ class _MonthlyTrainerPageViewState extends State<MonthlyTrainerPageView> {
                                 color: const Color(0xffE6E6E6),
                               ),
                               SizedBox(height: 8.h(context)),
-                              Text("${10} ", style: textTheme.xDisplaySmall),
-                              Text("دورات", style: textTheme.xLabelSmall),
+                              Text("${10} ", style: context.xDisplaySmall),
+                              Text("دورات", style: context.xLabelSmall),
                             ],
                           )
                         ],

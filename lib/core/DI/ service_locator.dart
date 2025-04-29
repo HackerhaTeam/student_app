@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/Entities/student.dart';
 import 'package:student_hackerha/core/Entities/subject.dart';
 import 'package:student_hackerha/core/Entities/teacher.dart';
-import 'package:student_hackerha/features/home/presentation/pages/home_page.dart';
 
 final locator = GetIt.instance;
 

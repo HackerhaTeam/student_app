@@ -38,15 +38,15 @@ class MyCourseCard extends StatelessWidget {
             ],
           ),
           SizedBox(height: 12.h(context)),
-          _buildCustomButton(background, context, textTheme, content),
+          _buildCustomButton(background, context, content),
           SizedBox(height: 12.h(context)),
         ],
       ),
     );
   }
 
-  CustomButton _buildCustomButton(AppBackgrounds? background,
-      BuildContext context, TextTheme textTheme, AppContent? content) {
+  CustomButton _buildCustomButton(
+      AppBackgrounds? background, BuildContext context, AppContent? content) {
     return CustomButton(
       onPressed: () {},
       color: background!.primaryBrand,
@@ -54,7 +54,7 @@ class MyCourseCard extends StatelessWidget {
       height: 38.h(context),
       child: Text(
         "استأنف الدورة",
-        style: textTheme.xLabelSmall.copyWith(color: content!.primaryInverted),
+        style: context.xLabelSmall.copyWith(color: content!.primaryInverted),
       ),
     );
   }
@@ -66,14 +66,14 @@ class MyCourseCard extends StatelessWidget {
       children: [
         Text(
           "\t\t\t\tالتقدم",
-          style: textTheme.xLabelMedium,
+          style: context.xLabelMedium,
         ),
         SizedBox(height: 4.h(context)),
         Row(
           children: [
             Text(
               "$progress % ",
-              style: textTheme.xLabelMedium,
+              style: context.xLabelMedium,
             ),
             SizedBox(width: 4.w(context)),
             SizedBox(
@@ -104,7 +104,7 @@ class MyCourseCard extends StatelessWidget {
       children: [
         Text(
           course.name,
-          style: textTheme.xHeadingLarge,
+          style: context.xHeadingLarge,
         ),
         SizedBox(height: 4.h(context)),
         Row(
@@ -112,7 +112,7 @@ class MyCourseCard extends StatelessWidget {
           children: [
             Text(
               "بإشراف",
-              style: textTheme.xParagraphMedium,
+              style: context.xParagraphMedium,
             ),
             SizedBox(width: 4.w(context)),
             CircleAvatar(
@@ -128,7 +128,7 @@ class MyCourseCard extends StatelessWidget {
             SizedBox(width: 4.w(context)),
             Text(
               "${course.teacher!.firstName} ${course.teacher!.lastName}",
-              style: textTheme.xParagraphMedium,
+              style: context.xParagraphMedium,
             ),
           ],
         ),

@@ -14,7 +14,7 @@ class CoursesHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppBackgrounds background =
         Theme.of(context).extension<AppBackgrounds>()!;
-    final textTheme = Theme.of(context).textTheme;
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w(context)),
       child: Row(
@@ -22,12 +22,12 @@ class CoursesHeader extends StatelessWidget {
         children: [
           Text(
             title,
-            style: Theme.of(context).textTheme.xHeadingLarge,
+            style: context.xHeadingLarge,
           ),
           Text(
             "عرض الكل",
             style:
-                textTheme.xLabelMedium.copyWith(color: background.primaryBrand),
+                context.xLabelMedium.copyWith(color: background.primaryBrand),
           ),
         ],
       ),

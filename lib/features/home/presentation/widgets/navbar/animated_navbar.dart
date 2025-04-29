@@ -68,7 +68,7 @@ class AnimatedBottomNavBar extends StatelessWidget {
     final theme = Theme.of(context);
     final content = theme.extension<AppContent>();
 
-    final xLabelSmall = Theme.of(context).textTheme.xLabelSmall;
+    final xLabelSmall = context.xLabelSmall;
     return BottomNavigationBar(
       selectedLabelStyle: xLabelSmall,
       unselectedLabelStyle: xLabelSmall,

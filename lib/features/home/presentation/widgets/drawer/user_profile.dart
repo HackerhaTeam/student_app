@@ -11,7 +11,6 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final background = Theme.of(context).extension<AppBackgrounds>()!;
 
     return Column(
@@ -28,7 +27,7 @@ class UserProfile extends StatelessWidget {
         SizedBox(height: 8.h(context)),
         Text(
           userName,
-          style: textTheme.xLabelXLarge,
+          style: context.xLabelXLarge,
         ),
       ],
     );

@@ -11,7 +11,6 @@ class MenuList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final contentColor = Theme.of(context).extension<AppContent>();
 
     return Column(
@@ -20,7 +19,7 @@ class MenuList extends StatelessWidget {
           children: [
             Text(
               "القائمة",
-              style: textTheme.xHeadingSmall
+              style: context.xHeadingSmall
                   .copyWith(color: contentColor!.secondary),
             ),
           ],

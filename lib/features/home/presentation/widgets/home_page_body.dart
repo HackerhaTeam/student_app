@@ -109,7 +109,7 @@ class _HomePageBodyState extends State<HomePageBody> {
             padding: EdgeInsets.only(right: 20.w(context)),
             child: Text(
               "مدرسي الشهر",
-              style: Theme.of(context).textTheme.xHeadingLarge,
+              style: context.xHeadingLarge,
             ),
           ),
         ),

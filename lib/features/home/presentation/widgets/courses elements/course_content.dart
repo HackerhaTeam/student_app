@@ -25,7 +25,6 @@ class CourseContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final appContent = Theme.of(context).extension<AppContent>();
     return Padding(
       padding: EdgeInsets.all(12.w(context)),
@@ -36,13 +35,13 @@ class CourseContent extends StatelessWidget {
             courseName,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: textTheme.xHeadingMedium,
+            style: context.xHeadingMedium,
           ),
           SizedBox(height: 8.h(context)),
           Text(
             description,
-            style: textTheme.xParagraphMedium
-                .copyWith(color: appContent!.secondary),
+            style:
+                context.xParagraphMedium.copyWith(color: appContent!.secondary),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -61,9 +60,7 @@ class CourseContent extends StatelessWidget {
             width: double.infinity,
             child: Text(
               "عرض التفاصيل",
-              style: Theme.of(context)
-                  .textTheme
-                  .xLabelSmall
+              style: context.xLabelSmall
                   .copyWith(color: appContent.primaryInverted),
             ),
           ),

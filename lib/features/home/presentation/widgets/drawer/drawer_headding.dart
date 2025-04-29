@@ -16,7 +16,6 @@ class DrawerHeadding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     final contentColor = Theme.of(context).extension<AppContent>();
     final animationController = context.read<ChangeIconCubit>().controller;
     return Row(
@@ -32,7 +31,7 @@ class DrawerHeadding extends StatelessWidget {
         Text(
           "إغلاق",
           style:
-              textTheme.xLabelXLarge.copyWith(color: contentColor.brandPrimary),
+              context.xLabelXLarge.copyWith(color: contentColor.brandPrimary),
         ),
         SizedBox(width: 12.w(context)),
         const Spacer(),

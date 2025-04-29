@@ -16,11 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.0
-  flutter_localizations:
-    sdk: flutter
-  flutter_svg: ^2.0.17
   get_it: ^8.0.3
-  phosphor_flutter: ^2.1.0
   smooth_page_indicator: ^1.2.1
   flutter_localizations:
     sdk: flutter
@@ -36,21 +32,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+ 
   assets:
     - assets/images/svg/
-    - assets/images/
-
-  fonts:
-    - family: Montserrat-Arabic
-      fonts:
-        - asset: assets/fonts/Montserrat-Arabic Regular 400.otf
-          weight: 400
-        - asset: assets/fonts/Montserrat-Arabic Bold 700.otf
-          weight: 700
-        - asset: assets/fonts/Montserrat-Arabic Light 300.otf
-          weight: 300
-  # To add assets to your application, add an assets section, like this:
-  assets:
     - assets/images/icons/
     - assets/images/
   #   - images/a_dot_ham.jpeg

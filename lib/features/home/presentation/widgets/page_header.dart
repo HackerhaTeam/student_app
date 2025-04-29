@@ -60,7 +60,7 @@ class _PageHeaderState extends State<PageHeader>
           const Spacer(),
           Text(
             'الرئيسية',
-            style: Theme.of(context).textTheme.xHeadingLarge,
+            style: context.xHeadingLarge,
           ),
           const Spacer(),
           NotificationIcon(backgrounds: widget.backgrounds),
