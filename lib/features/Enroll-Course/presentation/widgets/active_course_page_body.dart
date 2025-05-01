@@ -6,7 +6,7 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/float_next_button_with_dialog.dart';
+import 'package:student_hackerha/core/widgets/buttons/float_next_button_with_dialog.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/activation_code_field.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/contact_us.dart';

@@ -5,7 +5,6 @@ import 'package:student_hackerha/core/manager/theme_cubit/theme_state.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'package:student_hackerha/features/Enroll-Course/presentation/pages/enroll_pages_wraper.dart';
 import 'package:student_hackerha/features/course-content/presentation/pages/course_content_page.dart';
 
 void main() {
@@ -43,7 +42,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           themeMode: state.themeMode,
           theme: AppTheme.light,
-          darkTheme: AppTheme.light,
+          darkTheme: AppTheme.dark,
           home: const MyHomePage(),
         );
       },

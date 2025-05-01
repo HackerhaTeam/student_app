@@ -11,7 +11,7 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/util/navigator.dart';
-import 'package:student_hackerha/core/widgets/custom_icon_button.dart';
+import 'package:student_hackerha/core/widgets/buttons/custom_icon_button.dart';
 import 'package:student_hackerha/core/widgets/custom_success_dialog.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/log_in_page.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/reset_pawword_page.dart';
