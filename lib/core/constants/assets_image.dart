@@ -18,4 +18,9 @@ class AppImages {
   static const String searchIconLight =
       "assets/images/svg/search_icon_light.svg";
   static const String searchIconDark = "assets/images/svg/search_icon_dark.svg";
+  static const String flagIcon = "assets/images/icons/FlagIcon.svg";
+  static const String successImage = "assets/images/success.svg";
+  static const String lessonNumLight = "assets/images/lesson_number_light.svg";
+  static const String lessonNumDark = "assets/images/lesson_number_dark.svg";
+  static const String pdfIcon = 'assets/images/icons/pdf_icon.svg';
 }

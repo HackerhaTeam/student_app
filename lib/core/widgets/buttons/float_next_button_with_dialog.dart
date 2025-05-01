@@ -1,8 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:student_hackerha/core/constants/assets.dart';
-import 'package:student_hackerha/core/util/navigator.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
+import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/widgets/custom_success_dialog.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
 
@@ -35,7 +35,7 @@ class FloatNextButtonWithDialog extends StatelessWidget {
             context: context,
             barrierDismissible: false,
             builder: (context) => CustomSuccessDialog(
-              svgAssetPath: AppAssets.successImage,
+              svgAssetPath: AppImages.successImage,
               title: title,
               subtitle: subtitle,
             ),
@@ -45,7 +45,7 @@ class FloatNextButtonWithDialog extends StatelessWidget {
           );
 
           Navigator.of(context).pop();
-          Moving.navToPage(context: context, page: nextPage);
+          context.navigateWithSlideTransition(nextPage);
         }
       },
     );

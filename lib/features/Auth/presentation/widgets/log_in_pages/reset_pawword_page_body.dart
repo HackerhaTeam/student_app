@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/widgets/buttons/custom_icon_button.dart';
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
-import 'package:student_hackerha/core/widgets/float_next_button_with_dialog.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_wrapper.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/back_button.dart';
+import 'package:student_hackerha/core/widgets/buttons/float_next_button_with_dialog.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 
 class ResetPasswordPageBody extends StatefulWidget {
   const ResetPasswordPageBody({super.key});
@@ -43,7 +43,7 @@ class _ResetPasswordPageBodyState extends State<ResetPasswordPageBody> {
         title: "تم إعادة تعيين كلمة المرور!",
         subtitle:
             "مبروك! تم تحديث كلمة المرور بنجاح. يمكنك الآن تسجيل الدخول باستخدام الكلمة الجديدة.",
-        nextPage: AuthWrapper(),
+        nextPage: MainNavigationPage(),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
@@ -54,9 +54,9 @@ class _ResetPasswordPageBodyState extends State<ResetPasswordPageBody> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AuthBackButton(onBack: () {
-                Navigator.of(context).pop();
-              }),
+              CustomIconButton(
+                  onTap: () => Navigator.of(context).pop(),
+                  iconDataPhosphor: PhosphorIcons.caretRight()),
               IntroductionHeader(
                   introText: " قم بتعيين كلمة مرور جديدة",
                   icon: PhosphorIcons.password()),

@@ -4,20 +4,20 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:student_hackerha/core/constants/assets.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/util/navigator.dart';
+import 'package:student_hackerha/core/widgets/buttons/custom_icon_button.dart';
 import 'package:student_hackerha/core/widgets/custom_success_dialog.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/log_in_page.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/reset_pawword_page.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/back_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/pin_code_fields.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 
 class VerificationPageBody extends StatefulWidget {
   const VerificationPageBody({
@@ -61,13 +61,13 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
         onNext: () async {
           if (formKey.currentState!.validate()) {
             if (widget.isSignin) {
-              Moving.navToPage(context: context, page: ResetPasswordPage());
+              context.navigateWithSlideTransition(ResetPasswordPage());
             } else {
               showDialog(
                 context: context,
                 barrierDismissible: false,
                 builder: (context) => CustomSuccessDialog(
-                  svgAssetPath: AppAssets.successImage,
+                  svgAssetPath: AppImages.successImage,
                   title: "تم إنشاء حسابك بنجاح!",
                   subtitle:
                       "أهلاً بك في عائلة هكرها، هنا تهكير المادة علينا والباقي عليك!",
@@ -78,7 +78,7 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
               );
 
               Navigator.of(context).pop();
-              Moving.navToPage(context: context, page: LogInPage());
+              context.navigateWithSlideTransition(MainNavigationPage());
             }
           }
         },
@@ -91,11 +91,12 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              //
               if (widget.isSignin)
                 SafeArea(
-                  child: AuthBackButton(onBack: () {
-                    Navigator.of(context).pop();
-                  }),
+                  child: CustomIconButton(
+                      onTap: () => Navigator.of(context).pop(),
+                      iconDataPhosphor: PhosphorIcons.caretRight()),
                 ),
               IntroductionHeader(
                 introText: " أدخل رمز التحقق",

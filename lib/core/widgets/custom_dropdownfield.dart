@@ -265,7 +265,7 @@ class _CustomDropdownState extends State<CustomDropdown>
                             textDirection: TextDirection.rtl,
                           ),
                         ),
-                        const Icon(Icons.arrow_drop_down, color: Colors.black),
+                        Icon(Icons.arrow_drop_down, color: content.primary),
                       ],
                     ),
                   ),

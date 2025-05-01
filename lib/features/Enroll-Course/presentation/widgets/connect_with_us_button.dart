@@ -3,7 +3,7 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/custom_button.dart';
+import 'package:student_hackerha/core/widgets/buttons/custom_button.dart';
 
 class ConnectWithUsButton extends StatelessWidget {
   const ConnectWithUsButton({

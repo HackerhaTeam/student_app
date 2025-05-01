@@ -3,10 +3,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/custom_button.dart';
+import 'package:student_hackerha/core/widgets/buttons/custom_button.dart';
+import 'package:student_hackerha/features/course-content/presentation/pages/course_content_page.dart';
 
 class MyCourseCard extends StatelessWidget {
   final String imageUrl;
@@ -48,7 +50,9 @@ class MyCourseCard extends StatelessWidget {
   CustomButton _buildCustomButton(
       AppBackgrounds? background, BuildContext context, AppContent? content) {
     return CustomButton(
-      onPressed: () {},
+      onPressed: () {
+        context.navigateWithSlideTransition(CourseContentPage());
+      },
       color: background!.primaryBrand,
       width: 274.w(context),
       height: 38.h(context),

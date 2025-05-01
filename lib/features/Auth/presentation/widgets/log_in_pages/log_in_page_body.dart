@@ -3,17 +3,17 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/util/navigator.dart';
+import 'package:student_hackerha/core/widgets/buttons/custom_icon_button.dart';
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
-import 'package:student_hackerha/core/widgets/float_next_button_with_dialog.dart';
+import 'package:student_hackerha/core/widgets/buttons/float_next_button_with_dialog.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/forget_password_page.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_wrapper.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/back_button.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 
 class LoginPageBody extends StatefulWidget {
   const LoginPageBody({super.key});
@@ -50,7 +50,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
         title: "تم تسجيل دخولك!",
         subtitle:
             "أهلاً بك مجدداً معنا، شمر عن سواعدك وخلي تهكير المادة علينا.",
-        nextPage: AuthWrapper(),
+        nextPage: MainNavigationPage(),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
@@ -60,7 +60,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AuthBackButton(onBack: () {}),
+                CustomIconButton(iconDataPhosphor: PhosphorIcons.caretRight()),
                 IntroductionHeader(
                   introText: " تسجيل الدخول",
                   icon: PhosphorIcons.signIn(),
@@ -104,8 +104,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                     overlayColor: backgrounds.primaryBrand.withOpacity(0.2),
                   ),
                   onPressed: () {
-                    Moving.navToPage(
-                        context: context, page: ForgetPasswordPage());
+                    context.navigateWithSlideTransition(ForgetPasswordPage());
                   },
                   child: Text(
                     "هل نسيت كلمة المرور؟",

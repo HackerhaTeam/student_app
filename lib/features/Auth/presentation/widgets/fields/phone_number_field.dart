@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:student_hackerha/core/constants/assets.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
@@ -42,7 +42,7 @@ class PhoneNumberField extends StatelessWidget {
                   style: context.xLabelLarge,
                 ),
                 SvgPicture.asset(
-                  AppAssets.flagIcon,
+                  AppImages.flagIcon,
                   height: 18.h(context),
                   width: 24.w(context),
                 )

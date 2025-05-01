@@ -6,11 +6,11 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/float_next_button_with_dialog.dart';
+import 'package:student_hackerha/core/widgets/buttons/float_next_button_with_dialog.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
-import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_wrapper.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/activation_code_field.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/contact_us.dart';
+import 'package:student_hackerha/features/course-content/presentation/pages/course_content_page.dart';
 
 class ActiveCoursePageBody extends StatefulWidget {
   const ActiveCoursePageBody({super.key, required this.onNext});
@@ -41,7 +41,7 @@ class _ActiveCoursePageBodyState extends State<ActiveCoursePageBody> {
     return Scaffold(
       floatingActionButton: FloatNextButtonWithDialog(
         formKey: formKey,
-        nextPage: AuthWrapper(),
+        nextPage: CourseContentPage(),
         title: "تم تفعيل الدورة بنجاح!",
         subtitle:
             "بات الآن بإنمكانك الصول لمحتوى هذه الدورة كاملة، انطلق وهكر المادة معنا الآن!",

@@ -4,17 +4,18 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/custom_button.dart';
+import 'package:student_hackerha/core/widgets/buttons/custom_button.dart';
 
 class BigNextButton extends StatelessWidget {
   const BigNextButton({
     super.key,
     required this.value,
     required this.onPressed,
+    this.text,
   });
 
   final bool value;
-
+  final String? text;
   final void Function() onPressed;
   @override
   Widget build(BuildContext context) {
@@ -34,9 +35,10 @@ class BigNextButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "التالي",
-              style: styles.xLabelLarge
-                  .copyWith(color: content.brandDisabledPrimary),
+              text ?? "التالي",
+              style: styles.xLabelLarge.copyWith(
+                  color: content.brandDisabledPrimary,
+                  fontWeight: FontWeight.w500),
             ),
             PhosphorIcon(PhosphorIcons.caretRight(),
                 size: 16.w(context), color: content.brandDisabledPrimary),
