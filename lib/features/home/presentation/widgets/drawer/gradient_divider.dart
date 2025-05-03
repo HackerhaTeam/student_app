@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 
 class GradientDivider extends StatelessWidget {
@@ -9,7 +8,7 @@ class GradientDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     final bg = Theme.of(context).extension<AppBackgrounds>()!;
     return Container(
-      height: 1.h(context),
+      height: 1,
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(

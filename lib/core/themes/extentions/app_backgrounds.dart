@@ -61,7 +61,7 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
     warningSoft: AppColors.yellow50,
     brandDisabledPrimary: AppColors.brandNavyBlue200,
     disabled: AppColors.grey300,
-    radialSurfaceStart: Color(0xff222222).withOpacity(50 / 100),
+    radialSurfaceStart: Color(0xff222222).withOpacity(20 / 100),
     radialSurfaceEnd: Color(0xff222222).withOpacity(0),
   );
 
