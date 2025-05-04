@@ -18,7 +18,6 @@ class SessionFiles extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(16.w(context)),
       decoration: ShapeDecoration(
-        color: Colors.white,
         shape: RoundedRectangleBorder(
           side: BorderSide(width: 1, color: appBorders.transparent),
           borderRadius: BorderRadius.circular(16.r(context)),
