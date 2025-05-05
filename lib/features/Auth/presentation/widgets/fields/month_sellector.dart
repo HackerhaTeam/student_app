@@ -13,10 +13,9 @@ class MonthSellector extends StatelessWidget {
   final dynamic Function(String) onChanged;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: 118.w(context),
-        height: 58.h(context),
+    return SizedBox(
+      width: 118.w(context),
+      child: Center(
         child: CustomDropdown(
           label: "الشهر",
           items: [

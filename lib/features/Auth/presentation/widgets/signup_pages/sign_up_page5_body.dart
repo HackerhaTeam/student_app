@@ -23,6 +23,7 @@ class _SignUpPage5BodyState extends State<SignUpPage5Body> {
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final FocusNode emailFocusNode = FocusNode();
+  final FocusNode passwordFocusNode = FocusNode();
   @override
   void initState() {
     super.initState();
@@ -66,6 +67,7 @@ class _SignUpPage5BodyState extends State<SignUpPage5Body> {
               ),
               Center(
                 child: CustomTextField(
+                  onFieldSubmitted: (_) => passwordFocusNode.requestFocus(),
                   focusNode: emailFocusNode,
                   keyboardType: TextInputType.emailAddress,
                   fieldType: FieldType.email,
@@ -79,6 +81,7 @@ class _SignUpPage5BodyState extends State<SignUpPage5Body> {
               ),
               Center(
                 child: CustomTextField(
+                  focusNode: passwordFocusNode,
                   keyboardType: TextInputType.text,
                   fieldType: FieldType.password,
                   label: "كلمة المرور",

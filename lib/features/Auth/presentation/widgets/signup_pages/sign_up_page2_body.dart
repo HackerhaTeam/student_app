@@ -34,6 +34,7 @@ class _SignUpPage2BodyState extends State<SignUpPage2Body> {
   final TextEditingController phoneController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final FocusNode nameFocusNode = FocusNode();
+  final FocusNode phoneFocusNode = FocusNode();
   @override
   void initState() {
     super.initState();
@@ -75,13 +76,16 @@ class _SignUpPage2BodyState extends State<SignUpPage2Body> {
                 ),
                 const SizedBox(height: 16),
                 FullNameField(
+                    onSubmitted: (_) => phoneFocusNode.requestFocus(),
                     nameFocusNode: nameFocusNode,
                     nameController: nameController),
                 SizedBox(
-                  height: 32.h(context),
+                  height: 24,
                 ),
                 PhoneNumberField(
-                    widget: widget, phoneController: phoneController),
+                  phoneController: phoneController,
+                  phoneFocusNode: phoneFocusNode,
+                ),
               ],
             ),
           ),

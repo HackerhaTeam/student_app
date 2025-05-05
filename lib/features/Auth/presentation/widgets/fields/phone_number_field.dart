@@ -2,25 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/signup_pages/sign_up_page2_body.dart';
 
 class PhoneNumberField extends StatelessWidget {
   const PhoneNumberField({
     super.key,
-    required this.widget,
     required this.phoneController,
+    required this.phoneFocusNode,
   });
 
-  final SignUpPage2Body widget;
-
   final TextEditingController phoneController;
+  final FocusNode phoneFocusNode;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: CustomTextField(
+        focusNode: phoneFocusNode,
         fieldType: FieldType.phoneNumber,
         keyboardType: TextInputType.number,
         label: "رقم الهاتف (واتس أب)",
@@ -35,7 +35,7 @@ class PhoneNumberField extends StatelessWidget {
                 Container(
                   width: 1,
                   height: 24.h(context),
-                  color: widget.border.secondary,
+                  color: Theme.of(context).extension<AppBorders>()!.secondary,
                 ),
                 Text(
                   " 963+ ",
@@ -52,7 +52,7 @@ class PhoneNumberField extends StatelessWidget {
         ),
         radius: 8.r(context),
         controller: phoneController,
-        width: 372,
+        width: 372.w(context),
         height: 57,
       ),
     );

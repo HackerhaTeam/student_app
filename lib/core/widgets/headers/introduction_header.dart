@@ -18,11 +18,11 @@ class IntroductionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final content = Theme.of(context).extension<AppContent>()!;
     return Padding(
-      padding: EdgeInsets.only(top: 26.h(context), bottom: 8.h(context)),
+      padding: EdgeInsets.only(top: 26, bottom: 8),
       child: Row(
         children: [
           Container(
-            height: 44.h(context),
+            height: 44.w(context),
             width: 44.w(context),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.r(context)),

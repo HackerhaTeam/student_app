@@ -40,47 +40,49 @@ class _SignUpPage3BodyState extends State<SignUpPage3Body> {
           }
         },
       ),
-      body: Padding(
-        padding: EdgeInsets.only(right: 20.w(context), left: 20.w(context)),
-        child: Form(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IntroductionHeader(
-                introText: " أخبرنا عن مسيرتك الأكاديمية!",
-                icon: PhosphorIcons.student(),
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.only(top: 8.h(context), bottom: 32.h(context)),
-                child: Text(
-                  "زوّدنا بتفاصيل جامعتك لنقدّم لك محتوى مخصصًا!",
-                  style: styles.xParagraphLargeLose,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(right: 20.w(context), left: 20.w(context)),
+          child: Form(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IntroductionHeader(
+                  introText: " أخبرنا عن مسيرتك الأكاديمية!",
+                  icon: PhosphorIcons.student(),
                 ),
-              ),
-              UniversitySellector(
-                selectedUniversity: selectedUniversity,
-                onChanged: (val) {
-                  setState(() {
-                    selectedUniversity = val;
-                  });
-                },
-              ),
-              SizedBox(height: 24.h(context)),
-              AcademicYearSellector(
-                selectedYear: selectedYear,
-                onChanged: (val) {
-                  setState(() {
-                    selectedYear = val;
-                  });
-                },
-              ),
-              SizedBox(height: 24.h(context)),
-              AcademicYearField(numberController: numberController),
-            ],
+                Padding(
+                  padding:
+                      EdgeInsets.only(top: 8.h(context), bottom: 32.h(context)),
+                  child: Text(
+                    "زوّدنا بتفاصيل جامعتك لنقدّم لك محتوى مخصصًا!",
+                    style: styles.xParagraphLargeLose,
+                  ),
+                ),
+                UniversitySellector(
+                  selectedUniversity: selectedUniversity,
+                  onChanged: (val) {
+                    setState(() {
+                      selectedUniversity = val;
+                    });
+                  },
+                ),
+                SizedBox(height: 24),
+                AcademicYearSellector(
+                  selectedYear: selectedYear,
+                  onChanged: (val) {
+                    setState(() {
+                      selectedYear = val;
+                    });
+                  },
+                ),
+                SizedBox(height: 24),
+                AcademicYearField(numberController: numberController),
+              ],
+            ),
           ),
         ),
       ),

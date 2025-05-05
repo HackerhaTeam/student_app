@@ -31,7 +31,7 @@ class FloatingNextButton extends StatelessWidget {
       disabled: disabled ?? false,
       borderRadius: 16.r(context),
       color: backgrounds.primaryBrand,
-      height: 44.h(context),
+      height: 44,
       width: width ?? 82.w(context),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

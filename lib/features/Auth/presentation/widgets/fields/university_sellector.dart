@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/widgets/custom_dropdownfield.dart';
 
 class UniversitySellector extends StatelessWidget {
@@ -14,7 +13,7 @@ class UniversitySellector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 59.h(context),
+      height: 59,
       child: Center(
         child: CustomDropdown(
           label: "الجامعة",

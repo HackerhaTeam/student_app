@@ -52,57 +52,59 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
           }
         },
       ),
-      body: Padding(
-        padding: EdgeInsets.only(left: 20.w(context), right: 20.w(context)),
-        child: Form(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              IntroductionHeader(
-                introText: " معلومات إضافية",
-                icon: PhosphorIcons.userPlus(),
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.only(top: 8.h(context), bottom: 32.h(context)),
-                child: Text(
-                  "أدخل تاريخ ميلادك وحدد الجنس لضمان تجربة مخصصة تناسبك.",
-                  style: styles.xParagraphLargeLose,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(left: 20.w(context), right: 20.w(context)),
+          child: Form(
+            // autovalidateMode: AutovalidateMode.onUserInteraction,
+            key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IntroductionHeader(
+                  introText: " معلومات إضافية",
+                  icon: PhosphorIcons.userPlus(),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  DayField(
-                    dayController: dayController,
-                    focusNode: dayFocusNode,
+                Padding(
+                  padding:
+                      EdgeInsets.only(top: 8.h(context), bottom: 32.h(context)),
+                  child: Text(
+                    "أدخل تاريخ ميلادك وحدد الجنس لضمان تجربة مخصصة تناسبك.",
+                    style: styles.xParagraphLargeLose,
                   ),
-                  MonthSellector(
-                    selectedMonth: selectedMonth,
-                    onChanged: (value) {
-                      setState(() {
-                        selectedMonth = value;
-                      });
-                    },
-                  ),
-                  YearField(yearController: yearController)
-                ],
-              ),
-              SizedBox(
-                height: 24.h(context),
-              ),
-              GenderSellector(
-                selectedGender: selectedGender,
-                onChanged: (value) {
-                  setState(() {
-                    selectedGender = value;
-                  });
-                },
-              )
-            ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    DayField(
+                      dayController: dayController,
+                      focusNode: dayFocusNode,
+                    ),
+                    MonthSellector(
+                      selectedMonth: selectedMonth,
+                      onChanged: (value) {
+                        setState(() {
+                          selectedMonth = value;
+                        });
+                      },
+                    ),
+                    YearField(yearController: yearController)
+                  ],
+                ),
+                SizedBox(
+                  height: 24,
+                ),
+                GenderSellector(
+                  selectedGender: selectedGender,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedGender = value;
+                    });
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ),

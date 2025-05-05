@@ -14,10 +14,9 @@ class YearField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 115.w(context),
-      height: 59.h(context),
+      height: 59,
       child: Center(
         child: CustomTextField(
-          height: 61.h(context),
           keyboardType: TextInputType.number,
           fieldType: FieldType.year,
           label: "السنة",

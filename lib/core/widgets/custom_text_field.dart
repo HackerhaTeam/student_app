@@ -32,6 +32,7 @@ class CustomTextField extends StatefulWidget {
   final bool obscureOverride;
   final FocusNode? focusNode;
   final String? Function(String?)? customValidator;
+  final void Function(String)? onFieldSubmitted;
 
   const CustomTextField({
     super.key,
@@ -49,6 +50,7 @@ class CustomTextField extends StatefulWidget {
     this.keyboardType,
     this.focusNode,
     this.customValidator,
+    this.onFieldSubmitted,
   });
 
   @override
@@ -141,6 +143,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       width: widget.width,
       height: widget.height,
       child: TextFormField(
+        onFieldSubmitted: widget.onFieldSubmitted,
         focusNode: widget.focusNode,
         expands: false,
         textAlign: widget.fieldType == FieldType.phoneNumber ||

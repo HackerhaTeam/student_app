@@ -13,7 +13,7 @@ class AcademicYearField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 56.h(context),
+      height: 56,
       child: Center(
         child: CustomTextField(
           keyboardType: TextInputType.number,

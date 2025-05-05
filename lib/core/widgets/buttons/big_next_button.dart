@@ -27,7 +27,7 @@ class BigNextButton extends StatelessWidget {
         disabledColor: backgrounds.brandDisabledPrimary,
         disabled: value ? false : true,
         borderRadius: 24.r(context),
-        height: 56.h(context),
+        height: 56,
         width: 372.w(context),
         color: backgrounds.primaryBrand,
         onPressed: onPressed,
