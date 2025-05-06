@@ -7,10 +7,12 @@ class DayField extends StatelessWidget {
     super.key,
     required this.dayController,
     required this.focusNode,
+    this.onChanged,
   });
 
   final TextEditingController dayController;
   final FocusNode focusNode;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -18,6 +20,7 @@ class DayField extends StatelessWidget {
       height: 59,
       child: Center(
         child: CustomTextField(
+          onChanged: onChanged,
           focusNode: focusNode,
           keyboardType: TextInputType.number,
           fieldType: FieldType.day,

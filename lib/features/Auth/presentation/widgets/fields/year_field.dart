@@ -6,10 +6,11 @@ class YearField extends StatelessWidget {
   const YearField({
     super.key,
     required this.yearController,
+    this.onChanged,
   });
 
   final TextEditingController yearController;
-
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -17,6 +18,7 @@ class YearField extends StatelessWidget {
       height: 59,
       child: Center(
         child: CustomTextField(
+          onChanged: onChanged,
           keyboardType: TextInputType.number,
           fieldType: FieldType.year,
           label: "السنة",

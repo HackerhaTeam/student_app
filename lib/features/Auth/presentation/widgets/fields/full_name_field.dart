@@ -8,16 +8,18 @@ class FullNameField extends StatelessWidget {
     required this.nameFocusNode,
     required this.nameController,
     this.onSubmitted,
+    this.onChanged,
   });
 
   final FocusNode nameFocusNode;
   final TextEditingController nameController;
   final void Function(String)? onSubmitted;
-
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: CustomTextField(
+        onChanged: onChanged,
         focusNode: nameFocusNode,
         fieldType: FieldType.name,
         label: "الاسم الكامل",

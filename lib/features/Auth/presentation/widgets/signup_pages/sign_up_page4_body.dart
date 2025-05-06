@@ -75,9 +75,11 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     DayField(
+                      onChanged: (p0) {
+                        // formKey.currentState!.validate();
+                      },
                       dayController: dayController,
                       focusNode: dayFocusNode,
                     ),
@@ -85,11 +87,17 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
                       selectedMonth: selectedMonth,
                       onChanged: (value) {
                         setState(() {
+                          // formKey.currentState!.validate();
                           selectedMonth = value;
                         });
                       },
                     ),
-                    YearField(yearController: yearController)
+                    YearField(
+                      yearController: yearController,
+                      onChanged: (p0) {
+                        // formKey.currentState!.validate();
+                      },
+                    )
                   ],
                 ),
                 SizedBox(
@@ -98,6 +106,7 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
                 GenderSellector(
                   selectedGender: selectedGender,
                   onChanged: (value) {
+                    // formKey.currentState!.validate();
                     setState(() {
                       selectedGender = value;
                     });

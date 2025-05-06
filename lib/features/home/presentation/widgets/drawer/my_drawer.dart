@@ -4,7 +4,7 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/drawer/drawer_headding.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/drawer/menu_list.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/drawer/user_profile.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/drawer/gradient_divider.dart';
+import 'package:student_hackerha/core/widgets/gradient_divider.dart';
 
 class MyDrawer extends StatefulWidget {
   const MyDrawer({

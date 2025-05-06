@@ -15,27 +15,12 @@ class MonthSellector extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 118.w(context),
-      child: Center(
-        child: CustomDropdown(
-          label: "الشهر",
-          items: [
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"
-          ],
-          selectedItem: selectedMonth,
-          onChanged: onChanged,
-          type: DropdownType.month,
-        ),
+      child: CustomDropdown(
+        label: "الشهر",
+        items: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+        selectedItem: selectedMonth,
+        onChanged: onChanged,
+        type: DropdownType.month,
       ),
     );
   }

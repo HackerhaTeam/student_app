@@ -192,6 +192,7 @@ class _CustomDropdownState extends State<CustomDropdown>
     final styles = context;
 
     return FormField<String>(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) => _validate(value),
       builder: (FormFieldState<String> fieldState) {
         return SizedBox(
@@ -209,6 +210,7 @@ class _CustomDropdownState extends State<CustomDropdown>
                   InputDecorator(
                     key: _fieldKey,
                     decoration: InputDecoration(
+                      isDense: true,
                       labelText: widget.label,
                       floatingLabelBehavior: FloatingLabelBehavior.auto,
                       labelStyle: styles.xLabelSmall.copyWith(

@@ -25,7 +25,7 @@ class ProgressContainer extends StatelessWidget {
     final styles = context;
     return Container(
       height: 118,
-      width: 112,
+      width: 112.w(context),
       decoration: BoxDecoration(
           color: background.onSurfacePrimary,
           borderRadius: BorderRadius.circular(12.r(context)),

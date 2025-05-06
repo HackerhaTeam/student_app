@@ -52,7 +52,10 @@ class _SignUpPage2BodyState extends State<SignUpPage2Body> {
       child: Scaffold(
         floatingActionButton: FloatingNextButton(
           formKey: formKey,
-          onNext: widget.onNext,
+          onNext: () {
+            FocusScope.of(context).unfocus();
+            widget.onNext();
+          },
         ),
         body: SingleChildScrollView(
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,

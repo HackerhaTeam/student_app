@@ -44,7 +44,7 @@ class _SignUpPage3BodyState extends State<SignUpPage3Body> {
         child: Padding(
           padding: EdgeInsets.only(right: 20.w(context), left: 20.w(context)),
           child: Form(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            // autovalidateMode: AutovalidateMode.onUserInteraction,
             key: formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,

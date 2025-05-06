@@ -33,6 +33,7 @@ class CustomTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final String? Function(String?)? customValidator;
   final void Function(String)? onFieldSubmitted;
+  final void Function(String)? onChanged;
 
   const CustomTextField({
     super.key,
@@ -51,6 +52,7 @@ class CustomTextField extends StatefulWidget {
     this.focusNode,
     this.customValidator,
     this.onFieldSubmitted,
+    this.onChanged,
   });
 
   @override
@@ -143,6 +145,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
       width: widget.width,
       height: widget.height,
       child: TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        onChanged: widget.onChanged,
         onFieldSubmitted: widget.onFieldSubmitted,
         focusNode: widget.focusNode,
         expands: false,
