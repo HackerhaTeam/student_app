@@ -11,15 +11,17 @@ class PhoneNumberField extends StatelessWidget {
     super.key,
     required this.phoneController,
     required this.phoneFocusNode,
+    this.onChanged,
   });
 
   final TextEditingController phoneController;
   final FocusNode phoneFocusNode;
-
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Center(
       child: CustomTextField(
+        onChanged: onChanged,
         focusNode: phoneFocusNode,
         fieldType: FieldType.phoneNumber,
         keyboardType: TextInputType.number,

@@ -192,7 +192,7 @@ class _CustomDropdownState extends State<CustomDropdown>
     final styles = context;
 
     return FormField<String>(
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      // autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) => _validate(value),
       builder: (FormFieldState<String> fieldState) {
         return SizedBox(

@@ -145,7 +145,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       width: widget.width,
       height: widget.height,
       child: TextFormField(
-        autovalidateMode: AutovalidateMode.onUserInteraction,
+        // autovalidateMode: AutovalidateMode.onUserInteraction,
         onChanged: widget.onChanged,
         onFieldSubmitted: widget.onFieldSubmitted,
         focusNode: widget.focusNode,
