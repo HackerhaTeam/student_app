@@ -6,15 +6,21 @@ class CustomIconButton extends StatelessWidget {
     super.key,
     this.onTap,
     required this.iconDataPhosphor,
+    this.iconColor,
   });
   final void Function()? onTap;
   final IconData iconDataPhosphor;
+
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: PhosphorIcon(iconDataPhosphor),
+      child: PhosphorIcon(
+        iconDataPhosphor,
+        color: iconColor,
+      ),
     );
   }
 }

@@ -5,6 +5,8 @@ class AppImages {
   static const String homeTextLight = "assets/images/svg/home_text_light.svg";
   static const String homeTextDark = "assets/images/svg/home_text_dark.svg";
   static const String courseImage = "assets/images/Course Image.png";
+  static const String informationCourse =
+      "assets/images/course_information.png";
   static const String homeNavbar = "assets/images/svg/home_navbar.svg";
   static const String coursesNavbar = "assets/images/svg/courses_navbar.svg";
   static const String archiveNavbar = "assets/images/svg/archive_navbar.svg";
