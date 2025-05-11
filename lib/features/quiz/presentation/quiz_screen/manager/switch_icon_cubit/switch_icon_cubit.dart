@@ -26,4 +26,5 @@ class SwitchIconCubit extends Cubit<bool> {
     emit(false);
   }
 
+
 }

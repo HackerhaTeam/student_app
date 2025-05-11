@@ -30,4 +30,5 @@ class OptionCubit extends Cubit<List<int?>> {
   void clearAllSelections() {
     emit(List.filled(state.length, null));
   }
+  
 }

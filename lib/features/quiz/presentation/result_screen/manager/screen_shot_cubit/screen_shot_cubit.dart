@@ -19,12 +19,11 @@ class ScreenShotCubit extends Cubit<ScreenShotState> {
       final Uint8List? image = await controller.capture();
       if (image == null) return;
 
-      // اهتزاز
+
       if (await Vibration.hasVibrator()) {
         Vibration.vibrate(duration: 100);
       }
 
-      // مشاركة من ملف مؤقت
       final tempDir = await getTemporaryDirectory();
       final imagePath = '${tempDir.path}/screenshot.png';
       final imageFile = File(imagePath);

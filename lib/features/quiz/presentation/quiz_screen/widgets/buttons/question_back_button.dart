@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_button.dart';
-import 'package:student_hackerha/features/quiz/presentation/quiz_screen/manager/page_view_cubit/page_view_cubit.dart';
+import 'package:student_hackerha/features/quiz/presentation/quiz_screen/handlers/buttons_handlers/on_previous_button_tap.dart';
 import 'package:student_hackerha/features/quiz/presentation/quiz_screen/widgets/buttons/custom_back_button_item.dart';
 
 class QuestionBackButton extends StatelessWidget {
@@ -22,13 +21,9 @@ class QuestionBackButton extends StatelessWidget {
       width: double.infinity,
       color: Colors.transparent,
       borderColor: borderColor.primaryBrand,
-      onPressed: () {
-        context.read<PageViewCubit>().previousPage();
-      },
+      onPressed: () => onPreviousButtonTap(context),
       child: CustomBackButtonItem(
-        textStyle: context
-            .xLabelLarge
-            .copyWith(color: contentColor.primary),
+        textStyle: context.xLabelLarge.copyWith(color: contentColor.primary),
         text: 'السؤال السابق',
       ),
     );

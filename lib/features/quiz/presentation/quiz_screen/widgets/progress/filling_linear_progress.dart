@@ -5,7 +5,6 @@ import 'package:student_hackerha/core/functions/set_up_server_locator.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/features/quiz/presentation/quiz_screen/manager/page_view_cubit/page_view_cubit.dart';
 import 'package:student_hackerha/features/quiz/presentation/shared/manager/quiz_session.dart';
-import 'package:student_hackerha/features/quiz/presentation/shared/widgets/cards/custom_cards.dart';
 
 class FillingLinearProgress extends StatelessWidget {
   const FillingLinearProgress({
@@ -15,16 +14,19 @@ class FillingLinearProgress extends StatelessWidget {
   final double maxWidth;
   @override
   Widget build(BuildContext context) {
+    final currentIndex = context.read<PageViewCubit>().state.questionIndex + 1;
 
-     final currentIndex=context.read<PageViewCubit>().state.questionIndex+1;
-  
-    final   Map<String, dynamic> quizData = getIt.get<QuizSessionManerger>().quizData!;
+    final Map<String, dynamic> quizData =
+        getIt.get<QuizSessionManerger>().quizData!;
     final contentColor = Theme.of(context).extension<AppContent>()!;
-    return CustomCard(
-      backgroundColor: contentColor.brandPrimary,
-      borderRadius: 40.h(context),
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 300),
+      decoration: BoxDecoration(
+          color: contentColor.brandPrimary,
+          borderRadius: BorderRadius.circular(40.r(context))),
       height: 8.h(context),
-      width:  (currentIndex/ (quizData['questionsList'] as List).length) * maxWidth,
+      width: (currentIndex / (quizData['questionsList'] as List).length) *
+          maxWidth,
     );
   }
 }

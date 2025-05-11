@@ -4,6 +4,7 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_typography.dart';
+import 'package:student_hackerha/features/quiz/presentation/quiz_screen/handlers/drawer_handlers/close_drawer.dart';
 import 'package:student_hackerha/features/quiz/presentation/quiz_screen/manager/switch_icon_cubit/switch_icon_cubit.dart';
 
 class QuizDrawerHeader extends StatelessWidget {
@@ -15,13 +16,10 @@ class QuizDrawerHeader extends StatelessWidget {
     final animationController = context.watch<SwitchIconCubit>().controller;
 
     return GestureDetector(
-      onTap: () {
-        Navigator.pop(context);
-      },
+      onTap: () => closeDrawer(context),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          
           SizedBox(
             width: 44.w(context),
             height: 44.h(context),

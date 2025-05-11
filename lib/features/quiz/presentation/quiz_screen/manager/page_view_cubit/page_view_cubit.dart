@@ -41,4 +41,5 @@ class PageViewCubit extends Cubit<PageViewState> {
       );
     }
   }
+  
 }

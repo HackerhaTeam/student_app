@@ -4,6 +4,7 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/features/quiz/presentation/result_screen/helpers/progress/get_progress_color.dart';
 
 class SmoothProgressInidicator extends StatelessWidget {
   final double percentage;
@@ -18,7 +19,7 @@ class SmoothProgressInidicator extends StatelessWidget {
       tween: Tween(begin: 0, end: percentage / 100),
       duration: Duration(seconds: 2),
       builder: (context, value, _) {
-        final color = getGradientColor(value, borderColor);
+        final color = getProgressColor(t: value, borderColor: borderColor);
         return CircularPercentIndicator(
           radius: 78.r(context),
           lineWidth: 16,
@@ -35,12 +36,5 @@ class SmoothProgressInidicator extends StatelessWidget {
     );
   }
 
-  Color getGradientColor(double t, AppContent borderColor) {
-    if (t < 0.5) {
-      return Color.lerp(borderColor.negative, borderColor.warning, t * 2)!;
-    } else {
-      return Color.lerp(
-          borderColor.warning, borderColor.success, (t - 0.5) * 2)!;
-    }
-  }
+  
 }

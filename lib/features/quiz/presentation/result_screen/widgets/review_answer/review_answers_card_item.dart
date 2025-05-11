@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/features/quiz/presentation/result_screen/helpers/review/get_formatted_review_value.dart';
 import 'package:student_hackerha/features/quiz/presentation/result_screen/utilities/enum/review_answer_type.dart';
 
 class ReviewAnswersCardItem extends StatelessWidget {
@@ -37,7 +38,7 @@ class ReviewAnswersCardItem extends StatelessWidget {
                 duration: const Duration(milliseconds: 2000),
                 builder: (context, value, child) {
                   return Text( 
-                    _getFormattedText(value, type),
+                    getFormattedReviewValue(value:  value,type:  type),
                     style: context.xDisplaySmall.copyWith(
                       color: color,
                     ),
@@ -52,16 +53,5 @@ class ReviewAnswersCardItem extends StatelessWidget {
     );
   }
 
-  String _getFormattedText(int value, ReviewAnswerType type) {
-    if (ReviewAnswerType.timer == type) {
-      final hours = (value ~/ 3600).toString().padLeft(2, '0');
-      final minutes = ((value % 3600) ~/ 60).toString().padLeft(2, '0');
-      final seconds = (value % 60).toString().padLeft(2, '0');
-
-      return "$hours:$minutes:$seconds";
-    } else {
-      final number = value.toString().padLeft(2, '0');
-      return number;
-    }
-  }
+ 
 }

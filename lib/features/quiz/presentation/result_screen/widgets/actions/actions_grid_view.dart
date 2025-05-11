@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:student_hackerha/features/quiz/presentation/result_screen/helpers/action_grid_view_helper.dart';
+import 'package:student_hackerha/features/quiz/presentation/result_screen/handlers/actions/action_grid_view_helper.dart';
 import 'package:student_hackerha/features/quiz/presentation/result_screen/widgets/actions/actions_grid_view_item.dart';
 
 class ActionsGridView extends StatelessWidget {
-  const ActionsGridView({super.key});
-
+  const ActionsGridView({super.key, required this.isBank});
+final bool isBank;
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -15,13 +15,13 @@ class ActionsGridView extends StatelessWidget {
         mainAxisSpacing: 0,
         childAspectRatio: 1.17,
       ),
-      itemCount: ActionGridViewHelper.icons.length,
+      itemCount: ActionGridViewHelper.icons(isBank: isBank).length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: ActionGridViewHelper.actionHandlers(context)[index],
           child: ActionsGridViewItem(
-            icon: ActionGridViewHelper.icons[index],
-            text: ActionGridViewHelper.labels[index],
+            icon: ActionGridViewHelper.icons(isBank: isBank)[index],
+            text: ActionGridViewHelper.labels(isBank: isBank)[index],
           ),
         );
       },

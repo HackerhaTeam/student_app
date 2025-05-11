@@ -14,10 +14,7 @@ class CustomBackButtonItem extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          text,
-          style: textStyle,
-        ),
+        Text(text, style: textStyle),
       ],
     );
   }

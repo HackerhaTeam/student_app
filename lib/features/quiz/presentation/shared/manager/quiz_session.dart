@@ -15,4 +15,11 @@ class QuizSessionManerger {
     quizData = null;
     result = null;
   }
+
+
+
+  void resetResult() {
+    result = null;
+  }
+
 }

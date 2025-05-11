@@ -17,7 +17,9 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
   final Color warningStrong;
   final Color warningSoft;
   final Color brandDisabledPrimary;
+  final Color muted;
   AppBackgrounds({
+    required this.muted,
     required this.brandDisabledPrimary,
     required this.surfacePrimary,
     required this.onSurfacePrimary,
@@ -36,24 +38,25 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
   });
 
   static AppBackgrounds light = AppBackgrounds(
-    surfacePrimary: AppColors.white,
-    onSurfacePrimary: AppColors.white,
-    onSurfaceSecondary: AppColors.grey50,
-    onSurfaceTransparent: AppColors.transparentWhite64,
-    containerStatic: AppColors.grey50,
-    fill: AppColors.grey50,
-    primaryBrand: AppColors.brandNavyBlue500,
-    secondaryBrand: AppColors.brandGreen500,
-    negativeStrong: AppColors.red500,
-    negativeSoft: AppColors.red50,
-    successStrong: AppColors.green500,
-    successSoft: AppColors.green50,
-    warningStrong: AppColors.yellow500,
-    warningSoft: AppColors.yellow50,
-    brandDisabledPrimary: AppColors.brandNavyBlue200,
-  );
+      surfacePrimary: AppColors.white,
+      onSurfacePrimary: AppColors.white,
+      onSurfaceSecondary: AppColors.grey50,
+      onSurfaceTransparent: AppColors.transparentWhite64,
+      containerStatic: AppColors.grey50,
+      fill: AppColors.grey50,
+      primaryBrand: AppColors.brandNavyBlue500,
+      secondaryBrand: AppColors.brandGreen500,
+      negativeStrong: AppColors.red500,
+      negativeSoft: AppColors.red50,
+      successStrong: AppColors.green500,
+      successSoft: AppColors.green50,
+      warningStrong: AppColors.yellow500,
+      warningSoft: AppColors.yellow50,
+      brandDisabledPrimary: AppColors.brandNavyBlue200,
+      muted: AppColors.grey200);
 
   static AppBackgrounds dark = AppBackgrounds(
+    muted: AppColors.grey300,
     surfacePrimary: AppColors.grey1000,
     onSurfacePrimary: AppColors.grey900,
     onSurfaceSecondary: AppColors.grey900,
@@ -94,6 +97,7 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
       warningSoft: Color.lerp(warningSoft, other.warningSoft, t)!,
       brandDisabledPrimary:
           Color.lerp(brandDisabledPrimary, other.brandDisabledPrimary, t)!,
+      muted: Color.lerp(muted, other.muted, t)!,
     );
   }
 
@@ -113,23 +117,24 @@ class AppBackgrounds extends ThemeExtension<AppBackgrounds> {
       Color? successSoft,
       Color? warningStrong,
       Color? warningSoft,
-      Color? brandDisabledPrimary}) {
+      Color? brandDisabledPrimary,
+      Color? muted}) {
     return AppBackgrounds(
-      surfacePrimary: surfacePrimary ?? this.surfacePrimary,
-      onSurfacePrimary: onSurfacePrimary ?? this.onSurfacePrimary,
-      onSurfaceSecondary: onSurfaceSecondary ?? this.onSurfaceSecondary,
-      onSurfaceTransparent: onSurfaceTransparent ?? this.onSurfaceTransparent,
-      containerStatic: containerStatic ?? this.containerStatic,
-      fill: fill ?? this.fill,
-      primaryBrand: primaryBrand ?? this.primaryBrand,
-      secondaryBrand: secondaryBrand ?? this.secondaryBrand,
-      negativeStrong: negativeStrong ?? this.negativeStrong,
-      negativeSoft: negativeSoft ?? this.negativeSoft,
-      successStrong: successStrong ?? this.successStrong,
-      successSoft: successSoft ?? this.successSoft,
-      warningStrong: warningStrong ?? this.warningStrong,
-      warningSoft: warningSoft ?? this.warningSoft,
-      brandDisabledPrimary: brandDisabledPrimary ?? this.brandDisabledPrimary,
-    );
+        surfacePrimary: surfacePrimary ?? this.surfacePrimary,
+        onSurfacePrimary: onSurfacePrimary ?? this.onSurfacePrimary,
+        onSurfaceSecondary: onSurfaceSecondary ?? this.onSurfaceSecondary,
+        onSurfaceTransparent: onSurfaceTransparent ?? this.onSurfaceTransparent,
+        containerStatic: containerStatic ?? this.containerStatic,
+        fill: fill ?? this.fill,
+        primaryBrand: primaryBrand ?? this.primaryBrand,
+        secondaryBrand: secondaryBrand ?? this.secondaryBrand,
+        negativeStrong: negativeStrong ?? this.negativeStrong,
+        negativeSoft: negativeSoft ?? this.negativeSoft,
+        successStrong: successStrong ?? this.successStrong,
+        successSoft: successSoft ?? this.successSoft,
+        warningStrong: warningStrong ?? this.warningStrong,
+        warningSoft: warningSoft ?? this.warningSoft,
+        brandDisabledPrimary: brandDisabledPrimary ?? this.brandDisabledPrimary,
+        muted: muted ?? this.muted);
   }
 }

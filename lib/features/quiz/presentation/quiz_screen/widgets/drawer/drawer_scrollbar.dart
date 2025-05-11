@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/features/quiz/presentation/quiz_screen/widgets/drawer/drawer_list_view.dart';
 
 class Drawercrollbar extends StatefulWidget {
   const Drawercrollbar({
-    super.key,
+    super.key, required this.isCorrection,
   });
 
+final bool isCorrection;
   @override
   State<Drawercrollbar> createState() => _DrawercrollbarState();
 }
@@ -30,9 +30,8 @@ class _DrawercrollbarState extends State<Drawercrollbar> {
   @override
   Widget build(BuildContext context) {
     final backgroundColor = Theme.of(context).extension<AppBackgrounds>()!;
-    final contentColor = Theme.of(context).extension<AppContent>()!;
     return RawScrollbar(
-      thumbColor: contentColor.disabled,
+      thumbColor: backgroundColor.muted,
       trackColor: backgroundColor.onSurfaceSecondary,
       controller: _controller,
       thumbVisibility: true,
@@ -41,7 +40,7 @@ class _DrawercrollbarState extends State<Drawercrollbar> {
       radius: Radius.circular(100),
       scrollbarOrientation: ScrollbarOrientation.right,
       child: DrawerListView(
-        controller: _controller,
+        controller: _controller, isCorrection: widget.isCorrection,
       ),
     );
   }

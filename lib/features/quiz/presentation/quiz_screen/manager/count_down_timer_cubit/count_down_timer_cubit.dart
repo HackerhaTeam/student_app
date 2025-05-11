@@ -7,22 +7,20 @@ import 'package:student_hackerha/features/quiz/presentation/shared/manager/quiz_
 
 class CountdownTimerCubit extends Cubit<CountDownTimerState> {
   Timer? _timer;
-
-  CountdownTimerCubit() : super(InitialState()) {
-    _startCountdown();
+  final bool isCorrection;
+  CountdownTimerCubit({required this.isCorrection}) : super(InitialState()) {
+    if (!isCorrection) {
+      _startCountdown();
+    }
   }
   void _startCountdown() async {
-        _timer?.cancel();
+    _timer?.cancel();
     Duration initialDuration = _getInitialDuration();
 
     emit(ContinueState(duration: initialDuration));
     _timer = Timer.periodic(
-      
       const Duration(seconds: 1),
       (timer) async {
-
-
-
         final newDuration = state.duration - Duration(seconds: 1);
 
         if (newDuration.inSeconds == 120) {
@@ -38,7 +36,6 @@ class CountdownTimerCubit extends Cubit<CountDownTimerState> {
     );
   }
 
-
   void _stopTimer() {
     emit(TimeOutState(duration: Duration.zero));
     _timer?.cancel();
@@ -50,8 +47,7 @@ class CountdownTimerCubit extends Cubit<CountDownTimerState> {
   }
 
   Duration _getInitialDuration() {
-    Map<String, dynamic> quizData =
-        getIt.get<QuizSessionManerger>().quizData!;
+    Map<String, dynamic> quizData = getIt.get<QuizSessionManerger>().quizData!;
     return Duration(minutes: quizData['quizTime']);
   }
 

@@ -5,15 +5,15 @@ import 'package:student_hackerha/features/quiz/presentation/result_screen/widget
 
 
 class ResultPageActionsSection extends StatelessWidget {
-  const ResultPageActionsSection({super.key});
-
+  const ResultPageActionsSection({super.key, required this.isBank});
+  final bool isBank;
   @override
   Widget build(BuildContext context) {
     final backgroundColor = Theme.of(context).extension<AppBackgrounds>()!;
 
     return CustomFadeSlideIn(
       backgroundColor: backgroundColor,
-      child: ActionsGridView(),
+      child: ActionsGridView(isBank: isBank),
     );
   }
 }

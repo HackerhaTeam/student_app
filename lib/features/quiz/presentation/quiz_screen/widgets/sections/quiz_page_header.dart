@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/features/quiz/presentation/quiz_screen/handlers/on_exit_quiz.dart';
+import 'package:student_hackerha/features/quiz/presentation/quiz_screen/handlers/drawer_handlers/open_drawer.dart';
+import 'package:student_hackerha/features/quiz/presentation/quiz_screen/handlers/shared/on_exit.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon_button.dart';
 import 'package:student_hackerha/features/quiz/presentation/quiz_screen/manager/switch_icon_cubit/switch_icon_cubit.dart';
 
 class QuizPageHeader extends StatelessWidget {
-  const QuizPageHeader({super.key});
-
+  const QuizPageHeader({super.key, required this.isCorrection});
+  final bool isCorrection;
   @override
   Widget build(BuildContext context) {
     final backgroundColor = Theme.of(context).extension<AppBackgrounds>()!;
@@ -25,7 +26,7 @@ class QuizPageHeader extends StatelessWidget {
             width: 44.w(context),
             height: 44.h(context),
             child: GestureDetector(
-              onTap: () => _openDrawer(context),
+              onTap: () => openDrawer(context),
               child: Center(
                 child: AnimatedIcon(
                     size: 24.w(context),
@@ -36,7 +37,7 @@ class QuizPageHeader extends StatelessWidget {
           ),
           Text('اختبار الشروط والحلقات', style: context.xHeadingXLarge),
           CustomCircleIconButton(
-            onTap: () => onExitQuiz(context),
+            onTap: () => onExit(context: context, isCorrection: isCorrection),
             size: 24.s(context),
             backgrounds: backgroundColor,
             iconDataPhosphor: PhosphorIcons.x(),
@@ -44,11 +45,5 @@ class QuizPageHeader extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  void _openDrawer(BuildContext context) {
-    if (Scaffold.of(context).hasDrawer) {
-      Scaffold.of(context).openDrawer();
-    }
   }
 }
