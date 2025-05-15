@@ -1,7 +1,7 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:student_hackerha/core/DI/%20service_locator.dart';
+import 'package:student_hackerha/core/DI/service_locator.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
@@ -19,6 +19,7 @@ void main() {
         BlocProvider(
           create: (context) => SearchCoursesCubit(),
         ),
+        
       ],
       child: const MyApp(),
     ),
