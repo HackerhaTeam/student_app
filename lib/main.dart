@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/DI/%20service_locator.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
+import 'package:student_hackerha/features/bank/presentation/bank_screen/pages/bank_page.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
@@ -37,20 +38,21 @@ class MyApp extends StatelessWidget {
           builder: (_, myTheme) {
             return MaterialApp(
               locale: Locale('ar'),
-              localizationsDelegates: [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-              ],
               supportedLocales: [
-                const Locale('ar', ''), // Arabic
-                const Locale('en', ''), // English
-              ],
+    Locale('ar'),
+    Locale('en'),
+  ],
+  localizationsDelegates: const [
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+  ],
               debugShowCheckedModeBanner: false,
               theme: AppTheme.light,
               darkTheme: AppTheme.dark,
               home: BlocProvider(
                 create: (context) => SearchCoursesCubit(),
-                child: MainNavigationPage(),
+                child: BankPage(),
               ),
             );
           },
