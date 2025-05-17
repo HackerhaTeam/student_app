@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
               darkTheme: AppTheme.dark,
               home: BlocProvider(
                 create: (context) => SearchCoursesCubit(),
-                child: BankPage(),
+                child: MainNavigationPage(),
               ),
             );
           },
