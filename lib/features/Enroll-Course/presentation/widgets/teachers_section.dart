@@ -31,7 +31,6 @@ class _TeacherCard extends StatelessWidget {
     final border = Theme.of(context).extension<AppBorders>()!;
 
     return Container(
-      height: 374,
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 16),
       decoration: ShapeDecoration(
@@ -48,7 +47,7 @@ class _TeacherCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _TeacherHeader(),
-          SizedBox(height: 22),
+          SizedBox(height: 8),
           Divider(color:border.transparent,),
           SizedBox(height: 16),
           _TeacherDescription(),

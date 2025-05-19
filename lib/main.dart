@@ -43,8 +43,8 @@ class MyApp extends StatelessWidget {
                 GlobalWidgetsLocalizations.delegate,
               ],
               supportedLocales: [
-                const Locale('ar', ''), // Arabic
-                const Locale('en', ''), // English
+                const Locale('ar', ''),
+                const Locale('en', ''), 
               ],
               debugShowCheckedModeBanner: false,
               theme: AppTheme.light,

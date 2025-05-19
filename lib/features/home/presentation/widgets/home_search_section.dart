@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_textdiled.dart';
 
 class HomeSearchSection extends StatefulWidget {
@@ -49,7 +50,7 @@ class _HomeSearchSectionState extends State<HomeSearchSection> {
       child: Column(
         children: [
           CustomTextField(
-            textStyle: Theme.of(context).textTheme.labelLarge!,
+            textStyle: context.xLabelLarge,
             fieldType: FieldType.search,
             hint: "ابحث عن اسم مادة",
             radius: 8.r(context),

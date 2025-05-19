@@ -19,26 +19,26 @@ class NewCourseListSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final background = Theme.of(context).extension<AppBackgrounds>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
-    return SizedBox(
-      height: height,
-      child: ListView.builder(
-        scrollDirection: scrollDirection,
-        itemCount: courses.length,
-        itemBuilder: (context, index) => Padding(
-          padding: EdgeInsets.only(
-              left: index == 0 && scrollDirection == Axis.horizontal
-                  ? 1.w(context)
-                  : 10.w(context),
-              right: 10.w(context),
-              bottom: scrollDirection == Axis.vertical ? 16 : 0),
-          child: NewCoursesItem(
-            course: courses[index],
-            border: border,
-            background: background,
-            tagsTitle: ["مدرّس 1", "دورة شاملة", " 22 طالب"],
-          ),
+    return SingleChildScrollView(
+  scrollDirection: Axis.horizontal,
+  child: Row(
+    children: List.generate(
+      courses.length,
+      (index) => Padding(
+        padding: EdgeInsets.only(
+          left: index == 0 ? 1.w(context) : 10.w(context),
+          right: 10.w(context),
+        ),
+        child: NewCoursesItem(
+          course: courses[index],
+          border: border,
+          background: background,
+          tagsTitle: ["مدرّس 1", "دورة شاملة", " 22 طالب"],
         ),
       ),
-    );
+    ),
+  ),
+)
+;
   }
 }

@@ -24,30 +24,28 @@ class NewCoursesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.75,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(21.r(context)),
-          border: Border.all(width: 1, color: border.transparent),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CourseImage(
-              border: border,
-              background: background,
-              isNew: true,
-            ),
-            CourseContent(
-              border: border,
-              background: background,
-              courseName: course.name,
-              description: course.description,
-              tagsTitle: tagsTitle,
-            ),
-          ],
-        ),
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.75,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(21.r(context)),
+        border: Border.all(width: 1, color: border.transparent),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CourseImage(
+            border: border,
+            background: background,
+            isNew: true,
+          ),
+          CourseContent(
+            border: border,
+            background: background,
+            courseName: course.name,
+            description: course.description,
+            tagsTitle: tagsTitle,
+          ),
+        ],
       ),
     );
   }

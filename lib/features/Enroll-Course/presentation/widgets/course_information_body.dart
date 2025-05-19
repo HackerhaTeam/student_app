@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/headers/custom_tabBar.dart';
@@ -36,12 +38,11 @@ class _CourseInformationBodyState extends State<CourseInformationBody>
 class _CourseInformationView extends StatelessWidget {
   const _CourseInformationView();
 
-  Widget _buildSection({
-    required Key key,
-    required String title,
-    required Widget child,
-    required BuildContext context
-  }) {
+  Widget _buildSection(
+      {required Key key,
+      required String title,
+      required Widget child,
+      required BuildContext context}) {
     return Container(
       key: key,
       padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
@@ -55,11 +56,9 @@ class _CourseInformationView extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final List<String> tags = ["مدرّس واحد", "دورة شاملة", "55 طالب"];
     var content = Theme.of(context).extension<AppContent>()!;
-
     return Scaffold(
-      backgroundColor: Theme.of(context)
-          .extension<AppBackgrounds>()!
-          .surfacePrimary,
+      backgroundColor:
+          Theme.of(context).extension<AppBackgrounds>()!.surfacePrimary,
       body: BlocBuilder<CourseInfoCubit, CourseInfoState>(
         builder: (context, state) {
           return Stack(
@@ -150,36 +149,53 @@ class _CourseInformationView extends StatelessWidget {
                       _buildSection(
                         key: cubit.aboutKey,
                         title: "حول الدورة",
-                        child: const SummaryCourse()
-                        , context: context,
+                        child: const SummaryCourse(),
+                        context: context,
                       ),
                       _buildSection(
                         key: cubit.teachersKey,
                         title: "المدرسين",
                         child: TeachersSection(),
-                         context: context,
-
+                        context: context,
                       ),
                       _buildSection(
                         key: cubit.contentKey,
                         title: "محتويات الدورة",
-                        child: Text("محتويات الدورة هنا"),
-                         context: context,
-
+                        child: DetailesSection(),
+                        context: context,
                       ),
                       _buildSection(
                         key: cubit.reviewsKey,
                         title: "المراجعات",
-                        child: Text("المراجعات"),
-                         context: context,
-
+                        context: context,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "الجلسات",
+                              textAlign: TextAlign.start,
+                              style: context.xHeadingSmall
+                                  .copyWith(color: content.secondary),
+                            ),
+                            const SizedBox(height: 12),
+                            ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: 4,
+                              itemBuilder: (context, index) => Padding(
+                                padding: const EdgeInsets.only(bottom: 16),
+                                child: const LessonCard(),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 300),
                     ],
                   ),
                 ),
               ),
-              if (state.showTabBar) StickyFloatingHeader( cubit:  cubit),
+              if (state.showTabBar) StickyFloatingHeader(cubit: cubit),
               const FloatingActiveCourseButton(),
             ],
           );
@@ -187,6 +203,173 @@ class _CourseInformationView extends StatelessWidget {
       ),
     );
   }
+}
 
- }
- 
+class LessonCard extends StatelessWidget {
+  const LessonCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var content = Theme.of(context).extension<AppContent>()!;
+    final border = Theme.of(context).extension<AppBorders>()!;
+    final background = Theme.of(context).extension<AppBackgrounds>()!;
+    return Container(
+      padding: EdgeInsets.all(16.w(context)),
+      decoration: ShapeDecoration(
+        color: background.onSurfacePrimary,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            width: 1.w(context),
+            color: border.transparent,
+          ),
+          borderRadius: BorderRadius.circular(12.w(context)),
+        ),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    'الدرس الأول',
+                    style:
+                        context.xLabelSmall.copyWith(color: content.secondary),
+                  ),
+                ),
+                const SizedBox(height: 2),
+                FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    'التعامل مع الشروط',
+                    style: context.xHeadingSmall,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(width: 12.w(context)),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              '30:00 دقيقة',
+              style: context.xLabelSmall.copyWith(color: content.secondary),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class DetailesSection extends StatelessWidget {
+  const DetailesSection({super.key});
+  @override
+  Widget build(BuildContext context) {
+    final content = Theme.of(context).extension<AppContent>()!;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          child: Text(
+            "محتويات الدورة",
+            style: context.xHeadingLarge,
+          ),
+        ),
+        Text(
+          "البيانات الرئيسية",
+          style: context.xHeadingSmall.copyWith(color: content.secondary),
+        ),
+        SizedBox(
+          height: 12,
+        ),
+        Wrap(
+          spacing: 8.w(context),
+          runSpacing: 8.w(context),
+          children: [
+            DetilesItem(
+                title: 'مدة الدورة',
+                value: "${4} س",
+                icon: PhosphorIcons.clock()),
+            DetilesItem(
+                title: 'عدد مقاطع',
+                value: "${15}",
+                icon: PhosphorIcons.clock()),
+            DetilesItem(
+                title: 'عدد الملفات المرفقة',
+                value: "${5}",
+                icon: PhosphorIcons.clock()),
+            DetilesItem(
+                title: 'عدد كويزات',
+                value: "${2}",
+                icon: PhosphorIcons.clock()),
+            SizedBox(
+              height: 16,
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class DetilesItem extends StatelessWidget {
+  const DetilesItem({
+    super.key,
+    required this.title,
+    required this.value,
+    required this.icon,
+  });
+
+  final String title;
+  final String value;
+  final PhosphorIconData icon;
+  @override
+  Widget build(BuildContext context) {
+    final content = Theme.of(context).extension<AppContent>()!;
+    final border = Theme.of(context).extension<AppBorders>()!;
+
+    return Container(
+      padding: EdgeInsets.all(16.w(context)),
+      width: 182.w(context),
+      decoration: BoxDecoration(
+        border: Border.all(color: border.transparent),
+        borderRadius: BorderRadius.circular(
+          12.w(context),
+        ),
+      ),
+      child: Wrap(
+        runSpacing: 8,
+        crossAxisAlignment: WrapCrossAlignment.start,
+        children: [
+          PhosphorIcon(
+            icon,
+            size: 16.w(context),
+            color: content.secondary,
+          ),
+          SizedBox(
+            width: 4.w(context),
+          ),
+          Text(
+            title,
+            style: context.xLabelSmall,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            width: double.infinity,
+          ),
+          Text(
+            value,
+            textAlign: TextAlign.center,
+            style: context.xDisplaySmall,
+          ),
+        ],
+      ),
+    );
+  }
+}

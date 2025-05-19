@@ -3,6 +3,7 @@ import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 
 class CourseImage extends StatelessWidget {
   final AppBorders border;
@@ -28,23 +29,24 @@ class CourseImage extends StatelessWidget {
           Image.asset(
             AppImages.courseImage,
             width: double.infinity,
-            height: 140.h(context),
+            height: 140,
             fit: BoxFit.cover,
           ),
           if (isNew)
             Padding(
-              padding: EdgeInsets.all(8.w(context)),
+              padding: EdgeInsets.all(8),
               child: Container(
-                height: 20.h(context),
                 width: 60.w(context),
                 color: background.negativeStrong,
                 alignment: Alignment.center,
-                child: Text(
-                  "جديد",
-                  style: Theme.of(context)
-                      .textTheme
-                      .labelSmall!
-                      .copyWith(color: Colors.white),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    "جديد",
+                    style: context.
+                        xLabelSmall
+                        .copyWith(color: Colors.white),
+                  ),
                 ),
               ),
             ),

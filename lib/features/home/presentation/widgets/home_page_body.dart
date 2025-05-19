@@ -1,5 +1,8 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:developer';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:student_hackerha/core/DI/service_locator.dart';
@@ -44,17 +47,21 @@ class _HomePageBodyState extends State<HomePageBody> {
   void initState() {
     super.initState();
     _searchController = TextEditingController();
+
   }
 
   @override
   Widget build(BuildContext context) {
+   
+ 
     final courses = locator.get<List<Course>>(instanceName: 'courses');
 
     final background = Theme.of(context).extension<AppBackgrounds>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
-    final screenHeight = MediaQuery.of(context).size.height;
-    final isTablet = screenHeight > 850;
-    final listHeight = isTablet ? 340.h(context) : 340.h(context);
+    final screenHeight = MediaQuery.of(context).size.width;
+    final isTablet = screenHeight > 900;
+    final listHeight = isTablet ? 370.h(context) : 300.h(context);
+
 
     return SafeArea(
       child: CustomScrollView(slivers: [
@@ -116,7 +123,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         ),
         SliverToBoxAdapter(
           child: MyCourseListSection(
-            height: listHeight,
+          
             border: border,
             background: background,
             courses: courses,

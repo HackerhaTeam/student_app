@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/DI/service_locator.dart';
 import 'package:student_hackerha/core/Entities/course.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
 
 enum FieldType {
@@ -79,7 +80,7 @@ class CustomTextField extends StatelessWidget {
     final effectiveController =
         controller ?? TextEditingController(text: initialValue);
     final effectiveFocusNode = focusNode ?? FocusNode();
-    final effectiveStyle = textStyle ?? Theme.of(context).textTheme.bodyMedium;
+    final effectiveStyle = textStyle ??context.xLabelLarge;
 
     return TextFormField(
       controller: effectiveController,

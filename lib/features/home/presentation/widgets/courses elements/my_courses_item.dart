@@ -21,29 +21,27 @@ class MyCoursesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        margin: EdgeInsets.only(bottom: 8.h(context)),
-        width: MediaQuery.of(context).size.width * 0.75,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(21.r(context)),
-          border: Border.all(width: 1, color: border.transparent),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CourseImage(
-              border: border,
-              background: background,
-              isNew: false,
-            ),
-            MyCourseCard(
-              imageUrl: AppImages.courseImage,
-              progress: 22,
-              course: course,
-            ),
-          ],
-        ),
+    return Container(
+      margin: EdgeInsets.only(bottom: 8.h(context)),
+      width: MediaQuery.of(context).size.width * 0.75,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(21.r(context)),
+        border: Border.all(width: 1, color: border.transparent),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CourseImage(
+            border: border,
+            background: background,
+            isNew: false,
+          ),
+          MyCourseCard(
+            imageUrl: AppImages.courseImage,
+            progress: 22,
+            course: course,
+          ),
+        ],
       ),
     );
   }
