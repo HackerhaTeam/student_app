@@ -9,13 +9,14 @@ class SubjectQuizzesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return ListView.builder(
       physics: BouncingScrollPhysics(),
       itemCount: 10,
       itemBuilder: (context, index) {
         return Padding(
           padding: EdgeInsets.only(bottom: 16.h(context)),
-          child: SubjectQuiz(),
+          child: SubjectQuiz(index: index,),
         );
       },
     );

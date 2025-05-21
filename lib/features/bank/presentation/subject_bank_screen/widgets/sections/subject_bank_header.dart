@@ -16,10 +16,11 @@ class SubjectBankHeader extends StatelessWidget {
     final contentColor = Theme.of(context).extension<AppContent>()!;
     return Row(
       children: [
-        CustomCircleIconButton(
-          iconDataPhosphor: PhosphorIcons.caretRight(),
-          size: 24.s(context),
-          backgrounds: backgroundColor,
+        CustomCircleIcon(
+          circleSize: 44.s(context),
+          icon: PhosphorIcons.caretRight(),
+          iconSize: 24.s(context),
+          backgroundColor: backgroundColor.onSurfaceSecondary,
           onTap: () {
             Navigator.pop(context);
           },
@@ -39,11 +40,13 @@ class SubjectBankHeader extends StatelessWidget {
             ),
           ],
         ),
+        
         Spacer(),
-        CustomCircleIconButton(
-          iconDataPhosphor: PhosphorIcons.bookmarkSimple(),
-          size: 24.s(context),
-          backgrounds: backgroundColor,
+        CustomCircleIcon(
+          circleSize: 44.s(context),
+          icon: PhosphorIcons.bookmarkSimple(),
+          iconSize: 24.s(context),
+          backgroundColor: backgroundColor.onSurfaceSecondary,
         ),
       ],
     );

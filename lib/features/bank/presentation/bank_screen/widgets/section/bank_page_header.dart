@@ -20,10 +20,11 @@ class BankPageHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text('بنك الأسئلة', style: context.xHeadingXLarge),
-          CustomCircleIconButton(
-            backgrounds: backgroundColor,
-            iconDataPhosphor: PhosphorIcons.magnifyingGlass(),
-            size: 24.s(context),
+          CustomCircleIcon(
+            circleSize: 44.s(context),
+            backgroundColor: backgroundColor.onSurfaceSecondary,
+            icon: PhosphorIcons.magnifyingGlass(),
+            iconSize: 24.s(context),
           )
         ],
       ),

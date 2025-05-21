@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/features/bank/presentation/shared/widgets/custom_card.dart';
+import 'package:student_hackerha/features/bank/presentation/shared/widgets/custom_circle_icon.dart';
+import 'package:student_hackerha/features/bank/presentation/subject_bank_screen/widgets/helpers/supject_quizzes/get_subject_quiz_icon.dart';
+import 'package:student_hackerha/features/bank/presentation/subject_bank_screen/widgets/helpers/supject_quizzes/get_subject_quiz_icon_color.dart';
 import 'package:student_hackerha/features/bank/presentation/subject_bank_screen/widgets/subject_quizzes/subject_quiz_details.dart';
 import 'package:student_hackerha/features/bank/presentation/subject_bank_screen/widgets/subject_quizzes/subject_quiz_image.dart';
 
 class SubjectQuiz extends StatelessWidget {
-  const SubjectQuiz({super.key});
-
+  const SubjectQuiz({super.key, required this.index});
+  final int index;
   @override
   Widget build(BuildContext context) {
     final backgroundColor = Theme.of(context).extension<AppBackgrounds>()!;
@@ -28,11 +30,13 @@ class SubjectQuiz extends StatelessWidget {
             SizedBox(width: 8.w(context)),
             SubjectQuizDetails(),
             Spacer(),
-            PhosphorIcon(
-              textDirection: TextDirection.ltr,
-              PhosphorIcons.checkCircle(PhosphorIconsStyle.fill),
-              color: contentColor.success,
-              size: 16.s(context),
+            CustomCircleIcon(
+              circleSize: 16.w(context),
+              iconColor: contentColor.primaryInverted,
+              backgroundColor: getSubjectQuizIconColor(
+                  index: index, backgroundColor: backgroundColor),
+              icon: getSubjectQuizIcon(index: index),
+              iconSize: 10.s(context),
             ),
           ],
         ),

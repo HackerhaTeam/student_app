@@ -27,9 +27,7 @@ double _getResponsiveFontSize(BuildContext context, double size) {
 }
 
 double _getResponsiveSize(BuildContext context, double size) {
-  final width = _getResponsiveWidth(context, size);
-  final height = _getResponsiveHeight(context, size);
-  return (width + height) / 2;
+  return _getResponsiveWidth(context, size);
 }
 
 extension DoubleResponsiveExtensions on double {

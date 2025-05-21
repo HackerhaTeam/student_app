@@ -10,8 +10,11 @@ class AppBorders extends ThemeExtension<AppBorders> {
   final Color secondary;
   final Color disabled;
   final Color success;
-
+  final Color containerOutlineStart;
+  final Color containerOutlineEnd;
   AppBorders({
+    required this.containerOutlineStart,
+    required this.containerOutlineEnd,
     required this.primary,
     required this.transparent,
     required this.transparentStatic,
@@ -31,6 +34,8 @@ class AppBorders extends ThemeExtension<AppBorders> {
     secondary: AppColors.grey400,
     disabled: AppColors.grey300,
     success: AppColors.green500,
+    containerOutlineStart: AppColors.fakeBlue,
+    containerOutlineEnd: AppColors.brandNavyBlue700,
   );
 
   static AppBorders dark = AppBorders(
@@ -42,6 +47,8 @@ class AppBorders extends ThemeExtension<AppBorders> {
     secondary: AppColors.grey200,
     disabled: AppColors.grey400,
     success: AppColors.green500,
+    containerOutlineStart: AppColors.brandBlue200,
+    containerOutlineEnd: AppColors.brandBlue500,
   );
 
   @override
@@ -54,6 +61,8 @@ class AppBorders extends ThemeExtension<AppBorders> {
     Color? secondary,
     Color? disabled,
     Color? success,
+    Color? containerOutlineStart,
+    Color? containerOutlineEnd,
   }) {
     return AppBorders(
       primary: primary ?? this.primary,
@@ -64,6 +73,9 @@ class AppBorders extends ThemeExtension<AppBorders> {
       secondary: secondary ?? this.secondary,
       disabled: disabled ?? this.disabled,
       success: success ?? this.success,
+      containerOutlineStart:
+          containerOutlineStart ?? this.containerOutlineStart,
+      containerOutlineEnd: containerOutlineEnd ?? this.containerOutlineEnd,
     );
   }
 
@@ -80,6 +92,8 @@ class AppBorders extends ThemeExtension<AppBorders> {
       secondary: Color.lerp(secondary, other.secondary, t)!,
       disabled: Color.lerp(disabled, other.disabled, t)!,
       success: Color.lerp(success, other.success, t)!,
+      containerOutlineStart: Color.lerp(containerOutlineStart, other.containerOutlineStart, t)!,
+      containerOutlineEnd: Color.lerp(containerOutlineEnd, other.containerOutlineEnd, t)!,
     );
   }
 }

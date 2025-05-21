@@ -11,6 +11,7 @@ class SubjectQuizDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     final contentColor = Theme.of(context).extension<AppContent>()!;
 
     return Column(
