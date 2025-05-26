@@ -7,22 +7,32 @@ class GenderSellector extends StatelessWidget {
     super.key,
     required this.selectedGender,
     required this.onChanged,
+    required this.genderKey,
+    required this.genderSubmitted,
   });
 
   final String? selectedGender;
-  final dynamic Function(String) onChanged;
+  final dynamic Function(String?) onChanged;
+  final GlobalKey<FormState> genderKey;
+  final bool genderSubmitted;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        width: 365.w(context),
-        height: 61,
-        child: CustomDropdown(
-          label: "الجنس",
-          items: ["ذكر", "أنثى"],
-          selectedItem: selectedGender,
-          onChanged: onChanged,
-          type: DropdownType.gender,
+    return Form(
+      key: genderKey,
+      autovalidateMode: genderSubmitted
+          ? AutovalidateMode.onUserInteraction
+          : AutovalidateMode.disabled,
+      child: Center(
+        child: SizedBox(
+          width: 365.w(context),
+          height: 61,
+          child: CustomDropdown(
+            label: "الجنس",
+            items: ["ذكر", "أنثى"],
+            selectedValue: selectedGender,
+            onChanged: onChanged,
+            type: DropdownType.gender,
+          ),
         ),
       ),
     );

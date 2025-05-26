@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/custom_text_field.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/fields/email_field.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/fields/password_field.dart';
 
 class SignUpPage5Body extends StatefulWidget {
   const SignUpPage5Body({
@@ -22,8 +23,12 @@ class _SignUpPage5BodyState extends State<SignUpPage5Body> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> emailKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> passwordKey = GlobalKey<FormState>();
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode passwordFocusNode = FocusNode();
+  bool emailSubmitted = false;
+  bool passwordSubmitted = false;
   @override
   void initState() {
     super.initState();
@@ -40,7 +45,15 @@ class _SignUpPage5BodyState extends State<SignUpPage5Body> {
       floatingActionButton: FloatingNextButton(
         formKey: formKey,
         onNext: () {
-          if (formKey.currentState!.validate()) {
+          setState(() {
+            emailSubmitted = true;
+            passwordSubmitted = true;
+          });
+          final emailValidate = emailKey.currentState?.validate() ?? false;
+          final passwordValidate =
+              passwordKey.currentState?.validate() ?? false;
+          final isFormValid = formKey.currentState?.validate() ?? false;
+          if (emailValidate && passwordValidate && isFormValid) {
             widget.onNext();
           }
         },
@@ -65,30 +78,20 @@ class _SignUpPage5BodyState extends State<SignUpPage5Body> {
                   style: styles.xParagraphLargeLose,
                 ),
               ),
-              Center(
-                child: CustomTextField(
-                  onFieldSubmitted: (_) => passwordFocusNode.requestFocus(),
-                  focusNode: emailFocusNode,
-                  keyboardType: TextInputType.emailAddress,
-                  fieldType: FieldType.email,
-                  label: "البريد الإلكتروني",
-                  radius: 8.r(context),
-                  controller: emailController,
-                ),
-              ),
+              EmailField(
+                  emailKey: emailKey,
+                  emailSubmitted: emailSubmitted,
+                  passwordFocusNode: passwordFocusNode,
+                  emailFocusNode: emailFocusNode,
+                  emailController: emailController),
               SizedBox(
                 height: 24.h(context),
               ),
-              Center(
-                child: CustomTextField(
-                  focusNode: passwordFocusNode,
-                  keyboardType: TextInputType.text,
-                  fieldType: FieldType.password,
-                  label: "كلمة المرور",
-                  radius: 8.r(context),
-                  controller: passwordController,
-                ),
-              )
+              PasswordField(
+                  passwordKey: passwordKey,
+                  passwordSubmitted: passwordSubmitted,
+                  passwordFocusNode: passwordFocusNode,
+                  passwordController: passwordController)
             ],
           ),
         ),

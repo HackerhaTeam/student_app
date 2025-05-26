@@ -2,28 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
 
-class DayField extends StatelessWidget {
-  const DayField({
+class MonthField extends StatelessWidget {
+  const MonthField({
     super.key,
-    required this.dayController,
-    required this.focusNode,
+    required this.monthController,
+    this.focusNode,
     this.onChanged,
     this.onSubmitted,
-    required this.dayKey,
-    required this.daySubmitted,
+    required this.monthKey,
+    required this.monthSubmitted,
   });
 
-  final TextEditingController dayController;
-  final FocusNode focusNode;
+  final TextEditingController monthController;
+  final FocusNode? focusNode;
   final void Function(String)? onChanged;
   final void Function(String)? onSubmitted;
-  final GlobalKey<FormState> dayKey;
-  final bool daySubmitted;
+  final GlobalKey<FormState> monthKey;
+  final bool monthSubmitted;
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: dayKey,
-      autovalidateMode: daySubmitted
+      key: monthKey,
+      autovalidateMode: monthSubmitted
           ? AutovalidateMode.onUserInteraction
           : AutovalidateMode.disabled,
       child: SizedBox(
@@ -35,10 +35,10 @@ class DayField extends StatelessWidget {
             onChanged: onChanged,
             focusNode: focusNode,
             keyboardType: TextInputType.number,
-            fieldType: FieldType.day,
-            label: "اليوم",
+            fieldType: FieldType.month,
+            label: "الشهر",
             radius: 8.r(context),
-            controller: dayController,
+            controller: monthController,
           ),
         ),
       ),

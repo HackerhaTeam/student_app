@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/buttons/custom_check_box.dart';
@@ -11,13 +10,9 @@ import 'package:student_hackerha/core/widgets/buttons/big_next_button.dart';
 class SignUpPage1Body extends StatefulWidget {
   const SignUpPage1Body({
     super.key,
-    required this.backgrounds,
     required this.onNext,
-    required this.content,
   });
 
-  final AppBackgrounds backgrounds;
-  final AppContent content;
   final VoidCallback onNext;
 
   @override
@@ -29,7 +24,8 @@ class _SignUpPage1BodyState extends State<SignUpPage1Body> {
 
   @override
   Widget build(BuildContext context) {
-    final styles = context;
+    final content = Theme.of(context).extension<AppContent>()!;
+
     return Scaffold(
       floatingActionButton: Padding(
         padding: EdgeInsets.only(bottom: 16),
@@ -52,8 +48,8 @@ class _SignUpPage1BodyState extends State<SignUpPage1Body> {
               RichText(
                 textAlign: TextAlign.start,
                 text: TextSpan(
-                  style: styles.xParagraphLargeLose
-                      .copyWith(color: widget.content.primary),
+                  style: context.xParagraphLargeLose
+                      .copyWith(color: content.primary),
                   children: [
                     const TextSpan(
                       text: "مرحبًا بك في تطبيقنا! 🎓💡\n\n",
@@ -63,8 +59,8 @@ class _SignUpPage1BodyState extends State<SignUpPage1Body> {
                             "هذا التطبيق مصمم خصيصًا لطلاب كلية الهندسة المعلوماتية في كل من "),
                     TextSpan(
                       text: "جامعة حلب، قرطبة، إيبلا",
-                      style: styles.xParagraphLargeLose.copyWith(
-                        color: widget.content.brandSecondary,
+                      style: context.xParagraphLargeLose.copyWith(
+                        color: content.brandSecondary,
                       ),
                     ),
                     const TextSpan(
@@ -100,7 +96,7 @@ class _SignUpPage1BodyState extends State<SignUpPage1Body> {
                   SizedBox(width: 8.w(context)),
                   Text(
                     "أستوفي ما ذُكر وأنا في أتم الاستعداد!",
-                    style: styles.xLabelLarge,
+                    style: context.xLabelLarge,
                   ),
                 ],
               ),

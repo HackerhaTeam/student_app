@@ -63,9 +63,6 @@ class _SignUpPage2BodyState extends State<SignUpPage2Body> {
           padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
           child: Form(
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            // autovalidateMode: isSubmitted
-            //     ? AutovalidateMode.onUserInteraction
-            //     : AutovalidateMode.disabled,
             key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,33 +79,24 @@ class _SignUpPage2BodyState extends State<SignUpPage2Body> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                Form(
-                  key: nameKey,
-                  autovalidateMode: isNameSubmitted
-                      ? AutovalidateMode.onUserInteraction
-                      : AutovalidateMode.disabled,
-                  child: FullNameField(
-                    // onChanged: (_) => setState(() {
-                    //   isSubmitted = true;
-                    // }),
-                    onSubmitted: (_) {
-                      // isNameSubmitted = true;
-                      phoneFocusNode.requestFocus();
-                    },
-                    nameFocusNode: nameFocusNode,
-                    nameController: nameController,
-                  ),
+                FullNameField(
+                  // onChanged: (_) => setState(() {
+                  //   isSubmitted = true;
+                  // }),
+                  onSubmitted: (_) {
+                    // isNameSubmitted = true;
+                    phoneFocusNode.requestFocus();
+                  },
+                  nameFocusNode: nameFocusNode,
+                  nameController: nameController, nameKey: nameKey,
+                  isNameSubmitted: isNameSubmitted,
                 ),
                 const SizedBox(height: 24),
-                Form(
-                  key: phoneKey,
-                  autovalidateMode: isPhoneSubmitted
-                      ? AutovalidateMode.onUserInteraction
-                      : AutovalidateMode.disabled,
-                  child: PhoneNumberField(
-                      phoneController: phoneController,
-                      phoneFocusNode: phoneFocusNode,
-                      onChanged: (_) => setState(() {})),
+                PhoneNumberField(
+                  phoneController: phoneController,
+                  phoneFocusNode: phoneFocusNode,
+                  phoneKey: phoneKey,
+                  isPhoneSubmitted: isPhoneSubmitted,
                 ),
               ],
             ),

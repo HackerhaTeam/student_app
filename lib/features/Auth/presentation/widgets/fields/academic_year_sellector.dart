@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/widgets/custom_dropdownfield.dart';
 
-class UniversitySellector extends StatelessWidget {
-  const UniversitySellector({
+class AcademicYearSellector extends StatelessWidget {
+  const AcademicYearSellector({
     super.key,
-    required this.selectedUniversity,
+    required this.selectedYear,
     required this.onChanged,
-    required this.unyKey,
-    required this.unySubmitted,
+    required this.yearUnyKey,
+    required this.yearUnySubmitted,
   });
 
-  final String? selectedUniversity;
+  final String? selectedYear;
   final dynamic Function(String?) onChanged;
-  final GlobalKey<FormState> unyKey;
-  final bool unySubmitted;
+  final GlobalKey<FormState> yearUnyKey;
+  final bool yearUnySubmitted;
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: unyKey,
-      autovalidateMode: unySubmitted
+      key: yearUnyKey,
+      autovalidateMode: yearUnySubmitted
           ? AutovalidateMode.onUserInteraction
           : AutovalidateMode.disabled,
       child: SizedBox(
@@ -28,11 +28,11 @@ class UniversitySellector extends StatelessWidget {
         child: CustomDropdown(
           width: 372.w(context),
           height: 59,
-          label: "الجامعة",
-          items: ['جامعة حلب', 'جامعة قرطبة', 'جامعة إيبلا', 'جامعة الشهباء'],
-          selectedValue: selectedUniversity,
+          label: "السنة الدراسية",
+          items: ["الأولى", "الثانية", "الثالثة", "الرابعة", "الخامسة"],
+          selectedValue: selectedYear,
           onChanged: onChanged,
-          type: DropdownType.university,
+          type: DropdownType.academicYear,
         ),
       ),
     );

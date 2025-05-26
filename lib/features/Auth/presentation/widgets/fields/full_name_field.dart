@@ -9,28 +9,35 @@ class FullNameField extends StatelessWidget {
     required this.nameController,
     this.onSubmitted,
     this.onChanged,
-    this.fieldKey,
+    required this.nameKey,
+    required this.isNameSubmitted,
   });
 
   final FocusNode nameFocusNode;
   final TextEditingController nameController;
   final void Function(String)? onSubmitted;
   final void Function(String)? onChanged;
-  final GlobalKey<FormFieldState>? fieldKey;
+  final GlobalKey<FormState> nameKey;
+  final bool isNameSubmitted;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: CustomTextField(
-        key: fieldKey,
-        onChanged: onChanged,
-        focusNode: nameFocusNode,
-        fieldType: FieldType.name,
-        label: "الاسم الكامل",
-        radius: 8.r(context),
-        controller: nameController,
-        width: 372.w(context),
-        height: 57,
-        onFieldSubmitted: onSubmitted,
+    return Form(
+      key: nameKey,
+      autovalidateMode: isNameSubmitted
+          ? AutovalidateMode.onUserInteraction
+          : AutovalidateMode.disabled,
+      child: Center(
+        child: CustomTextField(
+          onChanged: onChanged,
+          focusNode: nameFocusNode,
+          fieldType: FieldType.name,
+          label: "الاسم الكامل",
+          radius: 8.r(context),
+          controller: nameController,
+          width: 372.w(context),
+          height: 57,
+          onFieldSubmitted: onSubmitted,
+        ),
       ),
     );
   }

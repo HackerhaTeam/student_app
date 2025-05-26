@@ -6,7 +6,7 @@ import 'package:student_hackerha/features/Auth/presentation/widgets/fields/day_f
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/gender_sellector.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/fields/month_sellector.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/fields/month_field.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/year_field.dart';
 
 class SignUpPage4Body extends StatefulWidget {
@@ -23,10 +23,20 @@ class SignUpPage4Body extends StatefulWidget {
 
 class _SignUpPage4BodyState extends State<SignUpPage4Body> {
   final TextEditingController dayController = TextEditingController();
+  final TextEditingController monthController = TextEditingController();
   final TextEditingController yearController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> dayKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> monthKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> yearKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> genderKey = GlobalKey<FormState>();
   final FocusNode dayFocusNode = FocusNode();
-
+  final FocusNode monthFocusNode = FocusNode();
+  final FocusNode yearFocusNode = FocusNode();
+  bool daySubmitted = false;
+  bool monthSubmitted = false;
+  bool yearSubmitted = false;
+  bool genderSubmitted = false;
   String? selectedMonth;
   String? selectedGender;
   @override
@@ -47,7 +57,22 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
       floatingActionButton: FloatingNextButton(
         formKey: formKey,
         onNext: () {
-          if (formKey.currentState!.validate()) {
+          setState(() {
+            daySubmitted = true;
+            monthSubmitted = true;
+            yearSubmitted = true;
+            genderSubmitted = true;
+          });
+          final dayValidate = dayKey.currentState?.validate() ?? false;
+          final monthValidate = monthKey.currentState?.validate() ?? false;
+          final yearValidate = yearKey.currentState?.validate() ?? false;
+          final genderValidate = genderKey.currentState?.validate() ?? false;
+          final isFormValid = formKey.currentState?.validate() ?? false;
+          if (dayValidate &&
+              monthValidate &&
+              yearValidate &&
+              genderValidate &&
+              isFormValid) {
             widget.onNext();
           }
         },
@@ -77,26 +102,34 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     DayField(
+                      onSubmitted: (p0) {
+                        monthFocusNode.requestFocus();
+                      },
                       onChanged: (p0) {
                         // formKey.currentState!.validate();
                       },
                       dayController: dayController,
                       focusNode: dayFocusNode,
+                      dayKey: dayKey,
+                      daySubmitted: daySubmitted,
                     ),
-                    MonthSellector(
-                      selectedMonth: selectedMonth,
-                      onChanged: (value) {
-                        setState(() {
-                          // formKey.currentState!.validate();
-                          selectedMonth = value;
-                        });
+                    MonthField(
+                      onSubmitted: (p0) {
+                        yearFocusNode.requestFocus();
                       },
+                      monthController: monthController,
+                      focusNode: monthFocusNode,
+                      monthKey: monthKey,
+                      monthSubmitted: monthSubmitted,
                     ),
                     YearField(
+                      focusNode: yearFocusNode,
                       yearController: yearController,
                       onChanged: (p0) {
                         // formKey.currentState!.validate();
                       },
+                      yearKey: yearKey,
+                      yearSubmitted: yearSubmitted,
                     )
                   ],
                 ),
@@ -111,6 +144,8 @@ class _SignUpPage4BodyState extends State<SignUpPage4Body> {
                       selectedGender = value;
                     });
                   },
+                  genderKey: genderKey,
+                  genderSubmitted: genderSubmitted,
                 )
               ],
             ),

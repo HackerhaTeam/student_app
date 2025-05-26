@@ -6,21 +6,33 @@ class AcademicYearField extends StatelessWidget {
   const AcademicYearField({
     super.key,
     required this.numberController,
+    required this.numUnyKey,
+    required this.numUnySubmitted,
+    this.focusNode,
   });
 
   final TextEditingController numberController;
-
+  final GlobalKey<FormState> numUnyKey;
+  final bool numUnySubmitted;
+  final FocusNode? focusNode;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 56,
-      child: Center(
-        child: CustomTextField(
-          keyboardType: TextInputType.number,
-          fieldType: FieldType.academicYear,
-          label: "الرقم الجامعي",
-          radius: 8.r(context),
-          controller: numberController,
+    return Form(
+      key: numUnyKey,
+      autovalidateMode: numUnySubmitted
+          ? AutovalidateMode.onUserInteraction
+          : AutovalidateMode.disabled,
+      child: SizedBox(
+        height: 56,
+        child: Center(
+          child: CustomTextField(
+            focusNode: focusNode,
+            keyboardType: TextInputType.number,
+            fieldType: FieldType.academicYear,
+            label: "الرقم الجامعي",
+            radius: 8.r(context),
+            controller: numberController,
+          ),
         ),
       ),
     );
