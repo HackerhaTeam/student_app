@@ -78,7 +78,7 @@ class _HomePageBodyState extends State<HomePageBody> {
               ),
               GestureDetector(
                 onTap: () {
-                  context.navigateFromBottom(SearchPage());
+                  context.navigateWithSlideTransition (SearchPage());
                 },
                 child: Container(
                   color: Colors.transparent,

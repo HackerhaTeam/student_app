@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-import 'package:student_hackerha/core/widgets/circled_splash_icon.dart';
+import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 
 class CourseInformationButtonsHeader extends StatelessWidget {
   const CourseInformationButtonsHeader({super.key});
@@ -11,19 +12,19 @@ class CourseInformationButtonsHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CircledSplashIcon(
-          splachcolor:
+        CustomCircleIcon(
+          backgroundColor:
               Theme.of(context).extension<AppBackgrounds>()!.containerStatic,
-          iconDataPhosphor: PhosphorIcons.caretLeft(),
+          icon: PhosphorIcons.caretRight(),
           onTap: () {
             Navigator.pop(context);
-          },
+          }, circleSize: 44.w(context),
         ),
-        CircledSplashIcon(
-          iconDataPhosphor: PhosphorIcons.bookmarkSimple(),
+        CustomCircleIcon(
+          icon: PhosphorIcons.bookmarkSimple(),
           onTap: () {},
-          splachcolor:
-              Theme.of(context).extension<AppBackgrounds>()!.containerStatic,
+          backgroundColor:
+              Theme.of(context).extension<AppBackgrounds>()!.containerStatic, circleSize: 44.w(context),
         )
       ],
     );

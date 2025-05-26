@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/circled_splash_icon.dart';
+import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 
 class SummaryCourse extends StatelessWidget {
   const SummaryCourse({
@@ -14,6 +15,7 @@ class SummaryCourse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var content = Theme.of(context).extension<AppContent>()!;
+    var background = Theme.of(context).extension<AppBackgrounds>()!;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,10 +66,9 @@ class SummaryCourse extends StatelessWidget {
             ),
           ),
           child: Center(
-            child: RotationTransition(
-                turns: AlwaysStoppedAnimation(180 / 360),
-                child: CircledSplashIcon(
-                    iconDataPhosphor: PhosphorIcons.play(), onTap: () {})),
+            child: CustomCircleIcon(
+              backgroundColor: background.containerStatic,
+                icon: PhosphorIcons.play(), onTap: () {}, circleSize: 56.w(context),),
           ),
         ),
         SizedBox(

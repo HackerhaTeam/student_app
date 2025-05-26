@@ -6,7 +6,7 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/drawer/gradient_divider.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/myAccountPage/background_icon_my_account.dart';
+import 'package:student_hackerha/core/widgets/rounded_square_icon.dart';
 
 class MyAccountMenuItem extends StatelessWidget {
   const MyAccountMenuItem(
@@ -20,7 +20,6 @@ class MyAccountMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final background = Theme.of(context).extension<AppBackgrounds>()!;
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
@@ -28,7 +27,7 @@ class MyAccountMenuItem extends StatelessWidget {
         children: [
           Row(
             children: [
-              BackgroundIconMyAccount(background: background, icon: icon),
+              RoundedSquareIcon(icon: icon,),
               SizedBox(width: 16.w(context)),
               Text(title, style: context.xHeadingSmall),
               const Spacer(),

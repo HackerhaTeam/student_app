@@ -13,6 +13,7 @@ enum FieldType {
   phoneNumber,
   academicYear,
   day,
+  month,
   year,
   activationCode
 }
@@ -32,6 +33,8 @@ class CustomTextField extends StatefulWidget {
   final bool obscureOverride;
   final FocusNode? focusNode;
   final String? Function(String?)? customValidator;
+  final void Function(String)? onFieldSubmitted;
+  final void Function(String)? onChanged;
 
   const CustomTextField({
     super.key,
@@ -49,6 +52,8 @@ class CustomTextField extends StatefulWidget {
     this.keyboardType,
     this.focusNode,
     this.customValidator,
+    this.onFieldSubmitted,
+    this.onChanged,
   });
 
   @override
@@ -108,8 +113,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       case FieldType.day:
         if (value == null || value.trim().isEmpty) return "أدخل اليوم";
         final day = int.tryParse(value.trim());
-        if (day == null) return "قيمة خاطئة";
-        if (day < 0) return "قيمة خاطئة";
+        if (day == null) return "أدخل اليوم";
+        if (day <= 0) return "قيمة خاطئة";
+        if (day > 31) return "قيمة خاطئة";
         break;
 
       case FieldType.year:
@@ -118,6 +124,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         if (year == null) return "قيمة خاطئة";
         if (year < 0) return "قيمة خاطئة";
         if (year < 1900) return "قيمة خاطئة";
+
         if (year > DateTime.now().year) {
           return "قيمة خاطئة";
         }
@@ -126,6 +133,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
         if (value == null || value.isEmpty) {
           return "الكود الذي أدخلته غير صالح، أعد المحاولة مجدداً.";
         }
+      case FieldType.month:
+        if (value == null || value.trim().isEmpty) return "أدخل الشهر";
+        final month = int.tryParse(value.trim());
+        if (month == null) return "قيمة خاطئة";
+        if (month <= 0) return "قيمة خاطئة";
+        if (month > 12) return "قيمة خاطئة";
     }
     return null;
   }
@@ -141,6 +154,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
       width: widget.width,
       height: widget.height,
       child: TextFormField(
+        // autovalidateMode: AutovalidateMode.onUserInteraction,
+        onChanged: widget.onChanged,
+        onFieldSubmitted: widget.onFieldSubmitted,
         focusNode: widget.focusNode,
         expands: false,
         textAlign: widget.fieldType == FieldType.phoneNumber ||
@@ -162,6 +178,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
             : widget.obscureOverride,
         style: styles.xLabelLarge,
         decoration: InputDecoration(
+          isDense: true,
+          helperText: '',
+          helperStyle: TextStyle(height: 0.5, fontSize: 12),
           errorStyle: const TextStyle(
             fontSize: 12,
             color: Colors.red,

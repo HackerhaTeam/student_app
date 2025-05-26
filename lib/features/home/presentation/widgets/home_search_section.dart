@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/custom_textdiled.dart';
+import 'package:student_hackerha/core/widgets/custom_text_field.dart';
 
 class HomeSearchSection extends StatefulWidget {
   final TextEditingController searchController;
@@ -50,18 +49,18 @@ class _HomeSearchSectionState extends State<HomeSearchSection> {
       child: Column(
         children: [
           CustomTextField(
-            textStyle: context.xLabelLarge,
+         
             fieldType: FieldType.search,
             hint: "ابحث عن اسم مادة",
             radius: 8.r(context),
-            prefixIcon: PhosphorIcons.magnifyingGlass(),
-            suffixIcon: widget.searchController.text.isNotEmpty
-                ? PhosphorIcons.xCircle()
+            prefix: PhosphorIcon(PhosphorIcons.magnifyingGlass()),
+            suffix: widget.searchController.text.isNotEmpty
+                ?PhosphorIcon( PhosphorIcons.xCircle())
                 : null,
             controller: widget.searchController,
             focusNode: _searchFocusNode,
-            textInputAction: TextInputAction.search,
-            onSubmitted: (value) {
+           
+            onFieldSubmitted: (value) {
               if (widget.onSearch != null) {
                 widget.onSearch!(value);
               }
