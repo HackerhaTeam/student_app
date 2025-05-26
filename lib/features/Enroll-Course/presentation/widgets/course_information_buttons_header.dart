@@ -15,7 +15,9 @@ class CourseInformationButtonsHeader extends StatelessWidget {
           splachcolor:
               Theme.of(context).extension<AppBackgrounds>()!.containerStatic,
           iconDataPhosphor: PhosphorIcons.caretLeft(),
-          onTap: () {},
+          onTap: () {
+            Navigator.pop(context);
+          },
         ),
         CircledSplashIcon(
           iconDataPhosphor: PhosphorIcons.bookmarkSimple(),
