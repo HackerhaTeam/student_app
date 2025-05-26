@@ -34,7 +34,7 @@ class _MainNavigationPageState extends State<MainNavigationPage>
     _pages = [
       HomePageBody(),
       CoursesTabPage(),
-      CourseInforamtion(),
+      AccountTabPage(),
       AccountTabPage(),
     ];
   }
