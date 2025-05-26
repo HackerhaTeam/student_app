@@ -1,28 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
-import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
-import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/full_name_field.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/phone_number_field.dart';
+import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 
 class SignUpPage2Body extends StatefulWidget {
   const SignUpPage2Body({
     super.key,
-    required this.backgrounds,
     required this.onNext,
-    required this.border,
-    required this.content,
   });
 
-  final AppBackgrounds backgrounds;
-  final AppBorders border;
-  final AppContent content;
   final VoidCallback onNext;
 
   @override
@@ -33,11 +23,16 @@ class _SignUpPage2BodyState extends State<SignUpPage2Body> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> nameKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> phoneKey = GlobalKey<FormState>();
   final FocusNode nameFocusNode = FocusNode();
+  final FocusNode phoneFocusNode = FocusNode();
+  bool isNameSubmitted = false;
+  bool isPhoneSubmitted = false;
+
   @override
   void initState() {
     super.initState();
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       nameFocusNode.requestFocus();
     });
@@ -45,19 +40,29 @@ class _SignUpPage2BodyState extends State<SignUpPage2Body> {
 
   @override
   Widget build(BuildContext context) {
-    final styles = context;
-
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingNextButton(
           formKey: formKey,
-          onNext: widget.onNext,
+          onNext: () {
+            FocusScope.of(context).unfocus();
+            setState(() {
+              isNameSubmitted = true;
+              isPhoneSubmitted = true;
+            });
+            final isNameValid = nameKey.currentState?.validate() ?? false;
+            final isPhoneValid = phoneKey.currentState?.validate() ?? false;
+            final isFormValid = formKey.currentState?.validate() ?? false;
+            if (isNameValid && isPhoneValid && isFormValid) {
+              widget.onNext();
+            }
+          },
         ),
         body: SingleChildScrollView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
           child: Form(
-            // autovalidateMode: AutovalidateMode.onUserInteraction,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,18 +75,29 @@ class _SignUpPage2BodyState extends State<SignUpPage2Body> {
                   padding: EdgeInsets.only(top: 8.h(context)),
                   child: Text(
                     "أدخل معلوماتك الأساسية وساعدنا بالتعرف عليك.",
-                    style: styles.xParagraphLargeLose,
+                    style: context.xParagraphLargeLose,
                   ),
                 ),
                 const SizedBox(height: 16),
                 FullNameField(
-                    nameFocusNode: nameFocusNode,
-                    nameController: nameController),
-                SizedBox(
-                  height: 32.h(context),
+                  // onChanged: (_) => setState(() {
+                  //   isSubmitted = true;
+                  // }),
+                  onSubmitted: (_) {
+                    // isNameSubmitted = true;
+                    phoneFocusNode.requestFocus();
+                  },
+                  nameFocusNode: nameFocusNode,
+                  nameController: nameController, nameKey: nameKey,
+                  isNameSubmitted: isNameSubmitted,
                 ),
+                const SizedBox(height: 24),
                 PhoneNumberField(
-                    widget: widget, phoneController: phoneController),
+                  phoneController: phoneController,
+                  phoneFocusNode: phoneFocusNode,
+                  phoneKey: phoneKey,
+                  isPhoneSubmitted: isPhoneSubmitted,
+                ),
               ],
             ),
           ),

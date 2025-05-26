@@ -5,6 +5,7 @@ import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/widgets/gradient_divider.dart';
 
 class PdfFilesViewer extends StatelessWidget {
   const PdfFilesViewer({
@@ -55,20 +56,7 @@ class PdfFilesViewer extends StatelessWidget {
                     ],
                   ),
                 ),
-                if (index < files.length - 1)
-                  Container(
-                    height: 1,
-                    margin: EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.grey.shade900,
-                          Colors.grey.shade700,
-                          Colors.grey.shade900
-                        ],
-                      ),
-                    ),
-                  ),
+                if (index < files.length - 1) GradientDivider(),
               ],
             );
           }),

@@ -5,7 +5,7 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/academic_year_field.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/fields/acadenic_year_sellector.dart';
+import 'package:student_hackerha/features/Auth/presentation/widgets/fields/academic_year_sellector.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/university_sellector.dart';
 
 class SignUpPage3Body extends StatefulWidget {
@@ -22,8 +22,14 @@ class SignUpPage3Body extends StatefulWidget {
 
 class _SignUpPage3BodyState extends State<SignUpPage3Body> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> unyKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> yearUnyKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> numUnyKey = GlobalKey<FormState>();
   final TextEditingController numberController = TextEditingController();
-
+  final FocusNode acadimicYearFocusNode = FocusNode();
+  bool unySubmitted = false;
+  bool yearUnySubmitted = false;
+  bool numUnySubmitted = false;
   String? selectedUniversity;
   String? selectedYear;
 
@@ -35,52 +41,74 @@ class _SignUpPage3BodyState extends State<SignUpPage3Body> {
       floatingActionButton: FloatingNextButton(
         formKey: formKey,
         onNext: () {
-          if (formKey.currentState!.validate()) {
+          final unyValide = unyKey.currentState?.validate() ?? false;
+          final yearUnyValide = yearUnyKey.currentState?.validate() ?? false;
+          final numUnyValide = numUnyKey.currentState?.validate() ?? false;
+          final isFormValid = formKey.currentState?.validate() ?? false;
+          setState(() {
+            unySubmitted = true;
+            yearUnySubmitted = true;
+            numUnySubmitted = true;
+          });
+          if (unyValide && yearUnyValide && numUnyValide && isFormValid) {
             widget.onNext();
           }
         },
       ),
-      body: Padding(
-        padding: EdgeInsets.only(right: 20.w(context), left: 20.w(context)),
-        child: Form(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IntroductionHeader(
-                introText: " أخبرنا عن مسيرتك الأكاديمية!",
-                icon: PhosphorIcons.student(),
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.only(top: 8.h(context), bottom: 32.h(context)),
-                child: Text(
-                  "زوّدنا بتفاصيل جامعتك لنقدّم لك محتوى مخصصًا!",
-                  style: styles.xParagraphLargeLose,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(right: 20.w(context), left: 20.w(context)),
+          child: Form(
+            // autovalidateMode: AutovalidateMode.onUserInteraction,
+            key: formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IntroductionHeader(
+                  introText: " أخبرنا عن مسيرتك الأكاديمية!",
+                  icon: PhosphorIcons.student(),
                 ),
-              ),
-              UniversitySellector(
-                selectedUniversity: selectedUniversity,
-                onChanged: (val) {
-                  setState(() {
-                    selectedUniversity = val;
-                  });
-                },
-              ),
-              SizedBox(height: 24.h(context)),
-              AcademicYearSellector(
-                selectedYear: selectedYear,
-                onChanged: (val) {
-                  setState(() {
-                    selectedYear = val;
-                  });
-                },
-              ),
-              SizedBox(height: 24.h(context)),
-              AcademicYearField(numberController: numberController),
-            ],
+                Padding(
+                  padding:
+                      EdgeInsets.only(top: 8.h(context), bottom: 32.h(context)),
+                  child: Text(
+                    "زوّدنا بتفاصيل جامعتك لنقدّم لك محتوى مخصصًا!",
+                    style: styles.xParagraphLargeLose,
+                  ),
+                ),
+                UniversitySellector(
+                  selectedUniversity: selectedUniversity,
+                  onChanged: (val) {
+                    setState(() {
+                      acadimicYearFocusNode.unfocus();
+                      selectedUniversity = val;
+                    });
+                  },
+                  unyKey: unyKey,
+                  unySubmitted: unySubmitted,
+                ),
+                SizedBox(height: 24),
+                AcademicYearSellector(
+                  selectedYear: selectedYear,
+                  onChanged: (val) {
+                    setState(() {
+                      acadimicYearFocusNode.unfocus();
+                      selectedYear = val;
+                    });
+                  },
+                  yearUnyKey: yearUnyKey,
+                  yearUnySubmitted: yearUnySubmitted,
+                ),
+                SizedBox(height: 24),
+                AcademicYearField(
+                  focusNode: acadimicYearFocusNode,
+                  numberController: numberController,
+                  numUnyKey: numUnyKey,
+                  numUnySubmitted: numUnySubmitted,
+                ),
+              ],
+            ),
           ),
         ),
       ),

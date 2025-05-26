@@ -7,21 +7,32 @@ class UniversitySellector extends StatelessWidget {
     super.key,
     required this.selectedUniversity,
     required this.onChanged,
+    required this.unyKey,
+    required this.unySubmitted,
   });
 
   final String? selectedUniversity;
-  final dynamic Function(String) onChanged;
+  final dynamic Function(String?) onChanged;
+  final GlobalKey<FormState> unyKey;
+  final bool unySubmitted;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 59.h(context),
-      child: Center(
+    return Form(
+      key: unyKey,
+      autovalidateMode: unySubmitted
+          ? AutovalidateMode.onUserInteraction
+          : AutovalidateMode.disabled,
+      child: SizedBox(
+        width: 372.w(context),
+        height: 59,
         child: CustomDropdown(
+          width: 372.w(context),
+          height: 59,
           label: "الجامعة",
           items: ['جامعة حلب', 'جامعة قرطبة', 'جامعة إيبلا', 'جامعة الشهباء'],
-          selectedItem: selectedUniversity,
-          type: DropdownType.university,
+          selectedValue: selectedUniversity,
           onChanged: onChanged,
+          type: DropdownType.university,
         ),
       ),
     );

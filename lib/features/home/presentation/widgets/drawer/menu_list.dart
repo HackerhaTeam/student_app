@@ -6,7 +6,7 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/drawer/custom_list_tile.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/drawer/gradient_divider.dart';
+import 'package:student_hackerha/core/widgets/gradient_divider.dart';
 
 class MenuList extends StatelessWidget {
   const MenuList({super.key});

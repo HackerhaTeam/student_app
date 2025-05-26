@@ -7,21 +7,32 @@ class AcademicYearSellector extends StatelessWidget {
     super.key,
     required this.selectedYear,
     required this.onChanged,
+    required this.yearUnyKey,
+    required this.yearUnySubmitted,
   });
 
   final String? selectedYear;
-  final dynamic Function(String) onChanged;
+  final dynamic Function(String?) onChanged;
+  final GlobalKey<FormState> yearUnyKey;
+  final bool yearUnySubmitted;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 59.h(context),
-      child: Center(
+    return Form(
+      key: yearUnyKey,
+      autovalidateMode: yearUnySubmitted
+          ? AutovalidateMode.onUserInteraction
+          : AutovalidateMode.disabled,
+      child: SizedBox(
+        width: 372.w(context),
+        height: 59,
         child: CustomDropdown(
+          width: 372.w(context),
+          height: 59,
           label: "السنة الدراسية",
           items: ["الأولى", "الثانية", "الثالثة", "الرابعة", "الخامسة"],
-          selectedItem: selectedYear,
-          type: DropdownType.academicYear,
+          selectedValue: selectedYear,
           onChanged: onChanged,
+          type: DropdownType.academicYear,
         ),
       ),
     );

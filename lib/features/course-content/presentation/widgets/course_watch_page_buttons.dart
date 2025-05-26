@@ -22,12 +22,12 @@ class CourseWatchPageButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 16.w(context), right: 30.w(context)),
+          padding: EdgeInsets.only(left: 16.w(context), right: 35.w(context)),
           child: CustomButton(
               borderColor: border.primaryBrand,
               color: background.surfacePrimary,
               borderRadius: 24.r(context),
-              height: 56.h(context),
+              height: 56,
               width: 178.w(context),
               onPressed: () {
                 Navigator.pop(context);
@@ -40,7 +40,7 @@ class CourseWatchPageButtons extends StatelessWidget {
         CustomButton(
             borderRadius: 24.r(context),
             color: background.primaryBrand,
-            height: 56.h(context),
+            height: 56,
             width: 178.w(context),
             onPressed: () {},
             child: Row(

@@ -55,7 +55,11 @@ class CustomPagesHeader extends StatelessWidget {
           width: 20.w(context),
         ),
         CustomIconButton(
-            onTap: onBack, iconDataPhosphor: PhosphorIcons.caretRight()),
+            onTap: () {
+              FocusScope.of(context).unfocus();
+              onBack();
+            },
+            iconDataPhosphor: PhosphorIcons.caretRight()),
         SizedBox(
           width: 28.w(context),
         ),

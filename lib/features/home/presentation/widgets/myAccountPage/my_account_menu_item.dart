@@ -5,7 +5,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/drawer/gradient_divider.dart';
+import 'package:student_hackerha/core/widgets/gradient_divider.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/myAccountPage/background_icon_my_account.dart';
 
 class MyAccountMenuItem extends StatelessWidget {

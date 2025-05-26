@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/functions/navigation.dart';
 
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/buttons/big_next_button.dart';
-import 'package:student_hackerha/features/course-content/presentation/pages/course_watch_page.dart';
 import 'package:student_hackerha/features/course-content/presentation/widgets/course_card.dart';
 
 import 'package:student_hackerha/features/course-content/presentation/widgets/course_content_header.dart';
@@ -84,25 +81,12 @@ class CourseContentPageBody extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height - 420.h(context),
+                height: MediaQuery.of(context).size.height * 0.54.h(context),
                 child: ListView.builder(
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context, index) => CourseCard(),
                 ),
               ),
-              SizedBox(
-                height: 16,
-              ),
-              BigNextButton(
-                value: true,
-                onPressed: () {
-                  context.navigateWithSlideTransition(CourseWatchPage(
-                    youtubeUrl:
-                        'https://youtu.be/N2hgYTY1zCo?si=mvKXItdDm-NpZyfD',
-                  ));
-                },
-                text: "استأنف مسيرتك التعليمية",
-              )
             ],
           ),
         ),

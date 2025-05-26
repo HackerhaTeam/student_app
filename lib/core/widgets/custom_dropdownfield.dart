@@ -15,7 +15,7 @@ enum DropdownType {
 
 class CustomDropdown extends StatefulWidget {
   final List<String> items;
-  final String? selectedItem;
+  final String? selectedValue;
   final Function(String) onChanged;
   final DropdownType type;
   final String? label;
@@ -26,7 +26,7 @@ class CustomDropdown extends StatefulWidget {
   const CustomDropdown({
     super.key,
     required this.items,
-    required this.selectedItem,
+    required this.selectedValue,
     required this.onChanged,
     required this.type,
     this.label,
@@ -112,7 +112,6 @@ class _CustomDropdownState extends State<CustomDropdown>
   OverlayEntry _createOverlayEntry(FormFieldState<String> fieldState) {
     final renderBox = _fieldKey.currentContext!.findRenderObject() as RenderBox;
     final size = renderBox.size;
-    final offset = renderBox.localToGlobal(Offset.zero);
 
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
@@ -120,65 +119,76 @@ class _CustomDropdownState extends State<CustomDropdown>
     final styles = context;
 
     return OverlayEntry(
-      builder: (context) => Positioned(
-        left: offset.dx,
-        top: offset.dy + size.height + 4,
-        width: size.width,
-        child: CompositedTransformFollower(
-          link: _layerLink,
-          showWhenUnlinked: false,
-          child: Material(
-            color: Colors.transparent,
-            child: SlideTransition(
-              position: _slideAnimation,
-              child: FadeTransition(
-                opacity: _fadeAnimation,
-                child: Material(
-                  elevation: 0,
-                  color: backgrounds.onSurfacePrimary,
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(color: border.transparent, width: 1),
-                    borderRadius: BorderRadius.circular(widget.radius),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: widget.items.map((item) {
-                      final isSelected = item == widget.selectedItem;
-                      return InkWell(
-                        onTap: () {
-                          setState(() {
-                            fieldState.didChange(item);
-                            widget.onChanged(item);
-                            _removeDropdown();
-                          });
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 12),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              if (isSelected)
-                                PhosphorIcon(PhosphorIcons.caretRight(),
-                                    size: 16, color: content.brandPrimary),
-                              Text(
-                                item,
-                                textDirection: TextDirection.rtl,
-                                style: styles.xParagraphLargeNormal.copyWith(
-                                    color: isSelected
-                                        ? content.brandPrimary
-                                        : content.primary),
-                              )
-                            ],
-                          ),
+      builder: (context) => GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: () {
+          _removeDropdown();
+        },
+        child: Stack(
+          children: [
+            CompositedTransformFollower(
+              link: _layerLink,
+              showWhenUnlinked: false,
+              offset: Offset(0, size.height + 4),
+              child: Material(
+                color: Colors.transparent,
+                child: SlideTransition(
+                  position: _slideAnimation,
+                  child: FadeTransition(
+                    opacity: _fadeAnimation,
+                    child: SizedBox(
+                      width: size.width,
+                      child: Material(
+                        elevation: 0,
+                        color: backgrounds.onSurfacePrimary,
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(color: border.transparent, width: 1),
+                          borderRadius: BorderRadius.circular(widget.radius),
                         ),
-                      );
-                    }).toList(),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: widget.items.map((item) {
+                            final isSelected = item == widget.selectedValue;
+                            return InkWell(
+                              onTap: () {
+                                setState(() {
+                                  fieldState.didChange(item);
+                                  widget.onChanged(item);
+                                  _removeDropdown();
+                                });
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 12),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    if (isSelected)
+                                      PhosphorIcon(PhosphorIcons.caretRight(),
+                                          size: 16,
+                                          color: content.brandPrimary),
+                                    Text(
+                                      item,
+                                      textDirection: TextDirection.rtl,
+                                      style: styles.xParagraphLargeNormal
+                                          .copyWith(
+                                              color: isSelected
+                                                  ? content.brandPrimary
+                                                  : content.primary),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
@@ -212,7 +222,7 @@ class _CustomDropdownState extends State<CustomDropdown>
                       labelText: widget.label,
                       floatingLabelBehavior: FloatingLabelBehavior.auto,
                       labelStyle: styles.xLabelSmall.copyWith(
-                        color: widget.selectedItem == null
+                        color: widget.selectedValue == null
                             ? content.primary
                             : backgrounds.primaryBrand,
                         fontSize: 14,
@@ -226,10 +236,10 @@ class _CustomDropdownState extends State<CustomDropdown>
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(widget.radius),
                         borderSide: BorderSide(
-                          color: widget.selectedItem == null
+                          color: widget.selectedValue == null
                               ? border.secondary
                               : backgrounds.primaryBrand,
-                          width: widget.selectedItem == null ? 1 : 2,
+                          width: widget.selectedValue == null ? 1 : 2,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
@@ -256,9 +266,9 @@ class _CustomDropdownState extends State<CustomDropdown>
                       children: [
                         Expanded(
                           child: Text(
-                            widget.selectedItem ?? widget.label ?? "",
+                            widget.selectedValue ?? widget.label ?? "",
                             style: styles.xParagraphLargeNormal.copyWith(
-                              color: widget.selectedItem == null
+                              color: widget.selectedValue == null
                                   ? Colors.grey
                                   : content.primary,
                             ),

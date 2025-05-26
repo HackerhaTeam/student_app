@@ -16,11 +16,11 @@ class CustomCheckBox extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        checkContainer(24.w(context), 24.h(context), Colors.transparent,
+        checkContainer(24.w(context), 24.w(context), Colors.transparent,
             Border.all(), 8.r(context)),
         checkContainer(
             16.w(context),
-            16.h(context),
+            16.w(context),
             value ? backgrounds.secondaryBrand : Colors.white,
             null,
             5.r(context)),

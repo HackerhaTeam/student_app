@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page1.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page2.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page3.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page4.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_page5.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/verification_page.dart';
 import 'package:student_hackerha/core/widgets/headers/custom_pages_header.dart';
-import 'sign_up_page1.dart';
 
 class AuthWrapper extends StatefulWidget {
   const AuthWrapper({super.key});
@@ -19,8 +19,17 @@ class AuthWrapper extends StatefulWidget {
 class _AuthWrapperState extends State<AuthWrapper> {
   final PageController _controller = PageController();
   int _currentPage = 0;
-  final int _totalPages = 6;
 
+  List<Widget> get _pages => [
+        SignUpPage1(onNext: _goToNextPage),
+        SignUpPage2(onNext: _goToNextPage),
+        SignUpPage3(onNext: _goToNextPage),
+        SignUpPage4(onNext: _goToNextPage),
+        SignUpPage5(onNext: _goToNextPage),
+        const VerificationPage(isSignIn: false),
+      ];
+
+  int get _totalPages => _pages.length;
   double get _progress => (_currentPage + 1) / _totalPages;
 
   void _goToNextPage() {
@@ -42,6 +51,12 @@ class _AuthWrapperState extends State<AuthWrapper> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
 
@@ -50,9 +65,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
-              height: 10.h(context),
-            ),
+            SizedBox(height: 10.h(context)),
             CustomPagesHeader(
               progress: _progress,
               backgrounds: backgrounds,
@@ -60,10 +73,8 @@ class _AuthWrapperState extends State<AuthWrapper> {
               currentPage: _currentPage,
               isAuth: true,
             ),
-            // PageView
             Expanded(
               child: PageView(
-                key: const PageStorageKey('auth_pages'),
                 controller: _controller,
                 physics: const NeverScrollableScrollPhysics(),
                 onPageChanged: (index) {
@@ -71,20 +82,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
                     _currentPage = index;
                   });
                 },
-                children: [
-                  SignUpPage1(
-                    onNext: _goToNextPage,
-                  ),
-                  SignUpPage2(
-                    onNext: _goToNextPage,
-                  ),
-                  SignUpPage3(onNext: _goToNextPage),
-                  SignUpPage4(onNext: _goToNextPage),
-                  SignUpPage5(onNext: _goToNextPage),
-                  VerificationPage(
-                    isSignIn: false,
-                  ),
-                ],
+                children: _pages,
               ),
             ),
           ],
