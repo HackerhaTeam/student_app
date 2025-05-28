@@ -201,7 +201,7 @@ Win32Window::MessageHandler(HWND hwnd,
       RECT rect = GetClientArea();
       if (child_content_ != nullptr) {
         // Size and position the child window.
-        MoveWindow(child_content_, rect.left, rect.top, rect.r(context)ight - rect.left,
+        MoveWindow(child_content_, rect.left, rect.top, rect.right - rect.left,
                    rect.bottom - rect.top, TRUE);
       }
       return 0;
@@ -243,7 +243,7 @@ void Win32Window::SetChildContent(HWND content) {
   SetParent(content, window_handle_);
   RECT frame = GetClientArea();
 
-  MoveWindow(content, frame.left, frame.top, frame.r(context)ight - frame.left,
+  MoveWindow(content, frame.left, frame.top, frame.right - frame.left,
              frame.bottom - frame.top, true);
 
   SetFocus(child_content_);

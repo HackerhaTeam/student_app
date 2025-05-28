@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/features/course-content/presentation/widgets/course_card.dart';
+import 'package:student_hackerha/features/course-content/presentation/widgets/section_card_builder.dart';
 
 import 'package:student_hackerha/features/course-content/presentation/widgets/course_content_header.dart';
 import 'package:student_hackerha/features/course-content/presentation/widgets/progress_container.dart';
@@ -82,10 +83,7 @@ class CourseContentPageBody extends StatelessWidget {
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.54.h(context),
-                child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => CourseCard(),
-                ),
+                child: SectionCardBuilder(),
               ),
             ],
           ),

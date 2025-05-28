@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
+import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/buttons/custom_icon_button.dart';
+import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 
 class CourseContentHeader extends StatelessWidget {
@@ -16,11 +17,15 @@ class CourseContentHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CustomIconButton(
-          iconDataPhosphor: PhosphorIcons.caretRight(),
+        CustomCircleIcon(
+          iconSize: 24.s(context),
+          backgroundColor: backgrounds.onSurfaceSecondary,
+          circleSize: 44.s(context),
+          iconAsset: AppImages.carretRight,
         ),
         SizedBox(
           width: 8.w(context),
@@ -30,8 +35,11 @@ class CourseContentHeader extends StatelessWidget {
           style: styles.xHeadingXLarge,
         ),
         Spacer(),
-        CustomIconButton(
-          iconDataPhosphor: PhosphorIcons.magnifyingGlass(),
+        CustomCircleIcon(
+          iconSize: 24.s(context),
+          circleSize: 44.s(context),
+          backgroundColor: backgrounds.onSurfaceSecondary,
+          iconAsset: AppImages.magnifyingGlass,
           onTap: () {
             context.navigateWithSlideTransition(SearchPage());
           },

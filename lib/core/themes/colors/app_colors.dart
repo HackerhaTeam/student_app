@@ -34,10 +34,13 @@ class AppColors {
   static const brandNavyBlue100 = Color(0xFFB1BDD0);
   static const brandNavyBlue200 = Color(0xFF8B9DBA);
   static const brandNavyBlue500 = Color(0xFF022A68);
+  static const brandNavyBlue700 = Color(0xFF011E4A);
 
+  static const brandBlue50 = Color(0xFFEBF6FC);
   static const brandBlue100 = Color(0xFFC1E4F6);
-  static const brandBlue800 = Color(0xFF1E5D7C);
+  static const brandBlue200 = Color(0xFFA3D7F1);
   static const brandBlue500 = Color(0xFF36A9E1);
+  static const brandBlue800 = Color(0xFF1E5D7C);
 
   static const brandGreen500 = Color(0xFF60BA48);
 
@@ -50,4 +53,6 @@ class AppColors {
   // Disabled brand
   static const brandDisabledPrimaryLight = brandNavyBlue50;
   static const brandDisabledPrimaryDark = AppColors.black;
+
+  static const fakeBlue = Color(0xFF044CC2);
 }

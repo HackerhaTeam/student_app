@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/buttons/custom_icon_button.dart';
+import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 
 class CustomPagesHeader extends StatelessWidget {
   const CustomPagesHeader({
@@ -54,12 +54,16 @@ class CustomPagesHeader extends StatelessWidget {
         SizedBox(
           width: 20.w(context),
         ),
-        CustomIconButton(
-            onTap: () {
-              FocusScope.of(context).unfocus();
-              onBack();
-            },
-            iconDataPhosphor: PhosphorIcons.caretRight()),
+        CustomCircleIcon(
+          circleSize: 44.s(context),
+          backgroundColor: backgrounds.onSurfaceSecondary,
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            onBack();
+          },
+          iconAsset: AppImages.carretRight,
+          iconSize: 24.s(context),
+        ),
         SizedBox(
           width: 28.w(context),
         ),

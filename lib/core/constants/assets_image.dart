@@ -25,4 +25,7 @@ class AppImages {
   static const String lessonNumLight = "assets/images/lesson_number_light.svg";
   static const String lessonNumDark = "assets/images/lesson_number_dark.svg";
   static const String pdfIcon = 'assets/images/icons/pdf_icon.svg';
+  static const String carretRight = 'assets/images/svg/caret-right.svg';
+  static const String magnifyingGlass =
+      'assets/images/svg/magnifying-glass.svg';
 }

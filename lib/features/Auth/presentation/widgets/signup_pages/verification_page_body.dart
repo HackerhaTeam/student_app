@@ -11,7 +11,7 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/buttons/custom_icon_button.dart';
+import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 import 'package:student_hackerha/core/widgets/custom_success_dialog.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/reset_pawword_page.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
@@ -50,6 +50,7 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
   Widget build(BuildContext context) {
     final content = Theme.of(context).extension<AppContent>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
+    final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     final styles = context;
 
     return Scaffold(
@@ -94,9 +95,13 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
               //
               if (widget.isSignin)
                 SafeArea(
-                  child: CustomIconButton(
-                      onTap: () => Navigator.of(context).pop(),
-                      iconDataPhosphor: PhosphorIcons.caretRight()),
+                  child: CustomCircleIcon(
+                    backgroundColor: backgrounds.onSurfacePrimary,
+                    circleSize: 44.s(context),
+                    onTap: () => Navigator.of(context).pop(),
+                    iconAsset: AppImages.carretRight,
+                    iconSize: 24.s(context),
+                  ),
                 ),
               IntroductionHeader(
                 introText: " أدخل رمز التحقق",

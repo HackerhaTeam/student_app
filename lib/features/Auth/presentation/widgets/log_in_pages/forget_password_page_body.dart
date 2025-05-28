@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
+import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/buttons/custom_icon_button.dart';
+import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/verification_page.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
@@ -31,6 +33,7 @@ class _ForgetPasswordPageBodyState extends State<ForgetPasswordPageBody> {
 
   @override
   Widget build(BuildContext context) {
+    final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
     final styles = context;
     return Scaffold(
       floatingActionButton: FloatingNextButton(
@@ -55,9 +58,13 @@ class _ForgetPasswordPageBodyState extends State<ForgetPasswordPageBody> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomIconButton(
-                  onTap: () => Navigator.of(context).pop(),
-                  iconDataPhosphor: PhosphorIcons.caretRight()),
+              CustomCircleIcon(
+                iconSize: 24.s(context),
+                backgroundColor: backgrounds.onSurfacePrimary,
+                circleSize: 44.s(context),
+                onTap: () => Navigator.of(context).pop(),
+                iconAsset: AppImages.carretRight,
+              ),
               IntroductionHeader(
                   introText: " هل نسيت كلمة المرور؟",
                   icon: PhosphorIcons.password()),
