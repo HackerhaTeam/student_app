@@ -7,6 +7,7 @@ import 'package:student_hackerha/core/themes/app_theme.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_wrapper.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 
 void main() {
   setupDependencies();
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
               home: ThemeSwitchingArea(
                 child: BlocProvider(
                   create: (context) => SearchCoursesCubit(),
-                  child: AuthWrapper(),
+                  child: MainNavigationPage(),
                 ),
               ),
             );

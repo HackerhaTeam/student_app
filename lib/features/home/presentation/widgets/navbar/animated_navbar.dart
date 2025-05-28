@@ -21,16 +21,24 @@ class NavConstants {
       index: 1,
     ),
     NavItem(
+      icon: PhosphorIcons.exam(),
+      filledIcon: PhosphorIcons.exam(
+        PhosphorIconsStyle.fill,
+      ),
+      label: 'بنك الأسئلة',
+      index:2,
+    ),
+    NavItem(
       icon: PhosphorIcons.bookmarkSimple(),
       filledIcon: PhosphorIcons.bookmarkSimple(PhosphorIconsStyle.fill),
       label: 'المحفوظات',
-      index: 2,
+      index:3
     ),
     NavItem(
       icon: PhosphorIcons.userCircle(),
       filledIcon: PhosphorIcons.userCircle(PhosphorIconsStyle.fill),
       label: 'حسابي',
-      index: 3,
+      index: 4
     ),
   ];
 }

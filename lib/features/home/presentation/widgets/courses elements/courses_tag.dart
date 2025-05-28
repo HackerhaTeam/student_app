@@ -29,6 +29,7 @@ class CoursesTag extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(16.r(context)),
       child: Container(
+
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.r(context)),
