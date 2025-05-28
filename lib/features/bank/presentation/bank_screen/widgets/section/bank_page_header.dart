@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/features/bank/presentation/shared/widgets/custom_circle_icon.dart';
+import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 
 class BankPageHeader extends StatelessWidget {
   const BankPageHeader({
@@ -13,6 +13,7 @@ class BankPageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backgroundColor = Theme.of(context).extension<AppBackgrounds>()!;
+    final contentColor = Theme.of(context).extension<AppContent>()!;
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
@@ -21,9 +22,10 @@ class BankPageHeader extends StatelessWidget {
         children: [
           Text('بنك الأسئلة', style: context.xHeadingXLarge),
           CustomCircleIcon(
+            iconColor: contentColor.primary,
+            iconAsset: 'assets/images/icons/magnifying-glass.svg',
             circleSize: 44.s(context),
             backgroundColor: backgroundColor.onSurfaceSecondary,
-            icon: PhosphorIcons.magnifyingGlass(),
             iconSize: 24.s(context),
           )
         ],

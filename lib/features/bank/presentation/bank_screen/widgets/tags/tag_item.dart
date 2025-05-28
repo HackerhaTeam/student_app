@@ -3,7 +3,7 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/features/bank/presentation/bank_screen/helpers/tags/get_backgroun_color.dart';
+import 'package:student_hackerha/features/bank/presentation/bank_screen/helpers/tags/get_tag_backgroun_color.dart';
 import 'package:student_hackerha/features/bank/presentation/bank_screen/helpers/tags/get_tag_text_color.dart';
 
 class TagItem extends StatelessWidget {
@@ -29,7 +29,7 @@ class TagItem extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r(context)),
-        color: getBackgroundColor(
+        color: getTagBackgroundColor(
             isSelected: isSelected, backgroundColor: backgroundColor),
         border: Border.all(color: backgroundColor.primaryBrand),
       ),

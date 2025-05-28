@@ -1,11 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/features/bank/presentation/shared/widgets/custom_circle_icon.dart';
+import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 
 class SubjectBankHeader extends StatelessWidget {
   const SubjectBankHeader({super.key});
@@ -17,9 +16,10 @@ class SubjectBankHeader extends StatelessWidget {
     return Row(
       children: [
         CustomCircleIcon(
+          iconAsset: 'assets/images/icons/caret-right.svg',
           circleSize: 44.s(context),
-          icon: PhosphorIcons.caretRight(),
           iconSize: 24.s(context),
+          iconColor: contentColor.primary,
           backgroundColor: backgroundColor.onSurfaceSecondary,
           onTap: () {
             Navigator.pop(context);
@@ -43,9 +43,10 @@ class SubjectBankHeader extends StatelessWidget {
         
         Spacer(),
         CustomCircleIcon(
+          iconAsset: 'assets/images/icons/bookmark-simple.svg',
           circleSize: 44.s(context),
-          icon: PhosphorIcons.bookmarkSimple(),
           iconSize: 24.s(context),
+                  iconColor: contentColor.primary,
           backgroundColor: backgroundColor.onSurfaceSecondary,
         ),
       ],

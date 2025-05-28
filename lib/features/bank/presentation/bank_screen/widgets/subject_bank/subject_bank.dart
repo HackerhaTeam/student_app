@@ -6,7 +6,7 @@ import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/
 import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/subject_bank/subject_bank_footer.dart';
 import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/subject_bank/subject_bank_image.dart';
 import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/subject_bank/subject_bank_title.dart';
-import 'package:student_hackerha/features/bank/presentation/shared/widgets/custom_card.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
 
 class SubjectBank extends StatelessWidget {
   const SubjectBank({super.key});
