@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/widgets/list_tile_card.dart';
+import 'package:student_hackerha/features/bank/presentation/subject_bank_screen/helpers/supject_quizzes/get_subject_quiz_background_color.dart';
 import 'package:student_hackerha/features/bank/presentation/subject_bank_screen/helpers/supject_quizzes/get_subject_quiz_icon_asset.dart';
-import 'package:student_hackerha/features/bank/presentation/subject_bank_screen/helpers/supject_quizzes/get_subject_quiz_icon_color.dart';
 
 class SubjectQuizzesListView extends StatelessWidget {
   const SubjectQuizzesListView({
