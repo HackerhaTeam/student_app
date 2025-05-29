@@ -26,6 +26,7 @@ class CourseContentHeader extends StatelessWidget {
           backgroundColor: backgrounds.onSurfaceSecondary,
           circleSize: 44.s(context),
           iconAsset: AppImages.carretRight,
+          onTap: () => Navigator.pop(context),
         ),
         SizedBox(
           width: 8.w(context),
