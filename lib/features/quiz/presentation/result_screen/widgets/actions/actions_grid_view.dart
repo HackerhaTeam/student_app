@@ -15,12 +15,12 @@ final bool isBank;
         mainAxisSpacing: 0,
         childAspectRatio: 1.17,
       ),
-      itemCount: ActionGridViewHelper.icons(isBank: isBank).length,
+      itemCount: ActionGridViewHelper.iconsAssets(isBank: isBank).length,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: ActionGridViewHelper.actionHandlers(context)[index],
           child: ActionsGridViewItem(
-            icon: ActionGridViewHelper.icons(isBank: isBank)[index],
+            iconAsset: ActionGridViewHelper.iconsAssets(isBank: isBank)[index],
             text: ActionGridViewHelper.labels(isBank: isBank)[index],
           ),
         );

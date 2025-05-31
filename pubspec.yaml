@@ -38,6 +38,7 @@ dependencies:
   flutter_bloc: ^9.1.0
   flutter_localizations:
     sdk: flutter
+  flutter_svg: ^2.1.0
   get_it: ^8.0.3
   path_provider: ^2.1.5
   percent_indicator: ^4.2.5
@@ -62,6 +63,9 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/svg/
+    - assets/images/icons/
+    - assets/images/
     - assets/audio/audio_2025-04-21_00-53-59.mp3
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see

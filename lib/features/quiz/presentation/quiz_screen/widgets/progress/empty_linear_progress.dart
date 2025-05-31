@@ -14,9 +14,7 @@ class EmptyLinearProgress extends StatelessWidget {
       width: double.infinity,
       height: 8.h(context),
       borderRadius: 40.r(context),
-      child: 
-      
-      child,
+      child: child,
     );
   }
 }
