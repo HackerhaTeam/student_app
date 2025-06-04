@@ -1,0 +1,4 @@
+enum ReviewAnswerType {
+  number,
+  timer, 
+}

@@ -30,16 +30,16 @@ class CircledSplashIcon extends StatelessWidget {
               decoration: BoxDecoration(
                   color: splachcolor ?? backgrounds.onSurfaceSecondary,
                   borderRadius: BorderRadius.circular(100.r(context)))),
-          CustomIconButton(
-            iconDataPhosphor: iconDataPhosphor,
-            iconColor: splachcolor ==
-                    Theme.of(context)
-                        .extension<AppBackgrounds>()!
-                        .containerStatic
-                ? Theme.of(context).extension<AppContent>()!.primaryStatic
-                : null,
-            onTap: onTap,
-          ),
+          // CustomIconButton(
+          //   iconDataPhosphor: iconDataPhosphor,
+          //   iconColor: splachcolor ==
+          //           Theme.of(context)
+          //               .extension<AppBackgrounds>()!
+          //               .containerStatic
+          //       ? Theme.of(context).extension<AppContent>()!.primaryStatic
+          //       : null,
+          //   onTap: onTap,
+          // ),
         ],
       ),
     );

@@ -9,6 +9,7 @@ environment:
 dependencies:
   animated_theme_switcher: ^2.0.10
   animations: ^2.0.11
+  audioplayers: ^6.4.0
   cupertino_icons: ^1.0.8
   day_night_switch: ^1.0.4
   day_night_switcher: ^0.2.0+1
@@ -24,7 +25,10 @@ dependencies:
   percent_indicator: ^4.2.5
   phosphor_flutter: ^2.1.0
   pin_code_fields: ^8.0.1
+  screenshot: ^3.0.0
+  share_plus: ^11.0.0
   smooth_page_indicator: ^1.2.1
+  vibration: ^3.1.3
   youtube_player_flutter: ^9.1.1
 
 dev_dependencies:
@@ -34,11 +38,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
   assets:
     - assets/images/svg/
     - assets/images/icons/
     - assets/images/
+    - assets/audio/audio_2025-04-21_00-53-59.mp3
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

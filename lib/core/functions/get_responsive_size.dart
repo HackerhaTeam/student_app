@@ -27,7 +27,9 @@ double _getResponsiveFontSize(BuildContext context, double size) {
 }
 
 double _getResponsiveSize(BuildContext context, double size) {
-  return _getResponsiveWidth(context, size);
+  final width = _getResponsiveWidth(context, size);
+  final height = _getResponsiveHeight(context, size);
+  return (width + height) / 2;
 }
 
 extension DoubleResponsiveExtensions on double {
@@ -35,14 +37,12 @@ extension DoubleResponsiveExtensions on double {
   double h(BuildContext context) => _getResponsiveHeight(context, this);
   double r(BuildContext context) => _getResponsiveRadius(context, this);
   double fs(BuildContext context) => _getResponsiveFontSize(context, this);
-  double s(BuildContext context) => _getResponsiveSize(context, this);
-}
+  double s(BuildContext context) => _getResponsiveSize(context, this);}
 
 extension IntResponsiveExtensions on int {
   double w(BuildContext context) => _getResponsiveWidth(context, toDouble());
   double h(BuildContext context) => _getResponsiveHeight(context, toDouble());
   double r(BuildContext context) => _getResponsiveRadius(context, toDouble());
-  double fs(BuildContext context) =>
-      _getResponsiveFontSize(context, toDouble());
+  double fs(BuildContext context) => _getResponsiveFontSize(context, toDouble());
   double s(BuildContext context) => _getResponsiveSize(context, toDouble());
 }
