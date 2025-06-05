@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -30,7 +30,9 @@ class ScreenShotCubit extends Cubit<ScreenShotState> {
 
       await Share.shareXFiles([XFile(imagePath)], text: 'هذه نتيجتي انا جحش');
     } catch (e) {
-      print('حدث خطأ أثناء المشاركة: $e');
+      if (kDebugMode) {
+        print('حدث خطأ أثناء المشاركة: $e');
+      }
     }
   }
 }

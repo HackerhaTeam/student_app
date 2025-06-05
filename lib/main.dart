@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_escapes
+
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +23,6 @@ void main() {
         BlocProvider(
           create: (context) => SearchCoursesCubit(),
         ),
-        
       ],
       child: const MyApp(),
     ),
@@ -48,7 +49,6 @@ class MyApp extends StatelessWidget {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
-             
               debugShowCheckedModeBanner: false,
               theme: AppTheme.light,
               darkTheme: AppTheme.dark,
@@ -65,9 +65,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
 
 final Map<String, dynamic> quizData = {
   'quizTime': 900,

@@ -46,7 +46,6 @@ class _YearCoursesPageState extends State<YearCoursesPage>
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     final courses = locator.get<List<Course>>(instanceName: 'courses');
 
     return Scaffold(
