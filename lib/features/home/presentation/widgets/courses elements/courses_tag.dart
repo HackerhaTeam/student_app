@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 
 class CoursesTag extends StatelessWidget {
   const CoursesTag({
@@ -28,8 +29,8 @@ class CoursesTag extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(16.r(context)),
-      child: Container(
-
+      child: Container(height:36 ,
+        padding: EdgeInsets.symmetric(vertical: 8,horizontal: 16.w(context)),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.r(context)),
@@ -40,15 +41,18 @@ class CoursesTag extends StatelessWidget {
           border: isSelected
               ? null
               : Border.all(
-                  color: borderColor,
-                  width: 1.0,
+                  color: borderColor, 
+                  width: 1.0.w(context),
                 ),
         ),
-        child: Text(
-          "  $text  ",
-          style: Theme.of(context).textTheme.labelMedium!.copyWith(
-              color:
-                  isSelected ? background.surfacePrimary : appBorder.secondary),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            "  $text  ",
+            style:context.xLabelMedium.copyWith(
+                color:
+                    isSelected ? background.surfacePrimary : appBorder.secondary),
+          ),
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:student_hackerha/core/DI/%20service_locator.dart';
+import 'package:student_hackerha/core/DI/service_locator.dart';
 import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/tabBar_semester.dart';
@@ -65,37 +65,35 @@ class _YearCoursesPageState extends State<YearCoursesPage>
                 ],
               ),
             ),
-            SliverFillRemaining(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
-                child: PageView(
-                  controller: _pageController,
-                  onPageChanged: (index) {
-                    setState(() {
-                      _currentTabIndex = index;
-                      _tabController.animateTo(index);
-                    });
-                  },
-                  children: [
-                    NewCourseListSection(
-                      height: screenSize.height * 0.75,
-                      courses:
-                          courses.where((course) => course.year == 1).toList(),
-                      scrollDirection: Axis.vertical,
-                    ),
-                    NewCourseListSection(
-                      height: screenSize.height * 0.75,
-                      courses:
-                          courses.where((course) => course.year == 2).toList(),
-                      scrollDirection: Axis.vertical,
-                    ),
-                  ],
-                ),
-              ),
+            SliverToBoxAdapter(
+  child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
+      child: SizedBox(
+        height: 307, // أو أي ارتفاع يناسب تصميمك
+        child: PageView(
+          controller: _pageController,
+          onPageChanged: (index) {
+            setState(() {
+              _currentTabIndex = index;
+              _tabController.animateTo(index);
+            });
+          },
+          children: [
+            NewCourseListSection(
+              courses: courses.where((course) => course.year == 1).toList(),
+              scrollDirection: Axis.horizontal,
+            ),
+            NewCourseListSection(
+              courses: courses.where((course) => course.year == 2).toList(),
+              scrollDirection: Axis.horizontal,
             ),
           ],
         ),
       ),
-    );
-  }
+    ),),
+]),
+
+         
+   
+  ));}
 }

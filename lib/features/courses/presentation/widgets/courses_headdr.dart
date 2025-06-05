@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
+import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/circled_splash_icon.dart';
+import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 
 class CoursesPageHeader extends StatelessWidget {
@@ -21,11 +22,12 @@ class CoursesPageHeader extends StatelessWidget {
             style: context.xHeadingLarge,
           ),
           const Spacer(),
-          CircledSplashIcon(
-            iconDataPhosphor: PhosphorIcons.magnifyingGlass(),
+          CustomCircleIcon(
+            backgroundColor: Theme.of(context).extension<AppBackgrounds>()!.onSurfaceSecondary
+            ,icon: PhosphorIcons.magnifyingGlass(),
             onTap: () {
               context.navigateWithSlideTransition(SearchPage());
-            },
+            }, circleSize: 44.w(context),
           )
         ],
       ),

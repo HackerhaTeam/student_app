@@ -3,6 +3,7 @@ import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_content.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_image.dart';
 
@@ -24,30 +25,27 @@ class NewCoursesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.75,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(21.r(context)),
-          border: Border.all(width: 1, color: border.transparent),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CourseImage(
-              border: border,
-              background: background,
-              isNew: true,
-            ),
-            CourseContent(
-              border: border,
-              background: background,
-              courseName: course.name,
-              description: course.description,
-              tagsTitle: tagsTitle,
-            ),
-          ],
-        ),
+    return CustomCard(
+      width: MediaQuery.of(context).size.width * 0.75,
+     borderRadius:21.r(context),
+      backgroundColor:Colors.transparent,
+      borderColor: border.transparent,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CourseImage(
+            border: border,
+            background: background,
+            isNew: true,
+          ),
+          CourseContent(
+            border: border,
+            background: background,
+            courseName: course.name,
+            description: course.description,
+            tagsTitle: tagsTitle,
+          ),
+        ],
       ),
     );
   }

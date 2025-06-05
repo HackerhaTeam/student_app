@@ -5,7 +5,7 @@ extension NavigationExtension on BuildContext {
   void navigateFromBottom(Widget page) {
     Navigator.of(this).push(
       PageRouteBuilder(
-        opaque: false, // حتى ترى الخلفية وراء الصفحة الجديدة
+        opaque: false, 
         barrierColor: Colors.black.withOpacity(0.3),
         pageBuilder: (_, __, ___) => Align(
           alignment: Alignment.bottomCenter,
@@ -36,7 +36,7 @@ extension NavigationExtension on BuildContext {
   void navigationWithFade(Widget page) {
     Navigator.of(this).push(
       PageRouteBuilder(
-        opaque: false, // حتى ترى الخلفية وراء الصفحة الجديدة
+        opaque: false, 
         barrierColor: Colors.black.withOpacity(0.3),
         pageBuilder: (_, __, ___) => Align(
           alignment: Alignment.bottomCenter,

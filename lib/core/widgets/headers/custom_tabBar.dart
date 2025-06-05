@@ -71,11 +71,12 @@ class _CustomTabBarState extends State<CustomTabBar>
     final content = Theme.of(context).extension<AppContent>()!;
 
     return TabBar(
+    
       controller: _localTabController,
       tabs: widget.tabs
           .map((tab) => Tab(
                 child: Padding(
-                  padding: EdgeInsets.zero, // إزالة أي padding داخلي
+                  padding: EdgeInsets.zero, 
                   child: Text(
                     tab,
                   ),

@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-import 'package:student_hackerha/core/DI/%20service_locator.dart';
+import 'package:student_hackerha/core/DI/service_locator.dart';
 import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/circled_splash_icon.dart';
+import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_list_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_search_section.dart';
@@ -76,7 +77,7 @@ class SearchPage extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.w(context)),
       child: NewCourseListSection(
-        height: screenSize.height * 0.75,
+      
         courses: courses,
         scrollDirection: Axis.vertical,
         key: ValueKey(courses.length), // For better widget recycling
@@ -158,11 +159,12 @@ class SearchHeader extends StatelessWidget {
           top: 20.h(context), right: 20.w(context), left: 20.w(context)),
       child: Row(
         children: [
-          CircledSplashIcon(
-            iconDataPhosphor: PhosphorIcons.caretLeft(),
+          CustomCircleIcon(
+            backgroundColor: Theme.of(context).extension<AppBackgrounds>()!.onSurfaceSecondary,
+            icon: PhosphorIcons.caretRight(),
             onTap: () {
               Navigator.pop(context);
-            },
+            }, circleSize: 44.w(context),
           ),
           SizedBox(
             width: 8.w(context),
