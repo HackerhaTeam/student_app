@@ -10,6 +10,7 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
 
 class MonthlyTrainerPageView extends StatefulWidget {
   const MonthlyTrainerPageView({
@@ -56,134 +57,134 @@ class _MonthlyTrainerPageViewState extends State<MonthlyTrainerPageView> {
     _timer.cancel();
     super.dispose();
   }
-@override
-Widget build(BuildContext context) {
-  final content = Theme.of(context).extension<AppContent>();
-  final bg = widget.bg;
-  final border = widget.border;
 
-  return Column(
-    children: [
-      AspectRatio(
-        aspectRatio: 1.8,
-        child: PageView.builder(
-          controller: _controller,
-          itemCount: _pageCount,
-          itemBuilder: (BuildContext context, int index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-        child: Container(
-                padding: EdgeInsets.all(16.r(context)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: bg.onSurfacePrimary,
-                  border: Border.all(color: border.transparent),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 96,
-                          decoration: ShapeDecoration(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                width: 2,
-                                strokeAlign: BorderSide.strokeAlignOutside,
-                                color: Colors.black.withAlpha(26),
+  @override
+  Widget build(BuildContext context) {
+    final content = Theme.of(context).extension<AppContent>();
+    final bg = widget.bg;
+    final border = widget.border;
+
+    return Column(
+      children: [
+        AspectRatio(
+          aspectRatio: 1.8,
+          child: PageView.builder(
+            controller: _controller,
+            itemCount: _pageCount,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CustomCard(
+                  borderRadius: 12.r(context),
+                  backgroundColor: bg.onSurfacePrimary,
+                  borderColor: border.transparent,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 96,
+                            decoration: ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                  width: 2,
+                                  strokeAlign: BorderSide.strokeAlignOutside,
+                                  color: Colors.black.withAlpha(26),
+                                ),
+                                borderRadius: BorderRadius.circular(48),
                               ),
-                              borderRadius: BorderRadius.circular(48),
+                            ),
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                PhosphorIcon(
+                                  PhosphorIcons.user(),
+                                  size: 90,
+                                ),
+                                Positioned(
+                                  left: -8,
+                                  top: 65,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(4),
+                                    child:
+                                        SvgPicture.asset(AppImages.accounCheck),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          child: Stack(
-                            alignment: Alignment.center,
+                          Text("محمد نور محمد", style: context.xDisplayMedium),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               PhosphorIcon(
-                                PhosphorIcons.user(),
-                                size: 90,
+                                PhosphorIcons.medalMilitary(
+                                    PhosphorIconsStyle.fill),
                               ),
-                              Positioned(
-                                left: -8,
-                                top: 65,
-                                child: Container(
-                                  padding: const EdgeInsets.all(4),
-                                  child: SvgPicture.asset(AppImages.accounCheck),
-                                ),
+                              SizedBox(height: 4),
+                              Text(" مدرب الشهر ",
+                                  style: context.xParagraphMedium),
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("889"),
+                          Text("مراجعة", style: context.xLabelSmall),
+                          SizedBox(height: 8),
+                          Container(
+                            width: 90.w(context),
+                            height: 1,
+                            color: const Color(0xffE6E6E6),
+                          ),
+                          SizedBox(height: 8),
+                          Row(
+                            children: [
+                              Text("4.7", style: context.xDisplaySmall),
+                              PhosphorIcon(
+                                size: 16,
+                                PhosphorIcons.star(PhosphorIconsStyle.fill),
+                                color: content!.warning,
                               ),
                             ],
                           ),
-                        ),
-                        Text("محمد نور محمد", style: context.xDisplayMedium),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            PhosphorIcon(
-                              PhosphorIcons.medalMilitary(PhosphorIconsStyle.fill),
-                            ),
-                            SizedBox(height: 4),
-                            Text(" مدرب الشهر ", style: context.xParagraphMedium),
-                          ],
-                        )
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("889"),
-                        Text("مراجعة", style: context.xLabelSmall),
-                        SizedBox(height: 8),
-                        Container(
-                          width: 90.w(context),
-                          height: 1,
-                          color: const Color(0xffE6E6E6),
-                        ),
-                        SizedBox(height: 8),
-                        Row(
-                          children: [
-                            Text("4.7", style: context.xDisplaySmall),
-                            PhosphorIcon(
-                              size: 16,
-                              PhosphorIcons.star(PhosphorIconsStyle.fill),
-                              color: content!.warning,
-                            ),
-                          ],
-                        ),
-                        Text("التقييم", style: context.xLabelSmall),
-                        SizedBox(height: 8),
-                        Container(
-                          width: 90.w(context),
-                          height: 1,
-                          color: const Color(0xffE6E6E6),
-                        ),
-                        SizedBox(height: 8),
-                        Text("10", style: context.xDisplaySmall),
-                        Text("دورات", style: context.xLabelSmall),
-                      ],
-                    )
-                  ],
+                          Text("التقييم", style: context.xLabelSmall),
+                          SizedBox(height: 8),
+                          Container(
+                            width: 90.w(context),
+                            height: 1,
+                            color: const Color(0xffE6E6E6),
+                          ),
+                          SizedBox(height: 8),
+                          Text("10", style: context.xDisplaySmall),
+                          Text("دورات", style: context.xLabelSmall),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
-      ),
-      SizedBox(height: 16),
-      SmoothPageIndicator(
-        controller: _controller,
-        count: _pageCount,
-        effect: JumpingDotEffect(
-          activeDotColor: bg.primaryBrand,
-          dotColor: bg.primaryBrand.withOpacity(0.3),
-          dotHeight: 9,
-          dotWidth: 9.w(context),
-          jumpScale: .9,
-          verticalOffset: 25,
+        SizedBox(height: 16),
+        SmoothPageIndicator(
+          controller: _controller,
+          count: _pageCount,
+          effect: JumpingDotEffect(
+            activeDotColor: bg.primaryBrand,
+            dotColor: bg.primaryBrand.withOpacity(0.3),
+            dotHeight: 9,
+            dotWidth: 9.w(context),
+            jumpScale: .9,
+            verticalOffset: 25,
+          ),
         ),
-      ),
-    ],
-  );
-}
- 
+      ],
+    );
+  }
 }

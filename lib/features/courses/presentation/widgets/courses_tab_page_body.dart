@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/DI/service_locator.dart';
 import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
+import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
+import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/courses_headdr.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/year_courses_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_list_section.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/tags_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
 
 class CoursesTabPageBody extends StatefulWidget {
@@ -46,13 +48,12 @@ class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
         slivers: [
           const SliverToBoxAdapter(child: CoursesPageHeader()),
           const SliverToBoxAdapter(child: SizedBox(height: 20)),
-          SliverToBoxAdapter(
-            child: TagsSection(
-              tags: tags,
-              selectedIndex: selectedTagIndex,
-              onTagSelected: (index) =>
-                  setState(() => selectedTagIndex = index),
-            ),
+          BlocBuilder<TagCubit, int>(
+            builder: (context, state) {
+              return SliverToBoxAdapter(
+                child: TagsListView(selectedIndex: state, tagsName: tags),
+              );
+            },
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 24)),
           ..._buildYearSections(yearTitles, listHeight),
@@ -73,7 +74,7 @@ class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
               const SliverToBoxAdapter(child: SizedBox(height: 16)),
               SliverToBoxAdapter(
                 child:
-                    NewCourseListSection(height: listHeight, courses: courses),
+                    NewCourseListSection( courses: courses, scrollDirection: Axis.horizontal,),
               ),
             ])
         .toList();

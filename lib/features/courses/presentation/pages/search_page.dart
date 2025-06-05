@@ -77,7 +77,7 @@ class SearchPage extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.w(context)),
       child: NewCourseListSection(
-        height: screenSize.height * 0.75,
+      
         courses: courses,
         scrollDirection: Axis.vertical,
         key: ValueKey(courses.length), // For better widget recycling

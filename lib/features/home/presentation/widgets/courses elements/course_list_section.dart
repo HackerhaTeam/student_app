@@ -6,12 +6,12 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/new_course_item.dart';
 
 class NewCourseListSection extends StatelessWidget {
-  final double height;
+
   final Axis scrollDirection;
   final List<Course> courses;
   const NewCourseListSection(
       {super.key,
-      required this.height,
+   
       required this.courses,
       this.scrollDirection = Axis.horizontal});
 

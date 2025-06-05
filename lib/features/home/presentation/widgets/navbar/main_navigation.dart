@@ -1,7 +1,7 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/pages/course_inforamtion.dart';
+import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
 import 'package:student_hackerha/features/home/presentation/manager/change_icon_cubit.dart';
 import 'package:student_hackerha/features/home/presentation/pages/account_tab_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/animated_navbar.dart';
@@ -32,8 +32,10 @@ class _MainNavigationPageState extends State<MainNavigationPage>
     _iconCubit = ChangeIconCubit()..initController(this);
 
     _pages = [
-      HomePageBody(),
-      CoursesTabPage(),
+      BlocProvider(create: (BuildContext context) =>TagCubit(),
+      child: HomePageBody()),
+      BlocProvider(create: (BuildContext context) =>TagCubit(),
+      child: CoursesTabPage()),
       AccountTabPage(),
       AccountTabPage(),
     ];

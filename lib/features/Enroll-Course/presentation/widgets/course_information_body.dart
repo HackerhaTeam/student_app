@@ -5,6 +5,7 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/core/widgets/headers/custom_tabBar.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/manager/cubit/course_info_cubit.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/manager/cubit/course_info_state.dart';
@@ -43,7 +44,7 @@ class _CourseInformationView extends StatelessWidget {
       required String title,
       required Widget child,
       required BuildContext context}) {
-    return Container(
+    return CustomCard(
       key: key,
       padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
       child: child,

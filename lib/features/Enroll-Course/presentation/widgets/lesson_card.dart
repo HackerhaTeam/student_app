@@ -4,6 +4,7 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
 
 class LessonCard extends StatelessWidget {
   const LessonCard({super.key});
@@ -13,18 +14,12 @@ class LessonCard extends StatelessWidget {
     var content = Theme.of(context).extension<AppContent>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
     final background = Theme.of(context).extension<AppBackgrounds>()!;
-    return Container(
+    return CustomCard(
+      backgroundColor:  background.onSurfacePrimary,
       padding: EdgeInsets.all(16.w(context)),
-      decoration: ShapeDecoration(
-        color: background.onSurfacePrimary,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            width: 1.w(context),
-            color: border.transparent,
-          ),
-          borderRadius: BorderRadius.circular(12.w(context)),
-        ),
-      ),
+      borderColor:  border.transparent,
+      borderRadius: 12.w(context),
+      
       child: Row(
         children: [
           Expanded(

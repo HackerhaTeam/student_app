@@ -5,6 +5,7 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/buttons/custom_button.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
 
 class TeachersSection extends StatelessWidget {
   const TeachersSection({super.key});
@@ -30,19 +31,12 @@ class _TeacherCard extends StatelessWidget {
     final background = Theme.of(context).extension<AppBackgrounds>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
 
-    return Container(
+    return CustomCard(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 16),
-      decoration: ShapeDecoration(
-        color: background.onSurfacePrimary,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            width: 1.w(context),
-            color: border.transparent,
-          ),
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
+      backgroundColor:background.onSurfacePrimary,
+      borderColor:  border.transparent,
+      borderRadius: 12.w(context),
       child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -71,15 +65,14 @@ class _TeacherHeader extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w(context)),
       child: Row(
         children: [
-          Container(
+          CustomCard(
             width: 50.w(context),
             height: 50.w(context),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.w(context)),
-              image: const DecorationImage(
-                image: NetworkImage("https://static.photofeeler.com/images/home/test-box/01.jpg"),
-              ),
-            ),
+            
+            child:ClipRRect(
+              borderRadius: BorderRadius.circular(12.w(context)),
+              child: Image(image:NetworkImage("https://static.photofeeler.com/images/home/test-box/01.jpg") )) ,
+          
           ),
           SizedBox(width: 12.w(context)),
           const Text("أ. محمد المحمد"),

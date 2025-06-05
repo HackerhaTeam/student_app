@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
-import 'package:student_hackerha/core/themes/extentions/app_content.dart';
+  
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
+import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/icon_text.dart';
 
 class DetilesItem extends StatelessWidget {
   const DetilesItem({
@@ -18,35 +20,22 @@ class DetilesItem extends StatelessWidget {
   final PhosphorIconData icon;
   @override
   Widget build(BuildContext context) {
-    final content = Theme.of(context).extension<AppContent>()!;
+ 
     final border = Theme.of(context).extension<AppBorders>()!;
 
-    return Container(
+    return CustomCard(
+      
+      
       padding: EdgeInsets.all(16.w(context)),
       width: 182.w(context),
-      decoration: BoxDecoration(
-        border: Border.all(color: border.transparent),
-        borderRadius: BorderRadius.circular(
-          12.w(context),
-        ),
-      ),
+      borderColor: border.transparent,
+      borderRadius:   12.w(context),
+      
       child: Wrap(
         runSpacing: 8,
         crossAxisAlignment: WrapCrossAlignment.start,
         children: [
-          PhosphorIcon(
-            icon,
-            size: 16.w(context),
-            color: content.secondary,
-          ),
-          SizedBox(
-            width: 4.w(context),
-          ),
-          Text(
-            title,
-            style: context.xLabelSmall,
-            textAlign: TextAlign.center,
-          ),
+          IconText(icon: icon, title: title),
           SizedBox(
             width: double.infinity,
           ),
