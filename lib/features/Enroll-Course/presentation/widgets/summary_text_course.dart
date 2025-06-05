@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
@@ -68,7 +69,9 @@ class SummaryCourse extends StatelessWidget {
           child: Center(
             child: CustomCircleIcon(
               backgroundColor: background.containerStatic,
-                icon: PhosphorIcons.play(), onTap: () {}, circleSize: 56.w(context),),
+            iconAsset: AppImages.carretRight, circleSize: 16,
+            )
+               // icon: PhosphorIcons.play(), onTap: () {}, circleSize: 56.w(context),),
           ),
         ),
         SizedBox(

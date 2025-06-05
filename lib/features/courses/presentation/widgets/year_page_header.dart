@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
@@ -24,7 +25,9 @@ class YearPageHeader extends StatelessWidget {
         children: [
           CustomCircleIcon(
             backgroundColor: Theme.of(context).extension<AppBackgrounds>()!.onSurfaceSecondary,
-            icon: PhosphorIcons.caretRight(),
+           
+            iconAsset: AppImages.carretRight,
+            //icon: PhosphorIcons.caretRight(),
             onTap: () {
               Navigator.pop(context);
             }, circleSize: 44.w(context),
@@ -48,7 +51,9 @@ class YearPageHeader extends StatelessWidget {
           const Spacer(),
           CustomCircleIcon(
             backgroundColor: Theme.of(context).extension<AppBackgrounds>()!.onSurfaceSecondary,
-            icon: PhosphorIcons.magnifyingGlass(),
+          iconAsset: AppImages.carretRight,
+          
+          //  icon: PhosphorIcons.magnifyingGlass(),
             onTap: () {
               context.navigateWithSlideTransition(SearchPage());
             }, circleSize: 44.w(context),

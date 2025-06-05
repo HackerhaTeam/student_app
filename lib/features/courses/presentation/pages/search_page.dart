@@ -161,7 +161,7 @@ class SearchHeader extends StatelessWidget {
         children: [
           CustomCircleIcon(
             backgroundColor: Theme.of(context).extension<AppBackgrounds>()!.onSurfaceSecondary,
-            icon: PhosphorIcons.caretRight(),
+            iconAsset: AppImages.carretRight,
             onTap: () {
               Navigator.pop(context);
             }, circleSize: 44.w(context),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
@@ -15,13 +16,18 @@ class CourseInformationButtonsHeader extends StatelessWidget {
         CustomCircleIcon(
           backgroundColor:
               Theme.of(context).extension<AppBackgrounds>()!.containerStatic,
-          icon: PhosphorIcons.caretRight(),
+        iconAsset: AppImages.carretRight,
+        
+        //  icon: PhosphorIcons.caretRight(),
           onTap: () {
             Navigator.pop(context);
           }, circleSize: 44.w(context),
         ),
         CustomCircleIcon(
-          icon: PhosphorIcons.bookmarkSimple(),
+         
+            iconAsset: AppImages.carretRight,
+         
+         // icon: PhosphorIcons.bookmarkSimple(),
           onTap: () {},
           backgroundColor:
               Theme.of(context).extension<AppBackgrounds>()!.containerStatic, circleSize: 44.w(context),
