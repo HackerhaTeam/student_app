@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-import 'package:student_hackerha/features/quiz/presentation/shared/widgets/cards/custom_cards.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
 
 class EmptyLinearProgress extends StatelessWidget {
   const EmptyLinearProgress({super.key, required this.child});

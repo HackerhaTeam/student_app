@@ -19,6 +19,7 @@ class TagsListView extends StatelessWidget {
       child: SizedBox(
         height: 36.h(context),
         child: ListView.builder(
+          clipBehavior: Clip.none,
           physics: const AlwaysScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: tagsName.length,

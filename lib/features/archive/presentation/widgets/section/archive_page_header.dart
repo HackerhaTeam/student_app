@@ -14,7 +14,7 @@ class ArchivePageHeader extends StatelessWidget {
         children: [
           Text(
             'المحفوظات',
-            style: context.xHeadingLarge,
+            style: context.xHeadingXLarge,
           )
         ],
       ),

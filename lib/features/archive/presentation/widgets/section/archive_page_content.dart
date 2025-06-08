@@ -18,11 +18,11 @@ class ArchivePageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20.h(context)),
+    padding: EdgeInsets.only(top: 20.h(context)),
       child: Column(
         children: [
           ArchivePageHeader(),
-          SizedBox(height: 34.h(context)),
+          SizedBox(height: 24.h(context)),
           Expanded(child: ArchivePageBodyBuilder()),
         ],
       ),

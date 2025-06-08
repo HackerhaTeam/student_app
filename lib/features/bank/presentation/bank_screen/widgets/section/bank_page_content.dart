@@ -10,10 +10,8 @@ class BankPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
-      padding: EdgeInsets.only(
-      top: 20.h(context)),
+      padding: EdgeInsets.only(top: 20.h(context)),
       child: Column(
         children: [
           BankPageHeader(),

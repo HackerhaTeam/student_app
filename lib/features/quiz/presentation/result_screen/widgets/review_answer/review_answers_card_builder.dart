@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/features/quiz/presentation/result_screen/widgets/review_answer/review_answers_card_content.dart';
-import 'package:student_hackerha/features/quiz/presentation/shared/widgets/cards/custom_cards.dart';
 
 class ReviewAnswersCardBuilder extends StatefulWidget {
   const ReviewAnswersCardBuilder(
