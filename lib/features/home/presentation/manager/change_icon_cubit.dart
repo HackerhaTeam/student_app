@@ -9,7 +9,8 @@ class ChangeIconCubit extends Cubit<bool> {
   void initController(TickerProvider vsync) {
     controller = AnimationController(
       vsync: vsync,
-      duration: const Duration(milliseconds: 500),
+      animationBehavior: AnimationBehavior.preserve,
+      duration: const Duration(milliseconds: 300),
     );
   }
 

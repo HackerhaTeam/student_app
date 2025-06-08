@@ -15,18 +15,18 @@ class CourseInformationButtonsHeader extends StatelessWidget {
         CustomCircleIcon(
           backgroundColor:
               Theme.of(context).extension<AppBackgrounds>()!.containerStatic,
-        iconAsset: AppImages.carretRight,
+        iconAsset: AppImages.carretRightLight,
         
-        //  icon: PhosphorIcons.caretRight(),
+   
           onTap: () {
             Navigator.pop(context);
           }, circleSize: 44.w(context),
         ),
         CustomCircleIcon(
          
-            iconAsset: AppImages.carretRight,
+            iconAsset: AppImages.bookMarkSimpleLight,
          
-         // icon: PhosphorIcons.bookmarkSimple(),
+         
           onTap: () {},
           backgroundColor:
               Theme.of(context).extension<AppBackgrounds>()!.containerStatic, circleSize: 44.w(context),

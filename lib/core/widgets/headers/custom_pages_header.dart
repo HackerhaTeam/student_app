@@ -61,7 +61,7 @@ class CustomPagesHeader extends StatelessWidget {
             FocusScope.of(context).unfocus();
             onBack();
           },
-          iconAsset: AppImages.carretRight,
+          iconAsset: AppImages.carretRightLight,
           iconSize: 24.s(context),
         ),
         SizedBox(

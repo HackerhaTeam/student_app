@@ -68,7 +68,7 @@ class SummaryCourse extends StatelessWidget {
           child: Center(
             child: CustomCircleIcon(
               backgroundColor: background.containerStatic,
-            iconAsset: AppImages.carretRight, circleSize: 16,
+            iconAsset: AppImages.carretRightLight, circleSize: 16,
             )
                // icon: PhosphorIcons.play(), onTap: () {}, circleSize: 56.w(context),),
           ),

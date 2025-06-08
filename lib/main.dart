@@ -28,7 +28,6 @@ void main() {
     ),
   );
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -36,27 +35,25 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<ThemeCubit, bool>(
       builder: (context, state) {
         return ThemeProvider(
-          duration: Duration(milliseconds: 500),
+          duration: Duration(milliseconds: 300),
           initTheme: AppTheme.light,
           builder: (_, myTheme) {
             return MaterialApp(
-              locale: const Locale('ar'),
-              supportedLocales: const [
-                Locale('ar'),
-              ],
-              localizationsDelegates: const [
+              locale: Locale('ar'),
+              localizationsDelegates: [
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: [
+                const Locale('ar', ''),
+                const Locale('en', ''),
               ],
               debugShowCheckedModeBanner: false,
               theme: AppTheme.light,
               darkTheme: AppTheme.dark,
-              home: ThemeSwitchingArea(
-                child: BlocProvider(
-                  create: (context) => SearchCoursesCubit(),
-                  child: MainNavigationPage(),
-                ),
+              home: BlocProvider(
+                create: (context) => SearchCoursesCubit(),
+                child: MainNavigationPage(),
               ),
             );
           },
@@ -65,7 +62,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 final Map<String, dynamic> quizData = {
   'quizTime': 900,
   'questionsList': [

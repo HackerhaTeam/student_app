@@ -24,7 +24,7 @@ class CoursesPageHeader extends StatelessWidget {
           const Spacer(),
           CustomCircleIcon(
             backgroundColor: Theme.of(context).extension<AppBackgrounds>()!.onSurfaceSecondary
-            ,iconAsset: AppImages.carretRight,
+            ,iconAsset: AppImages.carretRightLight,
             //icon: PhosphorIcons.magnifyingGlass(),
             onTap: () {
               context.navigateWithSlideTransition(SearchPage());

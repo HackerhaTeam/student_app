@@ -64,7 +64,7 @@ class _LoginPageBodyState extends State<LoginPageBody> {
                 CustomCircleIcon(
                   circleSize: 44.s(context),
                   iconSize: 24.s(context),
-                  iconAsset: AppImages.carretRight,
+                  iconAsset: AppImages.carretRightLight,
                 ),
                 IntroductionHeader(
                   introText: " تسجيل الدخول",

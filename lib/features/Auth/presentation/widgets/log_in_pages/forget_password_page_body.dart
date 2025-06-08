@@ -63,7 +63,7 @@ class _ForgetPasswordPageBodyState extends State<ForgetPasswordPageBody> {
                 backgroundColor: backgrounds.onSurfacePrimary,
                 circleSize: 44.s(context),
                 onTap: () => Navigator.of(context).pop(),
-                iconAsset: AppImages.carretRight,
+                iconAsset: AppImages.carretRightLight,
               ),
               IntroductionHeader(
                   introText: " هل نسيت كلمة المرور؟",

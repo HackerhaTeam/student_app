@@ -30,7 +30,6 @@ class _CustomTabBarState extends State<CustomTabBar>
   void initState() {
     super.initState();
 
-    // إنشاء controller محلي إذا لم يتم توفيره
     _localTabController = widget.tabController ??
         TabController(length: widget.tabs.length, vsync: this);
 
@@ -45,7 +44,6 @@ class _CustomTabBarState extends State<CustomTabBar>
       _localTabController.removeListener(_handleTabChange);
     }
 
-    // التخلص من الـ controller المحلي فقط إذا لم يتم توفيره من الخارج
     if (widget.tabController == null) {
       _localTabController.dispose();
     }

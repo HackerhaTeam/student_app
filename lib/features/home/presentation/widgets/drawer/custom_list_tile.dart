@@ -25,16 +25,16 @@ class CustomListTile extends StatelessWidget {
           children: [
             title == "إصدار التطبيق 1.0.0"
                 ? RotationTransition(
-                    turns: AlwaysStoppedAnimation(90 / 360),
-                    child: PhosphorIcon(
-                      phosphorIcondata,
-                      color: color,
-                    ),
-                  )
+              turns: AlwaysStoppedAnimation(90 / 360),
+              child: PhosphorIcon(
+                phosphorIcondata,
+                color: color,
+              ),
+            )
                 : PhosphorIcon(
-                    phosphorIcondata,
-                    color: color,
-                  ),
+              phosphorIcondata,
+              color: color,
+            ),
             SizedBox(
               width: 8.w(context),
             ),

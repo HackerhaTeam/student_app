@@ -9,7 +9,6 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_typography.dart';
 
 class AppTheme {
   static ThemeData light = ThemeData(
-    useMaterial3: true,
     textSelectionTheme: TextSelectionThemeData(
       selectionColor: Color(0xff022A68).withOpacity(0.3),
       selectionHandleColor: Color(0xff022A68),
@@ -41,7 +40,6 @@ class AppTheme {
   );
 
   static ThemeData dark = ThemeData(
-    useMaterial3: true,
     textSelectionTheme: TextSelectionThemeData(
       selectionColor: Color(0xff36A9E1).withOpacity(0.3),
       selectionHandleColor: Color(0xff36A9E1),

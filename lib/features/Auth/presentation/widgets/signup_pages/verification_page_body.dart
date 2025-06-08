@@ -99,7 +99,7 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
                     backgroundColor: backgrounds.onSurfacePrimary,
                     circleSize: 44.s(context),
                     onTap: () => Navigator.of(context).pop(),
-                    iconAsset: AppImages.carretRight,
+                    iconAsset: AppImages.carretRightLight,
                     iconSize: 24.s(context),
                   ),
                 ),

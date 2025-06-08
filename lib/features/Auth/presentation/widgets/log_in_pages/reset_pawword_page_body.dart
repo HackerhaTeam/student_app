@@ -62,7 +62,7 @@ class _ResetPasswordPageBodyState extends State<ResetPasswordPageBody> {
                 circleSize: 44.s(context),
                 iconSize: 24.s(context),
                 onTap: () => Navigator.of(context).pop(),
-                iconAsset: AppImages.carretRight,
+                iconAsset: AppImages.carretRightLight,
               ),
               IntroductionHeader(
                   introText: " قم بتعيين كلمة مرور جديدة",

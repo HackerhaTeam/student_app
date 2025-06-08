@@ -99,7 +99,7 @@ class NotFoundSearch extends StatelessWidget {
           height: 37.h(context),
         ),
         SvgPicture.asset(
-          isDark ? AppImages.searchIconDark : AppImages.searchIconLight,
+          isDark ? AppImages.searchLogoDark : AppImages.searchLogoLight,
           height: 306.h(context),
           width: 306.w(context),
         ),
@@ -160,7 +160,7 @@ class SearchHeader extends StatelessWidget {
         children: [
           CustomCircleIcon(
             backgroundColor: Theme.of(context).extension<AppBackgrounds>()!.onSurfaceSecondary,
-            iconAsset: AppImages.carretRight,
+            iconAsset: AppImages.carretRightLight,
             onTap: () {
               Navigator.pop(context);
             }, circleSize: 44.w(context),

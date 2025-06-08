@@ -8,6 +8,7 @@ import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
+import 'package:student_hackerha/core/helpers/tags/get_theme_icon.dart';
 import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
@@ -154,15 +155,16 @@ class HomePageText extends StatelessWidget {
     super.key,
   });
 
+
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+
 
     return Column(
       children: [
         SizedBox(height: 24.h(context)),
         SvgPicture.asset(
-          isDark ? AppImages.homeTextDark : AppImages.homeTextLight,
+         getThemeIcon(context,  AppImages.homeTextDark,  AppImages.homeTextLight ),
           width: 372.w(context),
         ),
         SizedBox(height: 24.h(context)),

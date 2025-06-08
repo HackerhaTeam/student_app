@@ -3,10 +3,19 @@ class AppImages {
   AppImages._();
 
   static const String homeTextLight = "assets/images/svg/home_text_light.svg";
+  static const String bookMarkSimpleLight = "assets/images/svg/bookmarksimple_light.svg";
   static const String homeTextDark = "assets/images/svg/home_text_dark.svg";
   static const String courseImage = "assets/images/Course Image.png";
   static const String informationCourse =
       "assets/images/course_information.png";
+       static const String magnifyingGlassDark=
+      "assets/images/svg/magnifyingglass_dark.svg";
+       static const String magnifyingGlassLight=
+      "assets/images/svg/magnifyingglass_light.svg";
+      static const String notificationDark =
+      "assets/images/svg/notification_dark.svg"; 
+       static const String notificationLight =
+      "assets/images/svg/notification_light.svg";
   static const String homeNavbar = "assets/images/svg/home_navbar.svg";
   static const String coursesNavbar = "assets/images/svg/courses_navbar.svg";
   static const String archiveNavbar = "assets/images/svg/archive_navbar.svg";
@@ -17,15 +26,16 @@ class AppImages {
   static const String noCoursesImage = "assets/images/svg/no_courses_found.svg";
   static const String noCoursesDarkImage =
       "assets/images/svg/no_courses_found_dark.svg";
-  static const String searchIconLight =
-      "assets/images/svg/search_icon_light.svg";
-  static const String searchIconDark = "assets/images/svg/search_icon_dark.svg";
+  static const String searchLogoLight =
+      "assets/images/svg/search_logo_light.svg";
+  static const String searchLogoDark = "assets/images/svg/search_logo_dark.svg";
   static const String flagIcon = "assets/images/icons/FlagIcon.svg";
   static const String successImage = "assets/images/success.svg";
   static const String lessonNumLight = "assets/images/lesson_number_light.svg";
   static const String lessonNumDark = "assets/images/lesson_number_dark.svg";
   static const String pdfIcon = 'assets/images/icons/pdf_icon.svg';
-  static const String carretRight = 'assets/images/svg/caret-right.svg';
+  static const String carretRightLight = 'assets/images/svg/caret-right-light.svg';
+  static const String carretRightDark = 'assets/images/svg/caret-right-dark.svg';
   static const String magnifyingGlass =
       'assets/images/svg/magnifying-glass.svg';
 }

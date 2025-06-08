@@ -15,7 +15,7 @@ class AdvancedThemeSwitcher extends StatefulWidget {
   const AdvancedThemeSwitcher({
     super.key,
     this.onThemeChanged,
-    this.animationDuration = const Duration(milliseconds: 500),
+    this.animationDuration = const Duration(milliseconds: 300),
   });
 
   @override
@@ -26,6 +26,7 @@ class _AdvancedThemeSwitcherState extends State<AdvancedThemeSwitcher>
     with SingleTickerProviderStateMixin {
   late AnimationController _iconController;
   bool _isAnimating = false;
+  DateTime? _lastTapTime;
 
   @override
   void initState() {
@@ -43,7 +44,7 @@ class _AdvancedThemeSwitcherState extends State<AdvancedThemeSwitcher>
   }
 
   void _toggleTheme(BuildContext context) {
-    if (_isAnimating) return;
+    if (_isAnimating) return; // هنا إذا كان الأنيميشن شغّال، لن ينفذ الـ onTap
     _isAnimating = true;
 
     final isDarkModeEnabled = context.read<ThemeCubit>().state;
@@ -61,7 +62,7 @@ class _AdvancedThemeSwitcherState extends State<AdvancedThemeSwitcher>
       if (mounted) {
         context.read<ThemeCubit>().toggleTheme();
         widget.onThemeChanged?.call();
-        _isAnimating = false;
+        _isAnimating = false; // بعد 300 مللي ثانية (مدة الأنيميشن)، يُسمح بالضغط مرة أخرى
       }
     });
   }
@@ -74,7 +75,14 @@ class _AdvancedThemeSwitcherState extends State<AdvancedThemeSwitcher>
         return BlocBuilder<ThemeCubit, bool>(
           builder: (context, isDarkModeEnabled) {
             return GestureDetector(
-              onTap: () => _toggleTheme(context),
+              onTap: () {
+                final now = DateTime.now();
+                if (now.difference(_lastTapTime ?? DateTime(0)) >= widget.animationDuration+Duration(milliseconds: 500)) {
+                  _lastTapTime = now;
+                  _toggleTheme(context);
+                }
+              },
+
               child: ScaleTransition(
                 scale: Tween(begin: 0.8, end: 1.0).animate(
                   CurvedAnimation(
@@ -94,19 +102,16 @@ class _AdvancedThemeSwitcherState extends State<AdvancedThemeSwitcher>
                     );
                   },
                   child: !isDarkModeEnabled
-                      ? RotationTransition(
-                          turns: AlwaysStoppedAnimation(1 / 360),
-                          child: PhosphorIcon(
-                            PhosphorIcons.moonStars(),
-                            key: ValueKey<bool>(isDarkModeEnabled),
-                            size: 40.w(context),
-                          ),
-                        )
+                      ? PhosphorIcon(
+                        PhosphorIcons.moonStars(),
+                        key: ValueKey<bool>(isDarkModeEnabled),
+                        size: 30.w(context),
+                      )
                       : PhosphorIcon(
-                          PhosphorIcons.sunDim(),
-                          key: ValueKey<bool>(isDarkModeEnabled),
-                          size: 40.w(context),
-                        ),
+                    PhosphorIcons.sunDim(),
+                    key: ValueKey<bool>(isDarkModeEnabled),
+                    size: 30.w(context),
+                  ),
                 ),
               ),
             );

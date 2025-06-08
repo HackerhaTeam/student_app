@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
+import 'package:student_hackerha/core/helpers/tags/get_theme_icon.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
@@ -25,8 +26,8 @@ class YearPageHeader extends StatelessWidget {
           CustomCircleIcon(
             backgroundColor: Theme.of(context).extension<AppBackgrounds>()!.onSurfaceSecondary,
            
-            iconAsset: AppImages.carretRight,
-            //icon: PhosphorIcons.caretRight(),
+            iconAsset:getThemeIcon(context, AppImages.carretRightDark, AppImages.carretRightLight),
+            //icon: PhosphorIcons.caretRight(), 
             onTap: () {
               Navigator.pop(context);
             }, circleSize: 44.w(context),
@@ -50,7 +51,7 @@ class YearPageHeader extends StatelessWidget {
           const Spacer(),
           CustomCircleIcon(
             backgroundColor: Theme.of(context).extension<AppBackgrounds>()!.onSurfaceSecondary,
-          iconAsset: AppImages.carretRight,
+          iconAsset:getThemeIcon(context, AppImages.magnifyingGlassDark, AppImages.magnifyingGlassLight),
           
           //  icon: PhosphorIcons.magnifyingGlass(),
             onTap: () {
