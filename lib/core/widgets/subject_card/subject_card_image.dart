@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 
-class SubjectBankImage extends StatelessWidget {
-  const SubjectBankImage({
+class SubjectCardImage extends StatelessWidget {
+  const SubjectCardImage({
     super.key,
   });
 
