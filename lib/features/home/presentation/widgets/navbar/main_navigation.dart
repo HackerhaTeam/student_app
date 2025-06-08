@@ -1,6 +1,7 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_hackerha/features/archive/presentation/pages/archive_page.dart';
 import 'package:student_hackerha/features/bank/presentation/bank_screen/pages/bank_page.dart';
 import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
 import 'package:student_hackerha/features/home/presentation/manager/change_icon_cubit.dart';
@@ -38,7 +39,7 @@ class _MainNavigationPageState extends State<MainNavigationPage>
       BlocProvider(create: (BuildContext context) =>TagCubit(),
       child: CoursesTabPage()),
       BankPage(),
-      AccountTabPage(),
+      ArchivesPage(),
       AccountTabPage(),
     ];
   }
