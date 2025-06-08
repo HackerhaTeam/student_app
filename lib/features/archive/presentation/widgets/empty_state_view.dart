@@ -16,9 +16,13 @@ class EmptyStateView extends StatelessWidget {
       child: Column(
         children: [
           const Spacer(),
-          SvgPicture.asset(isDarkMode
-              ? 'assets/images/illustration_dark.svg'
-              : 'assets/images/illustration_light.svg'),
+          SizedBox(
+            width: 300.w(context),
+            height: 300.h(context),
+            child: SvgPicture.asset(isDarkMode
+                ? 'assets/images/illustration_dark.svg'
+                : 'assets/images/illustration_light.svg'),
+          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 51.w(context)),
             child: Column(

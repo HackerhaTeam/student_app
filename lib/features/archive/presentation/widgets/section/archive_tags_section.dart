@@ -16,26 +16,29 @@ class ArchiveTagsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.h(context)),
-      child: Row(
-        children: List.generate(
-          3,
-          (index) {
-            return Expanded(
-              child: GestureDetector(
-                onTap: () {
-                  context.read<TagCubit>().goToPage(index: index);
-                },
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: index == 1 ? 8.h(context) : 0),
-                  child: TagItem(
-                      isSelected: currentIndex == index,
-                      tagText: getArchiveTags()[index],
-                      index: index),
+      child: SizedBox(
+        height: 36.h(context),
+        child: Row(
+          children: List.generate(
+            3,
+            (index) {
+              return Expanded(
+                child: GestureDetector(
+                  onTap: () {
+                    context.read<TagCubit>().goToPage(index: index);
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: index == 1 ? 8.h(context) : 0),
+                    child: TagItem(
+                        isSelected: currentIndex == index,
+                        tagText: getArchiveTags()[index],
+                        index: index),
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
