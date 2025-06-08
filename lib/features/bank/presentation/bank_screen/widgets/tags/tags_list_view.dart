@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
 import 'package:student_hackerha/features/bank/presentation/bank_screen/helpers/tags/get_tags.dart';
-import 'package:student_hackerha/features/bank/presentation/bank_screen/manager/bank_page_view_cubit/bank_page_view_cubit.dart';
 import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/tags/tag_item.dart';
 
 class TagsListView extends StatelessWidget {
@@ -27,7 +27,7 @@ class TagsListView extends StatelessWidget {
             padding: EdgeInsets.only(left: 8.w(context)),
             child: GestureDetector(
               onTap: () =>
-                  context.read<BankPageViewCubit>().goToPage(index: index),
+                  context.read<TagCubit>().goToPage(index: index),
               child: TagItem(
                 index: index,
                 tagText: getTags()[index],

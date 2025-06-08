@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
-import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/subject_bank/subject_bank_details.dart';
-import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/subject_bank/subject_bank_footer.dart';
-import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/subject_bank/subject_bank_image.dart';
-import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/subject_bank/subject_bank_title.dart';
+import 'package:student_hackerha/core/widgets/subject_card/subject_card_details.dart';
+import 'package:student_hackerha/core/widgets/subject_card/subject_card_footer.dart';
+import 'package:student_hackerha/core/widgets/subject_card/subject_card_image.dart';
+import 'package:student_hackerha/core/widgets/subject_card/subject_card_title.dart';
 import 'package:student_hackerha/core/widgets/custom_card.dart';
 
-class SubjectBank extends StatelessWidget {
-  const SubjectBank({super.key});
-
+class SubjectCard extends StatelessWidget {
+  const SubjectCard({super.key, this.isBank = true});
+  final bool isBank;
   @override
   Widget build(BuildContext context) {
     final backgroundColor = Theme.of(context).extension<AppBackgrounds>()!;
@@ -27,17 +27,17 @@ class SubjectBank extends StatelessWidget {
                 horizontal: 12.w(context), vertical: 13.h(context)),
             child: Row(
               children: [
-                SubjectBankImage(),
+                SubjectCardImage(),
                 SizedBox(width: 16.w(context)),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SubjectBankTitle(),
+                      SubjectCardTitle(isBank: isBank),
                       SizedBox(height: 8.h(context)),
-                      SubjectBankDetails(),
+                      SubjectCardDetails(isBank: isBank),
                       SizedBox(height: 8.h(context)),
-                      SubjectBankFooter(),
+                      SubjectCardFooter(isBank: isBank),
                     ],
                   ),
                 )

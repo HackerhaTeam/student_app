@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/features/bank/presentation/bank_screen/handlers/subject_bank/navigate_to_subject_bank.dart';
-import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/subject_bank/subject_bank.dart';
+import 'package:student_hackerha/core/widgets/subject_card/subject_card.dart';
 
 class BankSubjectsView extends StatelessWidget {
   const BankSubjectsView({
@@ -20,7 +20,7 @@ class BankSubjectsView extends StatelessWidget {
             onTap: () {
               navigateToSubjectBank(context);
             },
-            child: SubjectBank(),
+            child: SubjectCard(),
           ),
         );
       },

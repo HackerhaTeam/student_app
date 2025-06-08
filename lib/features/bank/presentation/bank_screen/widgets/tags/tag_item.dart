@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/helpers/tags/get_tag_backgroun_color.dart';
+import 'package:student_hackerha/core/helpers/tags/get_tag_text_color.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/features/bank/presentation/bank_screen/helpers/tags/get_tag_backgroun_color.dart';
-import 'package:student_hackerha/features/bank/presentation/bank_screen/helpers/tags/get_tag_text_color.dart';
 
 class TagItem extends StatelessWidget {
   const TagItem({
