@@ -1,4 +1,4 @@
-List<String> getTags() {
+List<String> getBankTags() {
   return [
     "السنة الأولى",
     "السنة الثانية",
