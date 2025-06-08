@@ -38,7 +38,7 @@ class _BankPageBodyBuilderState extends State<BankPageBodyBuilder> {
             TagsSection(
               selectedIndex: state,
             ),
-            SizedBox(height: 24.h(context)),
+           
             Expanded(
               child: BanksSection(
                 controller: _pageController,

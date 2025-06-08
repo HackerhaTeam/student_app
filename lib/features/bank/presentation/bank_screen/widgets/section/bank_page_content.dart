@@ -15,7 +15,7 @@ class BankPageContent extends StatelessWidget {
       child: Column(
         children: [
           BankPageHeader(),
-          SizedBox(height: 24.h(context)),
+         
           Expanded(child: BankPageBodyBuilder())
         ],
       ),
