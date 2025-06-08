@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/features/bank/presentation/bank_screen/manager/bank_page_view_cubit/bank_page_view_cubit.dart';
+import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
 import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/section/banks_section.dart';
 import 'package:student_hackerha/features/bank/presentation/bank_screen/widgets/section/tags_section.dart';
 
@@ -28,7 +28,7 @@ class _BankPageBodyBuilderState extends State<BankPageBodyBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<BankPageViewCubit, int>(
+    return BlocConsumer<TagCubit, int>(
       listener: (context, state) {
         _pageController.jumpToPage(state);
       },
