@@ -39,7 +39,7 @@ class _MainNavigationPageState extends State<MainNavigationPage>
       BlocProvider(create: (BuildContext context) =>TagCubit(),
       child: CoursesTabPage()),
       BankPage(),
-      ArchivesPage(),
+      ArchivePage(),
       AccountTabPage(),
     ];
   }
