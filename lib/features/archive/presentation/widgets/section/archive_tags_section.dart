@@ -25,7 +25,7 @@ class ArchiveTagsSection extends StatelessWidget {
               return Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    context.read<TagCubit>().goToPage(index: index);
+                    context.read<TagCubit>().updateIndex(index: index);
                   },
                   child: Padding(
                     padding: EdgeInsets.symmetric(
