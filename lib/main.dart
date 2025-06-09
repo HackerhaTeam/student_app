@@ -28,6 +28,7 @@ void main() {
     ),
   );
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
               localizationsDelegates: [
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: [
                 const Locale('ar', ''),
@@ -62,6 +64,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 final Map<String, dynamic> quizData = {
   'quizTime': 900,
   'questionsList': [

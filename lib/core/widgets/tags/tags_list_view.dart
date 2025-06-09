@@ -18,37 +18,43 @@ class TagsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 84.h(context),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
-              child: SizedBox(
-                height: 36.h(context),
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: tagsName.length,
-                  separatorBuilder: (_, __) => SizedBox(width: 8.w(context)),
-                  itemBuilder: (context, index) {
-                    final isSelected = index == selectedIndex;
-                    return GestureDetector(
-                      onTap: () =>
-                          context.read<TagCubit>().updateIndex(index: index),
-                      child: TagItem(
-                        index: index,
-                        tagText: tagsName[index],
-                        isSelected: isSelected,
-                      ),
-                    );
-                  },
+      child: NotificationListener<OverscrollIndicatorNotification>(
+        onNotification: (overscroll) {
+          overscroll.disallowIndicator();
+          return true;
+        },
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
+                child: SizedBox(
+                  height: 36.h(context),
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: tagsName.length,
+                    separatorBuilder: (_, __) => SizedBox(width: 8.w(context)),
+                    itemBuilder: (context, index) {
+                      final isSelected = index == selectedIndex;
+                      return GestureDetector(
+                        onTap: () =>
+                            context.read<TagCubit>().updateIndex(index: index),
+                        child: TagItem(
+                          index: index,
+                          tagText: tagsName[index],
+                          isSelected: isSelected,
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
