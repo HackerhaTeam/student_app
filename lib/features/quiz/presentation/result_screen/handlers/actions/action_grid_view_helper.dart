@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/set_up_server_locator.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 import 'package:student_hackerha/features/quiz/presentation/shared/manager/quiz_session.dart';
@@ -8,13 +9,11 @@ import 'package:student_hackerha/features/quiz/presentation/quiz_screen/pages/qu
 
 class ActionGridViewHelper {
   static List<String> iconsAssets({required bool isBank}) => [
-        'assets/images/icons/share-network.svg',
-        'assets/images/icons/eye.svg',
-        'assets/images/icons/arrow-counter-clockwise.svg',
-        'assets/images/icons/house-simple.svg',
-        isBank
-            ? 'assets/images/icons/exam.svg'
-            : 'assets/images/icons/video.svg',
+        AppImages.shareNetwork,
+        AppImages.eye,
+        AppImages.arrowCounterClockwise,
+        AppImages.housSimple,
+        isBank ? AppImages.exam : AppImages.video,
       ];
 
   static List<String> labels({required bool isBank}) => [

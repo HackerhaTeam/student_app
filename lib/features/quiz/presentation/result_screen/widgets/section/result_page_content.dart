@@ -7,7 +7,8 @@ import 'package:student_hackerha/features/quiz/presentation/result_screen/widget
 
 class ResultPageContent extends StatelessWidget {
   const ResultPageContent({
-    super.key, required this.isBank,
+    super.key,
+    required this.isBank,
   });
   final bool isBank;
   @override
@@ -18,10 +19,20 @@ class ResultPageContent extends StatelessWidget {
       child: Column(
         children: [
           ResultPageHeaderSection(),
-          SizedBox(height: 34.h(context)),
-          ResultPageBodySection(),
-          SizedBox(height: 32.h(context)),
-          Expanded(child: ResultPageActionsSection(isBank: isBank)),
+          SizedBox(height: 16.h(context)),
+          Expanded(
+            child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  SizedBox(height: 34.h(context)),
+                  ResultPageBodySection(),
+                  SizedBox(height: 32.h(context)),
+                  ResultPageActionsSection(isBank: isBank),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

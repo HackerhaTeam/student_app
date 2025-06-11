@@ -35,30 +35,35 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, bool>(
       builder: (context, state) {
-        return ThemeProvider(
-          duration: Duration(milliseconds: 300),
-          initTheme: AppTheme.light,
-          builder: (_, myTheme) {
-            return MaterialApp(
-              locale: Locale('ar'),
-              localizationsDelegates: [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: [
-                const Locale('ar', ''),
-                const Locale('en', ''),
-              ],
-              debugShowCheckedModeBanner: false,
-              theme: AppTheme.light,
-              darkTheme: AppTheme.dark,
-              home: BlocProvider(
-                create: (context) => SearchCoursesCubit(),
-                child: MainNavigationPage(),
-              ),
-            );
-          },
+        return MediaQuery(
+          data:
+              MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1)),
+          child: ThemeProvider(
+            duration: Duration(milliseconds: 300),
+            initTheme: AppTheme.light,
+            builder: (_, myTheme) {
+              return MaterialApp(
+                useInheritedMediaQuery: true,
+                locale: Locale('ar'),
+                localizationsDelegates: [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: [
+                  const Locale('ar', ''),
+                  const Locale('en', ''),
+                ],
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.light,
+                darkTheme: AppTheme.dark,
+                home: BlocProvider(
+                  create: (context) => SearchCoursesCubit(),
+                  child: MainNavigationPage(),
+                ),
+              );
+            },
+          ),
         );
       },
     );

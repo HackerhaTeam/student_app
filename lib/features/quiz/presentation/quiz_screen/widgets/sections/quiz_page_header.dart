@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/features/quiz/presentation/quiz_screen/handlers/drawer_handlers/open_drawer.dart';
@@ -15,7 +16,7 @@ class QuizPageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final backgroundColor = Theme.of(context).extension<AppBackgrounds>()!;
-       final contentColor = Theme.of(context).extension<AppContent>()!;
+    final contentColor = Theme.of(context).extension<AppContent>()!;
 
     final animationController = context.read<SwitchIconCubit>().controller;
 
@@ -44,7 +45,7 @@ class QuizPageHeader extends StatelessWidget {
             circleSize: 44.s(context),
             iconColor: contentColor.primary,
             backgroundColor: backgroundColor.onSurfaceSecondary,
-            iconAsset:'assets/images/icons/x.svg' ,
+            iconAsset: AppImages.x,
           ),
         ],
       ),
