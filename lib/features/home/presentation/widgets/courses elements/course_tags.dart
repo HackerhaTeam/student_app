@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/core/themes/extentions/app_content.dart';
+import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/courses_tag.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/icon_text_course_content.dart';
 
 class CourseTags extends StatelessWidget {
   final List<String> tags;
@@ -18,23 +23,12 @@ class CourseTags extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 36.h(context),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: tags.length,
-        itemBuilder: (context, index) => Padding(
-          padding: EdgeInsets.only(left: 8.w(context)),
-          child: CoursesTag(
-            background: background,
-            appBorder: border,
-            text: tags[index],
-            isSelected: false,
-            borderColor: Colors.transparent,
-            backgroundColor: background.fill,
-          ),
-        ),
-      ),
+    return Row (spacing:12.w(context) ,
+      children: [
+        IconTextCourseContent(Icon: PhosphorIcons.circlesFour(), title: "دورة شاملة"),
+        IconTextCourseContent(Icon: PhosphorIcons.student (), title: "+55 طالب"),
+        IconTextCourseContent(Icon: PhosphorIcons.chalkboardTeacher(), title: "مدرّس واحد"),
+      ],
     );
   }
 }

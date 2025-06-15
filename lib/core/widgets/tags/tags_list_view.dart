@@ -17,7 +17,7 @@ class TagsListView extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.h(context)),
       child: SizedBox(
-        height: 36.h(context),
+        height: 36,
         child: ListView.builder(
           physics: const AlwaysScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
