@@ -14,19 +14,20 @@ class CoursesItem extends StatelessWidget {
   final List<String> tagsTitle;
 
   final Course course;
+ final double? width;
 
   const CoursesItem({
     super.key,
     required this.course,
     required this.border,
     required this.background,
-    required this.tagsTitle,
+    required this.tagsTitle, this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      width: MediaQuery.of(context).size.width * 0.75,
+      width:width ?? MediaQuery.of(context).size.width * 0.75,
      borderRadius:21.r(context),
       backgroundColor:Colors.transparent,
       borderColor: border.transparent,
