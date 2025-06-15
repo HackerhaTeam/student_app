@@ -12,6 +12,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 
 void main() {
+
   setupDependencies();
   setupServerLocator();
   runApp(

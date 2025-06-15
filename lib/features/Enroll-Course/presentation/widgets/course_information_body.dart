@@ -14,6 +14,8 @@ import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/cou
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/courses_information_tags.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/detailes_section.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/floating_active_course_button.dart';
+import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/reviews_belal/rating_stars.dart';
+import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/reviews_belal/review_section_belel.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/sticky_floating_header.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/summary_text_course.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/teachers_section.dart';
@@ -55,8 +57,9 @@ class _CourseInformationView extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<CourseInfoCubit>();
     final screenHeight = MediaQuery.of(context).size.height;
+    final contentColor = Theme.of(context).extension<AppContent>()!;
     final List<String> tags = ["مدرّس واحد", "دورة شاملة", "55 طالب"];
-    var content = Theme.of(context).extension<AppContent>()!;
+
     return Scaffold(
       backgroundColor:
           Theme.of(context).extension<AppBackgrounds>()!.surfacePrimary,
@@ -101,7 +104,7 @@ class _CourseInformationView extends StatelessWidget {
                             Text(
                               "أساس البرمجة التي من خلالها ستبدأ رحلتك العلمية في عالم البرمجة الواسع.",
                               style: context.xParagraphMedium
-                                  .copyWith(color: content.secondary),
+                                  .copyWith(color: contentColor.secondary),
                             ),
                             const SizedBox(height: 16),
                             CoursesInformationTags(tags: tags),
@@ -169,39 +172,9 @@ class _CourseInformationView extends StatelessWidget {
                         key: cubit.reviewsKey,
                         title: "المراجعات",
                         context: context,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "المراجعات",
-                                  style: context.xHeadingLarge,
-                                ),
-                                Spacer(),
-                                TextButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      "عرض الكل",
-                                      style: context.xLabelMedium.copyWith(
-                                          color: content.brandPrimary),
-                                    ))
-                              ],
-                            ),
-                            SizedBox(
-                              height: 16,
-                            ),
-                            Row(
-                              children: [
-                                PhosphorIcon(
-                                  PhosphorIcons.star(PhosphorIconsStyle.fill),
-                                  color: Color(0xffF0B100),
-                                )
-                              ],
-                            )
-                          ],
-                        ),
+                        child: ReviewsSectionBelal(),
                       ),
-                      const SizedBox(height: 300),
+          
                     ],
                   ),
                 ),

@@ -69,6 +69,9 @@ class AppImages {
   static const String caretRight = 'assets/images/icons/caret-right.svg';
 
   static const String bookmarkSimple = 'assets/images/icons/bookmark-simple.svg';
+  static const String starFill = 'assets/images/icons/star-fill.svg';
 
 
 }
+
+
