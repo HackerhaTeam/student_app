@@ -3,13 +3,13 @@ import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/new_course_item.dart';
+import 'package:student_hackerha/core/widgets/course%20card/course_item.dart';
 
-class NewCourseListSection extends StatelessWidget {
+class CourseList extends StatelessWidget {
 
   final Axis scrollDirection;
   final List<Course> courses;
-  const NewCourseListSection(
+  const CourseList(
       {super.key,
    
       required this.courses,
@@ -29,7 +29,7 @@ class NewCourseListSection extends StatelessWidget {
           left: index == 0 ? 1.w(context) : 10.w(context),
           right: 10.w(context),
         ),
-        child: NewCoursesItem(
+        child: CoursesItem(
           course: courses[index],
           border: border,
           background: background,

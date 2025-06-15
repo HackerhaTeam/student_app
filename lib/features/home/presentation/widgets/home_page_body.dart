@@ -15,8 +15,8 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/my_course_list_section.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_list_section.dart';
+import 'package:student_hackerha/core/widgets/course%20card/my_course_list_section.dart';
+import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_search_section.dart';
@@ -92,18 +92,22 @@ class _HomePageBodyState extends State<HomePageBody> {
             },
           ),
         ),
-        SliverToBoxAdapter(child: SizedBox(height: 24.h(context))),
+        SliverToBoxAdapter(child: SizedBox(height: 24)),
         SliverToBoxAdapter(
           child: CoursesHeader(
             title: "الدورات الجديدة",
             onPressed: () {},
           ),
         ),
-        SliverToBoxAdapter(child: SizedBox(height: 20.h(context))),
+        SliverToBoxAdapter(child: SizedBox(height: 20)),
         SliverToBoxAdapter(
-          child: NewCourseListSection(
+          child: CourseList(
            
             courses: courses, scrollDirection:  Axis.horizontal,
+          ),
+        ),SliverToBoxAdapter(
+          child: SizedBox(
+            height: 24,
           ),
         ),
         SliverToBoxAdapter(
@@ -114,7 +118,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         ),
         SliverToBoxAdapter(
           child: SizedBox(
-            height: 16.h(context),
+            height: 16,
           ),
         ),
         SliverToBoxAdapter(
@@ -122,6 +126,10 @@ class _HomePageBodyState extends State<HomePageBody> {
             border: border,
             background: background,
             courses: courses,
+          ),
+        ),SliverToBoxAdapter(
+          child: SizedBox(
+            height: 24 ,
           ),
         ),
         SliverToBoxAdapter(
@@ -135,7 +143,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         ),
         SliverToBoxAdapter(
           child: SizedBox(
-            height: 16.h(context),
+            height: 16,
           ),
         ),
         SliverToBoxAdapter(
@@ -162,12 +170,12 @@ class HomePageText extends StatelessWidget {
 
     return Column(
       children: [
-        SizedBox(height: 24.h(context)),
+        SizedBox(height: 24),
         SvgPicture.asset(
          getThemeIcon(context,  AppImages.homeTextDark,  AppImages.homeTextLight ),
           width: 372.w(context),
         ),
-        SizedBox(height: 24.h(context)),
+        SizedBox(height: 24),
       ],
     );
   }

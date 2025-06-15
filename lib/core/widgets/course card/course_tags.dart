@@ -6,8 +6,8 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_card.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/courses_tag.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/icon_text_course_content.dart';
+import 'package:student_hackerha/core/widgets/course%20card/courses_tag.dart';
+import 'package:student_hackerha/core/widgets/course%20card/icon_text_course_content.dart';
 
 class CourseTags extends StatelessWidget {
   final List<String> tags;

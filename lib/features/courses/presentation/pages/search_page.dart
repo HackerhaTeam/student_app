@@ -10,7 +10,7 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_list_section.dart';
+import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_search_section.dart';
 
 class SearchPage extends StatelessWidget {
@@ -75,7 +75,7 @@ class SearchPage extends StatelessWidget {
       BuildContext context, Size screenSize, List<Course> courses) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.w(context)),
-      child: NewCourseListSection(
+      child: CourseList(
       
         courses: courses,
         scrollDirection: Axis.vertical,

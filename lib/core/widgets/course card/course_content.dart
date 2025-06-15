@@ -7,7 +7,8 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/buttons/custom_button.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/pages/course_inforamtion.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_tags.dart';
+import 'package:student_hackerha/core/widgets/course%20card/course_price.dart';
+import 'package:student_hackerha/core/widgets/course%20card/course_tags.dart';
 
 class CourseContent extends StatelessWidget {
   final AppBorders border;
@@ -39,7 +40,7 @@ class CourseContent extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: context.xHeadingMedium,
           ),
-          SizedBox(height: 8.h(context)),
+          SizedBox(height: 8),
           Text(
             description,
             style:
@@ -47,13 +48,15 @@ class CourseContent extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          SizedBox(height: 12.h(context)),
+          SizedBox(height: 12),
           CourseTags(
             tags: tagsTitle,
             border: border,
             background: background,
           ),
-          SizedBox(height: 12.h(context)),
+          SizedBox(height: 11),
+          CoursePrice(oldPrice: 900,),
+          SizedBox(height: 8),
           CustomButton(
             onPressed: () {
               context.navigateWithSlideTransition(
@@ -62,7 +65,7 @@ class CourseContent extends StatelessWidget {
             },
             borderRadius: 12.r(context),
             color: border.primaryBrand,
-            height: 38.h(context),
+            height: 38,
             width: double.infinity,
             child: Text(
               "عرض التفاصيل",

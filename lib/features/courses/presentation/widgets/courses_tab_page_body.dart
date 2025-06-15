@@ -8,7 +8,7 @@ import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
 import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/courses_headdr.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/year_courses_page.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_list_section.dart';
+import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
 
 class CoursesTabPageBody extends StatefulWidget {
@@ -74,7 +74,10 @@ class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
               const SliverToBoxAdapter(child: SizedBox(height: 16)),
               SliverToBoxAdapter(
                 child:
-                    NewCourseListSection( courses: courses, scrollDirection: Axis.horizontal,),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom:24 ),
+                      child: CourseList( courses: courses, scrollDirection: Axis.horizontal,),
+                    ),
               ),
             ])
         .toList();

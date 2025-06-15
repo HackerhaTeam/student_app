@@ -4,7 +4,7 @@ import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/tabBar_semester.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/year_page_header.dart';
-import 'package:student_hackerha/features/home/presentation/widgets/courses%20elements/course_list_section.dart';
+import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
 
 class YearCoursesPage extends StatefulWidget {
   const YearCoursesPage({super.key});
@@ -78,11 +78,11 @@ class _YearCoursesPageState extends State<YearCoursesPage>
             });
           },
           children: [
-            NewCourseListSection(
+            CourseList(
               courses: courses.where((course) => course.year == 1).toList(),
               scrollDirection: Axis.horizontal,
             ),
-            NewCourseListSection(
+            CourseList(
               courses: courses.where((course) => course.year == 2).toList(),
               scrollDirection: Axis.horizontal,
             ),
