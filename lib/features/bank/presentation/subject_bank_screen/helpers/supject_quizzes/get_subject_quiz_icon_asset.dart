@@ -1,8 +1,9 @@
+import 'package:student_hackerha/core/constants/assets_image.dart';
 
 String getSubjectQuizIconAsset({required int index}) {
   if (index > 5) {
-    return 'assets/images/icons/student.svg';
+    return AppImages.student;
   } else {
-    return 'assets/images/icons/check.svg';
+    return AppImages.check;
   }
 }

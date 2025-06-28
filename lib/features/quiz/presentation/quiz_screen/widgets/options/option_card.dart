@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/features/quiz/presentation/quiz_screen/helpers/options/get_option_border_color.dart';
-import 'package:student_hackerha/features/quiz/presentation/shared/widgets/cards/custom_cards.dart';
 import 'package:student_hackerha/features/quiz/presentation/quiz_screen/widgets/options/option_card_item.dart';
 
 class OptionCard extends StatelessWidget {

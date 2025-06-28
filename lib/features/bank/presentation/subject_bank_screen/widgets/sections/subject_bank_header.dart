@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
@@ -16,7 +17,7 @@ class SubjectBankHeader extends StatelessWidget {
     return Row(
       children: [
         CustomCircleIcon(
-          iconAsset: 'assets/images/icons/caret-right.svg',
+          iconAsset: AppImages.caretRight,
           circleSize: 44.s(context),
           iconSize: 24.s(context),
           iconColor: contentColor.primary,
@@ -43,7 +44,7 @@ class SubjectBankHeader extends StatelessWidget {
         
         Spacer(),
         CustomCircleIcon(
-          iconAsset: 'assets/images/icons/bookmark-simple.svg',
+          iconAsset: AppImages.bookmarkSimple,
           circleSize: 44.s(context),
           iconSize: 24.s(context),
                   iconColor: contentColor.primary,

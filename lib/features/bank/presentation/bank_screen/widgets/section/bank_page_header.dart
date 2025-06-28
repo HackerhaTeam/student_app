@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
@@ -23,7 +24,7 @@ class BankPageHeader extends StatelessWidget {
           Text('بنك الأسئلة', style: context.xHeadingXLarge),
           CustomCircleIcon(
             iconColor: contentColor.primary,
-            iconAsset: 'assets/images/icons/magnifying-glass.svg',
+            iconAsset: AppImages.magnifyingGlass,
             circleSize: 44.s(context),
             backgroundColor: backgroundColor.onSurfaceSecondary,
             iconSize: 24.s(context),
