@@ -7,6 +7,7 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/headers/custom_tabBar.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/manager/cubit/course_info_cubit.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/manager/cubit/course_info_state.dart';
+import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/tab_bar_header_delegate.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/bottom_navigation_price.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/course_info_card_icons.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/course_info_price.dart';
@@ -16,6 +17,7 @@ import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Cou
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/section.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/summary_text_course.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/teachers_section.dart';
+import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/reviews/review_section_belel.dart';
 
 class CourseInformationView extends StatelessWidget {
   const CourseInformationView({super.key});
@@ -48,7 +50,7 @@ class CourseInformationView extends StatelessWidget {
               const CourseInfoCardIcons(),
               SliverPersistentHeader(
                 pinned: true,
-                delegate: _TabBarHeaderDelegate(
+                delegate: TabBarHeaderDelegate(
                   CustomTabBar(
                     tabs: const [
                       "حول الدورة",
@@ -90,29 +92,7 @@ class CourseInformationView extends StatelessWidget {
                           ),
                           Section(
                             scrollKey: cubit.reviewsKey,
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Text("المراجعات",
-                                        style: context.xHeadingLarge),
-                                    const Spacer(),
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: Text("عرض الكل",
-                                          style: context.xLabelMedium.copyWith(
-                                              color: content.brandPrimary)),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(height: 16),
-                                const Row(
-                                  children: [
-                                    Icon(Icons.star, color: Color(0xffF0B100)),
-                                  ],
-                                ),
-                              ],
-                            ),
+                            child: ReviewsSection(),
                           ),
                           const SizedBox(height: 300),
                         ],
@@ -126,29 +106,5 @@ class CourseInformationView extends StatelessWidget {
         );
       },
     );
-  }
-}
-
-class _TabBarHeaderDelegate extends SliverPersistentHeaderDelegate {
-  final Widget child;
-  _TabBarHeaderDelegate(this.child);
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Material(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: child,
-    );
-  }
-
-  @override
-  double get maxExtent => 48; // حسب ارتفاع الـ TabBar
-  @override
-  double get minExtent => 48;
-
-  @override
-  bool shouldRebuild(covariant _TabBarHeaderDelegate oldDelegate) {
-    return oldDelegate.child != child;
   }
 }

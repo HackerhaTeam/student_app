@@ -16,14 +16,6 @@ class TagsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.h(context)),
-      child: SizedBox(
-        height: 36,
-        child: ListView.builder(
-          physics: const AlwaysScrollableScrollPhysics(),
-=======
     return SizedBox(
       height: 84.h(context),
       child: NotificationListener<OverscrollIndicatorNotification>(
@@ -32,7 +24,6 @@ class TagsListView extends StatelessWidget {
           return true;
         },
         child: SingleChildScrollView(
->>>>>>> b82d003d57462ca208b45cd9f3fc22856315fd40
           scrollDirection: Axis.horizontal,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
