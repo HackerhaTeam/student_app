@@ -6,6 +6,7 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
+import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/floating_active_course_button.dart';
 
 class SummaryCourse extends StatelessWidget {
   const SummaryCourse({
@@ -45,10 +46,8 @@ class SummaryCourse extends StatelessWidget {
           ),
         ),
         SizedBox(height: 16),
-        Text(
-          "بسعر 500 ألف ليرة سورية، فقط!",
-          style: context.xHeadingMedium,
-        ),
+        ActiveCourseButton(),
+        
         SizedBox(height: 16),
         Text(
           "يمكنك مشاهدة الفيديو التعريفي التالي لمعرفة المزيد حول هذه الدورة:",

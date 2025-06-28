@@ -10,10 +10,12 @@ class RoundedSquareIcon extends StatelessWidget {
     super.key,
     required this.icon,
     this.gradient,
-    this.size,
+    this.size, this.color, this.iconColor,
   });
   final double? size;
   final IconData icon;
+  final Color? color;
+  final Color? iconColor;
   final Gradient? gradient;
   @override
   Widget build(BuildContext context) {
@@ -23,8 +25,8 @@ class RoundedSquareIcon extends StatelessWidget {
       alignment: AlignmentDirectional.center,
       children: [
         Container(
-          width: 44.w(context),
-          height: 44.w(context),
+          width:size?? 44.w(context),
+          height:size?? 44.w(context),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.r(context)),
               gradient: gradient),
@@ -33,12 +35,12 @@ class RoundedSquareIcon extends StatelessWidget {
           width: 40.w(context),
           height: 40.w(context),
           borderRadius: 16.r(context),
-          backgroundColor: backgroundColor.primaryBrand,
+          backgroundColor:color?? backgroundColor.primaryBrand,
           child: PhosphorIcon(
             textDirection: TextDirection.ltr,
             icon,
-            color: contentColor.primaryInverted,
-            size: size ?? 16.w(context),
+            color:iconColor?? contentColor.primaryInverted,
+            size: size ?? 16.w(context), 
           ),
         ),
       ],

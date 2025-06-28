@@ -9,10 +9,11 @@ class IconText extends StatelessWidget {
     super.key,
     required this.icon,
 
-    required this.title,
+    required this.title, this.mainAxisAlignment,
   });
 
   final PhosphorIconData icon;
+  final MainAxisAlignment? mainAxisAlignment;
   
   final String title;
 
@@ -20,7 +21,7 @@ class IconText extends StatelessWidget {
   Widget build(BuildContext context) {
     final content = Theme.of(context).extension<AppContent>()!;
     
-    return Row(
+    return Row(mainAxisAlignment:mainAxisAlignment??MainAxisAlignment.center,
       children: [
         PhosphorIcon(
           icon,

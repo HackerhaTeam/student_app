@@ -5,7 +5,7 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
   
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_card.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/icon_text.dart';
+import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/icon_text.dart';
 
 class DetilesItem extends StatelessWidget {
   const DetilesItem({
@@ -35,7 +35,7 @@ class DetilesItem extends StatelessWidget {
         runSpacing: 8,
         crossAxisAlignment: WrapCrossAlignment.start,
         children: [
-          IconText(icon: icon, title: title),
+          IconText(icon: icon, title: title,mainAxisAlignment: MainAxisAlignment.start,),
           SizedBox(
             width: double.infinity,
           ),

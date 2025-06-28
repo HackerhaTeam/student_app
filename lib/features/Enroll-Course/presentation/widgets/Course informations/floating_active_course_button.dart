@@ -6,25 +6,19 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/buttons/custom_button.dart';
 
-class FloatingActiveCourseButton extends StatelessWidget {
-  const FloatingActiveCourseButton({
-    super.key,
+class ActiveCourseButton extends StatelessWidget {
+  const ActiveCourseButton({
+    super.key, this.width,
   });
-
+  final double? width;
   @override
   Widget build(BuildContext context) {
     var content = Theme.of(context).extension<AppContent>()!;
     var backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
-    return Positioned(
-      bottom: 0,
-      right: 0,
-      left: 0,
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 16),
-        child: Center(
+    return Center(
           child: SizedBox(
             height: 56,
-            width: 372.w(context),
+            width:width?? 372.w(context),
             child: CustomButton(
               borderRadius: 24.w(context),
               color: backgrounds.primaryBrand,
@@ -46,8 +40,6 @@ class FloatingActiveCourseButton extends StatelessWidget {
               onPressed: () {},
             ),
           ),
-        ),
-      ),
-    );
+        );
   }
 }
