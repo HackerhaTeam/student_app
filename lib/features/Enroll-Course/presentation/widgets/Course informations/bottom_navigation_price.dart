@@ -36,8 +36,10 @@ class BottomNavigationPrice extends StatelessWidget {
             RoundedSquareIcon(
               icon: PhosphorIcons.shoppingCartSimple(),
               color: background.onSurfaceSecondary,
-              gradient: LinearGradient(colors: [border.transparent]),
+              gradient: LinearGradient(colors: [border.transparent,border.transparent]),
               iconColor: content.primary,
+              size: 56,
+              iconSize: 22,
             ),
             SizedBox(width: 8.w(context)),
             CourseInfoPriceView(content: content),

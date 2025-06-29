@@ -10,13 +10,15 @@ class RoundedSquareIcon extends StatelessWidget {
     super.key,
     required this.icon,
     this.gradient,
-    this.size, this.color, this.iconColor,
+    this.iconSize,
+    this.size,  this.color,  this.iconColor,
   });
-  final double? size;
+  final double? iconSize;
   final IconData icon;
+  final double? size;
+  final Gradient? gradient;
   final Color? color;
   final Color? iconColor;
-  final Gradient? gradient;
   @override
   Widget build(BuildContext context) {
     final backgroundColor = Theme.of(context).extension<AppBackgrounds>()!;
@@ -25,22 +27,22 @@ class RoundedSquareIcon extends StatelessWidget {
       alignment: AlignmentDirectional.center,
       children: [
         Container(
-          width:size?? 44.w(context),
-          height:size?? 44.w(context),
+          width:size==null? 44.w(context):size!.w(context)+4.w(context),
+          height: size==null? 44.w(context):size!.w(context)+4.w(context),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.r(context)),
               gradient: gradient),
         ),
         CustomCard(
-          width: 40.w(context),
-          height: 40.w(context),
+          width: size==null? 40.w(context):size!.w(context),
+          height: size==null? 40.w(context):size!.w(context),
           borderRadius: 16.r(context),
-          backgroundColor:color?? backgroundColor.primaryBrand,
+          backgroundColor: color?? backgroundColor.primaryBrand,
           child: PhosphorIcon(
             textDirection: TextDirection.ltr,
             icon,
-            color:iconColor?? contentColor.primaryInverted,
-            size: size ?? 16.w(context), 
+            color: iconColor?? contentColor.primaryInverted,
+            size: iconSize ?? 16.w(context),
           ),
         ),
       ],

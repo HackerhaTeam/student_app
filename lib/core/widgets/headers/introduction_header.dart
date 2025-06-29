@@ -15,25 +15,10 @@ class IntroductionHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final content = Theme.of(context).extension<AppContent>()!;
     return Padding(
       padding: EdgeInsets.only(top: 26, bottom: 8),
       child: Row(
         children: [
-          // Container(
-          //   height: 44.w(context),
-          //   width: 44.w(context),
-          //   decoration: BoxDecoration(
-          //       borderRadius: BorderRadius.circular(16.r(context)),
-          //       color: content.brandPrimary),
-          //   child: Center(
-          //     child: Directionality(
-          //       textDirection: TextDirection.ltr,
-          //       child: PhosphorIcon(
-          //           color: content.primaryInverted, size: 24.w(context), icon),
-          //     ),
-          //   ),
-          // ),
           RoundedSquareIcon(
             icon: icon,
             size: 24.w(context),
