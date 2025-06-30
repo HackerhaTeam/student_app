@@ -46,10 +46,8 @@ class _HomeSearchSectionState extends State<HomeSearchSection> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
-      child: Column(
-        children: [
-          CustomTextField(
-         
+      child: CustomTextField(
+   
             fieldType: FieldType.search,
             hint: "ابحث عن اسم مادة",
             radius: 8.r(context),
@@ -66,9 +64,6 @@ class _HomeSearchSectionState extends State<HomeSearchSection> {
               }
             },
           ),
-          SizedBox(height: 24.h(context)),
-        ],
-      ),
     );
   }
 }

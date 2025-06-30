@@ -67,21 +67,22 @@ class _HomePageBodyState extends State<HomePageBody> {
         ),
         SliverToBoxAdapter(
           child: Stack(
-            alignment: Alignment.topCenter,
+            alignment: Alignment.center,
             children: [
-              HomeSearchSection(
-                searchController: _searchController,
-              ),
               GestureDetector(
                 onTap: () {
                   context.navigateWithSlideTransition(SearchPage());
                 },
                 child: Container(
                   color: Colors.transparent,
-                  width: 372.w(context),
-                  height: 60,
-                ),
+                  width: double.infinity,
+                 
+                
+                child: HomeSearchSection(
+                  searchController: _searchController,
+                )),
               ),
+     
             ],
           ),
         ),
@@ -92,7 +93,7 @@ class _HomePageBodyState extends State<HomePageBody> {
             },
           ),
         ),
-        SliverToBoxAdapter(child: SizedBox(height: 24)),
+       
         SliverToBoxAdapter(
           child: CoursesHeader(
             title: "الدورات الجديدة",

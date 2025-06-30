@@ -47,7 +47,7 @@ class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
       child: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(child: CoursesPageHeader()),
-          const SliverToBoxAdapter(child: SizedBox(height: 20)),
+         
           BlocBuilder<TagCubit, int>(
             builder: (context, state) {
               return SliverToBoxAdapter(
@@ -55,7 +55,7 @@ class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
               );
             },
           ),
-          const SliverToBoxAdapter(child: SizedBox(height: 24)),
+     
           ..._buildYearSections(yearTitles, listHeight),
         ],
       ),
