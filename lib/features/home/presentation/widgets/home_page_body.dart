@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/DI/service_locator.dart';
 import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
@@ -12,7 +13,9 @@ import 'package:student_hackerha/core/helpers/tags/get_theme_icon.dart';
 import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
+import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 import 'package:student_hackerha/core/widgets/course%20card/my_course_list_section.dart';
@@ -21,6 +24,7 @@ import 'package:student_hackerha/features/home/presentation/widgets/courses_head
 import 'package:student_hackerha/features/home/presentation/widgets/home_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_search_section.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/monthly_trainer_page_view.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/text_card.dart';
 
 class HomePageBody extends StatefulWidget {
   const HomePageBody({
@@ -33,7 +37,7 @@ class HomePageBody extends StatefulWidget {
 
 class _HomePageBodyState extends State<HomePageBody> {
   int selectedTagIndex = 0;
-  late TextEditingController _searchController;
+ 
 
   final List<String> tags = [
     "دورات جديدة",
@@ -46,7 +50,7 @@ class _HomePageBodyState extends State<HomePageBody> {
   @override
   void initState() {
     super.initState();
-    _searchController = TextEditingController();
+   
   }
 
   @override
@@ -67,22 +71,15 @@ class _HomePageBodyState extends State<HomePageBody> {
         ),
         SliverToBoxAdapter(
           child: Stack(
-            alignment: Alignment.center,
+            alignment: Alignment.topCenter,
             children: [
               GestureDetector(
-                onTap: () {
+                 onTap: () {
                   context.navigateWithSlideTransition(SearchPage());
                 },
-                child: Container(
-                  color: Colors.transparent,
-                  width: double.infinity,
-                 
-                
-                child: HomeSearchSection(
-                  searchController: _searchController,
-                )),
+                child: TextCard(),
               ),
-     
+            
             ],
           ),
         ),

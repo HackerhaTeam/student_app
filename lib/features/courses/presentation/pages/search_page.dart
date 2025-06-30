@@ -5,6 +5,7 @@ import 'package:student_hackerha/core/DI/service_locator.dart';
 import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/helpers/tags/get_theme_icon.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
@@ -160,7 +161,7 @@ class SearchHeader extends StatelessWidget {
         children: [
           CustomCircleIcon(
             backgroundColor: Theme.of(context).extension<AppBackgrounds>()!.onSurfaceSecondary,
-            iconAsset: AppImages.carretRightLight,
+            iconAsset:getThemeIcon(context, AppImages.carretRightDark, AppImages.carretRightLight),
             onTap: () {
               Navigator.pop(context);
             }, circleSize: 44.w(context),
