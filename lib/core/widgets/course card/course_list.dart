@@ -4,9 +4,10 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_item.dart';
+import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
 class CourseList extends StatelessWidget {
   final Axis scrollDirection;
-  final List<Course> courses;
+  final List<CourseEntity> courses;
 
   const CourseList({
     super.key,
@@ -34,7 +35,7 @@ class CourseList extends StatelessWidget {
                     course: courses[index],
                     border: border,
                     background: background,
-                    tagsTitle: ["مدرّس 1", "دورة شاملة", "22 طالب"],
+                    tagsTitle: ["مدرّس ${courses[index].studentsCount}", courses[index].type, "${courses[index].studentsCount} طالب"],
                   ),
                 ),
               ),
@@ -51,7 +52,7 @@ class CourseList extends StatelessWidget {
                     course: courses[index],
                     border: border,
                     background: background,
-                    tagsTitle: ["مدرّس 1", "دورة شاملة", "22 طالب"],
+                    tagsTitle: ["مدرّس ${courses[index]}", courses[index].type, "${courses[index].studentsCount} طالب"],
                   ),
                 ),
               ),

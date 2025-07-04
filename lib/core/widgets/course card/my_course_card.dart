@@ -9,11 +9,12 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/buttons/custom_button.dart';
 import 'package:student_hackerha/features/course-content/presentation/pages/course_content_page.dart';
+import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
 
 class MyCourseCard extends StatelessWidget {
   final String imageUrl;
   final double progress;
-  final Course course;
+  final CourseEntity course;
 
   const MyCourseCard({
     super.key,
@@ -131,7 +132,7 @@ class MyCourseCard extends StatelessWidget {
             ),
             SizedBox(width: 4.w(context)),
             Text(
-              "${course.teacher!.firstName} ${course.teacher!.lastName}",
+              "${course.teachers![0].name} ",
               style: context.xParagraphMedium,
             ),
           ],

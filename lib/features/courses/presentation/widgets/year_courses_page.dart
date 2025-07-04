@@ -49,50 +49,48 @@ class _YearCoursesPageState extends State<YearCoursesPage>
     final courses = locator.get<List<Course>>(instanceName: 'courses');
 
     return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Column(
+        body: SafeArea(
+      child: CustomScrollView(slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            children: [
+              YearPageHeader(title: "السنة الأولى"),
+              TabBarSemester(
+                tabController: _tabController,
+                pageController: _pageController,
+              ),
+              SizedBox(height: 24.h(context)),
+            ],
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
+            child: SizedBox(
+              height: 307, // أو أي ارتفاع يناسب تصميمك
+              child: PageView(
+                controller: _pageController,
+                onPageChanged: (index) {
+                  setState(() {
+                    _currentTabIndex = index;
+                    _tabController.animateTo(index);
+                  });
+                },
                 children: [
-                  YearPageHeader(title: "السنة الأولى"),
-                  TabBarSemester(
-                    tabController: _tabController,
-                    pageController: _pageController,
-                  ),
-                  SizedBox(height: 24.h(context)),
+                  // CourseList(
+                  //   courses: courses.where((course) => course.year == 1).toList(),
+                  //   scrollDirection: Axis.horizontal,
+                  // ),
+                  // CourseList(
+                  //   courses: courses.where((course) => course.year == 2).toList(),
+                  //   scrollDirection: Axis.horizontal,
+                  // ),
                 ],
               ),
             ),
-            SliverToBoxAdapter(
-  child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
-      child: SizedBox(
-        height: 307, // أو أي ارتفاع يناسب تصميمك
-        child: PageView(
-          controller: _pageController,
-          onPageChanged: (index) {
-            setState(() {
-              _currentTabIndex = index;
-              _tabController.animateTo(index);
-            });
-          },
-          children: [
-            CourseList(
-              courses: courses.where((course) => course.year == 1).toList(),
-              scrollDirection: Axis.horizontal,
-            ),
-            CourseList(
-              courses: courses.where((course) => course.year == 2).toList(),
-              scrollDirection: Axis.horizontal,
-            ),
-          ],
+          ),
         ),
-      ),
-    ),),
-]),
-
-         
-   
-  ));}
+      ]),
+    ));
+  }
 }

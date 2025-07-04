@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
@@ -9,6 +11,7 @@ import 'package:student_hackerha/core/widgets/buttons/custom_button.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/pages/course_inforamtion.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_price.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_tags.dart';
+import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
 
 class CourseContent extends StatelessWidget {
   final AppBorders border;
@@ -16,6 +19,7 @@ class CourseContent extends StatelessWidget {
   final String courseName;
   final String description;
   final List<String> tagsTitle;
+  final CourseEntity course;
 
   const CourseContent({
     super.key,
@@ -23,7 +27,7 @@ class CourseContent extends StatelessWidget {
     required this.background,
     required this.courseName,
     required this.description,
-    required this.tagsTitle,
+    required this.tagsTitle, required this.course,
   });
 
   @override
@@ -55,7 +59,7 @@ class CourseContent extends StatelessWidget {
             background: background,
           ),
           SizedBox(height: 11),
-          CoursePrice(oldPrice: 900,),
+          CoursePrice(newPrice:(course.id-2)*90 ,oldPrice:course.id*90 ,),
           SizedBox(height: 8),
           CustomButton(
             onPressed: () {

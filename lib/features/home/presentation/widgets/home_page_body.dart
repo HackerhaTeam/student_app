@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,6 +18,10 @@ import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 import 'package:student_hackerha/core/widgets/course%20card/my_course_list_section.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
+import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
+import 'package:student_hackerha/features/home/presentation/manager/my%20courses%20cubit/my_courses_cubit.dart';
+import 'package:student_hackerha/features/home/presentation/manager/recentlyAddedCourseCubit/recently_added_course_cubit.dart';
+import 'package:student_hackerha/features/home/presentation/manager/recentlyAddedCourseCubit/recently_added_courses_state.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_search_section.dart';
@@ -37,7 +39,6 @@ class HomePageBody extends StatefulWidget {
 
 class _HomePageBodyState extends State<HomePageBody> {
   int selectedTagIndex = 0;
- 
 
   final List<String> tags = [
     "دورات جديدة",
@@ -50,7 +51,6 @@ class _HomePageBodyState extends State<HomePageBody> {
   @override
   void initState() {
     super.initState();
-   
   }
 
   @override
@@ -59,9 +59,6 @@ class _HomePageBodyState extends State<HomePageBody> {
 
     final background = Theme.of(context).extension<AppBackgrounds>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
-  
-  
-   
 
     return SafeArea(
       child: CustomScrollView(slivers: [
@@ -74,12 +71,11 @@ class _HomePageBodyState extends State<HomePageBody> {
             alignment: Alignment.topCenter,
             children: [
               GestureDetector(
-                 onTap: () {
+                onTap: () {
                   context.navigateWithSlideTransition(SearchPage());
                 },
                 child: TextCard(),
               ),
-            
             ],
           ),
         ),
@@ -90,7 +86,6 @@ class _HomePageBodyState extends State<HomePageBody> {
             },
           ),
         ),
-       
         SliverToBoxAdapter(
           child: CoursesHeader(
             title: "الدورات الجديدة",
@@ -98,12 +93,31 @@ class _HomePageBodyState extends State<HomePageBody> {
           ),
         ),
         SliverToBoxAdapter(child: SizedBox(height: 20)),
+        BlocBuilder<RecentlyAddedCoursesCubit, RecentlyAddedCoursesState>(
+          builder: (context, state) {
+            if (state is RecentlyAddedCoursesLoaded) {
+              return SliverToBoxAdapter(
+                child: CourseList(
+                  courses: state.courses,
+                  scrollDirection: Axis.horizontal,
+                ),
+              );
+            } else if (state is RecentlyAddedCoursesLoading) {
+              return SliverToBoxAdapter(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is RecentlyAddedCoursesError) {
+              return SliverToBoxAdapter(
+                child: Text(state.message),
+              );
+            } else {
+              return SliverToBoxAdapter(
+                child: SizedBox(),
+              );
+            }
+          },
+        ),
         SliverToBoxAdapter(
-          child: CourseList(
-           
-            courses: courses, scrollDirection:  Axis.horizontal,
-          ),
-        ),SliverToBoxAdapter(
           child: SizedBox(
             height: 24,
           ),
@@ -120,14 +134,31 @@ class _HomePageBodyState extends State<HomePageBody> {
           ),
         ),
         SliverToBoxAdapter(
-          child: MyCourseListSection(
-            border: border,
-            background: background,
-            courses: courses,
+          child: BlocBuilder<MyCoursesCubit, MyCoursesState>(
+            builder: (context, state) {
+              if (state is MyCoursesLoaded) {
+             return   MyCourseListSection(
+                border: border,
+                background: background,
+                courses: state.courses,
+              );
+              }
+              else if(state is MyCoursesLoading
+              ){
+                return Center( child:  CircularProgressIndicator(),);
+              }
+              else if (state is MyCoursesError){
+                return Center(child:  Text(state.errMessage),);
+              }
+              else{
+                return SizedBox();
+              }
+            },
           ),
-        ),SliverToBoxAdapter(
+        ),
+        SliverToBoxAdapter(
           child: SizedBox(
-            height: 24 ,
+            height: 24,
           ),
         ),
         SliverToBoxAdapter(
@@ -161,16 +192,14 @@ class HomePageText extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
-
-
     return Column(
       children: [
         SizedBox(height: 24),
         SvgPicture.asset(
-         getThemeIcon(context,  AppImages.homeTextDark,  AppImages.homeTextLight ),
+          getThemeIcon(
+              context, AppImages.homeTextDark, AppImages.homeTextLight),
           width: 372.w(context),
         ),
         SizedBox(height: 24),

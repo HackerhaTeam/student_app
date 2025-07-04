@@ -19,8 +19,7 @@ class CoursesTabPageBody extends StatefulWidget {
 }
 
 class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
-  final List<Course> courses =
-      locator.get<List<Course>>(instanceName: 'courses');
+  
   final List<String> tags = [
     "كل الدورات",
     "خصومات",
@@ -76,7 +75,7 @@ class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
                 child:
                     Padding(
                       padding: const EdgeInsets.only(bottom:24 ),
-                      child: CourseList( courses: courses, scrollDirection: Axis.horizontal,),
+                      // child: CourseList( courses: courses, scrollDirection: Axis.horizontal,),
                     ),
               ),
             ])

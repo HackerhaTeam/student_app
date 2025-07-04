@@ -9,9 +9,13 @@ import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:student_hackerha/features/home/presentation/manager/my%20courses%20cubit/my_courses_cubit.dart';
+import 'package:student_hackerha/features/home/presentation/manager/recentlyAddedCourseCubit/recently_added_course_cubit.dart';
+import 'package:student_hackerha/features/home/presentation/manager/top%20teacher/top_teacher_cubit.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 
 void main() {
+  init();
   setupDependencies();
   setupServerLocator();
   runApp(
@@ -20,6 +24,21 @@ void main() {
         BlocProvider(
           create: (_) => ThemeCubit(),
         ),
+        BlocProvider(
+      create: (context) => sl<RecentlyAddedCoursesCubit>()..fetchRecentlyAddedCourses(),
+    
+      
+    ),
+    BlocProvider(
+      create: (context) => sl<MyCoursesCubit>()..fetchMyCourses(),
+    
+      
+    ),
+    BlocProvider(
+      create: (context) => sl<TopTeacherCubit>()..getTopTeacher(),
+    
+      
+    ),
         BlocProvider(
           create: (context) => SearchCoursesCubit(),
         ),

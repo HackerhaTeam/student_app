@@ -1,8 +1,29 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/Entities/student.dart';
 import 'package:student_hackerha/core/Entities/subject.dart';
 import 'package:student_hackerha/core/Entities/teacher.dart';
+import 'package:student_hackerha/core/api/api_interceptors.dart';
+import 'package:student_hackerha/core/api/keys/api_keys.dart';
+import 'package:student_hackerha/features/home/data/repositories/mu_coureses_repo_impl.dart';
+import 'package:student_hackerha/features/home/data/repositories/recently_added_course_repo_impl.dart';
+import 'package:student_hackerha/features/home/data/repositories/top_teacher_repsioties_impl.dart';
+import 'package:student_hackerha/features/home/data/source/my_courses_data_source.dart';
+import 'package:student_hackerha/features/home/data/source/recently_added_course_data_source.dart';
+import 'package:student_hackerha/features/home/data/source/top_teacher_data_sourse.dart';
+import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
+import 'package:student_hackerha/features/home/domain/repositories/my_course_repo.dart';
+import 'package:student_hackerha/features/home/domain/repositories/recently_added_course_repositories.dart';
+import 'package:student_hackerha/features/home/domain/repositories/top_teacher_repo.dart';
+import 'package:student_hackerha/features/home/domain/usecase/my_courses_usecase.dart';
+import 'package:student_hackerha/features/home/domain/usecase/recently_added_course_usecase.dart';
+import 'package:student_hackerha/features/home/domain/usecase/top_teacher_usecase.dart';
+import 'package:student_hackerha/features/home/presentation/manager/my%20courses%20cubit/my_courses_cubit.dart';
+import 'package:student_hackerha/features/home/presentation/manager/recentlyAddedCourseCubit/recently_added_course_cubit.dart';
+import 'package:student_hackerha/features/home/presentation/manager/top%20teacher/top_teacher_cubit.dart';
 
 final locator = GetIt.instance;
 void setupDependencies() {
@@ -168,4 +189,62 @@ void setupDependencies() {
   locator.registerFactoryParam<Student, void, void>((_, __) => student1);
 
   locator.registerFactory<List<Course>>(() => courses);
+}
+
+final sl = GetIt.instance;
+
+void init() {
+  // Dio
+  sl.registerLazySingleton<Dio>((){Dio dio = Dio();
+  dio.interceptors.add(ApiInterceptor());
+  return dio;},);
+
+  // Data Source
+  sl.registerLazySingleton<RecentlyAddedCourseRemoteDataSource>(
+    () => RecentlyAddedCourseRemoteDataSource(sl()),
+  );
+sl.registerLazySingleton<MyCoursesDataSource>(
+    () => MyCoursesDataSource(sl()),
+  );
+
+  // Repository
+  sl.registerLazySingleton<RecentlyAddedCourseRepository>(
+    () => RecentlyAddedCourseRepositoryImpl(sl()),
+    
+  );
+  sl.registerLazySingleton<MyCourseRepo>(
+    () =>MyCouresesRepoImpl (sl()),
+    
+  );
+  sl.registerLazySingleton<MyCoursesUsecase>(
+    () => MyCoursesUsecase(sl()),
+  );
+
+  // Use Case
+  sl.registerLazySingleton(() => GetRecentlyAddedCoursesUseCase(sl()));
+
+  // Cubit
+  sl.registerFactory(() => RecentlyAddedCoursesCubit(sl()));
+  sl.registerFactory(() => MyCoursesCubit(sl()));
+
+
+
+
+
+
+   sl.registerLazySingleton<TopTeacherDataSourse>(
+    () => TopTeacherDataSourse(sl()),
+  );
+
+  // Repository
+  sl.registerLazySingleton<TopTeacherRepositories>(
+    () => TopTeacherRepsiotiesImpl(sl()),
+  );
+
+  // Use Case
+  sl.registerLazySingleton(() => TopTeacherUsecase(sl()));
+
+  // Cubit
+  sl.registerFactory(() => TopTeacherCubit(sl()));
+  
 }

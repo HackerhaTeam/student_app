@@ -5,11 +5,12 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 
 class CoursePrice extends StatelessWidget {
   const CoursePrice({
-    super.key, this.oldPrice,
+    super.key, this.oldPrice, this.newPrice,
 
   });
 
 final int? oldPrice;
+final int? newPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ final int? oldPrice;
        oldPrice!=null? Text("$oldPrice ألف ل.س",style: context.xLabelSmall.copyWith(decoration: TextDecoration.lineThrough,
         decorationColor: appContent.negative,
         color: appContent.negative),):SizedBox(),
-        Text("500 ألف ل.س",style: context.xLabelLarge.copyWith(color: appContent.primary),),
+        Text("$newPrice ألف ل.س",style: context.xLabelLarge.copyWith(color: appContent.primary),),
       ],
     );
   }

@@ -6,6 +6,7 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_content.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_image.dart';
+import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
 
 class CoursesItem extends StatelessWidget {
   final AppBorders border;
@@ -13,7 +14,7 @@ class CoursesItem extends StatelessWidget {
 
   final List<String> tagsTitle;
 
-  final Course course;
+  final CourseEntity course;
  final double? width;
 
   const CoursesItem({
@@ -39,11 +40,11 @@ class CoursesItem extends StatelessWidget {
             background: background,
             isNew: true,
           ),
-          CourseContent(
+          CourseContent(course: course,
             border: border,
             background: background,
             courseName: course.name,
-            description: course.description,
+            description: course.summary,
             tagsTitle: tagsTitle,
           ),
         ],

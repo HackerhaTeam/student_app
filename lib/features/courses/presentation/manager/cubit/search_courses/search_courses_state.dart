@@ -10,7 +10,7 @@ abstract class SearchCoursesState extends Equatable {
 class SearchCoursesInitial extends SearchCoursesState {}
 
 class SearchCoursesSuccess extends SearchCoursesState {
-  final List<Course> filteredCourses;
+  final List<CourseEntity> filteredCourses;
 
   const SearchCoursesSuccess({required this.filteredCourses});
 

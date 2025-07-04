@@ -7,11 +7,12 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_image.dart';
 import 'package:student_hackerha/core/widgets/course%20card/my_course_card.dart';
+import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
 
 class MyCoursesItem extends StatelessWidget {
   final AppBorders border;
   final AppBackgrounds background;
-  final Course course;
+  final CourseEntity course;
 
   const MyCoursesItem({
     super.key,

@@ -10,7 +10,7 @@ import 'package:student_hackerha/core/widgets/course%20card/courses_tag.dart';
 import 'package:student_hackerha/core/widgets/course%20card/icon_text_course_content.dart';
 
 class CourseTags extends StatelessWidget {
-  final List<String> tags;
+  final List<String>  tags;
   final AppBorders border;
   final AppBackgrounds background;
 
@@ -25,9 +25,9 @@ class CourseTags extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row (spacing:12.w(context) ,
       children: [
-        IconTextCourseContent(Icon: PhosphorIcons.circlesFour(), title: "دورة شاملة"),
-        IconTextCourseContent(Icon: PhosphorIcons.student (), title: "+55 طالب"),
-        IconTextCourseContent(Icon: PhosphorIcons.chalkboardTeacher(), title: "مدرّس واحد"),
+        IconTextCourseContent(Icon: PhosphorIcons.circlesFour(), title:tags[0]),
+        IconTextCourseContent(Icon: PhosphorIcons.student (), title: tags[2]),
+        IconTextCourseContent(Icon: PhosphorIcons.chalkboardTeacher(), title: tags[1]),
       ],
     );
   }

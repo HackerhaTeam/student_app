@@ -4,11 +4,12 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/widgets/course%20card/my_courses_item.dart';
+import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
 
 class MyCourseListSection extends StatelessWidget {
   final AppBorders border;
   final AppBackgrounds background;
-  final List<Course> courses;
+  final List<CourseEntity> courses;
 
   const MyCourseListSection({
     super.key,

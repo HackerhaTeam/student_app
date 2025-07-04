@@ -12,6 +12,7 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
+import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_search_section.dart';
 
 class SearchPage extends StatelessWidget {
@@ -42,8 +43,8 @@ class SearchPage extends StatelessWidget {
   }
 
   void _handleSearch(BuildContext context, String query) {
-    final courses = locator.get<List<Course>>(instanceName: 'courses');
-    context.read<SearchCoursesCubit>().searchCourses(query, courses);
+  //  final courses = locator.get<List<Course>>(instanceName: 'courses');
+ //   context.read<SearchCoursesCubit>().searchCourses(query, courses);
   }
 
   Widget _buildSearchResults(BuildContext context, Size screenSize) {
@@ -73,7 +74,7 @@ class SearchPage extends StatelessWidget {
   }
 
   Widget _buildCoursesList(
-      BuildContext context, Size screenSize, List<Course> courses) {
+      BuildContext context, Size screenSize, List<CourseEntity> courses) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.w(context)),
       child: CourseList(

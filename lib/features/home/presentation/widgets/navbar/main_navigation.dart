@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/features/archive/presentation/pages/archive_page.dart';
 import 'package:student_hackerha/features/bank/presentation/bank_screen/pages/bank_page.dart';
 import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
-import 'package:student_hackerha/features/home/presentation/manager/change_icon_cubit.dart';
+import 'package:student_hackerha/features/home/presentation/manager/change%20icon%20cubit/change_icon_cubit.dart';
 import 'package:student_hackerha/features/home/presentation/pages/account_tab_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/animated_navbar.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/courses_tab_page.dart';
