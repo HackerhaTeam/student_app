@@ -1,57 +1,53 @@
 import 'package:dio/dio.dart';
 import 'package:student_hackerha/core/error/err_model.dart';
 
-abstract class Failure{
+abstract class Failure {
   final String? message;
-
   Failure(this.message);
-
 }
+
 class ServerFailure extends Failure implements Exception {
   ServerFailure(super.message);
-  
-  
 }
 
-void handleDioExceptions(DioException e) {
+ServerFailure handleDioExceptions(DioException e) {
   switch (e.type) {
     case DioExceptionType.connectionTimeout:
-      throw ServerFailure(e.message);
+      return ServerFailure('انتهت مهلة الاتصال بالخادم. الرجاء المحاولة لاحقًا.');
     case DioExceptionType.sendTimeout:
-       throw ServerFailure(e.message);
+      return ServerFailure('انتهت مهلة إرسال البيانات. تأكد من اتصالك بالإنترنت.');
     case DioExceptionType.receiveTimeout:
-       throw ServerFailure(e.message);
+      return ServerFailure('انتهت مهلة استلام البيانات. يرجى التحقق من الشبكة.');
     case DioExceptionType.badCertificate:
-       throw ServerFailure(e.message);
+      return ServerFailure('الشهادة الأمنية غير صالحة. لا يمكن التحقق من الخادم.');
     case DioExceptionType.cancel:
-       throw ServerFailure(e.message);
+      return ServerFailure('تم إلغاء الطلب قبل إرساله.');
     case DioExceptionType.connectionError:
-       throw ServerFailure(e.message);
+      return ServerFailure('حدث خطأ في الاتصال بالخادم. تحقق من الإنترنت.');
     case DioExceptionType.unknown:
-       throw ServerFailure(e.message);
+      return ServerFailure('حدث خطأ غير متوقع. يرجى المحاولة لاحقًا.');
     case DioExceptionType.badResponse:
       switch (e.response?.statusCode) {
-        case 400: // Bad request
-          throw ServerFailure(
-             e.message);
-        case 401: //unauthorized
-         throw ServerFailure(
-             e.message);
-        case 403: //forbidden
-        throw ServerFailure(
-             e.message);
-        case 404: //not found
-          throw ServerFailure(
-             e.message);
-        case 409: //cofficient
-        throw ServerFailure(
-             e.message);
-        case 422: //  Unprocessable Entity
-         throw ServerFailure(
-             e.message);
-        case 504: // Server exception
-         throw ServerFailure(
-             e.message);
+        case 400:
+          return ServerFailure('الطلب غير صالح. يرجى التحقق من البيانات المدخلة.');
+        case 401:
+          return ServerFailure('غير مصرح. تأكد من تسجيل الدخول.');
+        case 403:
+          return ServerFailure('ليس لديك صلاحية للوصول إلى هذا المورد.');
+        case 404:
+          return ServerFailure('العنصر المطلوب غير موجود.');
+        case 409:
+          return ServerFailure('يوجد تعارض في البيانات المدخلة.');
+        case 422:
+          return ServerFailure('لا يمكن معالجة البيانات المدخلة. تحقق من صحتها.');
+        case 500:
+          return ServerFailure('غير مصرح. تأكد من تسجيل الدخول.');
+        case 503:
+          return ServerFailure('الخدمة غير متوفرة حاليًا. الرجاء المحاولة لاحقًا.');
+        case 504:
+          return ServerFailure('الخادم لم يستجب في الوقت المحدد.');
+        default:
+          return ServerFailure('حدث خطأ في الخادم. [${e.response?.statusCode}]');
       }
   }
 }

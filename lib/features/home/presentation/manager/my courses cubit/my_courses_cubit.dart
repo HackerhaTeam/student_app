@@ -13,7 +13,7 @@ class MyCoursesCubit extends Cubit<MyCoursesState> {
   Future<void> fetchMyCourses() async {
     emit(MyCoursesLoading());
       final result = await myCoursesUsecase();
-      result.fold((error) => emit(MyCoursesError(_mapFailureToMessage(error))),
+      result.fold((error) => emit(MyCoursesError(error.message!)),
           (courses) => emit(MyCoursesLoaded(courses)));
   }
   

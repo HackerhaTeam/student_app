@@ -8,7 +8,7 @@ import 'package:student_hackerha/core/Entities/subject.dart';
 import 'package:student_hackerha/core/Entities/teacher.dart';
 import 'package:student_hackerha/core/api/api_interceptors.dart';
 import 'package:student_hackerha/core/api/keys/api_keys.dart';
-import 'package:student_hackerha/features/home/data/repositories/mu_coureses_repo_impl.dart';
+import 'package:student_hackerha/features/home/data/repositories/my_coureses_repo_impl.dart';
 import 'package:student_hackerha/features/home/data/repositories/recently_added_course_repo_impl.dart';
 import 'package:student_hackerha/features/home/data/repositories/top_teacher_repsioties_impl.dart';
 import 'package:student_hackerha/features/home/data/source/my_courses_data_source.dart';

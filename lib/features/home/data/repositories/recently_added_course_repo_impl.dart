@@ -1,6 +1,7 @@
 
 
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:student_hackerha/core/error/err_model.dart';
 import 'package:student_hackerha/core/error/exceptions.dart';
 import 'package:student_hackerha/features/home/data/source/recently_added_course_data_source.dart';
@@ -18,7 +19,8 @@ class RecentlyAddedCourseRepositoryImpl implements RecentlyAddedCourseRepository
       final result = await remoteDataSource.getRecentlyAddedCourses();
       return Right(result);
     } catch (e) {
-      return Left(ServerFailure(e.toString()));
+      var dioException= e as DioException;
+      return Left(handleDioExceptions(dioException ));
     }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:student_hackerha/core/error/exceptions.dart';
 import 'package:student_hackerha/features/home/data/source/top_teacher_data_sourse.dart';
 import 'package:student_hackerha/features/home/domain/Entity/teacher_entity.dart';
@@ -15,6 +16,7 @@ class TopTeacherRepsiotiesImpl implements TopTeacherRepositories {
     final result = await remoteDataSource.getTopTeacher();
     return Right(result);
   } catch (e) {
-    return Left(ServerFailure(e.toString()));
+    var dioException= e as DioException;
+      return Left(handleDioExceptions(dioException ));
   }
 }}

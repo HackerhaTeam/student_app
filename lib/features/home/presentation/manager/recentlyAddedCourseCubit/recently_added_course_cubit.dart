@@ -16,12 +16,10 @@ class RecentlyAddedCoursesCubit extends Cubit<RecentlyAddedCoursesState> {
     final result = await getRecentlyAddedCoursesUseCase();
 
     result.fold(
-      (failure) => emit(RecentlyAddedCoursesError(_mapFailureToMessage(failure))),
+    (failure) => emit(RecentlyAddedCoursesError((failure.message!))),
       (courses) => emit(RecentlyAddedCoursesLoaded(courses)),
     );
   }
 
-  String _mapFailureToMessage(Failure failure) {
-    return 'حدث خطأ أثناء تحميل الدورات'; 
-  }
+  
 }
