@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/helpers/tags/get_theme_icon.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 import 'package:student_hackerha/features/home/presentation/manager/change_icon_cubit.dart';
+import 'package:student_hackerha/features/notifications/presentation/pages/notifications_page.dart';
 
 class HomeHeader extends StatefulWidget {
   const HomeHeader({
@@ -64,15 +66,17 @@ class _HomeHeaderState extends State<HomeHeader>
           ),
           const Spacer(),
           CustomCircleIcon(
-                     iconAsset: getThemeIcon(context,AppImages.notificationDark,AppImages.notificationLight),
-
-        iconSize:24.w(context) ,
+            iconAsset: getThemeIcon(context, AppImages.notificationDark,
+                AppImages.notificationLight),
+            iconSize: 24.w(context),
             backgroundColor: background.onSurfaceSecondary,
-            onTap: () {}, circleSize:44.w(context) ,
+            onTap: () {
+              context.navigateWithSlideTransition(NotificationsPage());
+            },
+            circleSize: 44.w(context),
           ),
         ],
       ),
     );
   }
 }
-

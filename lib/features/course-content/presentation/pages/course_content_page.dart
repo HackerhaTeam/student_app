@@ -4,6 +4,8 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/widgets/buttons/big_next_button.dart';
 import 'package:student_hackerha/features/course-content/presentation/pages/course_watch_page.dart';
 import 'package:student_hackerha/features/course-content/presentation/widgets/course_content_page_body.dart';
+import 'package:student_hackerha/features/course-content/presentation/widgets/video_player/course_watch_page_body.dart';
+import 'package:student_hackerha/features/course-content/presentation/widgets/video_player/video_quality_option.dart';
 
 class CourseContentPage extends StatelessWidget {
   const CourseContentPage({super.key});
@@ -15,9 +17,16 @@ class CourseContentPage extends StatelessWidget {
       floatingActionButton: BigNextButton(
         value: true,
         onPressed: () {
-          context.navigateWithSlideTransition(CourseWatchPage(
-            youtubeUrl: 'https://youtu.be/N2hgYTY1zCo?si=mvKXItdDm-NpZyfD',
-          ));
+          context.navigateWithSlideTransition(
+            CourseWatchPageBody(
+              qualityOptions: [
+                VideoQualityOption(
+                    label: 'HD',
+                    url:
+                        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'),
+              ],
+            ),
+          );
         },
         text: "استأنف مسيرتك التعليمية",
       ),

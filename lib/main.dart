@@ -28,6 +28,7 @@ void main() {
     ),
   );
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -40,13 +41,14 @@ class MyApp extends StatelessWidget {
           builder: (_, myTheme) {
             return MaterialApp(
               locale: Locale('ar'),
-              localizationsDelegates: [
+              localizationsDelegates: const [
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
               ],
               supportedLocales: [
-                const Locale('ar', ''),
-                const Locale('en', ''),
+                const Locale('ar'),
+                const Locale('en'),
               ],
               debugShowCheckedModeBanner: false,
               theme: AppTheme.light,
@@ -62,6 +64,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 final Map<String, dynamic> quizData = {
   'quizTime': 900,
   'questionsList': [
