@@ -1,5 +1,3 @@
-// بيمثل كل دقة فيديو
-
 class VideoQualityOption {
   final String label;
   final String url;

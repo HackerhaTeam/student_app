@@ -6,11 +6,12 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/course-content/presentation/widgets/course_watch_page_buttons.dart';
 import 'package:student_hackerha/features/course-content/presentation/widgets/intraction_button.dart';
 import 'package:student_hackerha/features/course-content/presentation/widgets/pdf_files_viewer.dart';
-import 'package:student_hackerha/features/course-content/presentation/widgets/video_player/video_controls_overlay.dart';
-import 'package:student_hackerha/features/course-content/presentation/widgets/video_player/video_quality_option.dart';
+import 'package:student_hackerha/features/course-content/presentation/widgets/video_player/player/video_controls_overlay.dart';
+import 'package:student_hackerha/features/course-content/presentation/widgets/video_player/basic/video_quality_option.dart';
 import 'package:video_player/video_player.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
+import '../basic/video_quality_menu.dart';
 
 //////////////////////////////////////////////
 class CourseWatchPageBody extends StatefulWidget {
@@ -26,6 +27,7 @@ class _CourseWatchPageBodyState extends State<CourseWatchPageBody> {
   late VideoPlayerController _controller;
   int _currentQualityIndex = 0;
   bool _isFullScreen = false;
+  bool _isControllerReady = false;
 
   @override
   void initState() {
@@ -36,12 +38,23 @@ class _CourseWatchPageBodyState extends State<CourseWatchPageBody> {
   void _initializePlayer({Duration? seekTo}) {
     _controller = VideoPlayerController.network(
       widget.qualityOptions[_currentQualityIndex].url,
-    )..initialize().then((_) {
-        if (seekTo != null) {
-          _controller.seekTo(seekTo);
-        }
-        setState(() {});
-      });
+    );
+
+    _controller.initialize().then((_) {
+      if (seekTo != null) {
+        _controller.seekTo(seekTo);
+      }
+      if (mounted) {
+        setState(() {
+          _isControllerReady = true;
+        });
+      }
+    }).catchError((e) {
+      debugPrint('❌ Error initializing video: $e');
+      if (mounted) {
+        setState(() => _isControllerReady = false);
+      }
+    });
   }
 
   void _changeQuality(int index) async {
@@ -77,25 +90,6 @@ class _CourseWatchPageBodyState extends State<CourseWatchPageBody> {
     });
   }
 
-  // void _toggleFullScreen() {
-  //   if (_isFullScreen) {
-  //     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-  //     SystemChrome.setPreferredOrientations([
-  //       DeviceOrientation.portraitUp,
-  //     ]);
-  //   } else {
-  //     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-  //     SystemChrome.setPreferredOrientations([
-  //       DeviceOrientation.landscapeLeft,
-  //       DeviceOrientation.landscapeRight,
-  //     ]);
-  //   }
-
-  //   setState(() {
-  //     _isFullScreen = !_isFullScreen;
-  //   });
-  // }
-
   @override
   void dispose() {
     _controller.dispose();
@@ -107,24 +101,10 @@ class _CourseWatchPageBodyState extends State<CourseWatchPageBody> {
   }
 
   void _showQualityMenu() {
-    showModalBottomSheet(
+    showQualityMenu(
       context: context,
-      backgroundColor: Colors.black.withOpacity(0.9),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      builder: (_) => ListView.builder(
-        itemCount: widget.qualityOptions.length,
-        itemBuilder: (ctx, index) {
-          final option = widget.qualityOptions[index];
-          return ListTile(
-            title:
-                Text(option.label, style: const TextStyle(color: Colors.white)),
-            onTap: () {
-              Navigator.pop(context);
-              _changeQuality(index);
-            },
-          );
-        },
-      ),
+      qualityOptions: widget.qualityOptions,
+      onSelected: _changeQuality,
     );
   }
 
@@ -145,7 +125,7 @@ class _CourseWatchPageBodyState extends State<CourseWatchPageBody> {
         floatingActionButton:
             _isFullScreen ? null : const CourseWatchPageButtons(),
         backgroundColor: background.onSurfacePrimary,
-        body: _controller.value.isInitialized
+        body: _isControllerReady
             ? (_isFullScreen
                 ? Stack(
                     children: [
@@ -259,166 +239,3 @@ class _CourseWatchPageBodyState extends State<CourseWatchPageBody> {
 
 
 
-
-/**
- * 
- * import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:student_hackerha/features/course-content/presentation/widgets/video_player/video_controls_overlay.dart';
-import 'package:student_hackerha/features/course-content/presentation/widgets/video_player/video_quality_option.dart';
-import 'package:video_player/video_player.dart';
-import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
-
-class CourseWatchPageBody extends StatefulWidget {
-  final List<VideoQualityOption> qualityOptions;
-
-  const CourseWatchPageBody({super.key, required this.qualityOptions});
-
-  @override
-  State<CourseWatchPageBody> createState() => _CourseWatchPageBodyState();
-}
-
-class _CourseWatchPageBodyState extends State<CourseWatchPageBody> {
-  late VideoPlayerController _controller;
-  int _currentQualityIndex = 0;
-  bool _isFullScreen = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _initializePlayer();
-  }
-
-  void _initializePlayer({Duration? seekTo}) {
-    _controller = VideoPlayerController.network(
-      widget.qualityOptions[_currentQualityIndex].url,
-    )..initialize().then((_) {
-        if (seekTo != null) {
-          _controller.seekTo(seekTo);
-        }
-        setState(() {});
-        _controller.play();
-      });
-  }
-
-  void _changeQuality(int index) async {
-    final currentPosition = _controller.value.position;
-    await _controller.pause();
-    await _controller.dispose();
-
-    setState(() {
-      _currentQualityIndex = index;
-    });
-
-    _initializePlayer(seekTo: currentPosition);
-  }
-
-  void _toggleFullScreen() {
-    if (_isFullScreen) {
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-      ]);
-    } else {
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.landscapeLeft,
-        DeviceOrientation.landscapeRight,
-      ]);
-    }
-
-    setState(() {
-      _isFullScreen = !_isFullScreen;
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    super.dispose();
-  }
-
-  void _showQualityMenu() {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.black.withOpacity(0.9),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      builder: (_) => ListView.builder(
-        itemCount: widget.qualityOptions.length,
-        itemBuilder: (ctx, index) {
-          final option = widget.qualityOptions[index];
-          return ListTile(
-            title:
-                Text(option.label, style: const TextStyle(color: Colors.white)),
-            onTap: () {
-              Navigator.pop(context);
-              _changeQuality(index);
-            },
-          );
-        },
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final background = Theme.of(context).extension<AppBackgrounds>()!;
-
-    return WillPopScope(
-      onWillPop: () async {
-        if (_isFullScreen) {
-          _toggleFullScreen();
-          return false;
-        }
-        return true;
-      },
-      child: Scaffold(
-        backgroundColor: Colors.black,
-        body: _controller.value.isInitialized
-            ? Stack(
-                children: [
-                  Positioned.fill(
-                    child: _isFullScreen
-                        ? SizedBox.expand(
-                            child: FittedBox(
-                              fit: BoxFit.cover,
-                              child: SizedBox(
-                                width: _controller.value.size.width,
-                                height: _controller.value.size.height,
-                                child: VideoPlayer(_controller),
-                              ),
-                            ),
-                          )
-                        : Center(
-                            child: AspectRatio(
-                              aspectRatio: _controller.value.aspectRatio,
-                              child: VideoPlayer(_controller),
-                            ),
-                          ),
-                  ),
-                  Positioned.fill(
-                    child: VideoControlsOverlay(
-                      controller: _controller,
-                      onSelectQuality: _showQualityMenu,
-                      onExitFullScreen: _toggleFullScreen,
-                    ),
-                  ),
-                ],
-              )
-            : const Center(child: CircularProgressIndicator()),
-      ),
-    );
-  }
-}   شوف عندي هي الصفحة بدي مشغل الفيديو كامل هو وشريط التشغيل تبعو وهيك يكون محطوط ب column  والمشغل بقلب   AspectRatio(
-                        aspectRatio: 16 / 9,   مشان احط كمالة الصفحة تحتو طبعا هالحكي وقت بكونن  _isFullScreen =false
- * 
- * 
- * 
- * 
- * 
- */
