@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:student_hackerha/features/home/data/models/image_model.dart';
 import 'package:student_hackerha/features/home/domain/Entity/image_entity.dart';
 
+// ignore: must_be_immutable
 class TeacherEntity extends Equatable {
     int id;
     String name;

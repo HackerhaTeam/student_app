@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:student_hackerha/core/error/exceptions.dart';
@@ -17,7 +18,5 @@ class MyCoursesCubit extends Cubit<MyCoursesState> {
           (courses) => emit(MyCoursesLoaded(courses)));
   }
   
-  String _mapFailureToMessage(Failure failure) {
-    return 'حدث خطأ أثناء تحميل الدورات'; 
-  }
+  
 }

@@ -46,7 +46,7 @@ class _YearCoursesPageState extends State<YearCoursesPage>
 
   @override
   Widget build(BuildContext context) {
-    final courses = locator.get<List<Course>>(instanceName: 'courses');
+
 
     return Scaffold(
         body: SafeArea(

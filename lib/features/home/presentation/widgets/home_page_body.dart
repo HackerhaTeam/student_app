@@ -13,7 +13,10 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/widgets/animation/fade_widget.dart';
 import 'package:student_hackerha/core/widgets/custom_card.dart';
+import 'package:student_hackerha/core/widgets/shimmer/course_shimmer.dart';
+import 'package:student_hackerha/core/widgets/shimmer/course_shimmer_list.dart';
 import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 import 'package:student_hackerha/core/widgets/course%20card/my_course_list_section.dart';
@@ -24,7 +27,9 @@ import 'package:student_hackerha/features/home/presentation/manager/recentlyAdde
 import 'package:student_hackerha/features/home/presentation/manager/recentlyAddedCourseCubit/recently_added_courses_state.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_header.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/home_page_text.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/home_search_section.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/home_section_builder.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/monthly_trainer_page_view.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/text_card.dart';
 
@@ -55,7 +60,7 @@ class _HomePageBodyState extends State<HomePageBody> {
 
   @override
   Widget build(BuildContext context) {
-    final courses = locator.get<List<Course>>(instanceName: 'courses');
+   
 
     final background = Theme.of(context).extension<AppBackgrounds>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
@@ -93,66 +98,24 @@ class _HomePageBodyState extends State<HomePageBody> {
           ),
         ),
         SliverToBoxAdapter(child: SizedBox(height: 20)),
-        BlocBuilder<RecentlyAddedCoursesCubit, RecentlyAddedCoursesState>(
-          builder: (context, state) {
-            if (state is RecentlyAddedCoursesLoaded) {
-              return SliverToBoxAdapter(
-                child: CourseList(
-                  courses: state.courses,
-                  scrollDirection: Axis.horizontal,
-                ),
-              );
-            } else if (state is RecentlyAddedCoursesLoading) {
-              return SliverToBoxAdapter(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state is RecentlyAddedCoursesError) {
-              return SliverToBoxAdapter(
-                child: Text(state.message),
-              );
-            } else {
-              return SliverToBoxAdapter(
-                child: SizedBox(),
-              );
+
+        SliverToBoxAdapter(
+          child: BlocBuilder<RecentlyAddedCoursesCubit, RecentlyAddedCoursesState>(
+            builder: (context, state) {
+           return buildRecentlyAddedCoursesSection(state);
             }
-          },
+          ),
         ),
         SliverToBoxAdapter(
           child: SizedBox(
             height: 24,
           ),
         ),
-        SliverToBoxAdapter(
-          child: CoursesHeader(
-            title: "دوراتي المسجل بها",
-            onPressed: () {},
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: SizedBox(
-            height: 16,
-          ),
-        ),
+      
         SliverToBoxAdapter(
           child: BlocBuilder<MyCoursesCubit, MyCoursesState>(
             builder: (context, state) {
-              if (state is MyCoursesLoaded) {
-             return   MyCourseListSection(
-                border: border,
-                background: background,
-                courses: state.courses,
-              );
-              }
-              else if(state is MyCoursesLoading
-              ){
-                return Center( child:  CircularProgressIndicator(),);
-              }
-              else if (state is MyCoursesError){
-                return Center(child:  Text(state.errMessage),);
-              }
-              else{
-                return SizedBox();
-              }
+       return   buildMyCoursesSection(state, border, background);
             },
           ),
         ),
@@ -183,27 +146,6 @@ class _HomePageBodyState extends State<HomePageBody> {
           ),
         )
       ]),
-    );
-  }
-}
-
-class HomePageText extends StatelessWidget {
-  const HomePageText({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 24),
-        SvgPicture.asset(
-          getThemeIcon(
-              context, AppImages.homeTextDark, AppImages.homeTextLight),
-          width: 372.w(context),
-        ),
-        SizedBox(height: 24),
-      ],
     );
   }
 }
