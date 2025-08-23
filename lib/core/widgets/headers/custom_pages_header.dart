@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/helpers/tags/get_theme_icon.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
@@ -61,7 +62,8 @@ class CustomPagesHeader extends StatelessWidget {
             FocusScope.of(context).unfocus();
             onBack();
           },
-          iconAsset: AppImages.carretRightLight,
+          iconAsset: getThemeIcon(
+              context, AppImages.carretRightDark, AppImages.carretRightLight),
           iconSize: 24.s(context),
         ),
         SizedBox(

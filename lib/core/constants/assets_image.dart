@@ -14,9 +14,9 @@ class AppImages {
   static const String magnifyingGlassLight =
       "assets/images/svg/magnifyingglass_light.svg";
   static const String notificationDark =
-      "assets/images/svg/notification_dark.svg";
+      "assets/images/svg/notification_button_dark.svg";
   static const String notificationLight =
-      "assets/images/svg/notification_light.svg";
+      "assets/images/svg/notification_button_light.svg";
   static const String homeNavbar = "assets/images/svg/home_navbar.svg";
   static const String coursesNavbar = "assets/images/svg/courses_navbar.svg";
   static const String archiveNavbar = "assets/images/svg/archive_navbar.svg";
@@ -42,9 +42,6 @@ class AppImages {
   static const String magnifyingGlass =
       'assets/images/svg/magnifying-glass.svg';
 
-
-
-
   static const String shareNetwork = 'assets/images/icons/share-network.svg';
 
   static const String eye = 'assets/images/icons/eye.svg';
@@ -68,8 +65,15 @@ class AppImages {
 
   static const String caretRight = 'assets/images/icons/caret-right.svg';
 
-  static const String bookmarkSimple = 'assets/images/icons/bookmark-simple.svg';
+  static const String bookmarkSimple =
+      'assets/images/icons/bookmark-simple.svg';
   static const String starFill = 'assets/images/icons/star-fill.svg';
 
+  static const String notificationsDark =
+      'assets/images/svg/notifications_dark.svg';
+  static const String notificationsLight =
+      'assets/images/svg/notifications_light.svg';
 
+  static const String alert = "assets/images/svg/alert.svg";
+  static const String notification = "assets/images/svg/new.svg";
 }

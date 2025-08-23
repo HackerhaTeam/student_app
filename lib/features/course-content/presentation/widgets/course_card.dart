@@ -27,7 +27,9 @@ class CourseCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           context.navigateWithSlideTransition(CourseWatchPage(
-              youtubeUrl: "https://youtu.be/N2hgYTY1zCo?si=mvKXItdDm-NpZyfD"));
+              url:
+                  'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4',
+              lable: "HD"));
         },
         child: Container(
           height: 76,

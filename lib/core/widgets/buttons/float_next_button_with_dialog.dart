@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/widgets/custom_success_dialog.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
+import 'package:student_hackerha/core/widgets/buttons/floating_next_button.dart';
 
 class FloatNextButtonWithDialog extends StatelessWidget {
   const FloatNextButtonWithDialog({

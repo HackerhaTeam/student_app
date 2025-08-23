@@ -12,49 +12,58 @@ class ActivationCodeField extends StatelessWidget {
     required this.codeFocusNode,
     required this.border,
     required this.numberController,
+    required this.activeKey,
+    required this.activeSubmitted,
   });
 
   final FocusNode codeFocusNode;
   final AppBorders border;
   final TextEditingController numberController;
-
+  final GlobalKey<FormState> activeKey;
+  final bool activeSubmitted;
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: CustomTextField(
-        focusNode: codeFocusNode,
-        fieldType: FieldType.activationCode,
-        keyboardType: TextInputType.text,
-        label: "كود التفعيل",
-        hint: "XX XXX XXX",
-        suffix: Padding(
-          padding: EdgeInsets.only(left: 0.w(context)),
-          child: SizedBox(
-            width: 50.w(context),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Container(
-                  width: 1,
-                  height: 24.h(context),
-                  color: border.secondary,
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: 16.w(context), right: 6.w(context)),
-                  child: PhosphorIcon(
-                    PhosphorIcons.numpad(),
-                    size: 24.w(context),
+      child: Form(
+        key: activeKey,
+        autovalidateMode: activeSubmitted
+            ? AutovalidateMode.onUserInteraction
+            : AutovalidateMode.disabled,
+        child: CustomTextField(
+          focusNode: codeFocusNode,
+          fieldType: FieldType.activationCode,
+          keyboardType: TextInputType.text,
+          label: "كود التفعيل",
+          hint: "XX XXX XXX",
+          suffix: Padding(
+            padding: EdgeInsets.only(left: 0.w(context)),
+            child: SizedBox(
+              width: 50.w(context),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    width: 1,
+                    height: 24.h(context),
+                    color: border.secondary,
                   ),
-                )
-              ],
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: 16.w(context), right: 6.w(context)),
+                    child: PhosphorIcon(
+                      PhosphorIcons.numpad(),
+                      size: 24.w(context),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
+          radius: 8.r(context),
+          controller: numberController,
+          width: 372,
+          height: 57,
         ),
-        radius: 8.r(context),
-        controller: numberController,
-        width: 372,
-        height: 57,
       ),
     );
   }

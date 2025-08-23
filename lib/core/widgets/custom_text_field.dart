@@ -130,9 +130,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
         }
         break;
       case FieldType.activationCode:
+        final codeRegex = RegExp(r'^[a-zA-Z0-9]+$');
+
         if (value == null || value.isEmpty) {
-          return "الكود الذي أدخلته غير صالح، أعد المحاولة مجدداً.";
+          return "الرجاء إدخال رمز التفعيل.";
         }
+
+        if (!codeRegex.hasMatch(value)) {
+          return "رمز غير صالح، يجب أن يحتوي فقط على أحرف وأرقام إنكليزية.";
+        }
+
+        return null;
+
       case FieldType.month:
         if (value == null || value.trim().isEmpty) return "أدخل الشهر";
         final month = int.tryParse(value.trim());
