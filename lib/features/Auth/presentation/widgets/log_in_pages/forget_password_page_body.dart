@@ -8,7 +8,7 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 import 'package:student_hackerha/core/widgets/custom_text_field.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/verification_page.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
+import 'package:student_hackerha/core/widgets/buttons/floating_next_button.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 
 class ForgetPasswordPageBody extends StatefulWidget {

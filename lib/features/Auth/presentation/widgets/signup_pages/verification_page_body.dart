@@ -14,7 +14,7 @@ import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
 import 'package:student_hackerha/core/widgets/custom_success_dialog.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/reset_pawword_page.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
+import 'package:student_hackerha/core/widgets/buttons/floating_next_button.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/pin_code_fields.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
@@ -22,11 +22,11 @@ import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_
 class VerificationPageBody extends StatefulWidget {
   const VerificationPageBody({
     super.key,
-    required this.backgrounds,
+   
     required this.isSignin,
   });
 
-  final AppBackgrounds backgrounds;
+ 
   final bool isSignin;
   @override
   State<VerificationPageBody> createState() => _VerificationPageBodyState();

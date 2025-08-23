@@ -3,6 +3,9 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
+import 'package:student_hackerha/features/course-content/presentation/widgets/video_player/basic/video_quality_option.dart';
+
+import '../basic/video_quality_menu.dart';
 
 class BottomControlsBar extends StatelessWidget {
   final double sliderValue;
