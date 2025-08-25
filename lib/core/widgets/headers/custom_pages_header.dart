@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 
@@ -60,6 +62,7 @@ class CustomPagesHeader extends StatelessWidget {
           backgroundColor: backgrounds.onSurfaceSecondary,
           onTap: () {
             FocusScope.of(context).unfocus();
+            
             onBack();
           },
           iconAsset: getThemeIcon(

@@ -79,13 +79,7 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
               );
 
               Navigator.of(context).pop();
-              context.navigateWithSlideTransition(ThemeProvider(
-                initTheme: MediaQuery.of(context).platformBrightness ==
-                        Brightness.light
-                    ? AppTheme.light
-                    : AppTheme.dark,
-                builder: (p0, theme) => MainNavigationPage(),
-              ));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MainNavigationPage(),));
             }
           }
         },

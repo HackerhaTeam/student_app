@@ -35,37 +35,39 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit, bool>(
-      builder: (context, state) {
-        return ThemeProvider(
-          duration: Duration(milliseconds: 300),
-          initTheme:
-              MediaQuery.of(context).platformBrightness == Brightness.light
-                  ? AppTheme.light
-                  : AppTheme.dark,
-          builder: (_, myTheme) {
-            return MaterialApp(
-              locale: Locale('ar'),
-              localizationsDelegates: const [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: [
-                const Locale('ar'),
-                const Locale('en'),
-              ],
-              debugShowCheckedModeBanner: false,
-              theme: AppTheme.light,
-              darkTheme: AppTheme.dark,
-              home: BlocProvider(
-                create: (context) => SearchCoursesCubit(),
-                child: AuthWrapper(),
-              ),
-            );
-          },
-        );
-      },
+    return ThemeProvider(
+     duration: Duration(milliseconds: 300),
+            initTheme:
+                MediaQuery.of(context).platformBrightness == Brightness.light
+                    ? AppTheme.light
+                    : AppTheme.dark,
+                    builder: (_, myTheme) {
+              return BlocBuilder<ThemeCubit, bool>(
+        builder: (context, state) {
+          return MaterialApp(
+                locale: Locale('ar'),
+                localizationsDelegates: const [
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: [
+                  const Locale('ar'),
+                  const Locale('en'),
+                ],
+                debugShowCheckedModeBanner: false,
+                theme: AppTheme.light,
+                darkTheme: AppTheme.dark,
+                home: BlocProvider(
+                  create: (context) => SearchCoursesCubit(),
+                  child: AuthWrapper(),
+                ),
+              );
+  
+        },
+      ) ;
+            },
+   
     );
   }
 }

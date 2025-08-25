@@ -52,7 +52,8 @@ class _EnrollCourseWraperState extends State<EnrollCourseWraper> {
             CustomPagesHeader(
               progress: _progress,
               backgrounds: backgrounds,
-              onBack: _goToPreviousPage,
+           
+              onBack: ()=> Navigator.pop(context),
               currentPage: _currentPage,
               isAuth: false,
             ),
