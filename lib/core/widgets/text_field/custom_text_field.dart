@@ -4,19 +4,7 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
-
-enum FieldType {
-  email,
-  password,
-  search,
-  name,
-  phoneNumber,
-  academicYear,
-  day,
-  month,
-  year,
-  activationCode
-}
+import 'package:student_hackerha/core/widgets/text_field/field_validators.dart';
 
 class CustomTextField extends StatefulWidget {
   final FieldType fieldType;
@@ -70,79 +58,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
         widget.fieldType == FieldType.password || widget.obscureOverride;
   }
 
-  String? _validate(String? value) {
-    switch (widget.fieldType) {
-      case FieldType.email:
-        if (value == null || value.isEmpty) return 'البريد الإلكتروني مطلوب';
-        final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-        if (!emailRegex.hasMatch(value)) {
-          return 'صيغة البريد الإلكتروني غير صحيحة';
-        }
-        break;
-
-      case FieldType.password:
-        if (value == null || value.isEmpty) return 'كلمة المرور مطلوبة';
-        if (value.length < 6) return 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
-        break;
-
-      case FieldType.search:
-        if (value == null || value.isEmpty) return 'يرجى كتابة كلمة للبحث';
-        break;
-
-      case FieldType.name:
-        if (value == null || value.trim().isEmpty) return 'الاسم مطلوب';
-        if (value.length < 2) return 'الاسم يجب أن يكون على الأقل حرفين';
-        final nameRegex = RegExp(r'^[\u0600-\u06FFa-zA-Z\s]+$');
-        if (!nameRegex.hasMatch(value)) {
-          return 'الاسم يحتوي على رموز غير مسموحة';
-        }
-        break;
-
-      case FieldType.phoneNumber:
-        if (value == null || value.trim().isEmpty) return 'رقم الهاتف مطلوب';
-        final phoneRegex = RegExp(r'^9\d{8}$');
-        if (!phoneRegex.hasMatch(value)) {
-          return 'رقم الهاتف غير صحيح. مثال: 9XXXXXXXX';
-        }
-        break;
-
-      case FieldType.academicYear:
-        if (value == null || value.trim().isEmpty) return "الرقم الجامعي مطلوب";
-        break;
-
-      case FieldType.day:
-        if (value == null || value.trim().isEmpty) return "أدخل اليوم";
-        final day = int.tryParse(value.trim());
-        if (day == null) return "أدخل اليوم";
-        if (day <= 0) return "قيمة خاطئة";
-        if (day > 31) return "قيمة خاطئة";
-        break;
-
-      case FieldType.year:
-        if (value == null || value.trim().isEmpty) return "أدخل السنة";
-        final year = int.tryParse(value.trim());
-        if (year == null) return "قيمة خاطئة";
-        if (year < 0) return "قيمة خاطئة";
-        if (year < 1900) return "قيمة خاطئة";
-
-        if (year > DateTime.now().year) {
-          return "قيمة خاطئة";
-        }
-        break;
-      case FieldType.activationCode:
-        if (value == null || value.isEmpty) {
-          return "الكود الذي أدخلته غير صالح، أعد المحاولة مجدداً.";
-        }
-      case FieldType.month:
-        if (value == null || value.trim().isEmpty) return "أدخل الشهر";
-        final month = int.tryParse(value.trim());
-        if (month == null) return "قيمة خاطئة";
-        if (month <= 0) return "قيمة خاطئة";
-        if (month > 12) return "قيمة خاطئة";
-    }
-    return null;
-  }
-
   @override
   Widget build(BuildContext context) {
     final backgrounds = Theme.of(context).extension<AppBackgrounds>()!;
@@ -172,7 +87,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
         keyboardType: widget.keyboardType,
         cursorColor: backgrounds.primaryBrand,
         controller: widget.controller,
-        validator: widget.customValidator ?? _validate,
+        validator: widget.customValidator ??
+            (value) => validateField(widget.fieldType, value),
         obscureText: widget.fieldType == FieldType.password
             ? _obscureText
             : widget.obscureOverride,
@@ -187,7 +103,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             height: 0.5,
           ),
           contentPadding: widget.contentPadding ??
-              const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           labelText: widget.label,
           labelStyle: styles.xLabelSmall,
           hintText: widget.hint,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/widgets/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/text_field/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/text_field/field_validators.dart';
 
 class YearField extends StatelessWidget {
   const YearField({
@@ -26,7 +27,7 @@ class YearField extends StatelessWidget {
           : AutovalidateMode.disabled,
       child: SizedBox(
         width: 115.w(context),
-        height: 59,
+        // height: 59,
         child: Center(
           child: CustomTextField(
             focusNode: focusNode,

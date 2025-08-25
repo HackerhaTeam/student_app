@@ -3,7 +3,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/day_field.dart';
-import 'package:student_hackerha/features/Auth/presentation/widgets/buttons/floating_next_button.dart';
+import 'package:student_hackerha/core/widgets/buttons/floating_next_button.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/gender_sellector.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 import 'package:student_hackerha/features/Auth/presentation/widgets/fields/month_field.dart';

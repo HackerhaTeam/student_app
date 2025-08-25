@@ -81,7 +81,7 @@ class CourseContentPageBody extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.54.h(context),
+                height: MediaQuery.of(context).size.height * 0.54.w(context),
                 child: SectionCardBuilder(),
               ),
             ],

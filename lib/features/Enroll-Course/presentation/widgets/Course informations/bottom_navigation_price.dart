@@ -24,29 +24,29 @@ class BottomNavigationPrice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-        borderColor: border.transparent,
-        width: double.infinity,
-        height: 90,
-        backgroundColor: background.surfacePrimary,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            
-            RoundedSquareIcon(
-              icon: PhosphorIcons.shoppingCartSimple(),
-              color: background.onSurfaceSecondary,
-              gradient: LinearGradient(colors: [border.transparent,border.transparent]),
-              iconColor: content.primary,
-              size: 56,
-              iconSize: 22,
-            ),
-            SizedBox(width: 8.w(context)),
-            CourseInfoPriceView(content: content),
-            SizedBox(width: 20.w(context)),
-            ActiveCourseButton(width: 184.w(context)),
-          ],
-        ),
-      );
+      borderColor: border.transparent,
+      width: double.infinity,
+      height: 90,
+      backgroundColor: background.surfacePrimary,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          RoundedSquareIcon(
+            icon: PhosphorIcons.shoppingCartSimple(),
+            color: background.onSurfaceSecondary,
+            gradient: LinearGradient(
+                colors: [border.transparent, border.transparent]),
+            iconColor: content.primary,
+            size: 56,
+            iconSize: 22,
+          ),
+          SizedBox(width: 8.w(context)),
+          CourseInfoPriceView(content: content),
+          SizedBox(width: 20.w(context)),
+          ActiveCourseButton(width: 184.w(context)),
+        ],
+      ),
+    );
   }
 }

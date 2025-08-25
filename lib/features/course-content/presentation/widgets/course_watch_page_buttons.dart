@@ -55,7 +55,9 @@ class CourseWatchPageButtons extends StatelessWidget {
                   width: 4,
                 ),
                 PhosphorIcon(
-                    color: content.primaryInverted, PhosphorIcons.caretRight())
+                  PhosphorIcons.caretRight(),
+                  color: content.primaryInverted,
+                )
               ],
             ))
       ],

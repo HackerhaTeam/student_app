@@ -17,8 +17,8 @@ class IntractionButton extends StatelessWidget {
     final border = Theme.of(context).extension<AppBorders>()!;
     final styles = context;
     return Container(
-      width: text != null ? 88.w(context) : 49,
-      height: 49,
+      width: text != null ? 86.w(context) : 48.w(context),
+      height: 48,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(
           16.r(context),
@@ -26,13 +26,15 @@ class IntractionButton extends StatelessWidget {
         border: Border.all(color: border.transparent),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12.w(context)),
+        padding: EdgeInsets.symmetric(horizontal: 10.w(context)),
         child: Row(
           children: [
-            Directionality(
-              textDirection: TextDirection.ltr,
-              child: PhosphorIcon(
-                icon,
+            Center(
+              child: Directionality(
+                textDirection: TextDirection.ltr,
+                child: PhosphorIcon(
+                  icon,
+                ),
               ),
             ),
             if (text != null)

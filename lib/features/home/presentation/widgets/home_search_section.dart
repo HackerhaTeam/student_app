@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/widgets/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/text_field/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/text_field/field_validators.dart';
 
 class HomeSearchSection extends StatefulWidget {
   final TextEditingController searchController;
@@ -47,23 +48,21 @@ class _HomeSearchSectionState extends State<HomeSearchSection> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
       child: CustomTextField(
-   
-            fieldType: FieldType.search,
-            hint: "ابحث عن اسم مادة",
-            radius: 8.r(context),
-            prefix: PhosphorIcon(PhosphorIcons.magnifyingGlass()),
-            suffix: widget.searchController.text.isNotEmpty
-                ?PhosphorIcon( PhosphorIcons.xCircle())
-                : null,
-            controller: widget.searchController,
-            focusNode: _searchFocusNode,
-           
-            onFieldSubmitted: (value) {
-              if (widget.onSearch != null) {
-                widget.onSearch!(value);
-              }
-            },
-          ),
+        fieldType: FieldType.search,
+        hint: "ابحث عن اسم مادة",
+        radius: 8.r(context),
+        prefix: PhosphorIcon(PhosphorIcons.magnifyingGlass()),
+        suffix: widget.searchController.text.isNotEmpty
+            ? PhosphorIcon(PhosphorIcons.xCircle())
+            : null,
+        controller: widget.searchController,
+        focusNode: _searchFocusNode,
+        onFieldSubmitted: (value) {
+          if (widget.onSearch != null) {
+            widget.onSearch!(value);
+          }
+        },
+      ),
     );
   }
 }

@@ -34,10 +34,11 @@ class _MainNavigationPageState extends State<MainNavigationPage>
     _iconCubit = ChangeIconCubit()..initController(this);
 
     _pages = [
-      BlocProvider(create: (BuildContext context) =>TagCubit(),
-      child: HomePageBody()),
-      BlocProvider(create: (BuildContext context) =>TagCubit(),
-      child: CoursesTabPage()),
+      BlocProvider(
+          create: (BuildContext context) => TagCubit(), child: HomePageBody()),
+      BlocProvider(
+          create: (BuildContext context) => TagCubit(),
+          child: CoursesTabPage()),
       BankPage(),
       ArchivePage(),
       AccountTabPage(),

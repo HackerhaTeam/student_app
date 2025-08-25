@@ -2,15 +2,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/buttons/float_next_button_with_dialog.dart';
+import 'package:student_hackerha/core/widgets/buttons/floating_next_button.dart';
+import 'package:student_hackerha/core/widgets/custom_success_dialog.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/activation_code_field.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/contact_us.dart';
 import 'package:student_hackerha/features/course-content/presentation/pages/course_content_page.dart';
+import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 
 class ActiveCoursePageBody extends StatefulWidget {
   const ActiveCoursePageBody({super.key, required this.onNext});
@@ -22,8 +27,10 @@ class ActiveCoursePageBody extends StatefulWidget {
 
 class _ActiveCoursePageBodyState extends State<ActiveCoursePageBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> activeKey = GlobalKey<FormState>();
   final TextEditingController numberController = TextEditingController();
   final FocusNode codeFocusNode = FocusNode();
+  bool isActiveSubmitted = false;
   @override
   void initState() {
     super.initState();
@@ -39,12 +46,34 @@ class _ActiveCoursePageBodyState extends State<ActiveCoursePageBody> {
     final content = Theme.of(context).extension<AppContent>()!;
     final border = Theme.of(context).extension<AppBorders>()!;
     return Scaffold(
-      floatingActionButton: FloatNextButtonWithDialog(
+      floatingActionButton: FloatingNextButton(
         formKey: formKey,
-        nextPage: CourseContentPage(),
-        title: "تم تفعيل الدورة بنجاح!",
-        subtitle:
-            "بات الآن بإنمكانك الصول لمحتوى هذه الدورة كاملة، انطلق وهكر المادة معنا الآن!",
+        onNext: () async {
+          FocusScope.of(context).unfocus();
+          setState(() {
+            isActiveSubmitted = true;
+          });
+          final isFormValid = formKey.currentState?.validate() ?? false;
+          final isActiveValid = activeKey.currentState?.validate() ?? false;
+          if (isFormValid && isActiveValid) {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) => CustomSuccessDialog(
+                svgAssetPath: AppImages.successImage,
+                title: "تم تفعيل الدورة بنجاح!",
+                subtitle:
+                    "بات الآن بإنمكانك الصول لمحتوى هذه الدورة كاملة، انطلق وهكر المادة معنا الآن!",
+              ),
+            );
+            await Future.delayed(
+              const Duration(seconds: 3),
+            );
+
+            Navigator.of(context).pop();
+            context.navigateWithSlideTransition(CourseContentPage());
+          }
+        },
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -67,9 +96,12 @@ class _ActiveCoursePageBodyState extends State<ActiveCoursePageBody> {
                 height: 32.h(context),
               ),
               ActivationCodeField(
-                  codeFocusNode: codeFocusNode,
-                  border: border,
-                  numberController: numberController),
+                codeFocusNode: codeFocusNode,
+                border: border,
+                numberController: numberController,
+                activeKey: activeKey,
+                activeSubmitted: isActiveSubmitted,
+              ),
               SizedBox(
                 height: 32.h(context),
               ),

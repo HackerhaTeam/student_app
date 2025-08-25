@@ -11,7 +11,9 @@ class RoundedSquareIcon extends StatelessWidget {
     required this.icon,
     this.gradient,
     this.iconSize,
-    this.size,  this.color,  this.iconColor,
+    this.size,
+    this.color,
+    this.iconColor,
   });
   final double? iconSize;
   final IconData icon;
@@ -27,21 +29,22 @@ class RoundedSquareIcon extends StatelessWidget {
       alignment: AlignmentDirectional.center,
       children: [
         Container(
-          width:size==null? 44.w(context):size!.w(context)+4.w(context),
-          height: size==null? 44.w(context):size!.w(context)+4.w(context),
+          width: size == null ? 44.w(context) : size!.w(context) + 4.w(context),
+          height:
+              size == null ? 44.w(context) : size!.w(context) + 4.w(context),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.r(context)),
               gradient: gradient),
         ),
         CustomCard(
-          width: size==null? 40.w(context):size!.w(context),
-          height: size==null? 40.w(context):size!.w(context),
+          width: size == null ? 40.w(context) : size!.w(context),
+          height: size == null ? 40.w(context) : size!.w(context),
           borderRadius: 16.r(context),
-          backgroundColor: color?? backgroundColor.primaryBrand,
+          backgroundColor: color ?? backgroundColor.primaryBrand,
           child: PhosphorIcon(
             textDirection: TextDirection.ltr,
             icon,
-            color: iconColor?? contentColor.primaryInverted,
+            color: iconColor ?? contentColor.primaryInverted,
             size: iconSize ?? 16.w(context),
           ),
         ),

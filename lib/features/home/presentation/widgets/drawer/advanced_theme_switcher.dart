@@ -62,7 +62,8 @@ class _AdvancedThemeSwitcherState extends State<AdvancedThemeSwitcher>
       if (mounted) {
         context.read<ThemeCubit>().toggleTheme();
         widget.onThemeChanged?.call();
-        _isAnimating = false; // بعد 300 مللي ثانية (مدة الأنيميشن)، يُسمح بالضغط مرة أخرى
+        _isAnimating =
+            false; // بعد 300 مللي ثانية (مدة الأنيميشن)، يُسمح بالضغط مرة أخرى
       }
     });
   }
@@ -77,12 +78,12 @@ class _AdvancedThemeSwitcherState extends State<AdvancedThemeSwitcher>
             return GestureDetector(
               onTap: () {
                 final now = DateTime.now();
-                if (now.difference(_lastTapTime ?? DateTime(0)) >= widget.animationDuration+Duration(milliseconds: 500)) {
+                if (now.difference(_lastTapTime ?? DateTime(0)) >=
+                    widget.animationDuration + Duration(milliseconds: 500)) {
                   _lastTapTime = now;
                   _toggleTheme(context);
                 }
               },
-
               child: ScaleTransition(
                 scale: Tween(begin: 0.8, end: 1.0).animate(
                   CurvedAnimation(
@@ -103,15 +104,15 @@ class _AdvancedThemeSwitcherState extends State<AdvancedThemeSwitcher>
                   },
                   child: !isDarkModeEnabled
                       ? PhosphorIcon(
-                        PhosphorIcons.moonStars(),
-                        key: ValueKey<bool>(isDarkModeEnabled),
-                        size: 30.w(context),
-                      )
+                          PhosphorIcons.moonStars(),
+                          key: ValueKey<bool>(isDarkModeEnabled),
+                          size: 30.w(context),
+                        )
                       : PhosphorIcon(
-                    PhosphorIcons.sunDim(),
-                    key: ValueKey<bool>(isDarkModeEnabled),
-                    size: 30.w(context),
-                  ),
+                          PhosphorIcons.sunDim(),
+                          key: ValueKey<bool>(isDarkModeEnabled),
+                          size: 30.w(context),
+                        ),
                 ),
               ),
             );
