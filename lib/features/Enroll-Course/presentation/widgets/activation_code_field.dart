@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
-import 'package:student_hackerha/core/widgets/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/text_field/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/text_field/field_validators.dart';
 
 class ActivationCodeField extends StatelessWidget {
   const ActivationCodeField({
@@ -62,7 +63,7 @@ class ActivationCodeField extends StatelessWidget {
           radius: 8.r(context),
           controller: numberController,
           width: 372,
-          height: 57,
+          // height: 57,
         ),
       ),
     );

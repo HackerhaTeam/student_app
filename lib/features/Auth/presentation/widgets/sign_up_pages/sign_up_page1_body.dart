@@ -81,24 +81,24 @@ class _SignUpPage1BodyState extends State<SignUpPage1Body> {
               SizedBox(
                 height: 24.h(context),
               ),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        value = !value;
-                      });
-                    },
-                    child: CustomCheckBox(
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    value = !value;
+                  });
+                },
+                child: Row(
+                  children: [
+                    CustomCheckBox(
                       value: value,
                     ),
-                  ),
-                  SizedBox(width: 8.w(context)),
-                  Text(
-                    "أستوفي ما ذُكر وأنا في أتم الاستعداد!",
-                    style: context.xLabelLarge,
-                  ),
-                ],
+                    SizedBox(width: 8.w(context)),
+                    Text(
+                      "أستوفي ما ذُكر وأنا في أتم الاستعداد!",
+                      style: context.xLabelLarge,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

@@ -10,8 +10,9 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
-import 'package:student_hackerha/core/widgets/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/text_field/custom_text_field.dart';
 import 'package:student_hackerha/core/widgets/buttons/float_next_button_with_dialog.dart';
+import 'package:student_hackerha/core/widgets/text_field/field_validators.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/log_in_pages/forget_password_page.dart';
 import 'package:student_hackerha/core/widgets/headers/introduction_header.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';

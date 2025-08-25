@@ -106,25 +106,25 @@ class _EnrollCoursePageBodyState extends State<EnrollCoursePageBody> {
               SizedBox(
                 height: 15.h(context),
               ),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        value = !value;
-                      });
-                    },
-                    child: CustomCheckBox(
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    value = !value;
+                  });
+                },
+                child: Row(
+                  children: [
+                    CustomCheckBox(
                       value: value,
                     ),
-                  ),
-                  SizedBox(height: 8.h(context)),
-                  Text(
-                    " أستوفي ما ذُكر وأنا في أتم الاستعداد!",
-                    style: styles.xLabelLarge,
-                  ),
-                  SizedBox(height: 24.h(context)),
-                ],
+                    SizedBox(height: 8.h(context)),
+                    Text(
+                      " أستوفي ما ذُكر وأنا في أتم الاستعداد!",
+                      style: styles.xLabelLarge,
+                    ),
+                    SizedBox(height: 24.h(context)),
+                  ],
+                ),
               ),
             ],
           ),

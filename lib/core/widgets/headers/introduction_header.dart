@@ -20,8 +20,9 @@ class IntroductionHeader extends StatelessWidget {
       child: Row(
         children: [
           RoundedSquareIcon(
+            iconSize: 24.s(context),
             icon: icon,
-            size: 24.w(context),
+            size: 44.s(context),
           ),
           Text(
             introText,

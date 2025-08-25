@@ -35,7 +35,7 @@ class BottomSheetPrice extends StatelessWidget {
           ),
           RoundedSquareIcon(
             icon: PhosphorIcons.shoppingCartSimple(),
-            bgColor: background.onSurfaceSecondary,
+            color: background.onSurfaceSecondary,
             gradient: LinearGradient(colors: [border.transparent]),
             iconColor: content.primary,
           ),

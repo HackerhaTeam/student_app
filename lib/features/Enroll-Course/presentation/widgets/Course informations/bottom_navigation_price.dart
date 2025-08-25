@@ -34,7 +34,7 @@ class BottomNavigationPrice extends StatelessWidget {
         children: [
           RoundedSquareIcon(
             icon: PhosphorIcons.shoppingCartSimple(),
-            bgColor: background.onSurfaceSecondary,
+            color: background.onSurfaceSecondary,
             gradient: LinearGradient(
                 colors: [border.transparent, border.transparent]),
             iconColor: content.primary,

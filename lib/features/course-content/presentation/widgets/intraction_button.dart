@@ -17,7 +17,7 @@ class IntractionButton extends StatelessWidget {
     final border = Theme.of(context).extension<AppBorders>()!;
     final styles = context;
     return Container(
-      width: text != null ? 90.w(context) : 48.w(context),
+      width: text != null ? 86.w(context) : 48.w(context),
       height: 48,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(

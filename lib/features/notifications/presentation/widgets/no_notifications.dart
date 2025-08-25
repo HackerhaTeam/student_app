@@ -8,6 +8,7 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/rounded_square_icon.dart';
+import 'package:student_hackerha/features/notifications/presentation/widgets/rounded_notifications_icon.dart';
 
 class NoNotifications extends StatelessWidget {
   const NoNotifications({
@@ -42,7 +43,7 @@ class NoNotifications extends StatelessWidget {
               style: context.xParagraphLargeNormal
                   .copyWith(color: content.secondary),
             ),
-            RoundedSquareIcon(
+            RoundedNotificationIcon(
               icon: PhosphorIcons.xCircle(PhosphorIconsStyle.fill),
               bgColor: bg.negativeSoft,
               height: 48.w(context),

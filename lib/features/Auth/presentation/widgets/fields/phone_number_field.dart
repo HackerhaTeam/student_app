@@ -4,7 +4,8 @@ import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/core/widgets/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/text_field/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/text_field/field_validators.dart';
 
 class PhoneNumberField extends StatelessWidget {
   const PhoneNumberField({
@@ -64,7 +65,7 @@ class PhoneNumberField extends StatelessWidget {
           radius: 8.r(context),
           controller: phoneController,
           width: 372.w(context),
-          height: 57,
+          // height: 57,
         ),
       ),
     );

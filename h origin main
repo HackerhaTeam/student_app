@@ -1,0 +1,128 @@
+[33m6f4f129[m[33m ([m[1;36mHEAD[m[33m)[m fixed errors
+[33mf409f3c[m[33m ([m[1;31morigin/notifications[m[33m, [m[1;32mnotifications[m[33m)[m many edits
+[33m46d6d8a[m refactored video player code
+[33mf85d1e2[m finished Notifications UI and edited video player
+[33md7992c9[m fix home text
+[33m1e004a0[m fix spceing in home page
+[33mfaa7640[m fix rounded square icon
+[33me69fd52[m add reveiws to course information
+[33ma2d4fc4[m Merge branch 'main' of https://github.com/HackerhaTeam/student_app
+[33md595c58[m[33m ([m[1;31morigin/fixTagSection[m[33m)[m course information ui animation done
+[33me4d0bd9[m fix course_list scrollDirection
+[33m21865c6[m fix padding in home page and courses page and up folder course card to core folder
+[33m676011b[m add icon text to course content
+[33mb82d003[m fix scroll in reslut page
+[33m93cb596[m fixed expanded border in tags
+[33m9b80ddc[m fixed scroll tags make it easy
+[33md923794[m make tags like whatsapp
+[33m7dbfaf3[m remove custom card from quiz
+[33m0e6dda6[m fixed error in archives
+[33m9a4a4cf[m merged with archives
+[33m9708139[m[33m ([m[1;31morigin/archives[m[33m)[m fixed image and tags size
+[33m925206c[m finish archives ui
+[33m7941093[m fix courses page icon
+[33mcf373fe[m Merge branch 'main' of https://github.com/HackerhaTeam/student_app into fixIcon
+[33md7ce3a1[m[33m ([m[1;31morigin/fixIcon[m[33m)[m fix svg icons and toggle theme
+[33mb4df478[m merged with bank for fixed subject card folder
+[33maf4db01[m[33m ([m[1;31morigin/bank[m[33m)[m refactor subject_bank_folder
+[33m9a0dc0e[m fixed bank file
+[33m9201b88[m remove all unused imports all over the project and remove all warnings
+[33m5f31755[m Merge branch course_info
+[33m01bff49[m Merge branch 'course_info'
+[33mab8b7ed[m[33m ([m[1;31morigin/course_info[m[33m)[m add Customcard and remove all container in all over the features{enroll course - home - course}
+[33m75a53f6[m merged with quiz
+[33mf71bf68[m[33m ([m[1;31morigin/quiz[m[33m)[m fixed icon
+[33m806a03f[m edited progress indicator
+[33m4c2eb16[m merged with bank
+[33m56edce0[m added svg folder
+[33m8a34009[m fix circle icon and rounded square icon
+[33m11c7e90[m refactor before merging with Bank
+[33mb03e9da[m fix core folder
+[33me3e0849[m Merge branch 'fix-errors'
+[33m96ac7e5[m save changes
+[33m4eaaff3[m hot fix
+[33m64f688d[m hot fix
+[33m9ef5159[m refactor code"
+[33mc014181[m[33m ([m[1;31morigin/fix-errors[m[33m)[m edited validation
+[33m7214fae[m edit circle icon
+[33m13de7b0[m  fix home page ui bugs and add SummaryCourse and add DetilesSection And Teachers
+[33m33e8997[m fix SubjectBankPage Theme
+[33mdaaa8a0[m add bankPaage to navBar
+[33md710033[m finish bank ui
+[33me08f8e8[m add about this course and teachers section and add cubit tom manage scroll and tapbar
+[33m2ae511e[m finish quiz feature
+[33m08f3efa[m courseInformationPage about this course section ui finish
+[33mae5a4c0[m fixed validation error in sign up page 2 body
+[33m88c6bd0[m fixed validate Errors
+[33md00a895[m fixed Auth Errors
+[33m52334e4[m finish result page and refactor folder and files
+[33m7ea6915[m add navigateFromBottom && navigationWithFade navigation to navigation functions
+[33mda2ede7[m hot fix setting color items
+[33mba3b7f1[m[33m ([m[1;31morigin/settings[m[33m)[m finish settings ui
+[33m28ad03e[m merging main with course-content and linked features
+[33m49cafa9[m[33m ([m[1;31morigin/course-content[m[33m)[m finished course watch page UI
+[33m5e4f004[m Merge remote-tracking branch 'origin/courses'
+[33mc0f2143[m merging with home
+[33m7be3239[m Merge remote-tracking branch 'origin/home'
+[33m2bc5a6a[m[33m ([m[1;31morigin/courses[m[33m)[m search about courses done
+[33mb7567c4[m add tabBar semester and handel thier page view
+[33m9c4c8a8[m courses tap page ui done
+[33m67b1500[m replace  backbutton and added animation progress container
+[33m4908a3a[m merging main with enroll-course
+[33m5b1b099[m[33m ([m[1;31morigin/enroll-course[m[33m)[m refactor code
+[33me5f8586[m Activation Code Page UI Done
+[33m2dce1a2[m[33m ([m[1;31morigin/home[m[33m)[m add Monthly trainer sliding and add cubit to initialize animation controller
+[33m5796b4c[m enroll course page UI Done
+[33m6eed6e7[m merging main with Auth
+[33m73ef240[m[33m ([m[1;31morigin/Auth[m[33m)[m final auth UI
+[33md9e39ef[m fix locale in all over the app
+[33m1a3a22c[m Log In Pages UI Done
+[33m2c743e0[m sign in Page UI Done
+[33m59bfd2e[m refactor code and split the widget folder inside home to (drawer ,navBar , courses elements )
+[33mf5fb37c[m fixed errors and refactor project folders
+[33mb10261a[m fixed some erors and Edited CustomDropdownField UI
+[33mfd305c8[m add change theme animation icon
+[33m4d1b455[m finish dialogs and quiz actions
+[33m6e4c4cf[m Finished Sign Up Page 6 UI
+[33m038a8c0[m alot of commit 'next and back question','options','dialog','cubit options and page view '....
+[33m0cd0bb3[m add animation to burger icon to open & close drawer
+[33m49c3e71[m Auth Page 4 UI Done
+[33m8a05ce5[m refactor folders
+[33m2f71516[m add custom alert dialog and all dialog actions
+[33m55e07c9[m Added CustomDropDownField And Finished Auth Page 3 UI
+[33m1999b2a[m add drawer to home page
+[33m118626e[m create count down timer and options answer
+[33m614a695[m added customTextField and Auth Page2 UI done
+[33me0e435a[m add bottom nav bar
+[33m0c6a567[m edited Auth page 1 ui
+[33m6801bf3[m add timer liner
+[33m16f5be3[m just for save commit
+[33m40339d3[m add animation_timer_cubit.dart
+[33md50bf03[m create quiz_timer.dart file
+[33m7ca43c6[m add font
+[33ma43d324[m create quiz_page_header.dart
+[33mcfa128d[m added typography
+[33mdaec872[m add my courses item
+[33m254afc9[m edit2 app_text_styles.dart file
+[33m7fd6094[m edit app_text_styles.dart file
+[33md51584c[m add custom_circle_icon_button.dart
+[33mafedb59[m fix custom_icon_button.dart file
+[33m3d6694e[m add custom_icon_button.dart file
+[33mc3886f8[m edit app_text_styles.dart file
+[33m97a4ec4[m delete theme switch file
+[33mf6c0ebb[m fix height typo graphy
+[33m34ef973[m Merge branch 'main' into home to add typo graphy and app_content tokens
+[33m5e8e734[m integrate custom text styles into AppTheme
+[33m9defe49[m add typo graphy to themes
+[33m4d6c4a5[m[33m ([m[1;31morigin/design-update[m[33m, [m[1;31morigin/addTypography[m[33m)[m edit responsive function
+[33m5c72165[m edited design system
+[33m1235d1e[m simple edit
+[33mb23f76d[m Auth Page1 ui done
+[33m1278e26[m created Auth wrapper pages
+[33m4e5297b[m fix homepagebody scoll, add tag (new) ,refactor code
+[33macf056f[m Add search bar, course cards and category tabs to home screen
+[33m804dcc2[m test
+[33m6acb61d[m add appbar and edit responsive method
+[33mf4b14ea[m added cubit to change theme
+[33m3527c42[m add responsive function
+[33m7fd748f[m initial commit

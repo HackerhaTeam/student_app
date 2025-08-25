@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
-import 'package:student_hackerha/core/widgets/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/text_field/custom_text_field.dart';
+import 'package:student_hackerha/core/widgets/text_field/field_validators.dart';
 
 class FullNameField extends StatelessWidget {
   const FullNameField({
@@ -35,7 +36,7 @@ class FullNameField extends StatelessWidget {
           radius: 8.r(context),
           controller: nameController,
           width: 372.w(context),
-          height: 57,
+          // height: 57,
           onFieldSubmitted: onSubmitted,
         ),
       ),

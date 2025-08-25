@@ -8,6 +8,7 @@ import 'package:student_hackerha/core/DI/service_locator.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/sign_up_wrapper.dart';
+import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/verification_page.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
@@ -36,35 +37,33 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeCubit, bool>(
       builder: (context, state) {
-        return MediaQuery(
-          data:
-              MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1)),
-          child: ThemeProvider(
-            duration: Duration(milliseconds: 300),
-            initTheme: AppTheme.light,
-            builder: (_, myTheme) {
-              return MaterialApp(
-                useInheritedMediaQuery: true,
-                locale: Locale('ar'),
-                localizationsDelegates: [
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: [
-                  const Locale('ar', ''),
-                  const Locale('en', ''),
-                ],
-                debugShowCheckedModeBanner: false,
-                theme: AppTheme.light,
-                darkTheme: AppTheme.dark,
-                home: BlocProvider(
-                  create: (context) => SearchCoursesCubit(),
-                  child: ThemeSwitchingArea(child: AuthWrapper()),
-                ),
-              );
-            },
-          ),
+        return ThemeProvider(
+          duration: Duration(milliseconds: 300),
+          initTheme:
+              MediaQuery.of(context).platformBrightness == Brightness.light
+                  ? AppTheme.light
+                  : AppTheme.dark,
+          builder: (_, myTheme) {
+            return MaterialApp(
+              locale: Locale('ar'),
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: [
+                const Locale('ar'),
+                const Locale('en'),
+              ],
+              debugShowCheckedModeBanner: false,
+              theme: AppTheme.light,
+              darkTheme: AppTheme.dark,
+              home: BlocProvider(
+                create: (context) => SearchCoursesCubit(),
+                child: AuthWrapper(),
+              ),
+            );
+          },
         );
       },
     );
