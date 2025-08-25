@@ -2,11 +2,13 @@
 
 import 'dart:developer';
 
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
+import 'package:student_hackerha/core/themes/app_theme.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
@@ -22,11 +24,9 @@ import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_
 class VerificationPageBody extends StatefulWidget {
   const VerificationPageBody({
     super.key,
-   
     required this.isSignin,
   });
 
- 
   final bool isSignin;
   @override
   State<VerificationPageBody> createState() => _VerificationPageBodyState();
@@ -79,7 +79,13 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
               );
 
               Navigator.of(context).pop();
-              context.navigateWithSlideTransition(MainNavigationPage());
+              context.navigateWithSlideTransition(ThemeProvider(
+                initTheme: MediaQuery.of(context).platformBrightness ==
+                        Brightness.light
+                    ? AppTheme.light
+                    : AppTheme.dark,
+                builder: (p0, theme) => MainNavigationPage(),
+              ));
             }
           }
         },
