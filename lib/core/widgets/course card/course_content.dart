@@ -11,6 +11,7 @@ import 'package:student_hackerha/core/widgets/buttons/custom_button.dart';
 import 'package:student_hackerha/features/Enroll-Course/presentation/pages/course_inforamtion.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_price.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_tags.dart';
+import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
 import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
 
 class CourseContent extends StatelessWidget {
@@ -19,7 +20,7 @@ class CourseContent extends StatelessWidget {
   final String courseName;
   final String description;
   final List<String> tagsTitle;
-  final CourseEntity course;
+  final Course course;
 
   const CourseContent({
     super.key,
@@ -39,7 +40,7 @@ class CourseContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            courseName,
+            course.name,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: context.xHeadingMedium,
@@ -59,7 +60,7 @@ class CourseContent extends StatelessWidget {
             background: background,
           ),
           SizedBox(height: 11),
-          CoursePrice(newPrice:(course.id-2)*90 ,oldPrice:course.id*90 ,),
+          CoursePrice(newPrice:course.price,oldPrice: course.discount.dis?(course.price+ 1/course.discount.rate*course.price) :null),
           SizedBox(height: 8),
           CustomButton(
             onPressed: () {

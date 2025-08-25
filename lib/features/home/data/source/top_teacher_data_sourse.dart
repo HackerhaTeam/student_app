@@ -8,7 +8,7 @@ class TopTeacherDataSourse {
 
   TopTeacherDataSourse(this.dio); 
   Future <List<TeacherEntity>> getTopTeacher()async{
-    final response = await dio.get(HomeEndpoints.topTeachers);
+    final response = await dio.get("HomeEndpoints.topTeachers");
     final data = (response.data['data'] as List).map((item)=>TeachersModel.fromJson(item)).toList();
     return data;
   }

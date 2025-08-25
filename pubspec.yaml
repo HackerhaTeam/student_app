@@ -10,6 +10,7 @@ dependencies:
   animated_theme_switcher: ^2.0.10
   animations: ^2.0.11
   audioplayers: ^6.4.0
+  cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.8
   dartz: ^0.10.1
   day_night_switch: ^1.0.4

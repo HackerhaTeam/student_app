@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:student_hackerha/core/DI/service_locator.dart';
-import 'package:student_hackerha/core/Entities/course.dart';
-import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+
 import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
+import 'package:student_hackerha/core/widgets/animation/fade_widget.dart';
+import 'package:student_hackerha/core/widgets/shimmer/course_shimmer.dart';
 import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/courses_headdr.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/year_courses_page.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
+import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/GetCourses/get_courses_cubit.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/courses_failure_view.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/courses_loaded_view.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/courses_loading_view.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/year_courses_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/courses_headdr.dart';
 
 class CoursesTabPageBody extends StatefulWidget {
   const CoursesTabPageBody({super.key});
@@ -19,66 +24,65 @@ class CoursesTabPageBody extends StatefulWidget {
 }
 
 class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
-  
   final List<String> tags = [
     "كل الدورات",
     "خصومات",
     "دورات نظرية",
     "دورات عملية",
-    "دورات شاملة"
+    "دورات شاملة",
   ];
-  int selectedTagIndex = 0;
+
+  final List<String> yearTitles = [
+    "السنة الأولى",
+    "السنة الثانية",
+    "السنة الثالثة",
+    "السنة الرابعة",
+    "السنة الخامسة",
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<GetCoursesCubit>().getCoursesUsecase();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final isTablet = screenHeight > 850;
-    final listHeight = isTablet ? 340.h(context) : 340.h(context);
-    final yearTitles = [
-      "السنة الأولى",
-      "السنة الثانية",
-      "السنة الثالثة",
-      "السنة الرابعة",
-      "السنة الخامسة",
-    ];
-
     return SafeArea(
       child: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(child: CoursesPageHeader()),
-         
-          BlocBuilder<TagCubit, int>(
+
+          /// tags
+          SliverToBoxAdapter(
+            child: BlocBuilder<TagCubit, int>(
+              builder: (context, state) {
+                return TagsListView(
+                  selectedIndex: state,
+                  tagsName: tags,
+                );
+              },
+            ),
+          ),
+
+          /// courses by years
+          BlocBuilder<GetCoursesCubit, GetCoursesState>(
             builder: (context, state) {
-              return SliverToBoxAdapter(
-                child: TagsListView(selectedIndex: state, tagsName: tags),
-              );
+              if (state is GetCoursesLoading) {
+                return CoursesLoadingView(yearTitles: yearTitles);
+              } else if (state is GetCoursesFailure) {
+                return CoursesFailureView(message: state.errMessage);
+              } else if (state is GetCoursesLoaded) {
+                return CoursesLoadedView(
+                  yearTitles: yearTitles,
+                  courses: state.courses,
+                );
+              }
+              return const SliverToBoxAdapter(child: SizedBox());
             },
           ),
-     
-          ..._buildYearSections(yearTitles, listHeight),
         ],
       ),
     );
-  }
-
-  List<Widget> _buildYearSections(List<String> yearTitles, double listHeight) {
-    return yearTitles
-        .expand((title) => [
-              SliverToBoxAdapter(
-                  child: CoursesHeader(
-                      title: title,
-                      onPressed: () {
-                        context.navigateWithSlideTransition(YearCoursesPage());
-                      })),
-              const SliverToBoxAdapter(child: SizedBox(height: 16)),
-              SliverToBoxAdapter(
-                child:
-                    Padding(
-                      padding: const EdgeInsets.only(bottom:24 ),
-                      // child: CourseList( courses: courses, scrollDirection: Axis.horizontal,),
-                    ),
-              ),
-            ])
-        .toList();
   }
 }

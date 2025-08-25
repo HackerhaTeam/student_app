@@ -18,6 +18,7 @@ import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/core/widgets/shimmer/course_shimmer.dart';
 import 'package:student_hackerha/core/widgets/shimmer/course_shimmer_list.dart';
 import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/GetCourses/get_courses_cubit.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 import 'package:student_hackerha/core/widgets/course%20card/my_course_list_section.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
@@ -99,13 +100,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         ),
         SliverToBoxAdapter(child: SizedBox(height: 20)),
 
-        SliverToBoxAdapter(
-          child: BlocBuilder<RecentlyAddedCoursesCubit, RecentlyAddedCoursesState>(
-            builder: (context, state) {
-           return buildRecentlyAddedCoursesSection(state);
-            }
-          ),
-        ),
+        SliverToBoxAdapter(child: Text("data")),
         SliverToBoxAdapter(
           child: SizedBox(
             height: 24,
@@ -113,11 +108,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         ),
       
         SliverToBoxAdapter(
-          child: BlocBuilder<MyCoursesCubit, MyCoursesState>(
-            builder: (context, state) {
-       return   buildMyCoursesSection(state, border, background);
-            },
-          ),
+          child: Text("data"),
         ),
         SliverToBoxAdapter(
           child: SizedBox(

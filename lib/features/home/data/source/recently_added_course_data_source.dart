@@ -10,7 +10,7 @@ class RecentlyAddedCourseRemoteDataSource {
 
  
   Future<List<CourseModel>> getRecentlyAddedCourses() async {
-    final response = await dio.get(HomeEndpoints.recentlyAdded);
+    final response = await dio.get("HomeEndpoints.recentlyAdded");
     final data = (response.data['data'] as List)
         .map((item) => CourseModel.fromJson(item))
         .toList();

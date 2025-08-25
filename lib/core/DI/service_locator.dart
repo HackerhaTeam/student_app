@@ -6,8 +6,13 @@ import 'package:student_hackerha/core/Entities/course.dart';
 import 'package:student_hackerha/core/Entities/student.dart';
 import 'package:student_hackerha/core/Entities/subject.dart';
 import 'package:student_hackerha/core/Entities/teacher.dart';
-import 'package:student_hackerha/core/api/api_interceptors.dart';
+import 'package:student_hackerha/core/api/dio_consumer.dart';
 import 'package:student_hackerha/core/api/keys/api_keys.dart';
+import 'package:student_hackerha/features/courses/data/remote/course_remote_data_source.dart';
+import 'package:student_hackerha/features/courses/data/repositories/course_repo_impl.dart';
+import 'package:student_hackerha/features/courses/domain/repositories/CourseRepo.dart';
+import 'package:student_hackerha/features/courses/domain/usecase/courses_usecase.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/GetCourses/get_courses_cubit.dart';
 import 'package:student_hackerha/features/home/data/repositories/my_coureses_repo_impl.dart';
 import 'package:student_hackerha/features/home/data/repositories/recently_added_course_repo_impl.dart';
 import 'package:student_hackerha/features/home/data/repositories/top_teacher_repsioties_impl.dart';
@@ -195,8 +200,35 @@ final sl = GetIt.instance;
 
 void init() {
   // Dio
+   sl.registerLazySingleton<DioConsumer>((){
+  DioConsumer dioConsumer=  DioConsumer(dio: Dio()); 
+  return dioConsumer;},);
+
+  // Data Source
+  sl.registerLazySingleton<CourseRemoteDataSource>(
+    () => CourseRemoteDataSource( dioConsumer:sl()),
+  );
+
+
+  // Repository
+  sl.registerLazySingleton<CourseRepo>(
+    () => CourseRepoImpl(courseRemoteDataSource: sl()),
+    
+  );
+ 
+  sl.registerLazySingleton<GetCoursesUsecase>(
+    () => GetCoursesUsecase(courseRepo:sl()),
+  );
+
+  // Use Case
+
+  // Cubit
+  
+  sl.registerFactory(() => GetCoursesCubit(sl()));
+
+
   sl.registerLazySingleton<Dio>((){Dio dio = Dio();
-  dio.interceptors.add(ApiInterceptor());
+ 
   return dio;},);
 
   // Data Source

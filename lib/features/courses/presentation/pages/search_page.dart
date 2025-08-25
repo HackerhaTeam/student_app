@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:student_hackerha/core/DI/service_locator.dart';
-import 'package:student_hackerha/core/Entities/course.dart';
+
 import 'package:student_hackerha/core/constants/assets_image.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/helpers/tags/get_theme_icon.dart';
@@ -10,6 +10,7 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
+import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
 import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
@@ -74,7 +75,7 @@ class SearchPage extends StatelessWidget {
   }
 
   Widget _buildCoursesList(
-      BuildContext context, Size screenSize, List<CourseEntity> courses) {
+      BuildContext context, Size screenSize, List<Course> courses) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 10.w(context)),
       child: CourseList(

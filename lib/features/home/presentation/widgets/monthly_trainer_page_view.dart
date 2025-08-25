@@ -71,12 +71,7 @@ class _MonthlyTrainerPageViewState extends State<MonthlyTrainerPageView> {
     final bg = widget.bg;
     final border = widget.border;
 
-  return  BlocBuilder<TopTeacherCubit, TopTeacherState>(
-  builder: (context, state) {
-  return  buildTopTeachers(state,context,_controller,bg,border,content!);
-     },
-  
-); 
+  return  Text("data"); 
  
 }
 

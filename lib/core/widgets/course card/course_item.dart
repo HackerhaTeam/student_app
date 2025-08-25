@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:student_hackerha/core/Entities/course.dart';
+
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
@@ -8,6 +8,7 @@ import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_content.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_image.dart';
 import 'package:student_hackerha/core/widgets/shimmer/course_shimmer.dart';
+import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
 import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
 
 class CoursesItem extends StatelessWidget {
@@ -16,7 +17,7 @@ class CoursesItem extends StatelessWidget {
 
   final List<String> tagsTitle;
 
-  final CourseEntity course;
+  final Course course;
  final double? width;
 
   const CoursesItem({
@@ -29,6 +30,8 @@ class CoursesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    var inHours2 = (DateTime.now().difference(course.updatedAt)).inDays;
     return CustomCard(
       width:width ?? MediaQuery.of(context).size.width * 0.75,
      borderRadius:21.r(context),
@@ -37,16 +40,16 @@ class CoursesItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CourseImage(
+          CourseImage(url: course.image,
             border: border,
             background: background,
-            isNew: true,
+            isNew:inHours2< 5,
           ),
           CourseContent(course: course,
             border: border,
             background: background,
             courseName: course.name,
-            description: course.summary,
+            description: course.description,
             tagsTitle: tagsTitle,
           ),
         ],

@@ -35,7 +35,7 @@ class MyCoursesItem extends StatelessWidget {
           CourseImage(
             border: border,
             background: background,
-            isNew: false,
+            isNew: false, url: '',
           ),
           MyCourseCard(
             imageUrl: AppImages.courseImage,

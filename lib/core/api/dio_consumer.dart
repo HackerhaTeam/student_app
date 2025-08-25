@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:student_hackerha/core/api/api_consumer.dart';
-import 'package:student_hackerha/core/api/api_interceptors.dart';
 import 'package:student_hackerha/core/api/keys/api_keys.dart';
 import 'package:student_hackerha/core/error/exceptions.dart';
 
@@ -10,15 +9,9 @@ class DioConsumer extends ApiConsumer {
 
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = BaseUrl.baseUrl;
-    dio.interceptors.add(ApiInterceptor());
-    dio.interceptors.add(LogInterceptor(
-      request: true,
-      requestHeader: true,
-      requestBody: true,
-      responseHeader: true,
-      responseBody: true,
-      error: true,
-    ));
+    dio.options.headers['Authorization'] ="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWNmYTVlM2I0YThhNjRhMzdjNWU0MiIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MjAyMjU4LCJleHAiOjE3NTc3OTQyNTh9.2uxoXPq8OD6HEDrgfeE4XIWkQ5u-G9PSYZ90-zsdjVQ";
+    
+    
   }
 
   @override

@@ -9,7 +9,7 @@ class MyCoursesDataSource
 
   MyCoursesDataSource(this.dio);
   Future<List<CourseEntity>> getMyCourses()async{
-    final response = await dio.get(HomeEndpoints.myCourses  );
+    final response = await dio.get("HomeEndpoints.myCourses"  );
     final data = (response.data ['data'] as List).map((element)=> CourseModel.fromJson(element)).toList();
     return data;
   }
