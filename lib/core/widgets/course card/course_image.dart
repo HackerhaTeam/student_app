@@ -34,7 +34,7 @@ class CourseImage extends StatelessWidget {
             imageUrl: url,
             width: double.infinity,
             height: 140,
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
 
             // shimmer أثناء التحميل
             placeholder: (context, url) => Shimmer.fromColors(
