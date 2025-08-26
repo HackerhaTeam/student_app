@@ -17,7 +17,6 @@ class YearPageHeader extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    final content = Theme.of(context).extension<AppContent>()!;
     return Padding(
       padding: EdgeInsets.only( 
           top: 20.h(context), right: 20.w(context), left: 20.w(context)),
@@ -42,11 +41,7 @@ class YearPageHeader extends StatelessWidget {
                 title,
                 style: context.xHeadingLarge,
               ),
-              Text(
-                title,
-                style: context.xLabelSmall.copyWith(color: content.secondary),
-              )
-            ],
+                          ],
           ),
           const Spacer(),
           CustomCircleIcon(

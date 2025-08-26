@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:student_hackerha/core/DI/service_locator.dart';
-import 'package:student_hackerha/core/Entities/course.dart';
+
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/widgets/animation/fade_widget.dart';
+import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/tabBar_semester.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/year_page_header.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
 
-class YearCoursesPage extends StatefulWidget {
-  const YearCoursesPage({super.key});
 
+
+class YearCoursesPage extends StatefulWidget {
+  const YearCoursesPage({super.key, required this.year, required this.course});
+final String year;
+final List<Course> course;
   @override
   State<YearCoursesPage> createState() => _YearCoursesPageState();
 }
@@ -47,50 +52,47 @@ class _YearCoursesPageState extends State<YearCoursesPage>
   @override
   Widget build(BuildContext context) {
 
+    List<Course> firstSemester = widget.course.where((c)=>c.semester=="فصل اول").toList();
+    List<Course> secondSemester = widget.course.where((c)=>c.semester=="فصل ثاني").toList();
 
     return Scaffold(
-        body: SafeArea(
-      child: CustomScrollView(slivers: [
-        SliverToBoxAdapter(
-          child: Column(
-            children: [
-              YearPageHeader(title: "السنة الأولى"),
-              TabBarSemester(
-                tabController: _tabController,
-                pageController: _pageController,
-              ),
-              SizedBox(height: 24.h(context)),
-            ],
-          ),
+  body: SafeArea(
+    child: Column(
+      children: [
+        YearPageHeader(title: widget.year),
+        TabBarSemester(
+          tabController: _tabController,
+          pageController: _pageController,
         ),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
-            child: SizedBox(
-              height: 307, // أو أي ارتفاع يناسب تصميمك
-              child: PageView(
-                controller: _pageController,
-                onPageChanged: (index) {
-                  setState(() {
-                    _currentTabIndex = index;
-                    _tabController.animateTo(index);
-                  });
-                },
-                children: [
-                  // CourseList(
-                  //   courses: courses.where((course) => course.year == 1).toList(),
-                  //   scrollDirection: Axis.horizontal,
-                  // ),
-                  // CourseList(
-                  //   courses: courses.where((course) => course.year == 2).toList(),
-                  //   scrollDirection: Axis.horizontal,
-                  // ),
-                ],
-              ),
-            ),
-          ),
+        SizedBox(height: 24.h(context)),
+        Expanded(
+  child: PageView(
+    controller: _pageController,
+    onPageChanged: (index) {
+      _tabController.animateTo(index); 
+    },
+    children: [
+      FadeInWidget(
+        child: CourseList(
+          courses: firstSemester, 
+          scrollDirection: Axis.vertical,
         ),
-      ]),
-    ));
+      ),
+      FadeInWidget(
+        child: CourseList(
+          courses: secondSemester, 
+          scrollDirection: Axis.vertical,
+        ),
+      ),
+    ],
+  ),
+)
+
+,
+      ],
+    ),
+  ),
+);
+
   }
 }

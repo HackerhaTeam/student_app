@@ -25,9 +25,9 @@ class CoursesLoadedView extends StatelessWidget {
       case "السنة الثالثة":
         return "سنة ثالثة";
       case "السنة الرابعة":
-        return "سنة رابعة";
+        return "سنة الرابعة";
       case "السنة الخامسة":
-        return "سنة خامسة";
+        return "سنة الخامسة";
       default:
         return "";
     }
@@ -49,8 +49,14 @@ class CoursesLoadedView extends StatelessWidget {
                   title: title,
                   onPressed: () {
                     context.navigateWithSlideTransition(
-                      const YearCoursesPage(),
-                    );
+  YearCoursesPage(
+    year: title,
+    course: list
+        .where((element) => element.year == _mapYearTitleToKey(title))
+        .toList(),
+  ),
+);
+
                   },
                 ),
               ),
