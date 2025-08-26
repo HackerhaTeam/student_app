@@ -10,6 +10,7 @@ extension CustomTextStyles on BuildContext {
         height: AppTypography.lineHeight1000(this) /
             AppTypography.fontSize700(this),
         fontWeight: AppTypography.regular,
+        
       );
 
   TextStyle get xDisplayMedium => TextStyle(

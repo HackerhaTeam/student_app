@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_string_escapes
 
+import 'dart:developer';
+
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +16,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 
 void main() {
+  
   setupDependencies();
   setupServerLocator();
   runApp(
@@ -35,6 +38,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+   
     return ThemeProvider(
      duration: Duration(milliseconds: 300),
             initTheme:
@@ -44,7 +48,7 @@ class MyApp extends StatelessWidget {
                     builder: (_, myTheme) {
               return BlocBuilder<ThemeCubit, bool>(
         builder: (context, state) {
-          return MaterialApp(
+          return MaterialApp( 
                 locale: Locale('ar'),
                 localizationsDelegates: const [
                   GlobalMaterialLocalizations.delegate,
@@ -58,9 +62,12 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 theme: AppTheme.light,
                 darkTheme: AppTheme.dark,
-                home: BlocProvider(
-                  create: (context) => SearchCoursesCubit(),
-                  child: AuthWrapper(),
+                home: MediaQuery(
+                 data:  MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.0)),
+                  child: BlocProvider(
+                    create: (context) => SearchCoursesCubit(),
+                    child: AuthWrapper(),
+                  ),
                 ),
               );
   
