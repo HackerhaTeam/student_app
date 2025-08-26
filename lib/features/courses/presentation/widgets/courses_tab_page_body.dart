@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
-import 'package:student_hackerha/core/widgets/animation/fade_widget.dart';
-import 'package:student_hackerha/core/widgets/shimmer/course_shimmer.dart';
-import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
-import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/GetCourses/get_courses_cubit.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/courses_failure_view.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/courses_headdr.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/courses_loaded_view.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/courses_loading_view.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/year_courses_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/courses_headdr.dart';
+import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
 
 class CoursesTabPageBody extends StatefulWidget {
   const CoursesTabPageBody({super.key});
@@ -24,15 +19,15 @@ class CoursesTabPageBody extends StatefulWidget {
 }
 
 class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
-  final List<String> tags = [
-    "كل الدورات",
-    "خصومات",
-    "دورات نظرية",
-    "دورات عملية",
-    "دورات شاملة",
+  static const List<String> tags = [
+    "كل الدورات", // index 0
+    "خصومات", // index 1
+    "دورات نظرية", // index 2
+    "دورات عملية", // index 3
+    "دورات شاملة", // index 4
   ];
 
-  final List<String> yearTitles = [
+  static const List<String> yearTitles = [
     "السنة الأولى",
     "السنة الثانية",
     "السنة الثالثة",
@@ -52,37 +47,63 @@ class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
       child: CustomScrollView(
         slivers: [
           const SliverToBoxAdapter(child: CoursesPageHeader()),
-
-          /// tags
-          SliverToBoxAdapter(
-            child: BlocBuilder<TagCubit, int>(
-              builder: (context, state) {
-                return TagsListView(
-                  selectedIndex: state,
-                  tagsName: tags,
-                );
-              },
-            ),
-          ),
-
-          /// courses by years
-          BlocBuilder<GetCoursesCubit, GetCoursesState>(
-            builder: (context, state) {
-              if (state is GetCoursesLoading) {
-                return CoursesLoadingView(yearTitles: yearTitles);
-              } else if (state is GetCoursesFailure) {
-                return CoursesFailureView(message: state.errMessage);
-              } else if (state is GetCoursesLoaded) {
-                return CoursesLoadedView(
-                  yearTitles: yearTitles,
-                  courses: state.courses,
-                );
-              }
-              return const SliverToBoxAdapter(child: SizedBox());
-            },
-          ),
+          _buildTagsSection(),
+          _buildCoursesSection(),
         ],
       ),
     );
+  }
+
+  Widget _buildTagsSection() {
+    return SliverToBoxAdapter(
+      child: BlocBuilder<TagCubit, int>(
+        builder: (context, state) {
+          return TagsListView(
+            selectedIndex: state,
+            tagsName: tags,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildCoursesSection() {
+    return BlocBuilder<GetCoursesCubit, GetCoursesState>(
+      builder: (context, state) {
+        if (state is GetCoursesLoading) {
+          return CoursesLoadingView(yearTitles: yearTitles);
+        } else if (state is GetCoursesFailure) {
+          return CoursesFailureView(message: state.errMessage);
+        } else if (state is GetCoursesLoaded) {
+          return _buildFilteredCourses(state.courses);
+        }
+        return const SliverToBoxAdapter(child: SizedBox());
+      },
+    );
+  }
+
+  Widget _buildFilteredCourses(List<Course> courses) {
+    final tagNumber = context.watch<TagCubit>().state;
+    final filteredCourses = _filterCoursesByTag(courses, tagNumber);
+    
+    return CoursesLoadedView(
+      yearTitles: yearTitles,
+      courses: filteredCourses,
+    );
+  }
+
+  List<Course> _filterCoursesByTag(List<Course> courses, int tagNumber) {
+    switch (tagNumber) {
+      case 1: // خصومات
+        return courses.where((course) => course.discount.dis).toList();
+      case 2: // دورات نظرية
+        return courses.where((course) => course.type == "نظري").toList();
+      case 3: // دورات عملية
+        return courses.where((course) => course.type == "عملي").toList();
+      case 4: // دورات شاملة
+        return courses.where((course) => course.type == "شاملة").toList();
+      default: // كل الدورات (tagNumber = 0)
+        return courses;
+    }
   }
 }
