@@ -33,8 +33,7 @@ class MyCoursesItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CourseImage(
-            border: border,
-            background: background,
+          
             isNew: false, url: '',
           ),
           MyCourseCard(

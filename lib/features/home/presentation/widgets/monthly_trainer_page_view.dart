@@ -67,10 +67,7 @@ class _MonthlyTrainerPageViewState extends State<MonthlyTrainerPageView> {
 
   @override
   Widget build(BuildContext context) {
-    final content = Theme.of(context).extension<AppContent>();
-    final bg = widget.bg;
-    final border = widget.border;
-
+   
   return  Text("data"); 
  
 }

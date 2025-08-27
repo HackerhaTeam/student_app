@@ -40,10 +40,12 @@ class CoursesItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CourseImage(url: course.image,
-            border: border,
-            background: background,
-            isNew:inHours2< 5,
+          Padding(
+            padding:  EdgeInsets.only(top: 12,left:12.w(context),right: 12.w(context)),
+            child: CourseImage(url: course.image,
+             
+              isNew:inHours2< 5,
+            ),
           ),
           CourseContent(course: course,
             border: border,
