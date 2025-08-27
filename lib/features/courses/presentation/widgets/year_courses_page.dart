@@ -4,6 +4,7 @@ import 'package:student_hackerha/core/DI/service_locator.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/widgets/animation/fade_widget.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/no_courses_foundbody.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/tabBar_semester.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/year_page_header.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
@@ -23,7 +24,7 @@ class _YearCoursesPageState extends State<YearCoursesPage>
   late TabController _tabController;
   late PageController _pageController;
 
-  int _currentTabIndex = 0;
+  final int _currentTabIndex = 0;
 
   @override
   void initState() {
@@ -72,18 +73,18 @@ class _YearCoursesPageState extends State<YearCoursesPage>
       _tabController.animateTo(index); 
     },
     children: [
-      FadeInWidget(
+  firstSemester.isNotEmpty?    FadeInWidget(
         child: CourseList(
           courses: firstSemester, 
           scrollDirection: Axis.vertical,
         ),
-      ),
-      FadeInWidget(
+      ):NoCoursesFoundbody(),
+    secondSemester.isNotEmpty?  FadeInWidget(
         child: CourseList(
           courses: secondSemester, 
           scrollDirection: Axis.vertical,
         ),
-      ),
+      ):NoCoursesFoundbody(),
     ],
   ),
 )

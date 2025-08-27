@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:student_hackerha/core/constants/assets_image.dart';
+import 'package:student_hackerha/core/functions/get_responsive_size.dart';
+import 'package:student_hackerha/core/helpers/tags/get_theme_icon.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/courses_headdr.dart';
@@ -13,15 +15,13 @@ class NoCoursesFoundbody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final content = Theme.of(context).extension<AppContent>();
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Column(
       children: [
-        CoursesPageHeader(),
-        SizedBox(
-          height: 160.54,
-        ),
+     
+        SizedBox(height: 80.h(context),),
         SvgPicture.asset(
-            isDark ? AppImages.noCoursesDarkImage : AppImages.noCoursesImage),
+          getThemeIcon(context, AppImages.noCoursesImageDark, AppImages.noCoursesImageLight)),
         Wrap(
           alignment: WrapAlignment.center,
           children: [
@@ -36,7 +36,8 @@ class NoCoursesFoundbody extends StatelessWidget {
               "ترقبوا! سيتم إضافة دورات جديدة قريبًا.",
               style: context.xParagraphLargeNormal
                   .copyWith(color: content!.tertiary),
-            )
+            ),
+            Spacer()
           ],
         )
       ],

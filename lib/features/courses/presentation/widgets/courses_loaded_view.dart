@@ -3,6 +3,7 @@ import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/widgets/animation/fade_widget.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/no_courses_foundbody.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/year_courses_page.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
 
@@ -35,6 +36,9 @@ class CoursesLoadedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (courses.isEmpty) {
+      return SliverToBoxAdapter(child: NoCoursesFoundbody());
+    }
     return SliverList(
       delegate: SliverChildListDelegate(
         yearTitles.expand((title) {
