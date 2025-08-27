@@ -1,16 +1,19 @@
 import 'package:dio/dio.dart';
+import 'package:student_hackerha/core/api/dio_consumer.dart';
 import 'package:student_hackerha/core/api/keys/api_keys.dart';
-import 'package:student_hackerha/features/home/data/models/recently_added_model.dart';
-import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
+import 'package:student_hackerha/features/courses/data/models/course_model.dart';
+import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
+
+
 
 class MyCoursesDataSource 
 {
-  final Dio dio ;
+  final DioConsumer dio ;
 
   MyCoursesDataSource(this.dio);
-  Future<List<CourseEntity>> getMyCourses()async{
-    final response = await dio.get("HomeEndpoints.myCourses"  );
-    final data = (response.data ['data'] as List).map((element)=> CourseModel.fromJson(element)).toList();
+  Future<List<Course>> getMyCourses()async{
+    final response = await dio.get("/api/hackit/ctrl/course",queryParameters: {"createdLessThanDays":10});
+    final data = (response as List).map((element)=> CourseModel.fromJson(element)).toList();
     return data;
   }
 }

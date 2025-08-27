@@ -10,7 +10,7 @@ sealed class MyCoursesState extends Equatable {
 final class MyCoursesInitial extends MyCoursesState {}
 final class MyCoursesLoading extends MyCoursesState {}
 final class MyCoursesLoaded extends MyCoursesState {
-  final List<CourseEntity> courses ;
+  final List<Course> courses ;
 
   const MyCoursesLoaded(this.courses);
 }

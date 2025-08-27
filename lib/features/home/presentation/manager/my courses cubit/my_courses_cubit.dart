@@ -2,7 +2,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:student_hackerha/core/error/exceptions.dart';
-import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
+import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
+
 import 'package:student_hackerha/features/home/domain/usecase/my_courses_usecase.dart';
 
 part 'my_courses_state.dart';
