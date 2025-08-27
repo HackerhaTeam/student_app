@@ -60,7 +60,9 @@ class CoursesLoadedView extends StatelessWidget {
                   },
                 ),
               ),
+                if (list.isNotEmpty)
             const SizedBox(height: 16),
+              if (list.isNotEmpty)
             FadeInWidget(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 24),

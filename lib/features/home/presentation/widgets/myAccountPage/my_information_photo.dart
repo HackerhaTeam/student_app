@@ -8,19 +8,14 @@ class MyInformationPhoto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 64.w(context),
+    return ClipRRect(borderRadius: BorderRadiusGeometry.circular(24),
+      child: Image.network(
+      "https://static.photofeeler.com/images/home/test-box/01.jpg",
+      width: 64,
       height: 64,
-      decoration: ShapeDecoration(
-        image: const DecorationImage(
-          image: NetworkImage(
-              "https://static.photofeeler.com/images/home/test-box/01.jpg"),
-          fit: BoxFit.cover,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24.r(context)),
-        ),
+      
       ),
-    );
+    )
+;
   }
 }

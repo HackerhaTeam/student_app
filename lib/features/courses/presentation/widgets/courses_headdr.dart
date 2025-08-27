@@ -19,7 +19,7 @@ class CoursesPageHeader extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            'الرئيسية',
+            'الدورات',
             style: context.xHeadingLarge,
           ),
           const Spacer(),
