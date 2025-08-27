@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/widgets/animation/fade_widget.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
@@ -16,8 +17,8 @@ class CoursesLoadingView extends StatelessWidget {
     return SliverList(
       delegate: SliverChildListDelegate(
         yearTitles.map((_) {
-          return const Padding(
-            padding: EdgeInsets.only(bottom: 24),
+          return  Padding(
+            padding: EdgeInsets.only(bottom: 24,left:20.w(context) ,right: 20.w(context)),
             child: CourseShimmer(),
           );
         }).toList(),
