@@ -27,6 +27,7 @@ class CourseImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.vertical(
         top: Radius.circular(12.r(context)),
+        bottom: Radius.circular(12.r(context)),
       ),
       child: Stack(
         alignment: Alignment.bottomRight,
@@ -61,7 +62,7 @@ class CourseImage extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(8),
               child: Padding(
-                padding:  EdgeInsets.only(left: 16.w(context),right: 16.w(context),bottom: 8),
+                padding:  EdgeInsets.only(right: 8.w(context),bottom: 8),
                 child: Container(
                   decoration: BoxDecoration(
                   color: background.negativeStrong,
