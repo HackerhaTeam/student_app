@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:student_hackerha/core/helpers/price_formater.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/discount.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/session.dart';
 
@@ -19,7 +20,7 @@ class Course extends Equatable {
   final bool free;
   final DateTime createdAt;
   final DateTime updatedAt;
-  final List<Session> sessions; // غيرنا الاسم session → sessions و خليها non-nullable مع default []
+  final List<Session> sessions; 
 
   const Course({
     required this.discount,
@@ -40,6 +41,16 @@ class Course extends Equatable {
     required this.updatedAt,
     this.sessions = const [],
   });
+
+  // Getter جديد لعرض السعر بشكل منسق
+  String get formattedPrice {
+    return PriceFormatter.formatPrice(price);
+  }
+  
+  // Getter إضافي لعرض السعر مع فواصل
+  String get formattedPriceWithCommas {
+    return PriceFormatter.formatPriceWithCommas(price);
+  }
 
   // copyWith لتحديث أي حقل، خصوصًا الـ sessions
   Course copyWith({

@@ -15,31 +15,39 @@ class CoursesCubit extends Cubit<CoursesState> {
     result.fold(
         (failure) => emit(CoursesFailure(errMessage: failure.message!)),
         (courses) => emit(CoursesLoaded(courses: courses)));
+  }Future<void> loadCourseDetails(String courseId) async {
+    final currentState = state;
+
+   
+    emit(CoursesLoading());
+
+    if (currentState is CoursesLoaded) {
+      final result = await coursesUsecase.getCourseDetiles(courseId);
+
+      result.fold(
+        (failure) => emit(CoursesFailure(errMessage: failure.message!)),
+        (detailedCourse) {
+          final updatedCourses = currentState.courses.map((c) {
+            if (c.id == detailedCourse.id) {
+              return c.copyWith(sessions: detailedCourse.sessions);
+            }
+            return c;
+          }).toList();
+
+          emit(CoursesLoaded(courses: updatedCourses));
+        },
+      );
+    }
   }
-  Future<void> loadCourseDetails(String courseId) async {
-  // احفظ الـ state الحالي قبل الـ emit
-  final currentState = state;
 
-  emit(CoursesLoading());
-
-  if (currentState is CoursesLoaded) {
-    final result = await coursesUsecase.getCourseDetiles(courseId);
-
-    result.fold(
-      (failure) => emit(CoursesFailure(errMessage: failure.message!)),
-      (detailedCourse) {
-        final updatedCourses = currentState.courses.map((c) {
-          if (c.id == detailedCourse.id) {
-            return c.copyWith(sessions: detailedCourse.sessions);
-          }
-          return c;
-        }).toList();
-
-        emit(CoursesLoaded(courses: updatedCourses));
-      },
-    );
+  Course getCourseById(String courseId, Course fallback) {
+    final currentState = state;
+    if (currentState is CoursesLoaded) {
+      return currentState.courses.firstWhere(
+        (c) => c.id == courseId,
+        orElse: () => fallback,
+      );
+    }
+    return fallback;
   }
-}
-
-
 }

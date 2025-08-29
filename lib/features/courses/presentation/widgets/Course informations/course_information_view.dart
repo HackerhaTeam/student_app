@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
@@ -8,6 +10,10 @@ import 'package:student_hackerha/core/widgets/headers/custom_tabBar.dart';
 import 'package:student_hackerha/core/widgets/shimmer/course_shimmer.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/Courses/get_courses_cubit.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/course_content_section.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/sessions_section.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/shimmer_detiles_item.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/shimmer_detiles_section.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/tab_bar_header_delegate.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/bottom_navigation_price.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/course_info_card_icons.dart';
@@ -31,12 +37,13 @@ class CourseInformationView extends StatelessWidget {
     final cubit = context.read<CourseInfoCubit>();
     final screenHeight = MediaQuery.of(context).size.height;
     final background = Theme.of(context).extension<AppBackgrounds>()!;
+    final content = Theme.of(context).extension<AppContent>()!;
     return BlocBuilder<CourseInfoCubit, CourseInfoState>(
       builder: (context, state) {
         return Scaffold(
           bottomNavigationBar: cubit.tabController.index != 0
               ? BottomNavigationPrice(
-                  price: course.price,
+                  formattedPrice: course.formattedPrice,
                 )
               : null,
           backgroundColor: background.surfacePrimary,
@@ -52,7 +59,7 @@ class CourseInformationView extends StatelessWidget {
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 12)),
               CourseInfoPrice(
-                price: course.price,
+                formattedPrice: course.formattedPrice,
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 12)),
               CourseInfoCardIcons(
@@ -99,29 +106,12 @@ class CourseInformationView extends StatelessWidget {
                             scrollKey: cubit.teachersKey,
                             child: const TeachersSection(),
                           ),
-                          Section(
+                          CourseDetilesSection(
+                            course: course,
+                            courseId: course.id,
                             scrollKey: cubit.contentKey,
-                            child: BlocBuilder<CoursesCubit, CoursesState>(
-                              builder: (context, state) {
-                                if(state is CoursesLoaded){
-                           var courseDetail = state.courses.firstWhere(
-  (element) => element.id == course.id,
-  orElse: () => course, 
-);
-
-                                return  DetailesSection(
-                                  sessions: courseDetail.sessions,
-                                );
-                                }
-                                if (state is CoursesLoading) {
-                                  return CourseShimmer();
-                                }
-                                return DetailesSection(
-                                  sessions: course.sessions,
-                                );
-                              },
-                            ),
                           ),
+                          SessionsSection(),
                           Section(
                             scrollKey: cubit.reviewsKey,
                             child: ReviewsSection(),

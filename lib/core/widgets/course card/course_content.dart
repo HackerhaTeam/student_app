@@ -62,7 +62,7 @@ class CourseContent extends StatelessWidget {
             background: background,
           ),
           SizedBox(height: 11),
-          CoursePrice(newPrice:course.price,oldPrice: course.discount.dis?(course.price+ 1/course.discount.rate*course.price) :null),
+          CoursePrice(newPrice:course.formattedPrice,oldPrice: course.discount.dis?(course.price+ 1/course.discount.rate*course.price) :null),
           SizedBox(height: 8),
           CustomButton(
             onPressed: () {

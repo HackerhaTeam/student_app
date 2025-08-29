@@ -6,8 +6,8 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_card.dart';
 
-class LessonCard extends StatelessWidget {
-  const LessonCard({super.key});
+class SessionCard extends StatelessWidget {
+  const SessionCard({super.key});
 
   @override
   Widget build(BuildContext context) {

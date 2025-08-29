@@ -15,10 +15,10 @@ import 'package:student_hackerha/features/courses/presentation/widgets/Course%20
 
 class BottomSheetPrice extends StatelessWidget {
   const BottomSheetPrice({
-    super.key, required this.price,
+    super.key, required this.formattedPrice,
    
   });
-final num price;
+final String formattedPrice;
   
 
   @override
@@ -42,7 +42,7 @@ final num price;
             ),
             Padding(
               padding:  EdgeInsets.only(top:22,bottom: 22,right: 8.w(context) ),
-              child: CourseInfoPriceView(price: price,),
+              child: CourseInfoPriceView(formattedPrice:formattedPrice ,),
             ),SizedBox(width:20.w(context) ,
             ),Padding(
               padding: const EdgeInsets.only(top:16 ),

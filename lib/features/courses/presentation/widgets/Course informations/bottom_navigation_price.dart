@@ -10,9 +10,9 @@ import 'package:student_hackerha/features/courses/presentation/widgets/Course%20
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/floating_active_course_button.dart';
 
 class BottomNavigationPrice extends StatelessWidget {
-  final num price;
+  final String formattedPrice;
   const BottomNavigationPrice({
-    super.key, required this.price,
+    super.key, required this.formattedPrice,
     
   });
 
@@ -42,7 +42,7 @@ class BottomNavigationPrice extends StatelessWidget {
               iconSize: 22,
             ),
             SizedBox(width: 8.w(context)),
-            CourseInfoPriceView(price: price,),
+            CourseInfoPriceView(formattedPrice: formattedPrice,),
             SizedBox(width: 20.w(context)),
             ActiveCourseButton(width: 184.w(context)),
           ],

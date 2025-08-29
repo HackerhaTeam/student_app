@@ -19,7 +19,7 @@ extension SessionListX on List<Session> {
     } else if (minutes == 0) {
       return "$hours س";
     } else {
-      return "$hours ساعة و $minutes دقيقة";
+      return "$hours س و $minutes د";
     }
   }
 }

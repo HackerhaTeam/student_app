@@ -16,11 +16,11 @@ class Section extends StatelessWidget {
   Widget build(BuildContext context) {
   
     return CustomCard(
-      // لا تستخدم scrollKey هنا!
+   
       key: key,
       padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
       child: Container(
-        key: scrollKey, // نستخدمه فقط كموقع مرجعي للتمرير
+        key: scrollKey, 
         child: child,
       ),
     );

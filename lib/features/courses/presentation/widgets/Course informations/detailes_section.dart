@@ -3,10 +3,12 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/core/widgets/animation/fade_widget.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/session.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/session_extention.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/detiles_item.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/lesson_card.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/session_card.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/sessions_section.dart';
 
 class DetailesSection extends StatelessWidget {
   const DetailesSection({super.key, required this.sessions});
@@ -15,70 +17,53 @@ class DetailesSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final content = Theme.of(context).extension<AppContent>()!;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          child: Text(
-            "محتويات الدورة",
-            style: context.xHeadingLarge,
+    return FadeInWidget(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+       
+          SizedBox(
+            height: 12,
           ),
-        ),
-        Text(
-          "البيانات الرئيسية",
-          style: context.xHeadingSmall.copyWith(color: content.secondary),
-        ),
-        SizedBox(
-          height: 12,
-        ),
-        Wrap(
-          spacing: 8.w(context),
-          runSpacing: 8.w(context),
-          children: [
-            DetilesItem(
-                title: 'مدة الدورة',
-                value: sessions.totalDurationFormatted,
-                icon: PhosphorIcons.clock()),
-            DetilesItem(
-                title: 'عدد مقاطع',
-                value: sessions.length.toString(),
-                icon: PhosphorIcons.clock()),
-            DetilesItem(
-                title: 'عدد الملفات المرفقة',
-                value: sessions.totalFiles.toString(),
-                icon: PhosphorIcons.clock()),
-            DetilesItem(
-                title: 'عدد كويزات',
-                value: "${2}",
-                icon: PhosphorIcons.clock()),
-            SizedBox(
-              height: 16,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "الجلسات",
-                  textAlign: TextAlign.start,
-                  style:
-                      context.xHeadingSmall.copyWith(color: content.secondary),
-                ),
-                const SizedBox(height: 12),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 4,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: const LessonCard(),
+          Wrap(
+            spacing: 8.w(context),
+            runSpacing: 8.w(context),
+            children: [
+              DetilesItem(
+                  title: 'مدة الدورة',
+                  value: sessions.totalDurationFormatted,
+                  icon: PhosphorIcons.clock()),
+              DetilesItem(
+                  title: 'عدد مقاطع',
+                  value: sessions.length.toString(),
+                  icon: PhosphorIcons.clock()),
+              DetilesItem(
+                  title: 'عدد الملفات المرفقة',
+                  value: sessions.totalFiles.toString(),
+                  icon: PhosphorIcons.clock()),
+              DetilesItem(
+                  title: 'عدد كويزات',
+                  value: "${2}",
+                  icon: PhosphorIcons.clock()),
+              SizedBox(
+                height: 16,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "الجلسات",
+                    textAlign: TextAlign.start,
+                    style:
+                        context.xHeadingSmall.copyWith(color: content.secondary),
                   ),
-                ),
-              ],
-            )
-          ],
-        ),
-      ],
+                  const SizedBox(height: 12),
+                ],
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
