@@ -6,10 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/widgets/headers/custom_tabBar.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/manager/cubit/course_info_cubit.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/app_bar_background.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/app_bar_title.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/course_information_body.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/app_bar_background.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/app_bar_title.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/course_information_body.dart';
 class CourseInfoSliverAppBar extends StatelessWidget {
   const CourseInfoSliverAppBar({super.key});
 

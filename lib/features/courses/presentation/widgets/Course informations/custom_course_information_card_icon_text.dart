@@ -9,7 +9,7 @@ import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/widgets/custom_card.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/icon_text.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/icon_text.dart';
 
 class CustomCourseInformationCardIconText extends StatelessWidget {
   const CustomCourseInformationCardIconText({

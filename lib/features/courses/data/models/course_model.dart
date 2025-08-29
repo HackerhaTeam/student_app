@@ -21,7 +21,12 @@ class CourseModel extends Course {
       required super.free,
       required super.createdAt,
       required super.updatedAt});
+
+
+
+
   factory CourseModel.fromJson(Map<String, dynamic> json) {
+    
     return CourseModel(
         discount:DiscountModel.fromJson(json[DiscountKeys.discount]),
         id: json[CourseKeys.id],

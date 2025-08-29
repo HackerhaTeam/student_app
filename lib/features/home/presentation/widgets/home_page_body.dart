@@ -22,8 +22,8 @@ import 'package:student_hackerha/features/courses/presentation/manager/cubit/Get
 import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 import 'package:student_hackerha/core/widgets/course%20card/my_course_list_section.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/courses_failure_view.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/courses_loading_view.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/CoursesTabPage/courses_failure_view.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/CoursesTabPage/courses_loading_view.dart';
 import 'package:student_hackerha/features/home/domain/Entity/course_entity.dart';
 import 'package:student_hackerha/features/home/presentation/manager/my%20courses%20cubit/my_courses_cubit.dart';
 import 'package:student_hackerha/features/home/presentation/manager/recentlyAddedCourseCubit/recently_added_course_cubit.dart';
@@ -105,7 +105,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         SliverToBoxAdapter(child: BlocBuilder<GetCoursesCubit, GetCoursesState>(
       builder: (context, state) {
         if (state is GetCoursesLoading) {
-          return CoursesLoadingView(yearTitles: []);
+          return CourseShimmer();
         } else if (state is GetCoursesFailure) {
           return CoursesFailureView(message: state.errMessage);
         } else if (state is GetCoursesLoaded) {

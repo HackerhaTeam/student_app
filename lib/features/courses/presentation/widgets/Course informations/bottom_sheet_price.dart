@@ -10,8 +10,8 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/core/widgets/rounded_square_icon.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/course_info_price.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/floating_active_course_button.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/course_info_price.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/floating_active_course_button.dart';
 
 class BottomSheetPrice extends StatelessWidget {
   const BottomSheetPrice({

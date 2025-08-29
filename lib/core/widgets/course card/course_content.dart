@@ -8,7 +8,7 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/buttons/custom_button.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/pages/course_inforamtion.dart';
+import 'package:student_hackerha/features/courses/presentation/pages/course_inforamtion.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_price.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_tags.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/course.dart';

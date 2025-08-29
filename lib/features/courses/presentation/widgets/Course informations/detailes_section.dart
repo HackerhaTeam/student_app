@@ -3,8 +3,8 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/detiles_item.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/lesson_card.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/detiles_item.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/lesson_card.dart';
 
 class DetailesSection extends StatelessWidget {
   const DetailesSection({super.key});

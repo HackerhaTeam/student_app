@@ -7,7 +7,7 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/custom_card.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/reviews/rating_stars.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/reviews/rating_stars.dart';
 
 class ReviewsSection extends StatelessWidget {
   const ReviewsSection({

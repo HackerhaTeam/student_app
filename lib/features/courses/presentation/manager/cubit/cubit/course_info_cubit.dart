@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/manager/cubit/course_info_state.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/cubit/course_info_state.dart';
 
 class CourseInfoCubit extends Cubit<CourseInfoState> {
   final ScrollController scrollController;

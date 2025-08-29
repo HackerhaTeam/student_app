@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/GetCourses/get_courses_cubit.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/courses_failure_view.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/courses_headdr.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/courses_loaded_view.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/courses_loading_view.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/CoursesTabPage/courses_failure_view.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/CoursesTabPage/courses_headdr.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/CoursesTabPage/courses_loaded_view.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/CoursesTabPage/courses_loading_view.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/courses_header.dart';
 import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
 

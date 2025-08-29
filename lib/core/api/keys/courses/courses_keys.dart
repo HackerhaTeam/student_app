@@ -13,6 +13,7 @@ class CourseKeys {
   static const String about = 'about';
   static const String video = 'video';
   static const String free = 'free';
+  static const String session = 'session';
   static const String createdAt = 'createdAt';
   static const String updatedAt = 'updatedAt';
 }

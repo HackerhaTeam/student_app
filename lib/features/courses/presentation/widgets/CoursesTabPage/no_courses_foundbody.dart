@@ -6,7 +6,7 @@ import 'package:student_hackerha/core/helpers/tags/get_theme_icon.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/animation/fade_widget.dart';
-import 'package:student_hackerha/features/courses/presentation/widgets/courses_headdr.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/CoursesTabPage/courses_headdr.dart';
 
 class NoCoursesFoundbody extends StatelessWidget {
   const NoCoursesFoundbody({

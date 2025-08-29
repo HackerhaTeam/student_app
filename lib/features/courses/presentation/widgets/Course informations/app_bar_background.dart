@@ -8,7 +8,7 @@ import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/widgets/custom_circle_icon.dart';
-import 'package:student_hackerha/features/Enroll-Course/presentation/widgets/Course%20informations/course_information_image.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/course_information_image.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 
 class AppBarBackground extends StatelessWidget {
