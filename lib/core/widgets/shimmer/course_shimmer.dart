@@ -7,7 +7,7 @@ import 'package:student_hackerha/core/widgets/custom_card.dart';
 class CourseShimmer extends StatelessWidget {
   const CourseShimmer({
     super.key,
-     this.width,
+    this.width,
   });
 
   final double? width;
@@ -15,16 +15,17 @@ class CourseShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor:Theme.of(context).extension<AppBackgrounds>()!.shemmerBg ,
-      highlightColor: Colors.white,
+      baseColor: Theme.of(context).extension<AppBackgrounds>()!.shemmerBg,
+      highlightColor: Colors.grey[100]!,
       child: CustomCard(
-       
-    
-     
-      child: Container( height: 294,
-      decoration: BoxDecoration(color: Colors.white,   borderRadius:BorderRadius.circular(21.r(context)),),
-        width:width ?? MediaQuery.of(context).size.width * 0.75,)
-      ),
+          child: Container(
+        height: 294,
+        decoration: BoxDecoration(
+          color: Colors.grey[100]!,
+          borderRadius: BorderRadius.circular(21.r(context)),
+        ),
+        width: width ?? MediaQuery.of(context).size.width * 0.75,
+      )),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 
 class ShimmerDetilesItem extends StatelessWidget {
   final double width;
@@ -28,7 +29,8 @@ class ShimmerDetilesItem extends StatelessWidget {
         ],
       ),
       child: Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
+            baseColor:Theme.of(context).extension<AppBackgrounds>()!.shemmerBg ,
+
         highlightColor: Colors.grey[100]!,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
