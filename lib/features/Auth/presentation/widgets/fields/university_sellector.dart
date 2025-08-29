@@ -24,10 +24,10 @@ class UniversitySellector extends StatelessWidget {
           : AutovalidateMode.disabled,
       child: SizedBox(
         width: 372.w(context),
-        height: 59,
+        // height: 59,
         child: CustomDropdown(
           width: 372.w(context),
-          height: 59,
+          // height: 59,
           label: "الجامعة",
           items: ['جامعة حلب', 'جامعة قرطبة', 'جامعة إيبلا', 'جامعة الشهباء'],
           selectedValue: selectedUniversity,

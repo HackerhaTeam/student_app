@@ -94,14 +94,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
             : widget.obscureOverride,
         style: styles.xLabelLarge,
         decoration: InputDecoration(
-          isDense: true,
+          errorMaxLines: 2,
+          // isDense: false,
           helperText: '',
-          helperStyle: TextStyle(height: 0.5, fontSize: 12),
-          errorStyle: const TextStyle(
-            fontSize: 12,
-            color: Colors.red,
-            height: 0.5,
-          ),
+          helperStyle: context.xParagraphSmall,
+          //TextStyle(fontSize: 12),
+          errorStyle: context.xParagraphSmall,
+          // const TextStyle(
+          //   fontSize: 12,
+          //   color: Colors.red,
+          //   // height: 0.5,
+          // ),
           contentPadding: widget.contentPadding ??
               const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           labelText: widget.label,
@@ -128,6 +131,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(widget.radius),
             borderSide: BorderSide(color: backgrounds.primaryBrand),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.radius),
+            borderSide: BorderSide(color: content.negative),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(widget.radius),

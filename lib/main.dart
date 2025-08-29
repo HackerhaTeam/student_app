@@ -16,7 +16,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:student_hackerha/features/home/presentation/widgets/navbar/main_navigation.dart';
 
 void main() {
-  
   setupDependencies();
   setupServerLocator();
   runApp(
@@ -38,43 +37,40 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-   
     return ThemeProvider(
-     duration: Duration(milliseconds: 300),
-            initTheme:
-                MediaQuery.of(context).platformBrightness == Brightness.light
-                    ? AppTheme.light
-                    : AppTheme.dark,
-                    builder: (_, myTheme) {
-              return BlocBuilder<ThemeCubit, bool>(
-        builder: (context, state) {
-          return MaterialApp( 
-                locale: Locale('ar'),
-                localizationsDelegates: const [
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: [
-                  const Locale('ar'),
-                  const Locale('en'),
-                ],
-                debugShowCheckedModeBanner: false,
-                theme: AppTheme.light,
-                darkTheme: AppTheme.dark,
-                home: MediaQuery(
-                 data:  MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.0)),
-                  child: BlocProvider(
-                    create: (context) => SearchCoursesCubit(),
-                    child: AuthWrapper(),
-                  ),
+      duration: Duration(milliseconds: 300),
+      initTheme: MediaQuery.of(context).platformBrightness == Brightness.light
+          ? AppTheme.light
+          : AppTheme.dark,
+      builder: (_, myTheme) {
+        return BlocBuilder<ThemeCubit, bool>(
+          builder: (context, state) {
+            return MaterialApp(
+              locale: Locale('ar'),
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: [
+                const Locale('ar'),
+                const Locale('en'),
+              ],
+              debugShowCheckedModeBanner: false,
+              theme: AppTheme.light,
+              darkTheme: AppTheme.dark,
+              home: MediaQuery(
+                data: MediaQuery.of(context)
+                    .copyWith(textScaler: TextScaler.linear(1.0)),
+                child: BlocProvider(
+                  create: (context) => SearchCoursesCubit(),
+                  child: MainNavigationPage(),
                 ),
-              );
-  
-        },
-      ) ;
-            },
-   
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }

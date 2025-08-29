@@ -62,7 +62,7 @@ class CustomPagesHeader extends StatelessWidget {
           backgroundColor: backgrounds.onSurfaceSecondary,
           onTap: () {
             FocusScope.of(context).unfocus();
-            
+
             onBack();
           },
           iconAsset: getThemeIcon(

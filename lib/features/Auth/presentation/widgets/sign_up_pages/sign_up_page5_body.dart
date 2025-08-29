@@ -43,6 +43,8 @@ class _SignUpPage5BodyState extends State<SignUpPage5Body> {
     final styles = context;
     return Scaffold(
       floatingActionButton: FloatingNextButton(
+        width: 241,
+        buttonText: "إرسال رمز التحقق للبريد الإلكتروني",
         formKey: formKey,
         onNext: () {
           setState(() {

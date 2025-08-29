@@ -52,15 +52,16 @@ class _EnrollCourseWraperState extends State<EnrollCourseWraper> {
             CustomPagesHeader(
               progress: _progress,
               backgrounds: backgrounds,
-           
-              onBack: ()=> Navigator.pop(context),
+              onBack: () => _currentPage == 0
+                  ? Navigator.pop(context)
+                  : _goToPreviousPage(),
               currentPage: _currentPage,
               isAuth: false,
             ),
             // PageView
             Expanded(
               child: PageView(
-                key: const PageStorageKey('auth_pages'),
+                // key: const PageStorageKey('auth_pages'),
                 controller: _controller,
                 physics: const NeverScrollableScrollPhysics(),
                 onPageChanged: (index) {

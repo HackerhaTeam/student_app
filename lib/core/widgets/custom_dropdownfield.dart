@@ -77,7 +77,7 @@ class _CustomDropdownState extends State<CustomDropdown>
         case DropdownType.university:
           return 'يرجى اختيار الجامعة';
         case DropdownType.academicYear:
-          return 'يرجى اختيار السنة الدراسية';
+          return 'اختر السنة الدراسية التي أنت فيها حالياً، هذا الحقل مطلوب';
         case DropdownType.month:
           return 'يرجى اختيار الشهر';
         case DropdownType.gender:
@@ -219,48 +219,49 @@ class _CustomDropdownState extends State<CustomDropdown>
                   InputDecorator(
                     key: _fieldKey,
                     decoration: InputDecoration(
-                      labelText: widget.label,
-                      floatingLabelBehavior: FloatingLabelBehavior.auto,
-                      labelStyle: styles.xLabelSmall.copyWith(
-                        color: widget.selectedValue == null
-                            ? content.primary
-                            : backgrounds.primaryBrand,
-                        fontSize: 14,
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                          horizontal: 16.w(context), vertical: 14.h(context)),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(widget.radius),
-                        borderSide: BorderSide(color: border.primaryBrand),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(widget.radius),
-                        borderSide: BorderSide(
+                        labelText: widget.label,
+                        floatingLabelBehavior: FloatingLabelBehavior.auto,
+                        labelStyle: styles.xLabelSmall.copyWith(
                           color: widget.selectedValue == null
-                              ? border.secondary
+                              ? content.primary
                               : backgrounds.primaryBrand,
-                          width: widget.selectedValue == null ? 1 : 2,
+                          fontSize: 14,
                         ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(widget.radius),
-                        borderSide: BorderSide(color: border.primaryBrand),
-                      ),
-                      errorText: fieldState.errorText,
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(widget.radius),
-                        borderSide: const BorderSide(color: Colors.red),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(widget.radius),
-                        borderSide: const BorderSide(color: Colors.red),
-                      ),
-                      errorStyle: const TextStyle(
-                        fontSize: 12,
-                        color: Colors.red,
-                        height: 0.06,
-                      ),
-                    ),
+                        contentPadding: EdgeInsets.symmetric(
+                            horizontal: 16.w(context), vertical: 14.h(context)),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(widget.radius),
+                          borderSide: BorderSide(color: border.primaryBrand),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(widget.radius),
+                          borderSide: BorderSide(
+                            color: widget.selectedValue == null
+                                ? border.secondary
+                                : backgrounds.primaryBrand,
+                            width: widget.selectedValue == null ? 1 : 2,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(widget.radius),
+                          borderSide: BorderSide(color: border.primaryBrand),
+                        ),
+                        errorText: fieldState.errorText,
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(widget.radius),
+                          borderSide: const BorderSide(color: Colors.red),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(widget.radius),
+                          borderSide: const BorderSide(color: Colors.red),
+                        ),
+                        errorStyle: styles.xParagraphSmall
+                        //  const TextStyle(
+                        //   fontSize: 12,
+                        //   color: Colors.red,
+                        //   // height: 0.05,
+                        // ),
+                        ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

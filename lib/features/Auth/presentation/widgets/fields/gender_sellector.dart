@@ -25,7 +25,7 @@ class GenderSellector extends StatelessWidget {
       child: Center(
         child: SizedBox(
           width: 365.w(context),
-          height: 61,
+          height: 78,
           child: CustomDropdown(
             label: "الجنس",
             items: ["ذكر", "أنثى"],

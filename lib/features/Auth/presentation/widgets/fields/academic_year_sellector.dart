@@ -24,10 +24,10 @@ class AcademicYearSellector extends StatelessWidget {
           : AutovalidateMode.disabled,
       child: SizedBox(
         width: 372.w(context),
-        height: 59,
+        height: 78,
         child: CustomDropdown(
           width: 372.w(context),
-          height: 59,
+          // height: 75,
           label: "السنة الدراسية",
           items: ["الأولى", "الثانية", "الثالثة", "الرابعة", "الخامسة"],
           selectedValue: selectedYear,

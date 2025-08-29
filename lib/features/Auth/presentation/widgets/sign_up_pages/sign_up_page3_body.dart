@@ -41,7 +41,7 @@ class _SignUpPage3BodyState extends State<SignUpPage3Body> {
       floatingActionButton: FloatingNextButton(
         formKey: formKey,
         onNext: () {
-          final unyValide = unyKey.currentState?.validate() ?? false;
+          // final unyValide = unyKey.currentState?.validate() ?? false;
           final yearUnyValide = yearUnyKey.currentState?.validate() ?? false;
           final numUnyValide = numUnyKey.currentState?.validate() ?? false;
           final isFormValid = formKey.currentState?.validate() ?? false;
@@ -50,7 +50,9 @@ class _SignUpPage3BodyState extends State<SignUpPage3Body> {
             yearUnySubmitted = true;
             numUnySubmitted = true;
           });
-          if (unyValide && yearUnyValide && numUnyValide && isFormValid) {
+          if (
+              // unyValide &&
+              yearUnyValide && numUnyValide && isFormValid) {
             widget.onNext();
           }
         },
@@ -77,18 +79,18 @@ class _SignUpPage3BodyState extends State<SignUpPage3Body> {
                     style: styles.xParagraphLargeLose,
                   ),
                 ),
-                UniversitySellector(
-                  selectedUniversity: selectedUniversity,
-                  onChanged: (val) {
-                    setState(() {
-                      acadimicYearFocusNode.unfocus();
-                      selectedUniversity = val;
-                    });
-                  },
-                  unyKey: unyKey,
-                  unySubmitted: unySubmitted,
-                ),
-                SizedBox(height: 24),
+                // UniversitySellector(
+                //   selectedUniversity: selectedUniversity,
+                //   onChanged: (val) {
+                //     setState(() {
+                //       acadimicYearFocusNode.unfocus();
+                //       selectedUniversity = val;
+                //     });
+                //   },
+                //   unyKey: unyKey,
+                //   unySubmitted: unySubmitted,
+                // ),
+                // SizedBox(height: 46),
                 AcademicYearSellector(
                   selectedYear: selectedYear,
                   onChanged: (val) {

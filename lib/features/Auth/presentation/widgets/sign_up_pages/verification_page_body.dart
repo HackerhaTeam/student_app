@@ -55,8 +55,8 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
 
     return Scaffold(
       floatingActionButton: FloatingNextButton(
-        width: 139.w(context),
-        buttonText: "تحقق من الرمز",
+        width: 171.w(context),
+        buttonText: "تأكيد البريد الإلكتروني",
         disabled: isButtonDisabled,
         formKey: formKey,
         onNext: () async {
@@ -79,7 +79,11 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
               );
 
               Navigator.of(context).pop();
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MainNavigationPage(),));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MainNavigationPage(),
+                  ));
             }
           }
         },
@@ -110,9 +114,19 @@ class _VerificationPageBodyState extends State<VerificationPageBody> {
               Padding(
                 padding:
                     EdgeInsets.only(top: 8.h(context), bottom: 32.h(context)),
-                child: Text(
-                  "لقد أرسلنا رمز إعادة تعيين إلى contact@gmail.com، أدخل الرمز المكون من 5 أرقام المذكور في البريد الإلكتروني.",
-                  style: styles.xParagraphLargeLose,
+                child: RichText(
+                  text: TextSpan(
+                      style: context.xParagraphLargeLose
+                          .copyWith(color: content.secondary),
+                      children: [
+                        TextSpan(text: "أرسلنا رمزاً مكون من 5 أرقام إلى"),
+                        TextSpan(
+                          text: " contact@gmail.com ",
+                          style: context.xParagraphLargeLose
+                              .copyWith(color: content.primary),
+                        ),
+                        TextSpan(text: "راجع صندوق بريدك الإلكتروني.")
+                      ]),
                 ),
               ),
               OTPInput(

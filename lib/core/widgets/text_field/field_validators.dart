@@ -43,7 +43,9 @@ String? validateField(FieldType type, String? value) {
       break;
 
     case FieldType.name:
-      if (value == null || value.trim().isEmpty) return 'الاسم مطلوب';
+      if (value == null || value.trim().isEmpty) {
+        return 'أدخل اسمك الثلاثي، هذا الحقل مطلوب';
+      }
       if (value.trim().length < 2) return 'الاسم يجب أن يكون على الأقل حرفين';
       final nameRegex = RegExp(r'^[\u0600-\u06FFa-zA-Z\s]+$');
       if (!nameRegex.hasMatch(value.trim())) {
@@ -52,15 +54,26 @@ String? validateField(FieldType type, String? value) {
       break;
 
     case FieldType.phoneNumber:
-      if (value == null || value.trim().isEmpty) return 'رقم الهاتف مطلوب';
-      final phoneRegex = RegExp(r'^9\d{8}$');
-      if (!phoneRegex.hasMatch(value.trim())) {
-        return 'رقم الهاتف غير صحيح. مثال: 9XXXXXXXX';
+      if (value == null || value.trim().isEmpty) {
+        return 'رقم الهاتف مطلوب';
       }
+
+      final trimmed = value.trim();
+
+      if (!trimmed.startsWith('9')) {
+        return 'الرقم الذي أدخلته غير صالح،تأكد أن الرقم يبدأ ب9';
+      }
+
+      if (trimmed.length != 9) {
+        return 'الرقم الذي أدخلته غير صالح،تأكد أن عدد الأرقام المدخلة هي 9';
+      }
+
       break;
 
     case FieldType.academicYear:
-      if (value == null || value.trim().isEmpty) return "الرقم الجامعي مطلوب";
+      if (value == null || value.trim().isEmpty) {
+        return "أدخل رقمك الجامعي، هذا الحقل مطلوب";
+      }
       break;
 
     case FieldType.day:
