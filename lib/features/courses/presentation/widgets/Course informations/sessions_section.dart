@@ -18,7 +18,7 @@ class SessionsSection extends StatelessWidget {
        
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: session.length,
+          itemCount:4,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.only(bottom: 16),
             child: SessionCard(

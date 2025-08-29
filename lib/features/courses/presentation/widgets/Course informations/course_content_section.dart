@@ -80,7 +80,7 @@ class CourseDetailsSection extends StatelessWidget {
         if (state is CoursesLoading) {
           return Column(
   children: List.generate(
-    7, 
+    4, 
     (index) => const Padding(
       padding: EdgeInsets.only(bottom: 12),
       child: ShimmerSessionCard(),
