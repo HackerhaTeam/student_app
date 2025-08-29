@@ -3,11 +3,14 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
+import 'package:student_hackerha/features/courses/domain/Entity/session.dart';
+import 'package:student_hackerha/features/courses/domain/Entity/session_extention.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/detiles_item.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/lesson_card.dart';
 
 class DetailesSection extends StatelessWidget {
-  const DetailesSection({super.key});
+  const DetailesSection({super.key, required this.sessions});
+  final List<Session> sessions;
   @override
   Widget build(BuildContext context) {
     final content = Theme.of(context).extension<AppContent>()!;
@@ -35,15 +38,15 @@ class DetailesSection extends StatelessWidget {
           children: [
             DetilesItem(
                 title: 'مدة الدورة',
-                value: "${4} س",
+                value: sessions.totalDurationFormatted,
                 icon: PhosphorIcons.clock()),
             DetilesItem(
                 title: 'عدد مقاطع',
-                value: "${15}",
+                value: sessions.length.toString(),
                 icon: PhosphorIcons.clock()),
             DetilesItem(
                 title: 'عدد الملفات المرفقة',
-                value: "${5}",
+                value: sessions.totalFiles.toString(),
                 icon: PhosphorIcons.clock()),
             DetilesItem(
                 title: 'عدد كويزات',

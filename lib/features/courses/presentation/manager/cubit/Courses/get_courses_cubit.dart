@@ -16,26 +16,30 @@ class CoursesCubit extends Cubit<CoursesState> {
         (failure) => emit(CoursesFailure(errMessage: failure.message!)),
         (courses) => emit(CoursesLoaded(courses: courses)));
   }
-   Future<void> loadCourseDetails(String courseId) async {
-    if (state is CoursesLoaded) {
-      final currentState = state as CoursesLoaded;
+  Future<void> loadCourseDetails(String courseId) async {
+  // احفظ الـ state الحالي قبل الـ emit
+  final currentState = state;
 
-      final result = await coursesUsecase.getCourseDetiles(courseId);
-      result.fold(
-        (failure) =>CoursesFailure(errMessage: failure.message!),
-        (detailedCourses) {
-          final detailedCourse = detailedCourses;
+  emit(CoursesLoading());
 
-          final updatedCourses = currentState.courses.map((c) {
-            if (c.id == detailedCourse.id) {
-              return c.copyWith(sessions: detailedCourse.sessions);
-            }
-            return c;
-          }).toList();
+  if (currentState is CoursesLoaded) {
+    final result = await coursesUsecase.getCourseDetiles(courseId);
 
-          emit(CoursesLoaded( courses:  updatedCourses));
-        },
-      );
-    }
+    result.fold(
+      (failure) => emit(CoursesFailure(errMessage: failure.message!)),
+      (detailedCourse) {
+        final updatedCourses = currentState.courses.map((c) {
+          if (c.id == detailedCourse.id) {
+            return c.copyWith(sessions: detailedCourse.sessions);
+          }
+          return c;
+        }).toList();
+
+        emit(CoursesLoaded(courses: updatedCourses));
+      },
+    );
   }
+}
+
+
 }

@@ -5,7 +5,9 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/headers/custom_tabBar.dart';
+import 'package:student_hackerha/core/widgets/shimmer/course_shimmer.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/Courses/get_courses_cubit.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/tab_bar_header_delegate.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/bottom_navigation_price.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/course_info_card_icons.dart';
@@ -34,22 +36,33 @@ class CourseInformationView extends StatelessWidget {
         return Scaffold(
           bottomNavigationBar: cubit.tabController.index != 0
               ? BottomNavigationPrice(
-                price: course.price,)
+                  price: course.price,
+                )
               : null,
           backgroundColor: background.surfacePrimary,
           body: CustomScrollView(
             key: cubit.scrollViewKey,
             controller: cubit.scrollController,
             slivers: [
-               CourseInfoSliverAppBar(courseName: course.name,),
-               CourseInfoSummaryText(description:course.description ,),
+              CourseInfoSliverAppBar(
+                courseName: course.name,
+              ),
+              CourseInfoSummaryText(
+                description: course.description,
+              ),
               const SliverToBoxAdapter(child: SizedBox(height: 12)),
-               CourseInfoPrice(price: course.price,),
+              CourseInfoPrice(
+                price: course.price,
+              ),
               const SliverToBoxAdapter(child: SizedBox(height: 12)),
-               CourseInfoCardIcons(courseType: course.type,studentCount: "22 طالب",teacherCount:"مدرس واحد" ,),
+              CourseInfoCardIcons(
+                courseType: course.type,
+                studentCount: "22 طالب",
+                teacherCount: "مدرس واحد",
+              ),
               SliverPersistentHeader(
                 pinned: true,
-                delegate: TabBarHeaderDelegate( 
+                delegate: TabBarHeaderDelegate(
                   CustomTabBar(
                     tabs: const [
                       "حول الدورة",
@@ -62,7 +75,6 @@ class CourseInformationView extends StatelessWidget {
                   ),
                 ),
               ),
-
               SliverToBoxAdapter(
                 child: Stack(
                   children: [
@@ -79,7 +91,9 @@ class CourseInformationView extends StatelessWidget {
                           const SizedBox(height: 16),
                           Section(
                             scrollKey: cubit.aboutKey,
-                            child:  SummaryCourse(aboutCourse: course.about,),
+                            child: SummaryCourse(
+                              aboutCourse: course.about,
+                            ),
                           ),
                           Section(
                             scrollKey: cubit.teachersKey,
@@ -87,7 +101,26 @@ class CourseInformationView extends StatelessWidget {
                           ),
                           Section(
                             scrollKey: cubit.contentKey,
-                            child: const DetailesSection(),
+                            child: BlocBuilder<CoursesCubit, CoursesState>(
+                              builder: (context, state) {
+                                if(state is CoursesLoaded){
+                           var courseDetail = state.courses.firstWhere(
+  (element) => element.id == course.id,
+  orElse: () => course, 
+);
+
+                                return  DetailesSection(
+                                  sessions: courseDetail.sessions,
+                                );
+                                }
+                                if (state is CoursesLoading) {
+                                  return CourseShimmer();
+                                }
+                                return DetailesSection(
+                                  sessions: course.sessions,
+                                );
+                              },
+                            ),
                           ),
                           Section(
                             scrollKey: cubit.reviewsKey,
