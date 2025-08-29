@@ -5,7 +5,7 @@ class SessionKeys {
   static const String name = "name";
   static const String likes = "likes";
   static const String disLikes = "disLikes";
-  static const String durationByMin = "durationByMin";
+  static const String duration = "duration";
   static const String files = "files";
   static const String createdAt = "createdAt";
   static const String updatedAt = "updatedAt";

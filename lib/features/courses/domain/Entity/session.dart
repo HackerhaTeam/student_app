@@ -7,7 +7,7 @@ class Session extends Equatable{
   final String name;
   final List<String> likes;
   final List<String> disLikes;
-  final int durationByMin;
+  final String duration;
   final List<String> files;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -19,7 +19,7 @@ class Session extends Equatable{
     required this.name,
     required this.likes,
     required this.disLikes,
-    required this.durationByMin,
+    required this.duration,
     required this.files,
     required this.createdAt,
     required this.updatedAt,

@@ -1,4 +1,4 @@
-import 'package:student_hackerha/core/api/keys/Enroll-Course/session_keys.dart';
+import 'package:student_hackerha/core/api/keys/courses/session_keys.dart';
 import 'package:student_hackerha/core/api/keys/courses/courses_keys.dart';
 import 'package:student_hackerha/core/api/keys/discount/discount_keys.dart';
 import 'package:student_hackerha/features/courses/data/models/session_model.dart';

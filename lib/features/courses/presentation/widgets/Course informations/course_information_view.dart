@@ -37,7 +37,7 @@ class CourseInformationView extends StatelessWidget {
     final cubit = context.read<CourseInfoCubit>();
     final screenHeight = MediaQuery.of(context).size.height;
     final background = Theme.of(context).extension<AppBackgrounds>()!;
-    final content = Theme.of(context).extension<AppContent>()!;
+   
     return BlocBuilder<CourseInfoCubit, CourseInfoState>(
       builder: (context, state) {
         return Scaffold(
@@ -106,12 +106,11 @@ class CourseInformationView extends StatelessWidget {
                             scrollKey: cubit.teachersKey,
                             child: const TeachersSection(),
                           ),
-                          CourseDetilesSection(
+                          CourseDetailsSection(
                             course: course,
                             courseId: course.id,
                             scrollKey: cubit.contentKey,
                           ),
-                          SessionsSection(),
                           Section(
                             scrollKey: cubit.reviewsKey,
                             child: ReviewsSection(),

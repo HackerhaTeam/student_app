@@ -6,14 +6,16 @@ import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/Courses/get_courses_cubit.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/detailes_section.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/section.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/sessions_section.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/shimmer_detiles_section.dart';
+import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/shimmer_session_card.dart';
 
-class CourseDetilesSection extends StatelessWidget {
+class CourseDetailsSection extends StatelessWidget {
   final String courseId;
   final Course course;
   final GlobalKey scrollKey;
 
-  const CourseDetilesSection({
+  const CourseDetailsSection({
     super.key,
     required this.courseId,
     required this.course,
@@ -32,7 +34,7 @@ class CourseDetilesSection extends StatelessWidget {
           _buildSectionTitle("محتويات الدورة", context.xHeadingLarge),
           _buildSubtitle("البيانات الرئيسية", context.xHeadingSmall, content),
           _buildDetailsSection(context),
-       
+          _buildSessionSection(context),
         ],
       ),
     );
@@ -64,14 +66,40 @@ class CourseDetilesSection extends StatelessWidget {
                 courseId,
                 course,
               );
-
           return DetailesSection(sessions: courseDetail.sessions);
         }
 
-       
         return const ShimmerDetilesSection();
       },
     );
   }
 
+  Widget _buildSessionSection(BuildContext context) {
+    return BlocBuilder<CoursesCubit, CoursesState>(
+      builder: (context, state) {
+        if (state is CoursesLoading) {
+          return Column(
+  children: List.generate(
+    7, 
+    (index) => const Padding(
+      padding: EdgeInsets.only(bottom: 12),
+      child: ShimmerSessionCard(),
+    ),
+  ),
+)
+;
+        }
+
+        if (state is CoursesLoaded) {
+          final courseDetail = context.read<CoursesCubit>().getCourseById(
+                courseId,
+                course,
+              );
+          return SessionsSection(session: courseDetail.sessions);
+        }
+
+        return const ShimmerSessionCard();
+      },
+    );
+  }
 }

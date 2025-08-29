@@ -1,8 +1,16 @@
+
 import 'package:student_hackerha/features/courses/domain/Entity/session.dart';
 
 extension SessionListX on List<Session> {
   int get totalDuration {
-    return fold(0, (sum, session) => sum + session.durationByMin);
+    return fold(0, (sum, session) {
+      final parts = session.duration.split(":");
+      if (parts.length >= 2) {
+        final minutes = int.tryParse(parts[0]) ?? 0;
+        return sum + minutes;
+      }
+      return sum;
+    });
   }
 
   int get totalFiles {

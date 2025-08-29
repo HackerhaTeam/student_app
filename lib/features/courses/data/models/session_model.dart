@@ -1,6 +1,6 @@
 
 
-import 'package:student_hackerha/core/api/keys/Enroll-Course/session_keys.dart';
+import 'package:student_hackerha/core/api/keys/courses/session_keys.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/session.dart';
 
 class SessionModel extends Session {
@@ -11,7 +11,7 @@ class SessionModel extends Session {
     required super.name,
     required super.likes,
     required super.disLikes,
-    required super.durationByMin,
+    required super.duration,
     required super.files,
     required super.createdAt,
     required super.updatedAt,
@@ -25,7 +25,7 @@ class SessionModel extends Session {
       name: json[SessionKeys.name] as String,
       likes: List<String>.from(json[SessionKeys.likes] ?? []),
       disLikes: List<String>.from(json[SessionKeys.disLikes] ?? []),
-      durationByMin: json[SessionKeys.durationByMin] as int,
+      duration: json[SessionKeys.duration] as String,
       files: List<String>.from(json[SessionKeys.files] ?? []),
       createdAt: DateTime.parse(json[SessionKeys.createdAt] as String),
       updatedAt: DateTime.parse(json[SessionKeys.updatedAt] as String),
