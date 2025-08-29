@@ -8,7 +8,8 @@ import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 
 class CourseInfoSummaryText extends StatelessWidget {
-  const CourseInfoSummaryText({super.key});
+  const CourseInfoSummaryText({super.key, required this.description});
+  final String description;
   @override
   Widget build(BuildContext context) {
     final content = Theme.of(context).extension<AppContent>()!;
@@ -16,7 +17,7 @@ class CourseInfoSummaryText extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w(context)),
         child: Text(
-          "أساس البرمجة التي من خلالها ستبدأ رحلتك...",
+         description,
           style: context.xParagraphMedium.copyWith(color: content.secondary),
         ),
       ),

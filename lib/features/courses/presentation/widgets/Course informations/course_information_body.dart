@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/course_information_view.dart';
-import 'package:student_hackerha/features/courses/presentation/manager/cubit/cubit/course_info_cubit.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/CourseInformationUi/course_info_cubit.dart';
 
 class CourseInformationBody extends StatefulWidget {
-  const CourseInformationBody({super.key});
+  const CourseInformationBody({super.key, required this.course});
+  final Course course;
 
   @override
   State<CourseInformationBody> createState() => _CourseInformationBodyState();
@@ -16,7 +18,7 @@ class _CourseInformationBodyState extends State<CourseInformationBody>
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CourseInfoCubit(this),
-      child: const CourseInformationView(),
+      child:  CourseInformationView(course: widget.course,),
     );
   }
 }

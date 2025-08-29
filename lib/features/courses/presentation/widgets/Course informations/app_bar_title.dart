@@ -15,7 +15,8 @@ import 'package:student_hackerha/features/courses/presentation/pages/search_page
 class AppBarTitle extends StatelessWidget {
   final bool isCollapsed;
   final double collapseProgress;
-  const AppBarTitle({super.key, required this.isCollapsed, required this.collapseProgress});
+  final String name;
+  const AppBarTitle({super.key, required this.isCollapsed, required this.collapseProgress, required this.name});
 
   double calculateTextOffset(double progress) {
     const double maxOffset =-50;
@@ -37,7 +38,7 @@ class AppBarTitle extends StatelessWidget {
           offset: Offset(-calculateTextOffset(collapseProgress), 0),
           child: Padding(
             padding:  EdgeInsets.only(right: isCollapsed?8:50),
-            child: Text("البرمجة (1)", style: context.xHeadingMedium),
+            child: Text(name, style: context.xHeadingMedium),
           ),
         ),
         const Spacer(),

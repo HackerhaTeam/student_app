@@ -10,19 +10,19 @@ import 'package:student_hackerha/features/courses/presentation/widgets/Course%20
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/floating_active_course_button.dart';
 
 class BottomNavigationPrice extends StatelessWidget {
+  final num price;
   const BottomNavigationPrice({
-    super.key,
-    required this.border,
-    required this.background,
-    required this.content,
+    super.key, required this.price,
+    
   });
 
-  final AppBorders border;
-  final AppBackgrounds background;
-  final AppContent content;
+  
 
   @override
   Widget build(BuildContext context) {
+      final content = Theme.of(context).extension<AppContent>()!;
+    final background = Theme.of(context).extension<AppBackgrounds>()!;
+    final border = Theme.of(context).extension<AppBorders>()!;
     return CustomCard(
         borderColor: border.transparent,
         width: double.infinity,
@@ -42,7 +42,7 @@ class BottomNavigationPrice extends StatelessWidget {
               iconSize: 22,
             ),
             SizedBox(width: 8.w(context)),
-            CourseInfoPriceView(content: content),
+            CourseInfoPriceView(price: price,),
             SizedBox(width: 20.w(context)),
             ActiveCourseButton(width: 184.w(context)),
           ],

@@ -7,6 +7,7 @@ import 'package:student_hackerha/features/courses/domain/repositories/CourseRepo
 
 class CourseRepoImpl implements CourseRepo{
   final CourseRemoteDataSource courseRemoteDataSource;
+  
 
   CourseRepoImpl({required this.courseRemoteDataSource});
   @override
@@ -28,5 +29,26 @@ class CourseRepoImpl implements CourseRepo{
    
    
     }
+  }
+  
+  @override
+  Future<Either<Failure, Course>> getCourseDetiles(String courseId)async {
+     try {
+  final courses= await courseRemoteDataSource.getCoursesDetiles(courseId);
+      return Right(courses);
+    } catch (e) {
+    
+      if ( e is DioException) {
+       return  Left(ServerFailure(e.message));
+      }
+      else
+      {
+        return   Left(ServerFailure(e.toString())); 
+        }
+
+   
+   
+    }
+    
   }
 }

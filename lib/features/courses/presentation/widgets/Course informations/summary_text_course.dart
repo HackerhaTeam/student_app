@@ -10,9 +10,9 @@ import 'package:student_hackerha/features/courses/presentation/widgets/Course%20
 
 class SummaryCourse extends StatelessWidget {
   const SummaryCourse({
-    super.key,
+    super.key, required this.aboutCourse,
   });
-
+final String aboutCourse;
   @override
   Widget build(BuildContext context) {
     var content = Theme.of(context).extension<AppContent>()!;
@@ -37,7 +37,7 @@ class SummaryCourse extends StatelessWidget {
               SizedBox(width: 8.w(context)),
               Expanded(
                 child: Text(
-                  "هذه الدورة موجهة لطلاب كلية الهندسة المعلوماتية بجامعة حلب، سواءً كانوا في السنة الدراسية الأولى أو ممن حملوا المادة سابقًا.",
+                 aboutCourse,
                   style: context.xParagraphMedium
                       .copyWith(color: content.secondary),
                 ),

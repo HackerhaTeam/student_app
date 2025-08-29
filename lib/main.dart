@@ -8,7 +8,7 @@ import 'package:student_hackerha/core/DI/service_locator.dart';
 import 'package:student_hackerha/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:student_hackerha/core/themes/app_theme.dart';
 import 'package:student_hackerha/features/Auth/presentation/pages/sign_up_pages/verification_page.dart';
-import 'package:student_hackerha/features/courses/presentation/manager/cubit/GetCourses/get_courses_cubit.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/Courses/get_courses_cubit.dart';
 import 'package:student_hackerha/features/courses/presentation/manager/cubit/search_courses/search_courses_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:student_hackerha/features/home/presentation/manager/my%20courses%20cubit/my_courses_cubit.dart';
@@ -42,7 +42,7 @@ void main() {
       
     // )
     BlocProvider(
-      create: (context) => sl<GetCoursesCubit>()..getCoursesCubit(),
+      create: (context) => sl<CoursesCubit>()..getCoursesCubit(),
     
       
     ),

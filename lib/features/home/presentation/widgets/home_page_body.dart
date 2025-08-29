@@ -18,7 +18,7 @@ import 'package:student_hackerha/core/widgets/custom_card.dart';
 import 'package:student_hackerha/core/widgets/shimmer/course_shimmer.dart';
 import 'package:student_hackerha/core/widgets/shimmer/course_shimmer_list.dart';
 import 'package:student_hackerha/core/widgets/tags/tags_list_view.dart';
-import 'package:student_hackerha/features/courses/presentation/manager/cubit/GetCourses/get_courses_cubit.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/Courses/get_courses_cubit.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/search_page.dart';
 import 'package:student_hackerha/core/widgets/course%20card/my_course_list_section.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_list.dart';
@@ -102,13 +102,13 @@ class _HomePageBodyState extends State<HomePageBody> {
         ),
         SliverToBoxAdapter(child: SizedBox(height: 20)),
 
-        SliverToBoxAdapter(child: BlocBuilder<GetCoursesCubit, GetCoursesState>(
+        SliverToBoxAdapter(child: BlocBuilder<CoursesCubit, CoursesState>(
       builder: (context, state) {
-        if (state is GetCoursesLoading) {
+        if (state is CoursesLoading) {
           return CourseShimmer();
-        } else if (state is GetCoursesFailure) {
+        } else if (state is CoursesFailure) {
           return CoursesFailureView(message: state.errMessage);
-        } else if (state is GetCoursesLoaded) {
+        } else if (state is CoursesLoaded) {
           return FadeInWidget(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 24),

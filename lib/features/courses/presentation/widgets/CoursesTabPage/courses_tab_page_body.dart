@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:student_hackerha/core/manager/tag_cubit/tag_cubit.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
-import 'package:student_hackerha/features/courses/presentation/manager/cubit/GetCourses/get_courses_cubit.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/Courses/get_courses_cubit.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/CoursesTabPage/courses_failure_view.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/CoursesTabPage/courses_headdr.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/CoursesTabPage/courses_loaded_view.dart';
@@ -38,7 +38,7 @@ class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
   @override
   void initState() {
     super.initState();
-    context.read<GetCoursesCubit>().getCoursesUsecase();
+    context.read<CoursesCubit>().coursesUsecase.getCourses();
   }
 
   @override
@@ -68,13 +68,13 @@ class _CoursesTabPageBodyState extends State<CoursesTabPageBody> {
   }
 
   Widget _buildCoursesSection() {
-    return BlocBuilder<GetCoursesCubit, GetCoursesState>(
+    return BlocBuilder<CoursesCubit, CoursesState>(
       builder: (context, state) {
-        if (state is GetCoursesLoading) {
+        if (state is CoursesLoading) {
           return CoursesLoadingView(yearTitles: yearTitles);
-        } else if (state is GetCoursesFailure) {
+        } else if (state is CoursesFailure) {
           return CoursesFailureView(message: state.errMessage);
-        } else if (state is GetCoursesLoaded) {
+        } else if (state is CoursesLoaded) {
           return _buildFilteredCourses(state.courses);
         }
         return const SliverToBoxAdapter(child: SizedBox());

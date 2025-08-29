@@ -1,10 +1,12 @@
+import 'package:student_hackerha/core/api/keys/Enroll-Course/session_keys.dart';
 import 'package:student_hackerha/core/api/keys/courses/courses_keys.dart';
 import 'package:student_hackerha/core/api/keys/discount/discount_keys.dart';
+import 'package:student_hackerha/features/courses/data/models/session_model.dart';
 import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
 import 'package:student_hackerha/features/courses/data/models/discount_model.dart';
 
 class CourseModel extends Course {
-  const CourseModel(
+  const CourseModel( 
       {required super.discount,
       required super.id,
       required super.image,
@@ -20,7 +22,7 @@ class CourseModel extends Course {
       required super.video,
       required super.free,
       required super.createdAt,
-      required super.updatedAt});
+      required super.updatedAt, required super.sessions});
 
 
 
@@ -44,6 +46,10 @@ class CourseModel extends Course {
         free:  json[CourseKeys.free],
         createdAt: DateTime.parse(json[CourseKeys.createdAt].toString()),
       updatedAt: DateTime.parse(json[CourseKeys.updatedAt].toString()),
+      sessions: (json[CourseKeys.session] as List<dynamic>?)
+            ?.map((e) => SessionModel.fromJson(e))
+            .toList() ?? [],
+
     );
   }
 }

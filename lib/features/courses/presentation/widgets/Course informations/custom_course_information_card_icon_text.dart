@@ -13,9 +13,10 @@ import 'package:student_hackerha/features/courses/presentation/widgets/Course%20
 
 class CustomCourseInformationCardIconText extends StatelessWidget {
   const CustomCourseInformationCardIconText({
-    super.key,
+    super.key, required this.title, required this.icon,
   });
-
+  final String title;
+   final PhosphorIconData icon;
   @override
   Widget build(BuildContext context) {
     return CustomCard(
@@ -30,8 +31,8 @@ class CustomCourseInformationCardIconText extends StatelessWidget {
           .extension<AppBorders>()!
           .transparent,
       child: IconText(
-        icon: PhosphorIcons.circlesFour(),
-        title: "دورة شاملة",
+        icon: icon,
+        title:title,
       ),
     );
   }

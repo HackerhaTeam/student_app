@@ -10,8 +10,8 @@ import 'package:student_hackerha/features/courses/presentation/widgets/Course%20
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/app_bar_title.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/Course%20informations/course_information_body.dart';
 class CourseInfoSliverAppBar extends StatelessWidget {
-  const CourseInfoSliverAppBar({super.key});
-
+  const CourseInfoSliverAppBar({super.key, required this.courseName});
+    final String courseName;
   @override
   Widget build(BuildContext context) {
     final background = Theme.of(context).extension<AppBackgrounds>()!;
@@ -37,7 +37,7 @@ class CourseInfoSliverAppBar extends StatelessWidget {
             expandedTitleScale: 1.3,
             titlePadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             centerTitle: false,
-            title: AppBarTitle(
+            title: AppBarTitle(name:courseName ,
               isCollapsed: isCollapsed,
               collapseProgress: collapseProgress,
             ),

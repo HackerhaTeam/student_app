@@ -16,4 +16,9 @@ class CourseRemoteDataSource
         
   return data;
   }
+  Future<CourseModel> getCoursesDetiles(String courseId)async{
+    final response = await dioConsumer.get("hackit/ctrl/course/$courseId",);
+    final data = CourseModel.fromJson(response);
+    return data;
+  }
 }

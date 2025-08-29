@@ -4,4 +4,5 @@ import 'package:student_hackerha/features/courses/domain/Entity/course.dart';
 
 abstract class CourseRepo {
   Future<Either<Failure,List<Course>>> getCourses();
+  Future<Either<Failure,Course>> getCourseDetiles(String courseId);
 }

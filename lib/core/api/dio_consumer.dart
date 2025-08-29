@@ -9,7 +9,7 @@ class DioConsumer extends ApiConsumer {
 
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = BaseUrl.baseUrl;
-    dio.options.headers['Authorization'] ="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWNmYTVlM2I0YThhNjRhMzdjNWU0MiIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MjAyMjU4LCJleHAiOjE3NTc3OTQyNTh9.2uxoXPq8OD6HEDrgfeE4XIWkQ5u-G9PSYZ90-zsdjVQ";
+    dio.options.headers['Authorization'] ="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWNmYTVlM2I0YThhNjRhMzdjNWU0MiIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU1MTE4MjAzLCJleHAiOjE3NTc3MTAyMDN9.Zm8Ro27obnPuKZSYMcbIJw01t3JyqULtpnf3O445f0U";
     
     
   }

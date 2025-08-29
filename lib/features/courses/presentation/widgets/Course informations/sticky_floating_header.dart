@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
 import 'package:student_hackerha/core/widgets/headers/custom_tabBar.dart';
-import 'package:student_hackerha/features/courses/presentation/manager/cubit/cubit/course_info_cubit.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/CourseInformationUi/course_info_cubit.dart';
 import 'package:student_hackerha/features/courses/presentation/widgets/CoursesTabPage/year_page_header.dart';
 
 class StickyFloatingHeader extends StatelessWidget {

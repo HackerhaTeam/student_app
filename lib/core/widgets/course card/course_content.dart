@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:student_hackerha/core/functions/get_responsive_size.dart';
 import 'package:student_hackerha/core/functions/navigation.dart';
 import 'package:student_hackerha/core/themes/extentions/app_backgrounds.dart';
@@ -8,6 +9,7 @@ import 'package:student_hackerha/core/themes/extentions/app_borders.dart';
 import 'package:student_hackerha/core/themes/extentions/app_content.dart';
 import 'package:student_hackerha/core/themes/typoGraphy/app_text_styles.dart';
 import 'package:student_hackerha/core/widgets/buttons/custom_button.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/Courses/get_courses_cubit.dart';
 import 'package:student_hackerha/features/courses/presentation/pages/course_inforamtion.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_price.dart';
 import 'package:student_hackerha/core/widgets/course%20card/course_tags.dart';
@@ -65,8 +67,9 @@ class CourseContent extends StatelessWidget {
           CustomButton(
             onPressed: () {
               context.navigateWithSlideTransition(
-                CourseInforamtion(),
+                CourseInforamtion(course: course,),
               );
+              context.read<CoursesCubit>().loadCourseDetails(course.id);
             },
             borderRadius: 12.r(context),
             color: border.primaryBrand,

@@ -12,7 +12,7 @@ import 'package:student_hackerha/features/courses/data/remote/course_remote_data
 import 'package:student_hackerha/features/courses/data/repositories/course_repo_impl.dart';
 import 'package:student_hackerha/features/courses/domain/repositories/CourseRepo.dart';
 import 'package:student_hackerha/features/courses/domain/usecase/courses_usecase.dart';
-import 'package:student_hackerha/features/courses/presentation/manager/cubit/GetCourses/get_courses_cubit.dart';
+import 'package:student_hackerha/features/courses/presentation/manager/cubit/Courses/get_courses_cubit.dart';
 import 'package:student_hackerha/features/home/data/repositories/my_coureses_repo_impl.dart';
 import 'package:student_hackerha/features/home/data/repositories/recently_added_course_repo_impl.dart';
 import 'package:student_hackerha/features/home/data/repositories/top_teacher_repsioties_impl.dart';
@@ -216,15 +216,15 @@ void init() {
     
   );
  
-  sl.registerLazySingleton<GetCoursesUsecase>(
-    () => GetCoursesUsecase(courseRepo:sl()),
+  sl.registerLazySingleton<CoursesUsecase>(
+    () => CoursesUsecase(courseRepo:sl()),
   );
 
   // Use Case
 
   // Cubit
   
-  sl.registerFactory(() => GetCoursesCubit(sl()));
+  sl.registerFactory(() => CoursesCubit(sl()));
 
 
   sl.registerLazySingleton<Dio>((){Dio dio = Dio();
